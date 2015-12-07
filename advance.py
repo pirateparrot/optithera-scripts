@@ -16,7 +16,7 @@ cursor.execute("""
 	SELECT I.id, I.dob, I.sex, I.ethnic_code, I.centre_name, I.region_name, I.country_name, I.comments, B.batches
 	FROM "public"."person" I
 	INNER JOIN (
-		SELECT B.person_id, string_agg(B.batch_id::text, ';') AS batches
+		SELECT B.person_id, array_to_string(array_agg(B.batch_id::text), ';') AS batches
 		FROM "public"."batches" B
 		GROUP BY B.person_id
 		ORDER BY B.person_id ASC
@@ -113,5 +113,30 @@ with open(output_dir + "Batches.tsv", "w") as file:
 		f = cursor.fetchone()
 
 
+###################################
+### Individuals_#####_Genotypes ###
+###################################
+print "Exporting Individuals Genotypes"
+
+
+
+
+
+
+
+
+
+
+
+
 
 print "Done"
+
+
+
+
+
+
+
+
+
