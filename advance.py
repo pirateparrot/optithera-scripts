@@ -3,10 +3,40 @@ import utils
 
 output_dir = "./output/"
 
-conn = psycopg2.connect("dbname={0} host={1} user={0} password={2}".format("postgres", "127.0.0.1", "testtest"))
+connection_string = "dbname={0} host={1} user={0} password={2}".format("postgres", "127.0.0.1", "testtest")
+print "Connecting to " + connection_string
+conn = psycopg2.connect(connection_string)
 cursor = conn.cursor()
 
+#########################
+### Individuals_##### ###
+#########################
+print "Exporting Individuals"
+cursor.execute("""
+	SELECT I.id, I.dob, I.sex, I.ethnic_code, I.centre_name, I.region_name, I.country_name, I.comments, B.batches
+	FROM "public"."person" I
+	INNER JOIN (
+		SELECT B.person_id, string_agg(B.batch_id::text, ';') AS batches
+		FROM "public"."batches" B
+		GROUP BY B.person_id
+		ORDER BY B.person_id ASC
+	) B ON I.id = B.person_id
+	ORDER BY I.id ASC
+	;
+""")
+f = cursor.fetchone()
+while f:
+	with open(output_dir + "Individuals_" + str(f[0]) + ".tsv", "w") as file:
+		file.write("individualId,familyId,paternalId,maternalId,dateOfBirth,gender,ethnicCode,centreName,region,country,notes,batches\n")
+		li = utils.to_prepared_list(f)
+		file.write("""{0},,,,{1},{2},{3},{4},{5},{6},{7},{8}\n""".format(*li))
+		f = cursor.fetchone()
+
+
+################################
 ### Individuals_#####_Visits ###
+################################
+print "Exporting Individuals Visits"
 cursor.execute("""
 	SELECT V.person_id, V.id, V.visit_date, V.form_id, V.fasting, V.descr
 	FROM "public"."visit" AS V
@@ -29,7 +59,10 @@ while f:
 	f = cursor.fetchone()
 
 
+####################################
 ### Individuals_#####_Phenotypes ###
+####################################
+print "Exportung Individuals Phenotypes"
 cursor.execute("""
 	SELECT V.person_id, V.id, P.name, M.value, P.um, P.descr, V.visit_date
 	FROM "public"."phenotype" AS P
@@ -56,7 +89,10 @@ while f:
 	f = cursor.fetchone()
 
 
+###############
 ### Batches ###
+###############
+print "Exporting Batches"
 with open(output_dir + "Batches.tsv", "w") as file:
 	file.write("batchId,batchDate,batchType,description,studyName\n")
 
