@@ -1,9 +1,13 @@
 import psycopg2
 import utils
 
+# Constants
+utils.NEWLINE_REPLACEMENT = " "
+SUBARRAY_SEPARATOR = ";"
 output_dir = "./output/"
-
 connection_string = "dbname={0} host={1} user={0} password={2}".format("postgres", "127.0.0.1", "testtest")
+
+
 print "Connecting to " + connection_string
 conn = psycopg2.connect(connection_string)
 cursor = conn.cursor()
@@ -16,14 +20,14 @@ cursor.execute("""
 	SELECT I.id, I.dob, I.sex, I.ethnic_code, I.centre_name, I.region_name, I.country_name, I.comments, B.batches
 	FROM "public"."person" I
 	INNER JOIN (
-		SELECT B.person_id, array_to_string(array_agg(B.batch_id::text), ';') AS batches
+		SELECT B.person_id, array_to_string(array_agg(B.batch_id::text), '{0}') AS batches
 		FROM "public"."batches" B
 		GROUP BY B.person_id
 		ORDER BY B.person_id ASC
 	) B ON I.id = B.person_id
 	ORDER BY I.id ASC
 	;
-""")
+""".format(SUBARRAY_SEPARATOR))
 f = cursor.fetchone()
 while f:
 	with open(output_dir + "Individuals_" + str(f[0]) + ".tsv", "w") as file:

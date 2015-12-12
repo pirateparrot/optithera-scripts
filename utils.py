@@ -1,7 +1,13 @@
+import re
+
+NEWLINE_REPLACEMENT = " " # Default
+newline_regex = re.compile(r"[\n\r]")
+
 def prepare_fields(li):
 	for i, x in enumerate(li):
 		updated = str(x) if x is not None else ""
-		li[i] = updated if "\n" not in updated else "\"" + updated + "\""
+		updated = newline_regex.sub(NEWLINE_REPLACEMENT, updated)
+		li[i] = updated
 	return li
 
 def to_prepared_list(li):
