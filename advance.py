@@ -2,8 +2,8 @@ import psycopg2
 import utils
 
 # Constants
-utils.NEWLINE_REPLACEMENT = " "
-SUBARRAY_SEPARATOR = ";"
+# utils.NEWLINE_REPLACEMENT = " " # Can be uncommented and edited
+# utils.SUBARRAY_SEPARATOR = ";" # Can be uncommented and edited
 output_dir = "./output/"
 connection_string = "dbname={0} host={1} user={0} password={2}".format("postgres", "127.0.0.1", "testtest")
 
@@ -11,6 +11,7 @@ connection_string = "dbname={0} host={1} user={0} password={2}".format("postgres
 print "Connecting to " + connection_string
 conn = psycopg2.connect(connection_string)
 cursor = conn.cursor()
+
 
 #########################
 ### Individuals_##### ###
@@ -27,13 +28,19 @@ cursor.execute("""
 	) B ON I.id = B.person_id
 	ORDER BY I.id ASC
 	;
-""".format(SUBARRAY_SEPARATOR))
+""".format(utils.SUBARRAY_SEPARATOR))
+# 8 is where the batches subarray is located
+nbBatches = utils.size_of_subarray(cursor, 8)
+batchPlaceholders = utils.make_placeholders(8, nbBatches)
+headerPlaceholders = utils.make_headers("batch", 0, nbBatches)
 f = cursor.fetchone()
 while f:
 	with open(output_dir + "Individuals_" + str(f[0]) + ".tsv", "w") as file:
-		file.write("individualId,familyId,paternalId,maternalId,dateOfBirth,gender,ethnicCode,centreName,region,country,notes,batches\n")
+		print batchPlaceholders
+		file.write("individualId,familyId,paternalId,maternalId,dateOfBirth,gender,ethnicCode,centreName,region,country,notes,{0}\n".format(headerPlaceholders))
 		li = utils.to_prepared_list(f)
-		file.write("""{0},,,,{1},{2},{3},{4},{5},{6},{7},{8}\n""".format(*li))
+		li = utils.break_subarray(li, 8, nbBatches)
+		file.write(("""{0},,,,{1},{2},{3},{4},{5},{6},{7},"""+batchPlaceholders+"""\n""").format(*li))
 		f = cursor.fetchone()
 
 
