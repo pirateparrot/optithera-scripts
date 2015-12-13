@@ -4,6 +4,7 @@ import utils
 # Constants
 # utils.NEWLINE_REPLACEMENT = " " # Can be uncommented and edited
 # utils.SUBARRAY_SEPARATOR = ";" # Can be uncommented and edited
+# utils.FIELD_SEPARATOR = "," # Can be uncommented and edited
 output_dir = "./output/"
 connection_string = "dbname={0} host={1} user={0} password={2}".format("postgres", "127.0.0.1", "testtest")
 
@@ -30,8 +31,9 @@ cursor.execute("""
 	;
 """.format(utils.SUBARRAY_SEPARATOR))
 # 8 is where the batches subarray is located
-nbBatches = utils.size_of_subarray(cursor, 8)
-batchPlaceholders = utils.make_placeholders(8, nbBatches)
+subarrayPos = 8
+nbBatches = utils.size_of_subarray(cursor, subarrayPos)
+batchPlaceholders = utils.make_placeholders(subarrayPos, nbBatches)
 headerPlaceholders = utils.make_headers("batch", 0, nbBatches)
 f = cursor.fetchone()
 while f:
@@ -39,7 +41,7 @@ while f:
 		print batchPlaceholders
 		file.write("individualId,familyId,paternalId,maternalId,dateOfBirth,gender,ethnicCode,centreName,region,country,notes,{0}\n".format(headerPlaceholders))
 		li = utils.to_prepared_list(f)
-		li = utils.break_subarray(li, 8, nbBatches)
+		li = utils.break_subarray(li, subarrayPos, nbBatches)
 		file.write(("""{0},,,,{1},{2},{3},{4},{5},{6},{7},"""+batchPlaceholders+"""\n""").format(*li))
 		f = cursor.fetchone()
 

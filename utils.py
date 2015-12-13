@@ -2,6 +2,7 @@ import re
 
 NEWLINE_REPLACEMENT = " " # Default
 SUBARRAY_SEPARATOR = ";" # Default
+FIELD_SEPARATOR = "," # Default
 newline_regex = re.compile(r"[\n\r]")
 
 def prepare_fields(li):
@@ -15,7 +16,7 @@ def to_prepared_list(li):
 	return prepare_fields(list(li))
 
 def to_csv(li):
-	return ",".join(to_prepared_list(li))
+	return FIELD_SEPARATOR.join(to_prepared_list(li))
 
 def drain_cursor_to_csv(cursor):
 	result = []
@@ -41,7 +42,7 @@ def break_subarray(li, pos, size):
 	return li[:pos] + sub + li[pos+1:] + padding
 
 def make_headers(name, pos, nb):
-	return ",".join([name+str(i) for i in xrange(pos, nb)])
+	return FIELD_SEPARATOR.join([name+str(i) for i in xrange(pos, nb)])
 
 def make_placeholders(pos, nb):
-	return ",".join(["{"+str(i)+"}" for i in xrange(pos, pos+nb)])
+	return FIELD_SEPARATOR.join(["{"+str(i)+"}" for i in xrange(pos, pos+nb)])
