@@ -1,9 +1,11 @@
 import au.com.bytecode.opencsv._
 import java.io._
+import org.bdgenomics.formats.avro._
 
-object Hi {
+object Importer {
   def main(args: Array[String]) =
-    println("Hi!")
+    println("Hello World!")
     val reader = new CSVReader(new FileReader("output/batches.tsv"))
+    val v = new Variant()
     println(reader.readNext.mkString("*"))
 }
