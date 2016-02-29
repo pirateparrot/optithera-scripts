@@ -7,11 +7,11 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2146261276903069036L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AlignmentRecord\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"readNum\",\"type\":[\"int\",\"null\"],\"doc\":\"Read number within the array of fragment reads.\",\"default\":0},{\"name\":\"contig\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Contig\",\"doc\":\"Record for describing a reference assembly. Not used for storing the contents\\n of said assembly.\\n\\n @see NucleotideContigFragment\",\"fields\":[{\"name\":\"contigName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this contig in the assembly (e.g., \\\"chr1\\\").\",\"default\":null},{\"name\":\"contigLength\",\"type\":[\"null\",\"long\"],\"doc\":\"The length of this contig.\",\"default\":null},{\"name\":\"contigMD5\",\"type\":[\"null\",\"string\"],\"doc\":\"The MD5 checksum of the assembly for this contig.\",\"default\":null},{\"name\":\"referenceURL\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL at which this reference assembly can be found.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this assembly (e.g., \\\"hg19\\\").\",\"default\":null},{\"name\":\"species\",\"type\":[\"null\",\"string\"],\"doc\":\"The species that this assembly is for.\",\"default\":null},{\"name\":\"referenceIndex\",\"type\":[\"null\",\"int\"],\"doc\":\"Optional 0-based index of this contig in a SAM file header that it was read\\n   from; helps output SAMs/BAMs with headers in the same order as they started\\n   with, before a conversion to ADAM.\",\"default\":null}]}],\"doc\":\"The reference sequence details for the reference chromosome that\\n   this read is aligned to. If the read is unaligned, this field should\\n   be null.\",\"default\":null},{\"name\":\"start\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position for the start of this read's alignment.\\n   Should be null if the read is unaligned.\",\"default\":null},{\"name\":\"oldPosition\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position where this read used to start before\\n   local realignment.\\n   Stores the same data as the OP field in the SAM format.\",\"default\":null},{\"name\":\"end\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position for the end of this read's alignment.\\n   Should be null if the read is unaligned.\",\"default\":null},{\"name\":\"mapq\",\"type\":[\"null\",\"int\"],\"doc\":\"The global mapping quality of this read.\",\"default\":null},{\"name\":\"readName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this read. This should be unique within the read group\\n   that this read is from, and can be used to identify other reads that\\n   are derived from a single fragment.\",\"default\":null},{\"name\":\"sequence\",\"type\":[\"null\",\"string\"],\"doc\":\"The bases in this alignment. If the read has been hard clipped, this may\\n   not represent all the bases in the original read.\",\"default\":null},{\"name\":\"qual\",\"type\":[\"null\",\"string\"],\"doc\":\"The per-base quality scores in this alignment. If the read has been hard\\n   clipped, this may not represent all the bases in the original read.\\n   Additionally, if the error scores have been recalibrated, this field\\n   will not contain the original base quality scores.\\n\\n   @see origQual\",\"default\":null},{\"name\":\"cigar\",\"type\":[\"null\",\"string\"],\"doc\":\"The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that\\n   describes the local alignment of this read. Contains {length, operator}\\n   pairs for all contiguous alignment operations. The operators include:\\n\\n   * M, ALIGNMENT_MATCH: An alignment match indicates that a sequence can be\\n     aligned to the reference without evidence of an INDEL. Unlike the\\n     SEQUENCE_MATCH and SEQUENCE_MISMATCH operators, the ALIGNMENT_MATCH\\n     operator does not indicate whether the reference and read sequences are an\\n     exact match.\\n   * I, INSERT: The insert operator indicates that the read contains evidence of\\n     bases being inserted into the reference.\\n   * D, DELETE: The delete operator indicates that the read contains evidence of\\n     bases being deleted from the reference.\\n   * N, SKIP: The skip operator indicates that this read skips a long segment of\\n     the reference, but the bases have not been deleted. This operator is\\n     commonly used when working with RNA-seq data, where reads may skip long\\n     segments of the reference between exons.\\n   * S, CLIP_SOFT: The soft clip operator indicates that bases at the start/end\\n     of a read have not been considered during alignment. This may occur if the\\n     majority of a read maps, except for low quality bases at the start/end of\\n     a read. Bases that are soft clipped will still be stored in the read.\\n   * H, CLIP_HARD: The hard clip operator indicates that bases at the start/end of\\n     a read have been omitted from this alignment. This may occur if this linear\\n     alignment is part of a chimeric alignment, or if the read has been trimmed\\n     (e.g., during error correction, or to trim poly-A tails for RNA-seq).\\n   * P, PAD: The pad operator indicates that there is padding in an alignment.\\n   * =, SEQUENCE_MATCH: This operator indicates that this portion of the aligned\\n     sequence exactly matches the reference (e.g., all bases are equal to the\\n     reference bases).\\n   * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the\\n     aligned sequence is an alignment match to the reference, but a sequence\\n     mismatch (e.g., the bases are not equal to the reference). This can\\n     indicate a SNP or a read error.\",\"default\":null},{\"name\":\"oldCigar\",\"type\":[\"null\",\"string\"],\"doc\":\"Stores the CIGAR string present before local indel realignment.\\n   Stores the same data as the OC field in the SAM format.\\n\\n   @see cigar\",\"default\":null},{\"name\":\"basesTrimmedFromStart\",\"type\":[\"int\",\"null\"],\"doc\":\"The number of bases in this read/alignment that have been trimmed from the\\n   start of the read. By default, this is equal to 0. If the value is non-zero,\\n   that means that the start of the read has been hard-clipped.\\n\\n   @see cigar\",\"default\":0},{\"name\":\"basesTrimmedFromEnd\",\"type\":[\"int\",\"null\"],\"doc\":\"The number of bases in this read/alignment that have been trimmed from the\\n   end of the read. By default, this is equal to 0. If the value is non-zero,\\n   that means that the end of the read has been hard-clipped.\\n\\n   @see cigar\",\"default\":0},{\"name\":\"readPaired\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"properPair\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"readMapped\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"mateMapped\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"failedVendorQualityChecks\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"duplicateRead\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"readNegativeStrand\",\"type\":[\"boolean\",\"null\"],\"doc\":\"True if this alignment is mapped as a reverse compliment. This field\\n   defaults to false.\",\"default\":false},{\"name\":\"mateNegativeStrand\",\"type\":[\"boolean\",\"null\"],\"doc\":\"True if the mate pair of this alignment is mapped as a reverse compliment.\\n   This field defaults to false.\",\"default\":false},{\"name\":\"primaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is either the best linear alignment,\\n   or the first linear alignment in a chimeric alignment. Defaults to false.\\n\\n   @see secondaryAlignment\\n   @see supplementaryAlignment\",\"default\":false},{\"name\":\"secondaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is a lower quality linear alignment\\n   for a multiply-mapped read. Defaults to false.\\n\\n   @see primaryAlignment\\n   @see supplementaryAlignment\",\"default\":false},{\"name\":\"supplementaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is a non-primary linear alignment in\\n   a chimeric alignment. Defaults to false.\\n\\n   @see primaryAlignment\\n   @see secondaryAlignment\",\"default\":false},{\"name\":\"mismatchingPositions\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"origQual\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attributes\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupName\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupSequencingCenter\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupDescription\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupRunDateEpoch\"",",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"recordGroupFlowOrder\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupKeySequence\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupLibrary\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupPredictedMedianInsertSize\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"recordGroupPlatform\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupPlatformUnit\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupSample\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"mateAlignmentStart\",\"type\":[\"null\",\"long\"],\"doc\":\"The start position of the mate of this read. Should be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"mateAlignmentEnd\",\"type\":[\"null\",\"long\"],\"doc\":\"The end position of the mate of this read. Should be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"mateContig\",\"type\":[\"null\",\"Contig\"],\"doc\":\"The reference contig of the mate of this read. Should be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"inferredInsertSize\",\"type\":[\"null\",\"long\"],\"doc\":\"The distance between this read and it's mate as inferred from alignment.\",\"default\":null}]}");
+  private static final long serialVersionUID = -9064051434035827809L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AlignmentRecord\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"readInFragment\",\"type\":[\"int\",\"null\"],\"doc\":\"Read number within the array of fragment reads.\",\"default\":0},{\"name\":\"contig\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Contig\",\"doc\":\"Record for describing a reference assembly. Not used for storing the contents\\n of said assembly.\\n\\n @see NucleotideContigFragment\",\"fields\":[{\"name\":\"contigName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this contig in the assembly (e.g., \\\"chr1\\\").\",\"default\":null},{\"name\":\"contigLength\",\"type\":[\"null\",\"long\"],\"doc\":\"The length of this contig.\",\"default\":null},{\"name\":\"contigMD5\",\"type\":[\"null\",\"string\"],\"doc\":\"The MD5 checksum of the assembly for this contig.\",\"default\":null},{\"name\":\"referenceURL\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL at which this reference assembly can be found.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this assembly (e.g., \\\"hg19\\\").\",\"default\":null},{\"name\":\"species\",\"type\":[\"null\",\"string\"],\"doc\":\"The species that this assembly is for.\",\"default\":null},{\"name\":\"referenceIndex\",\"type\":[\"null\",\"int\"],\"doc\":\"Optional 0-based index of this contig in a SAM file header that it was read\\n   from; helps output SAMs/BAMs with headers in the same order as they started\\n   with, before a conversion to ADAM.\",\"default\":null}]}],\"doc\":\"The reference sequence details for the reference chromosome that\\n   this read is aligned to. If the read is unaligned, this field should\\n   be null.\",\"default\":null},{\"name\":\"start\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position for the start of this read's alignment.\\n   Should be null if the read is unaligned.\",\"default\":null},{\"name\":\"oldPosition\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position where this read used to start before\\n   local realignment.\\n   Stores the same data as the OP field in the SAM format.\",\"default\":null},{\"name\":\"end\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position for the end of this read's alignment.\\n   Should be null if the read is unaligned.\",\"default\":null},{\"name\":\"mapq\",\"type\":[\"null\",\"int\"],\"doc\":\"The global mapping quality of this read.\",\"default\":null},{\"name\":\"readName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this read. This should be unique within the read group\\n   that this read is from, and can be used to identify other reads that\\n   are derived from a single fragment.\",\"default\":null},{\"name\":\"sequence\",\"type\":[\"null\",\"string\"],\"doc\":\"The bases in this alignment. If the read has been hard clipped, this may\\n   not represent all the bases in the original read.\",\"default\":null},{\"name\":\"qual\",\"type\":[\"null\",\"string\"],\"doc\":\"The per-base quality scores in this alignment. If the read has been hard\\n   clipped, this may not represent all the bases in the original read.\\n   Additionally, if the error scores have been recalibrated, this field\\n   will not contain the original base quality scores.\\n\\n   @see origQual\",\"default\":null},{\"name\":\"cigar\",\"type\":[\"null\",\"string\"],\"doc\":\"The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that\\n   describes the local alignment of this read. Contains {length, operator}\\n   pairs for all contiguous alignment operations. The operators include:\\n\\n   * M, ALIGNMENT_MATCH: An alignment match indicates that a sequence can be\\n     aligned to the reference without evidence of an INDEL. Unlike the\\n     SEQUENCE_MATCH and SEQUENCE_MISMATCH operators, the ALIGNMENT_MATCH\\n     operator does not indicate whether the reference and read sequences are an\\n     exact match.\\n   * I, INSERT: The insert operator indicates that the read contains evidence of\\n     bases being inserted into the reference.\\n   * D, DELETE: The delete operator indicates that the read contains evidence of\\n     bases being deleted from the reference.\\n   * N, SKIP: The skip operator indicates that this read skips a long segment of\\n     the reference, but the bases have not been deleted. This operator is\\n     commonly used when working with RNA-seq data, where reads may skip long\\n     segments of the reference between exons.\\n   * S, CLIP_SOFT: The soft clip operator indicates that bases at the start/end\\n     of a read have not been considered during alignment. This may occur if the\\n     majority of a read maps, except for low quality bases at the start/end of\\n     a read. Bases that are soft clipped will still be stored in the read.\\n   * H, CLIP_HARD: The hard clip operator indicates that bases at the start/end of\\n     a read have been omitted from this alignment. This may occur if this linear\\n     alignment is part of a chimeric alignment, or if the read has been trimmed\\n     (e.g., during error correction, or to trim poly-A tails for RNA-seq).\\n   * P, PAD: The pad operator indicates that there is padding in an alignment.\\n   * =, SEQUENCE_MATCH: This operator indicates that this portion of the aligned\\n     sequence exactly matches the reference (e.g., all bases are equal to the\\n     reference bases).\\n   * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the\\n     aligned sequence is an alignment match to the reference, but a sequence\\n     mismatch (e.g., the bases are not equal to the reference). This can\\n     indicate a SNP or a read error.\",\"default\":null},{\"name\":\"oldCigar\",\"type\":[\"null\",\"string\"],\"doc\":\"Stores the CIGAR string present before local indel realignment.\\n   Stores the same data as the OC field in the SAM format.\\n\\n   @see cigar\",\"default\":null},{\"name\":\"basesTrimmedFromStart\",\"type\":[\"int\",\"null\"],\"doc\":\"The number of bases in this read/alignment that have been trimmed from the\\n   start of the read. By default, this is equal to 0. If the value is non-zero,\\n   that means that the start of the read has been hard-clipped.\\n\\n   @see cigar\",\"default\":0},{\"name\":\"basesTrimmedFromEnd\",\"type\":[\"int\",\"null\"],\"doc\":\"The number of bases in this read/alignment that have been trimmed from the\\n   end of the read. By default, this is equal to 0. If the value is non-zero,\\n   that means that the end of the read has been hard-clipped.\\n\\n   @see cigar\",\"default\":0},{\"name\":\"readPaired\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"properPair\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"readMapped\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"mateMapped\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"failedVendorQualityChecks\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"duplicateRead\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"readNegativeStrand\",\"type\":[\"boolean\",\"null\"],\"doc\":\"True if this alignment is mapped as a reverse compliment. This field\\n   defaults to false.\",\"default\":false},{\"name\":\"mateNegativeStrand\",\"type\":[\"boolean\",\"null\"],\"doc\":\"True if the mate pair of this alignment is mapped as a reverse compliment.\\n   This field defaults to false.\",\"default\":false},{\"name\":\"primaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is either the best linear alignment,\\n   or the first linear alignment in a chimeric alignment. Defaults to false.\\n\\n   @see secondaryAlignment\\n   @see supplementaryAlignment\",\"default\":false},{\"name\":\"secondaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is a lower quality linear alignment\\n   for a multiply-mapped read. Defaults to false.\\n\\n   @see primaryAlignment\\n   @see supplementaryAlignment\",\"default\":false},{\"name\":\"supplementaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is a non-primary linear alignment in\\n   a chimeric alignment. Defaults to false.\\n\\n   @see primaryAlignment\\n   @see secondaryAlignment\",\"default\":false},{\"name\":\"mismatchingPositions\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"origQual\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attributes\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupName\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupSample\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"mateAlignmentStart\",\"type\":[\"null\",\"long\"],\"doc\":\"The start position of the mate of this read. Should"," be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"mateAlignmentEnd\",\"type\":[\"null\",\"long\"],\"doc\":\"The end position of the mate of this read. Should be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"mateContig\",\"type\":[\"null\",\"Contig\"],\"doc\":\"The reference contig of the mate of this read. Should be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"inferredInsertSize\",\"type\":[\"null\",\"long\"],\"doc\":\"The distance between this read and it's mate as inferred from alignment.\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** Read number within the array of fragment reads. */
-  @Deprecated public java.lang.Integer readNum;
+  @Deprecated public java.lang.Integer readInFragment;
   /** The reference sequence details for the reference chromosome that
    this read is aligned to. If the read is unaligned, this field should
    be null. */
@@ -127,15 +127,6 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   @Deprecated public java.lang.CharSequence origQual;
   @Deprecated public java.lang.CharSequence attributes;
   @Deprecated public java.lang.CharSequence recordGroupName;
-  @Deprecated public java.lang.CharSequence recordGroupSequencingCenter;
-  @Deprecated public java.lang.CharSequence recordGroupDescription;
-  @Deprecated public java.lang.Long recordGroupRunDateEpoch;
-  @Deprecated public java.lang.CharSequence recordGroupFlowOrder;
-  @Deprecated public java.lang.CharSequence recordGroupKeySequence;
-  @Deprecated public java.lang.CharSequence recordGroupLibrary;
-  @Deprecated public java.lang.Integer recordGroupPredictedMedianInsertSize;
-  @Deprecated public java.lang.CharSequence recordGroupPlatform;
-  @Deprecated public java.lang.CharSequence recordGroupPlatformUnit;
   @Deprecated public java.lang.CharSequence recordGroupSample;
   /** The start position of the mate of this read. Should be set to null if the
    mate is unaligned, or if the mate does not exist. */
@@ -158,7 +149,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * All-args constructor.
-   * @param readNum Read number within the array of fragment reads.
+   * @param readInFragment Read number within the array of fragment reads.
    * @param contig The reference sequence details for the reference chromosome that
    this read is aligned to. If the read is unaligned, this field should
    be null.
@@ -255,8 +246,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    mate is unaligned, or if the mate does not exist.
    * @param inferredInsertSize The distance between this read and it's mate as inferred from alignment.
    */
-  public AlignmentRecord(java.lang.Integer readNum, org.bdgenomics.formats.avro.Contig contig, java.lang.Long start, java.lang.Long oldPosition, java.lang.Long end, java.lang.Integer mapq, java.lang.CharSequence readName, java.lang.CharSequence sequence, java.lang.CharSequence qual, java.lang.CharSequence cigar, java.lang.CharSequence oldCigar, java.lang.Integer basesTrimmedFromStart, java.lang.Integer basesTrimmedFromEnd, java.lang.Boolean readPaired, java.lang.Boolean properPair, java.lang.Boolean readMapped, java.lang.Boolean mateMapped, java.lang.Boolean failedVendorQualityChecks, java.lang.Boolean duplicateRead, java.lang.Boolean readNegativeStrand, java.lang.Boolean mateNegativeStrand, java.lang.Boolean primaryAlignment, java.lang.Boolean secondaryAlignment, java.lang.Boolean supplementaryAlignment, java.lang.CharSequence mismatchingPositions, java.lang.CharSequence origQual, java.lang.CharSequence attributes, java.lang.CharSequence recordGroupName, java.lang.CharSequence recordGroupSequencingCenter, java.lang.CharSequence recordGroupDescription, java.lang.Long recordGroupRunDateEpoch, java.lang.CharSequence recordGroupFlowOrder, java.lang.CharSequence recordGroupKeySequence, java.lang.CharSequence recordGroupLibrary, java.lang.Integer recordGroupPredictedMedianInsertSize, java.lang.CharSequence recordGroupPlatform, java.lang.CharSequence recordGroupPlatformUnit, java.lang.CharSequence recordGroupSample, java.lang.Long mateAlignmentStart, java.lang.Long mateAlignmentEnd, org.bdgenomics.formats.avro.Contig mateContig, java.lang.Long inferredInsertSize) {
-    this.readNum = readNum;
+  public AlignmentRecord(java.lang.Integer readInFragment, org.bdgenomics.formats.avro.Contig contig, java.lang.Long start, java.lang.Long oldPosition, java.lang.Long end, java.lang.Integer mapq, java.lang.CharSequence readName, java.lang.CharSequence sequence, java.lang.CharSequence qual, java.lang.CharSequence cigar, java.lang.CharSequence oldCigar, java.lang.Integer basesTrimmedFromStart, java.lang.Integer basesTrimmedFromEnd, java.lang.Boolean readPaired, java.lang.Boolean properPair, java.lang.Boolean readMapped, java.lang.Boolean mateMapped, java.lang.Boolean failedVendorQualityChecks, java.lang.Boolean duplicateRead, java.lang.Boolean readNegativeStrand, java.lang.Boolean mateNegativeStrand, java.lang.Boolean primaryAlignment, java.lang.Boolean secondaryAlignment, java.lang.Boolean supplementaryAlignment, java.lang.CharSequence mismatchingPositions, java.lang.CharSequence origQual, java.lang.CharSequence attributes, java.lang.CharSequence recordGroupName, java.lang.CharSequence recordGroupSample, java.lang.Long mateAlignmentStart, java.lang.Long mateAlignmentEnd, org.bdgenomics.formats.avro.Contig mateContig, java.lang.Long inferredInsertSize) {
+    this.readInFragment = readInFragment;
     this.contig = contig;
     this.start = start;
     this.oldPosition = oldPosition;
@@ -284,15 +275,6 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
     this.origQual = origQual;
     this.attributes = attributes;
     this.recordGroupName = recordGroupName;
-    this.recordGroupSequencingCenter = recordGroupSequencingCenter;
-    this.recordGroupDescription = recordGroupDescription;
-    this.recordGroupRunDateEpoch = recordGroupRunDateEpoch;
-    this.recordGroupFlowOrder = recordGroupFlowOrder;
-    this.recordGroupKeySequence = recordGroupKeySequence;
-    this.recordGroupLibrary = recordGroupLibrary;
-    this.recordGroupPredictedMedianInsertSize = recordGroupPredictedMedianInsertSize;
-    this.recordGroupPlatform = recordGroupPlatform;
-    this.recordGroupPlatformUnit = recordGroupPlatformUnit;
     this.recordGroupSample = recordGroupSample;
     this.mateAlignmentStart = mateAlignmentStart;
     this.mateAlignmentEnd = mateAlignmentEnd;
@@ -304,7 +286,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   // Used by DatumWriter.  Applications should not call. 
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return readNum;
+    case 0: return readInFragment;
     case 1: return contig;
     case 2: return start;
     case 3: return oldPosition;
@@ -332,20 +314,11 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
     case 25: return origQual;
     case 26: return attributes;
     case 27: return recordGroupName;
-    case 28: return recordGroupSequencingCenter;
-    case 29: return recordGroupDescription;
-    case 30: return recordGroupRunDateEpoch;
-    case 31: return recordGroupFlowOrder;
-    case 32: return recordGroupKeySequence;
-    case 33: return recordGroupLibrary;
-    case 34: return recordGroupPredictedMedianInsertSize;
-    case 35: return recordGroupPlatform;
-    case 36: return recordGroupPlatformUnit;
-    case 37: return recordGroupSample;
-    case 38: return mateAlignmentStart;
-    case 39: return mateAlignmentEnd;
-    case 40: return mateContig;
-    case 41: return inferredInsertSize;
+    case 28: return recordGroupSample;
+    case 29: return mateAlignmentStart;
+    case 30: return mateAlignmentEnd;
+    case 31: return mateContig;
+    case 32: return inferredInsertSize;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -353,7 +326,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: readNum = (java.lang.Integer)value$; break;
+    case 0: readInFragment = (java.lang.Integer)value$; break;
     case 1: contig = (org.bdgenomics.formats.avro.Contig)value$; break;
     case 2: start = (java.lang.Long)value$; break;
     case 3: oldPosition = (java.lang.Long)value$; break;
@@ -381,39 +354,30 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
     case 25: origQual = (java.lang.CharSequence)value$; break;
     case 26: attributes = (java.lang.CharSequence)value$; break;
     case 27: recordGroupName = (java.lang.CharSequence)value$; break;
-    case 28: recordGroupSequencingCenter = (java.lang.CharSequence)value$; break;
-    case 29: recordGroupDescription = (java.lang.CharSequence)value$; break;
-    case 30: recordGroupRunDateEpoch = (java.lang.Long)value$; break;
-    case 31: recordGroupFlowOrder = (java.lang.CharSequence)value$; break;
-    case 32: recordGroupKeySequence = (java.lang.CharSequence)value$; break;
-    case 33: recordGroupLibrary = (java.lang.CharSequence)value$; break;
-    case 34: recordGroupPredictedMedianInsertSize = (java.lang.Integer)value$; break;
-    case 35: recordGroupPlatform = (java.lang.CharSequence)value$; break;
-    case 36: recordGroupPlatformUnit = (java.lang.CharSequence)value$; break;
-    case 37: recordGroupSample = (java.lang.CharSequence)value$; break;
-    case 38: mateAlignmentStart = (java.lang.Long)value$; break;
-    case 39: mateAlignmentEnd = (java.lang.Long)value$; break;
-    case 40: mateContig = (org.bdgenomics.formats.avro.Contig)value$; break;
-    case 41: inferredInsertSize = (java.lang.Long)value$; break;
+    case 28: recordGroupSample = (java.lang.CharSequence)value$; break;
+    case 29: mateAlignmentStart = (java.lang.Long)value$; break;
+    case 30: mateAlignmentEnd = (java.lang.Long)value$; break;
+    case 31: mateContig = (org.bdgenomics.formats.avro.Contig)value$; break;
+    case 32: inferredInsertSize = (java.lang.Long)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
   /**
-   * Gets the value of the 'readNum' field.
+   * Gets the value of the 'readInFragment' field.
    * @return Read number within the array of fragment reads.
    */
-  public java.lang.Integer getReadNum() {
-    return readNum;
+  public java.lang.Integer getReadInFragment() {
+    return readInFragment;
   }
 
   /**
-   * Sets the value of the 'readNum' field.
+   * Sets the value of the 'readInFragment' field.
    * Read number within the array of fragment reads.
    * @param value the value to set.
    */
-  public void setReadNum(java.lang.Integer value) {
-    this.readNum = value;
+  public void setReadInFragment(java.lang.Integer value) {
+    this.readInFragment = value;
   }
 
   /**
@@ -998,141 +962,6 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   }
 
   /**
-   * Gets the value of the 'recordGroupSequencingCenter' field.
-   */
-  public java.lang.CharSequence getRecordGroupSequencingCenter() {
-    return recordGroupSequencingCenter;
-  }
-
-  /**
-   * Sets the value of the 'recordGroupSequencingCenter' field.
-   * @param value the value to set.
-   */
-  public void setRecordGroupSequencingCenter(java.lang.CharSequence value) {
-    this.recordGroupSequencingCenter = value;
-  }
-
-  /**
-   * Gets the value of the 'recordGroupDescription' field.
-   */
-  public java.lang.CharSequence getRecordGroupDescription() {
-    return recordGroupDescription;
-  }
-
-  /**
-   * Sets the value of the 'recordGroupDescription' field.
-   * @param value the value to set.
-   */
-  public void setRecordGroupDescription(java.lang.CharSequence value) {
-    this.recordGroupDescription = value;
-  }
-
-  /**
-   * Gets the value of the 'recordGroupRunDateEpoch' field.
-   */
-  public java.lang.Long getRecordGroupRunDateEpoch() {
-    return recordGroupRunDateEpoch;
-  }
-
-  /**
-   * Sets the value of the 'recordGroupRunDateEpoch' field.
-   * @param value the value to set.
-   */
-  public void setRecordGroupRunDateEpoch(java.lang.Long value) {
-    this.recordGroupRunDateEpoch = value;
-  }
-
-  /**
-   * Gets the value of the 'recordGroupFlowOrder' field.
-   */
-  public java.lang.CharSequence getRecordGroupFlowOrder() {
-    return recordGroupFlowOrder;
-  }
-
-  /**
-   * Sets the value of the 'recordGroupFlowOrder' field.
-   * @param value the value to set.
-   */
-  public void setRecordGroupFlowOrder(java.lang.CharSequence value) {
-    this.recordGroupFlowOrder = value;
-  }
-
-  /**
-   * Gets the value of the 'recordGroupKeySequence' field.
-   */
-  public java.lang.CharSequence getRecordGroupKeySequence() {
-    return recordGroupKeySequence;
-  }
-
-  /**
-   * Sets the value of the 'recordGroupKeySequence' field.
-   * @param value the value to set.
-   */
-  public void setRecordGroupKeySequence(java.lang.CharSequence value) {
-    this.recordGroupKeySequence = value;
-  }
-
-  /**
-   * Gets the value of the 'recordGroupLibrary' field.
-   */
-  public java.lang.CharSequence getRecordGroupLibrary() {
-    return recordGroupLibrary;
-  }
-
-  /**
-   * Sets the value of the 'recordGroupLibrary' field.
-   * @param value the value to set.
-   */
-  public void setRecordGroupLibrary(java.lang.CharSequence value) {
-    this.recordGroupLibrary = value;
-  }
-
-  /**
-   * Gets the value of the 'recordGroupPredictedMedianInsertSize' field.
-   */
-  public java.lang.Integer getRecordGroupPredictedMedianInsertSize() {
-    return recordGroupPredictedMedianInsertSize;
-  }
-
-  /**
-   * Sets the value of the 'recordGroupPredictedMedianInsertSize' field.
-   * @param value the value to set.
-   */
-  public void setRecordGroupPredictedMedianInsertSize(java.lang.Integer value) {
-    this.recordGroupPredictedMedianInsertSize = value;
-  }
-
-  /**
-   * Gets the value of the 'recordGroupPlatform' field.
-   */
-  public java.lang.CharSequence getRecordGroupPlatform() {
-    return recordGroupPlatform;
-  }
-
-  /**
-   * Sets the value of the 'recordGroupPlatform' field.
-   * @param value the value to set.
-   */
-  public void setRecordGroupPlatform(java.lang.CharSequence value) {
-    this.recordGroupPlatform = value;
-  }
-
-  /**
-   * Gets the value of the 'recordGroupPlatformUnit' field.
-   */
-  public java.lang.CharSequence getRecordGroupPlatformUnit() {
-    return recordGroupPlatformUnit;
-  }
-
-  /**
-   * Sets the value of the 'recordGroupPlatformUnit' field.
-   * @param value the value to set.
-   */
-  public void setRecordGroupPlatformUnit(java.lang.CharSequence value) {
-    this.recordGroupPlatformUnit = value;
-  }
-
-  /**
    * Gets the value of the 'recordGroupSample' field.
    */
   public java.lang.CharSequence getRecordGroupSample() {
@@ -1254,7 +1083,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
     implements org.apache.avro.data.RecordBuilder<AlignmentRecord> {
 
     /** Read number within the array of fragment reads. */
-    private java.lang.Integer readNum;
+    private java.lang.Integer readInFragment;
     /** The reference sequence details for the reference chromosome that
    this read is aligned to. If the read is unaligned, this field should
    be null. */
@@ -1371,15 +1200,6 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
     private java.lang.CharSequence origQual;
     private java.lang.CharSequence attributes;
     private java.lang.CharSequence recordGroupName;
-    private java.lang.CharSequence recordGroupSequencingCenter;
-    private java.lang.CharSequence recordGroupDescription;
-    private java.lang.Long recordGroupRunDateEpoch;
-    private java.lang.CharSequence recordGroupFlowOrder;
-    private java.lang.CharSequence recordGroupKeySequence;
-    private java.lang.CharSequence recordGroupLibrary;
-    private java.lang.Integer recordGroupPredictedMedianInsertSize;
-    private java.lang.CharSequence recordGroupPlatform;
-    private java.lang.CharSequence recordGroupPlatformUnit;
     private java.lang.CharSequence recordGroupSample;
     /** The start position of the mate of this read. Should be set to null if the
    mate is unaligned, or if the mate does not exist. */
@@ -1405,8 +1225,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
      */
     private Builder(org.bdgenomics.formats.avro.AlignmentRecord.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.readNum)) {
-        this.readNum = data().deepCopy(fields()[0].schema(), other.readNum);
+      if (isValidValue(fields()[0], other.readInFragment)) {
+        this.readInFragment = data().deepCopy(fields()[0].schema(), other.readInFragment);
         fieldSetFlags()[0] = true;
       }
       if (isValidValue(fields()[1], other.contig)) {
@@ -1520,64 +1340,28 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
         this.recordGroupName = data().deepCopy(fields()[27].schema(), other.recordGroupName);
         fieldSetFlags()[27] = true;
       }
-      if (isValidValue(fields()[28], other.recordGroupSequencingCenter)) {
-        this.recordGroupSequencingCenter = data().deepCopy(fields()[28].schema(), other.recordGroupSequencingCenter);
+      if (isValidValue(fields()[28], other.recordGroupSample)) {
+        this.recordGroupSample = data().deepCopy(fields()[28].schema(), other.recordGroupSample);
         fieldSetFlags()[28] = true;
       }
-      if (isValidValue(fields()[29], other.recordGroupDescription)) {
-        this.recordGroupDescription = data().deepCopy(fields()[29].schema(), other.recordGroupDescription);
+      if (isValidValue(fields()[29], other.mateAlignmentStart)) {
+        this.mateAlignmentStart = data().deepCopy(fields()[29].schema(), other.mateAlignmentStart);
         fieldSetFlags()[29] = true;
       }
-      if (isValidValue(fields()[30], other.recordGroupRunDateEpoch)) {
-        this.recordGroupRunDateEpoch = data().deepCopy(fields()[30].schema(), other.recordGroupRunDateEpoch);
+      if (isValidValue(fields()[30], other.mateAlignmentEnd)) {
+        this.mateAlignmentEnd = data().deepCopy(fields()[30].schema(), other.mateAlignmentEnd);
         fieldSetFlags()[30] = true;
       }
-      if (isValidValue(fields()[31], other.recordGroupFlowOrder)) {
-        this.recordGroupFlowOrder = data().deepCopy(fields()[31].schema(), other.recordGroupFlowOrder);
+      if (isValidValue(fields()[31], other.mateContig)) {
+        this.mateContig = data().deepCopy(fields()[31].schema(), other.mateContig);
         fieldSetFlags()[31] = true;
-      }
-      if (isValidValue(fields()[32], other.recordGroupKeySequence)) {
-        this.recordGroupKeySequence = data().deepCopy(fields()[32].schema(), other.recordGroupKeySequence);
-        fieldSetFlags()[32] = true;
-      }
-      if (isValidValue(fields()[33], other.recordGroupLibrary)) {
-        this.recordGroupLibrary = data().deepCopy(fields()[33].schema(), other.recordGroupLibrary);
-        fieldSetFlags()[33] = true;
-      }
-      if (isValidValue(fields()[34], other.recordGroupPredictedMedianInsertSize)) {
-        this.recordGroupPredictedMedianInsertSize = data().deepCopy(fields()[34].schema(), other.recordGroupPredictedMedianInsertSize);
-        fieldSetFlags()[34] = true;
-      }
-      if (isValidValue(fields()[35], other.recordGroupPlatform)) {
-        this.recordGroupPlatform = data().deepCopy(fields()[35].schema(), other.recordGroupPlatform);
-        fieldSetFlags()[35] = true;
-      }
-      if (isValidValue(fields()[36], other.recordGroupPlatformUnit)) {
-        this.recordGroupPlatformUnit = data().deepCopy(fields()[36].schema(), other.recordGroupPlatformUnit);
-        fieldSetFlags()[36] = true;
-      }
-      if (isValidValue(fields()[37], other.recordGroupSample)) {
-        this.recordGroupSample = data().deepCopy(fields()[37].schema(), other.recordGroupSample);
-        fieldSetFlags()[37] = true;
-      }
-      if (isValidValue(fields()[38], other.mateAlignmentStart)) {
-        this.mateAlignmentStart = data().deepCopy(fields()[38].schema(), other.mateAlignmentStart);
-        fieldSetFlags()[38] = true;
-      }
-      if (isValidValue(fields()[39], other.mateAlignmentEnd)) {
-        this.mateAlignmentEnd = data().deepCopy(fields()[39].schema(), other.mateAlignmentEnd);
-        fieldSetFlags()[39] = true;
-      }
-      if (isValidValue(fields()[40], other.mateContig)) {
-        this.mateContig = data().deepCopy(fields()[40].schema(), other.mateContig);
-        fieldSetFlags()[40] = true;
       }
       if (other.hasMateContigBuilder()) {
         this.mateContigBuilder = org.bdgenomics.formats.avro.Contig.newBuilder(other.getMateContigBuilder());
       }
-      if (isValidValue(fields()[41], other.inferredInsertSize)) {
-        this.inferredInsertSize = data().deepCopy(fields()[41].schema(), other.inferredInsertSize);
-        fieldSetFlags()[41] = true;
+      if (isValidValue(fields()[32], other.inferredInsertSize)) {
+        this.inferredInsertSize = data().deepCopy(fields()[32].schema(), other.inferredInsertSize);
+        fieldSetFlags()[32] = true;
       }
     }
     
@@ -1587,8 +1371,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
      */
     private Builder(org.bdgenomics.formats.avro.AlignmentRecord other) {
             super(org.bdgenomics.formats.avro.AlignmentRecord.SCHEMA$);
-      if (isValidValue(fields()[0], other.readNum)) {
-        this.readNum = data().deepCopy(fields()[0].schema(), other.readNum);
+      if (isValidValue(fields()[0], other.readInFragment)) {
+        this.readInFragment = data().deepCopy(fields()[0].schema(), other.readInFragment);
         fieldSetFlags()[0] = true;
       }
       if (isValidValue(fields()[1], other.contig)) {
@@ -1700,104 +1484,68 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
         this.recordGroupName = data().deepCopy(fields()[27].schema(), other.recordGroupName);
         fieldSetFlags()[27] = true;
       }
-      if (isValidValue(fields()[28], other.recordGroupSequencingCenter)) {
-        this.recordGroupSequencingCenter = data().deepCopy(fields()[28].schema(), other.recordGroupSequencingCenter);
+      if (isValidValue(fields()[28], other.recordGroupSample)) {
+        this.recordGroupSample = data().deepCopy(fields()[28].schema(), other.recordGroupSample);
         fieldSetFlags()[28] = true;
       }
-      if (isValidValue(fields()[29], other.recordGroupDescription)) {
-        this.recordGroupDescription = data().deepCopy(fields()[29].schema(), other.recordGroupDescription);
+      if (isValidValue(fields()[29], other.mateAlignmentStart)) {
+        this.mateAlignmentStart = data().deepCopy(fields()[29].schema(), other.mateAlignmentStart);
         fieldSetFlags()[29] = true;
       }
-      if (isValidValue(fields()[30], other.recordGroupRunDateEpoch)) {
-        this.recordGroupRunDateEpoch = data().deepCopy(fields()[30].schema(), other.recordGroupRunDateEpoch);
+      if (isValidValue(fields()[30], other.mateAlignmentEnd)) {
+        this.mateAlignmentEnd = data().deepCopy(fields()[30].schema(), other.mateAlignmentEnd);
         fieldSetFlags()[30] = true;
       }
-      if (isValidValue(fields()[31], other.recordGroupFlowOrder)) {
-        this.recordGroupFlowOrder = data().deepCopy(fields()[31].schema(), other.recordGroupFlowOrder);
+      if (isValidValue(fields()[31], other.mateContig)) {
+        this.mateContig = data().deepCopy(fields()[31].schema(), other.mateContig);
         fieldSetFlags()[31] = true;
       }
-      if (isValidValue(fields()[32], other.recordGroupKeySequence)) {
-        this.recordGroupKeySequence = data().deepCopy(fields()[32].schema(), other.recordGroupKeySequence);
-        fieldSetFlags()[32] = true;
-      }
-      if (isValidValue(fields()[33], other.recordGroupLibrary)) {
-        this.recordGroupLibrary = data().deepCopy(fields()[33].schema(), other.recordGroupLibrary);
-        fieldSetFlags()[33] = true;
-      }
-      if (isValidValue(fields()[34], other.recordGroupPredictedMedianInsertSize)) {
-        this.recordGroupPredictedMedianInsertSize = data().deepCopy(fields()[34].schema(), other.recordGroupPredictedMedianInsertSize);
-        fieldSetFlags()[34] = true;
-      }
-      if (isValidValue(fields()[35], other.recordGroupPlatform)) {
-        this.recordGroupPlatform = data().deepCopy(fields()[35].schema(), other.recordGroupPlatform);
-        fieldSetFlags()[35] = true;
-      }
-      if (isValidValue(fields()[36], other.recordGroupPlatformUnit)) {
-        this.recordGroupPlatformUnit = data().deepCopy(fields()[36].schema(), other.recordGroupPlatformUnit);
-        fieldSetFlags()[36] = true;
-      }
-      if (isValidValue(fields()[37], other.recordGroupSample)) {
-        this.recordGroupSample = data().deepCopy(fields()[37].schema(), other.recordGroupSample);
-        fieldSetFlags()[37] = true;
-      }
-      if (isValidValue(fields()[38], other.mateAlignmentStart)) {
-        this.mateAlignmentStart = data().deepCopy(fields()[38].schema(), other.mateAlignmentStart);
-        fieldSetFlags()[38] = true;
-      }
-      if (isValidValue(fields()[39], other.mateAlignmentEnd)) {
-        this.mateAlignmentEnd = data().deepCopy(fields()[39].schema(), other.mateAlignmentEnd);
-        fieldSetFlags()[39] = true;
-      }
-      if (isValidValue(fields()[40], other.mateContig)) {
-        this.mateContig = data().deepCopy(fields()[40].schema(), other.mateContig);
-        fieldSetFlags()[40] = true;
-      }
       this.mateContigBuilder = null;
-      if (isValidValue(fields()[41], other.inferredInsertSize)) {
-        this.inferredInsertSize = data().deepCopy(fields()[41].schema(), other.inferredInsertSize);
-        fieldSetFlags()[41] = true;
+      if (isValidValue(fields()[32], other.inferredInsertSize)) {
+        this.inferredInsertSize = data().deepCopy(fields()[32].schema(), other.inferredInsertSize);
+        fieldSetFlags()[32] = true;
       }
     }
 
     /**
-      * Gets the value of the 'readNum' field.
+      * Gets the value of the 'readInFragment' field.
       * Read number within the array of fragment reads.
       * @return The value.
       */
-    public java.lang.Integer getReadNum() {
-      return readNum;
+    public java.lang.Integer getReadInFragment() {
+      return readInFragment;
     }
 
     /**
-      * Sets the value of the 'readNum' field.
+      * Sets the value of the 'readInFragment' field.
       * Read number within the array of fragment reads.
-      * @param value The value of 'readNum'.
+      * @param value The value of 'readInFragment'.
       * @return This builder.
       */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setReadNum(java.lang.Integer value) {
+    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setReadInFragment(java.lang.Integer value) {
       validate(fields()[0], value);
-      this.readNum = value;
+      this.readInFragment = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
 
     /**
-      * Checks whether the 'readNum' field has been set.
+      * Checks whether the 'readInFragment' field has been set.
       * Read number within the array of fragment reads.
-      * @return True if the 'readNum' field has been set, false otherwise.
+      * @return True if the 'readInFragment' field has been set, false otherwise.
       */
-    public boolean hasReadNum() {
+    public boolean hasReadInFragment() {
       return fieldSetFlags()[0];
     }
 
 
     /**
-      * Clears the value of the 'readNum' field.
+      * Clears the value of the 'readInFragment' field.
       * Read number within the array of fragment reads.
       * @return This builder.
       */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearReadNum() {
-      readNum = null;
+    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearReadInFragment() {
+      readInFragment = null;
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -3251,357 +2999,6 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
     }
 
     /**
-      * Gets the value of the 'recordGroupSequencingCenter' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getRecordGroupSequencingCenter() {
-      return recordGroupSequencingCenter;
-    }
-
-    /**
-      * Sets the value of the 'recordGroupSequencingCenter' field.
-      * @param value The value of 'recordGroupSequencingCenter'.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupSequencingCenter(java.lang.CharSequence value) {
-      validate(fields()[28], value);
-      this.recordGroupSequencingCenter = value;
-      fieldSetFlags()[28] = true;
-      return this; 
-    }
-
-    /**
-      * Checks whether the 'recordGroupSequencingCenter' field has been set.
-      * @return True if the 'recordGroupSequencingCenter' field has been set, false otherwise.
-      */
-    public boolean hasRecordGroupSequencingCenter() {
-      return fieldSetFlags()[28];
-    }
-
-
-    /**
-      * Clears the value of the 'recordGroupSequencingCenter' field.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupSequencingCenter() {
-      recordGroupSequencingCenter = null;
-      fieldSetFlags()[28] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'recordGroupDescription' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getRecordGroupDescription() {
-      return recordGroupDescription;
-    }
-
-    /**
-      * Sets the value of the 'recordGroupDescription' field.
-      * @param value The value of 'recordGroupDescription'.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupDescription(java.lang.CharSequence value) {
-      validate(fields()[29], value);
-      this.recordGroupDescription = value;
-      fieldSetFlags()[29] = true;
-      return this; 
-    }
-
-    /**
-      * Checks whether the 'recordGroupDescription' field has been set.
-      * @return True if the 'recordGroupDescription' field has been set, false otherwise.
-      */
-    public boolean hasRecordGroupDescription() {
-      return fieldSetFlags()[29];
-    }
-
-
-    /**
-      * Clears the value of the 'recordGroupDescription' field.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupDescription() {
-      recordGroupDescription = null;
-      fieldSetFlags()[29] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'recordGroupRunDateEpoch' field.
-      * @return The value.
-      */
-    public java.lang.Long getRecordGroupRunDateEpoch() {
-      return recordGroupRunDateEpoch;
-    }
-
-    /**
-      * Sets the value of the 'recordGroupRunDateEpoch' field.
-      * @param value The value of 'recordGroupRunDateEpoch'.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupRunDateEpoch(java.lang.Long value) {
-      validate(fields()[30], value);
-      this.recordGroupRunDateEpoch = value;
-      fieldSetFlags()[30] = true;
-      return this; 
-    }
-
-    /**
-      * Checks whether the 'recordGroupRunDateEpoch' field has been set.
-      * @return True if the 'recordGroupRunDateEpoch' field has been set, false otherwise.
-      */
-    public boolean hasRecordGroupRunDateEpoch() {
-      return fieldSetFlags()[30];
-    }
-
-
-    /**
-      * Clears the value of the 'recordGroupRunDateEpoch' field.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupRunDateEpoch() {
-      recordGroupRunDateEpoch = null;
-      fieldSetFlags()[30] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'recordGroupFlowOrder' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getRecordGroupFlowOrder() {
-      return recordGroupFlowOrder;
-    }
-
-    /**
-      * Sets the value of the 'recordGroupFlowOrder' field.
-      * @param value The value of 'recordGroupFlowOrder'.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupFlowOrder(java.lang.CharSequence value) {
-      validate(fields()[31], value);
-      this.recordGroupFlowOrder = value;
-      fieldSetFlags()[31] = true;
-      return this; 
-    }
-
-    /**
-      * Checks whether the 'recordGroupFlowOrder' field has been set.
-      * @return True if the 'recordGroupFlowOrder' field has been set, false otherwise.
-      */
-    public boolean hasRecordGroupFlowOrder() {
-      return fieldSetFlags()[31];
-    }
-
-
-    /**
-      * Clears the value of the 'recordGroupFlowOrder' field.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupFlowOrder() {
-      recordGroupFlowOrder = null;
-      fieldSetFlags()[31] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'recordGroupKeySequence' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getRecordGroupKeySequence() {
-      return recordGroupKeySequence;
-    }
-
-    /**
-      * Sets the value of the 'recordGroupKeySequence' field.
-      * @param value The value of 'recordGroupKeySequence'.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupKeySequence(java.lang.CharSequence value) {
-      validate(fields()[32], value);
-      this.recordGroupKeySequence = value;
-      fieldSetFlags()[32] = true;
-      return this; 
-    }
-
-    /**
-      * Checks whether the 'recordGroupKeySequence' field has been set.
-      * @return True if the 'recordGroupKeySequence' field has been set, false otherwise.
-      */
-    public boolean hasRecordGroupKeySequence() {
-      return fieldSetFlags()[32];
-    }
-
-
-    /**
-      * Clears the value of the 'recordGroupKeySequence' field.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupKeySequence() {
-      recordGroupKeySequence = null;
-      fieldSetFlags()[32] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'recordGroupLibrary' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getRecordGroupLibrary() {
-      return recordGroupLibrary;
-    }
-
-    /**
-      * Sets the value of the 'recordGroupLibrary' field.
-      * @param value The value of 'recordGroupLibrary'.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupLibrary(java.lang.CharSequence value) {
-      validate(fields()[33], value);
-      this.recordGroupLibrary = value;
-      fieldSetFlags()[33] = true;
-      return this; 
-    }
-
-    /**
-      * Checks whether the 'recordGroupLibrary' field has been set.
-      * @return True if the 'recordGroupLibrary' field has been set, false otherwise.
-      */
-    public boolean hasRecordGroupLibrary() {
-      return fieldSetFlags()[33];
-    }
-
-
-    /**
-      * Clears the value of the 'recordGroupLibrary' field.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupLibrary() {
-      recordGroupLibrary = null;
-      fieldSetFlags()[33] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'recordGroupPredictedMedianInsertSize' field.
-      * @return The value.
-      */
-    public java.lang.Integer getRecordGroupPredictedMedianInsertSize() {
-      return recordGroupPredictedMedianInsertSize;
-    }
-
-    /**
-      * Sets the value of the 'recordGroupPredictedMedianInsertSize' field.
-      * @param value The value of 'recordGroupPredictedMedianInsertSize'.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupPredictedMedianInsertSize(java.lang.Integer value) {
-      validate(fields()[34], value);
-      this.recordGroupPredictedMedianInsertSize = value;
-      fieldSetFlags()[34] = true;
-      return this; 
-    }
-
-    /**
-      * Checks whether the 'recordGroupPredictedMedianInsertSize' field has been set.
-      * @return True if the 'recordGroupPredictedMedianInsertSize' field has been set, false otherwise.
-      */
-    public boolean hasRecordGroupPredictedMedianInsertSize() {
-      return fieldSetFlags()[34];
-    }
-
-
-    /**
-      * Clears the value of the 'recordGroupPredictedMedianInsertSize' field.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupPredictedMedianInsertSize() {
-      recordGroupPredictedMedianInsertSize = null;
-      fieldSetFlags()[34] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'recordGroupPlatform' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getRecordGroupPlatform() {
-      return recordGroupPlatform;
-    }
-
-    /**
-      * Sets the value of the 'recordGroupPlatform' field.
-      * @param value The value of 'recordGroupPlatform'.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupPlatform(java.lang.CharSequence value) {
-      validate(fields()[35], value);
-      this.recordGroupPlatform = value;
-      fieldSetFlags()[35] = true;
-      return this; 
-    }
-
-    /**
-      * Checks whether the 'recordGroupPlatform' field has been set.
-      * @return True if the 'recordGroupPlatform' field has been set, false otherwise.
-      */
-    public boolean hasRecordGroupPlatform() {
-      return fieldSetFlags()[35];
-    }
-
-
-    /**
-      * Clears the value of the 'recordGroupPlatform' field.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupPlatform() {
-      recordGroupPlatform = null;
-      fieldSetFlags()[35] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'recordGroupPlatformUnit' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getRecordGroupPlatformUnit() {
-      return recordGroupPlatformUnit;
-    }
-
-    /**
-      * Sets the value of the 'recordGroupPlatformUnit' field.
-      * @param value The value of 'recordGroupPlatformUnit'.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupPlatformUnit(java.lang.CharSequence value) {
-      validate(fields()[36], value);
-      this.recordGroupPlatformUnit = value;
-      fieldSetFlags()[36] = true;
-      return this; 
-    }
-
-    /**
-      * Checks whether the 'recordGroupPlatformUnit' field has been set.
-      * @return True if the 'recordGroupPlatformUnit' field has been set, false otherwise.
-      */
-    public boolean hasRecordGroupPlatformUnit() {
-      return fieldSetFlags()[36];
-    }
-
-
-    /**
-      * Clears the value of the 'recordGroupPlatformUnit' field.
-      * @return This builder.
-      */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupPlatformUnit() {
-      recordGroupPlatformUnit = null;
-      fieldSetFlags()[36] = false;
-      return this;
-    }
-
-    /**
       * Gets the value of the 'recordGroupSample' field.
       * @return The value.
       */
@@ -3615,9 +3012,9 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       * @return This builder.
       */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupSample(java.lang.CharSequence value) {
-      validate(fields()[37], value);
+      validate(fields()[28], value);
       this.recordGroupSample = value;
-      fieldSetFlags()[37] = true;
+      fieldSetFlags()[28] = true;
       return this; 
     }
 
@@ -3626,7 +3023,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       * @return True if the 'recordGroupSample' field has been set, false otherwise.
       */
     public boolean hasRecordGroupSample() {
-      return fieldSetFlags()[37];
+      return fieldSetFlags()[28];
     }
 
 
@@ -3636,7 +3033,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupSample() {
       recordGroupSample = null;
-      fieldSetFlags()[37] = false;
+      fieldSetFlags()[28] = false;
       return this;
     }
 
@@ -3658,9 +3055,9 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       * @return This builder.
       */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMateAlignmentStart(java.lang.Long value) {
-      validate(fields()[38], value);
+      validate(fields()[29], value);
       this.mateAlignmentStart = value;
-      fieldSetFlags()[38] = true;
+      fieldSetFlags()[29] = true;
       return this; 
     }
 
@@ -3671,7 +3068,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       * @return True if the 'mateAlignmentStart' field has been set, false otherwise.
       */
     public boolean hasMateAlignmentStart() {
-      return fieldSetFlags()[38];
+      return fieldSetFlags()[29];
     }
 
 
@@ -3683,7 +3080,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearMateAlignmentStart() {
       mateAlignmentStart = null;
-      fieldSetFlags()[38] = false;
+      fieldSetFlags()[29] = false;
       return this;
     }
 
@@ -3705,9 +3102,9 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       * @return This builder.
       */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMateAlignmentEnd(java.lang.Long value) {
-      validate(fields()[39], value);
+      validate(fields()[30], value);
       this.mateAlignmentEnd = value;
-      fieldSetFlags()[39] = true;
+      fieldSetFlags()[30] = true;
       return this; 
     }
 
@@ -3718,7 +3115,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       * @return True if the 'mateAlignmentEnd' field has been set, false otherwise.
       */
     public boolean hasMateAlignmentEnd() {
-      return fieldSetFlags()[39];
+      return fieldSetFlags()[30];
     }
 
 
@@ -3730,7 +3127,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearMateAlignmentEnd() {
       mateAlignmentEnd = null;
-      fieldSetFlags()[39] = false;
+      fieldSetFlags()[30] = false;
       return this;
     }
 
@@ -3752,10 +3149,10 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       * @return This builder.
       */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMateContig(org.bdgenomics.formats.avro.Contig value) {
-      validate(fields()[40], value);
+      validate(fields()[31], value);
       this.mateContigBuilder = null;
       this.mateContig = value;
-      fieldSetFlags()[40] = true;
+      fieldSetFlags()[31] = true;
       return this; 
     }
 
@@ -3766,7 +3163,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       * @return True if the 'mateContig' field has been set, false otherwise.
       */
     public boolean hasMateContig() {
-      return fieldSetFlags()[40];
+      return fieldSetFlags()[31];
     }
 
     /**
@@ -3817,7 +3214,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearMateContig() {
       mateContig = null;
       mateContigBuilder = null;
-      fieldSetFlags()[40] = false;
+      fieldSetFlags()[31] = false;
       return this;
     }
 
@@ -3837,9 +3234,9 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       * @return This builder.
       */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setInferredInsertSize(java.lang.Long value) {
-      validate(fields()[41], value);
+      validate(fields()[32], value);
       this.inferredInsertSize = value;
-      fieldSetFlags()[41] = true;
+      fieldSetFlags()[32] = true;
       return this; 
     }
 
@@ -3849,7 +3246,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       * @return True if the 'inferredInsertSize' field has been set, false otherwise.
       */
     public boolean hasInferredInsertSize() {
-      return fieldSetFlags()[41];
+      return fieldSetFlags()[32];
     }
 
 
@@ -3860,7 +3257,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearInferredInsertSize() {
       inferredInsertSize = null;
-      fieldSetFlags()[41] = false;
+      fieldSetFlags()[32] = false;
       return this;
     }
 
@@ -3868,7 +3265,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
     public AlignmentRecord build() {
       try {
         AlignmentRecord record = new AlignmentRecord();
-        record.readNum = fieldSetFlags()[0] ? this.readNum : (java.lang.Integer) defaultValue(fields()[0]);
+        record.readInFragment = fieldSetFlags()[0] ? this.readInFragment : (java.lang.Integer) defaultValue(fields()[0]);
         if (contigBuilder != null) {
           record.contig = this.contigBuilder.build();
         } else {
@@ -3900,24 +3297,15 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
         record.origQual = fieldSetFlags()[25] ? this.origQual : (java.lang.CharSequence) defaultValue(fields()[25]);
         record.attributes = fieldSetFlags()[26] ? this.attributes : (java.lang.CharSequence) defaultValue(fields()[26]);
         record.recordGroupName = fieldSetFlags()[27] ? this.recordGroupName : (java.lang.CharSequence) defaultValue(fields()[27]);
-        record.recordGroupSequencingCenter = fieldSetFlags()[28] ? this.recordGroupSequencingCenter : (java.lang.CharSequence) defaultValue(fields()[28]);
-        record.recordGroupDescription = fieldSetFlags()[29] ? this.recordGroupDescription : (java.lang.CharSequence) defaultValue(fields()[29]);
-        record.recordGroupRunDateEpoch = fieldSetFlags()[30] ? this.recordGroupRunDateEpoch : (java.lang.Long) defaultValue(fields()[30]);
-        record.recordGroupFlowOrder = fieldSetFlags()[31] ? this.recordGroupFlowOrder : (java.lang.CharSequence) defaultValue(fields()[31]);
-        record.recordGroupKeySequence = fieldSetFlags()[32] ? this.recordGroupKeySequence : (java.lang.CharSequence) defaultValue(fields()[32]);
-        record.recordGroupLibrary = fieldSetFlags()[33] ? this.recordGroupLibrary : (java.lang.CharSequence) defaultValue(fields()[33]);
-        record.recordGroupPredictedMedianInsertSize = fieldSetFlags()[34] ? this.recordGroupPredictedMedianInsertSize : (java.lang.Integer) defaultValue(fields()[34]);
-        record.recordGroupPlatform = fieldSetFlags()[35] ? this.recordGroupPlatform : (java.lang.CharSequence) defaultValue(fields()[35]);
-        record.recordGroupPlatformUnit = fieldSetFlags()[36] ? this.recordGroupPlatformUnit : (java.lang.CharSequence) defaultValue(fields()[36]);
-        record.recordGroupSample = fieldSetFlags()[37] ? this.recordGroupSample : (java.lang.CharSequence) defaultValue(fields()[37]);
-        record.mateAlignmentStart = fieldSetFlags()[38] ? this.mateAlignmentStart : (java.lang.Long) defaultValue(fields()[38]);
-        record.mateAlignmentEnd = fieldSetFlags()[39] ? this.mateAlignmentEnd : (java.lang.Long) defaultValue(fields()[39]);
+        record.recordGroupSample = fieldSetFlags()[28] ? this.recordGroupSample : (java.lang.CharSequence) defaultValue(fields()[28]);
+        record.mateAlignmentStart = fieldSetFlags()[29] ? this.mateAlignmentStart : (java.lang.Long) defaultValue(fields()[29]);
+        record.mateAlignmentEnd = fieldSetFlags()[30] ? this.mateAlignmentEnd : (java.lang.Long) defaultValue(fields()[30]);
         if (mateContigBuilder != null) {
           record.mateContig = this.mateContigBuilder.build();
         } else {
-          record.mateContig = fieldSetFlags()[40] ? this.mateContig : (org.bdgenomics.formats.avro.Contig) defaultValue(fields()[40]);
+          record.mateContig = fieldSetFlags()[31] ? this.mateContig : (org.bdgenomics.formats.avro.Contig) defaultValue(fields()[31]);
         }
-        record.inferredInsertSize = fieldSetFlags()[41] ? this.inferredInsertSize : (java.lang.Long) defaultValue(fields()[41]);
+        record.inferredInsertSize = fieldSetFlags()[32] ? this.inferredInsertSize : (java.lang.Long) defaultValue(fields()[32]);
         return record;
       } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
