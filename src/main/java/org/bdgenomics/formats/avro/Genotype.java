@@ -7,6 +7,7 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Genotype extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 7917024560400032125L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Genotype\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"variant\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Variant\",\"fields\":[{\"name\":\"variantErrorProbability\",\"type\":[\"null\",\"int\"],\"doc\":\"The Phred scaled error probability of a variant, given the probabilities of\\n   the variant in a population.\",\"default\":null},{\"name\":\"contig\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Contig\",\"doc\":\"Record for describing a reference assembly. Not used for storing the contents\\n of said assembly.\\n\\n @see NucleotideContigFragment\",\"fields\":[{\"name\":\"contigName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this contig in the assembly (e.g., \\\"chr1\\\").\",\"default\":null},{\"name\":\"contigLength\",\"type\":[\"null\",\"long\"],\"doc\":\"The length of this contig.\",\"default\":null},{\"name\":\"contigMD5\",\"type\":[\"null\",\"string\"],\"doc\":\"The MD5 checksum of the assembly for this contig.\",\"default\":null},{\"name\":\"referenceURL\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL at which this reference assembly can be found.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this assembly (e.g., \\\"hg19\\\").\",\"default\":null},{\"name\":\"species\",\"type\":[\"null\",\"string\"],\"doc\":\"The species that this assembly is for.\",\"default\":null},{\"name\":\"referenceIndex\",\"type\":[\"null\",\"int\"],\"doc\":\"Optional 0-based index of this contig in a SAM file header that it was read\\n   from; helps output SAMs/BAMs with headers in the same order as they started\\n   with, before a conversion to ADAM.\",\"default\":null}]}],\"doc\":\"The reference contig that this variant exists on.\",\"default\":null},{\"name\":\"start\",\"type\":[\"null\",\"long\"],\"doc\":\"The 0-based start position of this variant on the reference contig.\",\"default\":null},{\"name\":\"end\",\"type\":[\"null\",\"long\"],\"doc\":\"The 0-based, exclusive end position of this variant on the reference contig.\",\"default\":null},{\"name\":\"referenceAllele\",\"type\":[\"null\",\"string\"],\"doc\":\"A string describing the reference allele at this site.\",\"default\":null},{\"name\":\"alternateAllele\",\"type\":[\"null\",\"string\"],\"doc\":\"A string describing the variant allele at this site. Should be left null if\\n   the site is a structural variant.\",\"default\":null},{\"name\":\"svAllele\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"StructuralVariant\",\"fields\":[{\"name\":\"type\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"StructuralVariantType\",\"doc\":\"Descriptors for the type of a structural variant. The most specific descriptor\\n should be used, if possible. E.g., duplication should be used instead of\\n insertion if the inserted sequence is not novel. Tandem duplication should\\n be used instead of duplication if the duplication is known to follow the\\n duplicated sequence.\",\"symbols\":[\"DELETION\",\"INSERTION\",\"INVERSION\",\"MOBILE_INSERTION\",\"MOBILE_DELETION\",\"DUPLICATION\",\"TANDEM_DUPLICATION\"]}],\"doc\":\"The type of this structural variant.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL of the FASTA/NucleotideContig assembly for this structural variant,\\n   if one is available.\",\"default\":null},{\"name\":\"precise\",\"type\":[\"boolean\",\"null\"],\"doc\":\"Whether this structural variant call has precise breakpoints or not. Default\\n   value is true. If the call is imprecise, confidence intervals should be provided.\",\"default\":true},{\"name\":\"startWindow\",\"type\":[\"null\",\"int\"],\"doc\":\"The size of the confidence window around the start of the structural variant.\",\"default\":null},{\"name\":\"endWindow\",\"type\":[\"null\",\"int\"],\"doc\":\"The size of the confidence window around the end of the structural variant.\",\"default\":null}]}],\"doc\":\"The structural variant at this site, if the alternate allele is a structural\\n   variant. If the site is not a structural variant, this field should be left\\n   null.\",\"default\":null},{\"name\":\"isSomatic\",\"type\":[\"boolean\",\"null\"],\"doc\":\"A boolean describing whether this variant call is somatic; in this case, the\\n   `referenceAllele` will have been observed in another sample.\",\"default\":false}]}],\"doc\":\"The variant called at this site.\",\"default\":null},{\"name\":\"variantCallingAnnotations\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"VariantCallingAnnotations\",\"fields\":[{\"name\":\"variantIsPassing\",\"type\":[\"null\",\"boolean\"],\"default\":null},{\"name\":\"variantFilters\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[]},{\"name\":\"downsampled\",\"type\":[\"null\",\"boolean\"],\"doc\":\"True if the reads covering this site were randomly downsampled to reduce coverage.\",\"default\":null},{\"name\":\"baseQRankSum\",\"type\":[\"null\",\"float\"],\"doc\":\"The Wilcoxon rank-sum test statistic of the base quality scores. The base quality\\n   scores are separated by whether or not the base supports the reference or the\\n   alternate allele.\",\"default\":null},{\"name\":\"fisherStrandBiasPValue\",\"type\":[\"null\",\"float\"],\"doc\":\"The Fisher's exact test score for the strand bias of the reference and alternate\\n   alleles. Stored as a phred scaled probability. Thus, if:\\n\\n   * a = The number of positive strand reads covering the reference allele\\n   * b = The number of positive strand reads covering the alternate allele\\n   * c = The number of negative strand reads covering the reference allele\\n   * d = The number of negative strand reads covering the alternate allele\\n\\n   This value takes the score:\\n   \\n   -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)\\n\\n   Where n = a + b + c + d.\",\"default\":null},{\"name\":\"rmsMapQ\",\"type\":[\"null\",\"float\"],\"doc\":\"The root mean square of the mapping qualities of reads covering this site.\",\"default\":null},{\"name\":\"mapq0Reads\",\"type\":[\"null\",\"int\"],\"doc\":\"The number of reads at this site with mapping quality equal to 0.\",\"default\":null},{\"name\":\"mqRankSum\",\"type\":[\"null\",\"float\"],\"doc\":\"The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping\\n   quality scores are separated by whether or not the read supported the reference or the\\n   alternate allele.\",\"default\":null},{\"name\":\"readPositionRankSum\",\"type\":[\"null\",\"float\"],\"doc\":\"The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.\\n   The positions are separated by whether or not the base supports the reference or the\\n   alternate allele.\",\"default\":null},{\"name\":\"genotypePriors\",\"type\":{\"type\":\"array\",\"items\":\"float\"},\"doc\":\"The log scale prior probabilities of the various genotype states at this site.\\n   The number of elements in this array should be equal to the ploidy at this\\n   site, plus 1.\",\"default\":[]},{\"name\":\"genotypePosteriors\",\"type\":{\"type\":\"array\",\"items\":\"float\"},\"doc\":\"The log scaled posterior probabilities of the various genotype states at this site,\\n   in this sample. The number of elements in this array should be equal to the ploidy at\\n   this site, plus 1.\",\"default\":[]},{\"name\":\"vqslod\",\"type\":[\"null\",\"float\"],\"doc\":\"The log-odds ratio of being a true vs. false variant under a trained statistical model.\\n    This model can be a multivariate Gaussian mixture, support vector machine, etc.\",\"default\":null},{\"name\":\"culprit\",\"type\":[\"null\",\"string\"],\"doc\":\"If known, the feature that contributed the most to this variant being classified as\\n   a false variant.\",\"default\":null},{\"name\":\"attributes\",\"type\":{\"type\":\"map\",\"values\":\"string\"},\"doc\":\"Additional feature info that doesn't fit into the standard fields above.\\n\\n   They are all encoded as (string, string) key-value pairs.\",\"default\":{}}]}],\"doc\":\"Statistics collected at this site, if available.\",\"default\":null},{\"name\":\"sampleId\",\"type\":[\"null\",\"string\"],\"doc\":\"The unique identifier for this sample.\",\"default\":null},{\"name\":\"sampleDescription\",\"type\":[\"null\",\"string\"],\"doc\":\"A description of this sample.\",\"default\":null},{\"name\":\"processingDescription\",\"type\":[\"null\",\"string\"],\"doc\":\"A string describing the provenance of this sample and the processing applied\\n   in genotyping this sample.\",\"default\":null},{\"name\":\"alleles\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"enum\",\"name\":\"GenotypeAllele\",\"doc\":\"An enumeration that describes the allele that corresponds to a genotype. Can take\\n the following values:\\n\\n * Ref: The genotype is the reference allele\\n * Alt: The genotype is the alternate allele\\n * OtherAlt: The genotype is an unspecified other"," alternate allele. This occurs\\n   in our schema when we have split a multi-allelic genotype into two genotype\\n   records.\\n * NoCall: The genotype could not be called.\",\"symbols\":[\"Ref\",\"Alt\",\"OtherAlt\",\"NoCall\"]}},\"doc\":\"An array describing the genotype called at this site. The length of this\\n   array is equal to the ploidy of the sample at this site. This array may\\n   reference OtherAlt alleles if this site is multi-allelic in this sample.\",\"default\":[]},{\"name\":\"expectedAlleleDosage\",\"type\":[\"null\",\"float\"],\"doc\":\"The expected dosage of the alternate allele in this sample.\",\"default\":null},{\"name\":\"referenceReadDepth\",\"type\":[\"null\",\"int\"],\"doc\":\"The number of reads that show evidence for the reference at this site.\\n\\n   @see alternateReadDepth\\n   @see readDepth\",\"default\":null},{\"name\":\"alternateReadDepth\",\"type\":[\"null\",\"int\"],\"doc\":\"The number of reads that show evidence for this alternate allele at this site.\\n\\n   @see referenceReadDepth\\n   @see readDepth\",\"default\":null},{\"name\":\"readDepth\",\"type\":[\"null\",\"int\"],\"doc\":\"The total number of reads at this site. May not equal (alternateReadDepth +\\n   referenceReadDepth) if this site shows evidence of multiple alternate alleles.\\n\\n   @see referenceReadDepth\\n   @see alternateReadDepth\\n\\n   @note Analogous to VCF's DP.\",\"default\":null},{\"name\":\"minReadDepth\",\"type\":[\"null\",\"int\"],\"doc\":\"The minimum number of reads seen at this site across samples when joint\\n   calling variants.\\n\\n   @note Analogous to VCF's MIN_DP.\",\"default\":null},{\"name\":\"genotypeQuality\",\"type\":[\"null\",\"int\"],\"doc\":\"The phred-scaled probability that we're correct for this genotype call.\\n\\n   @note Analogous to VCF's GQ.\",\"default\":null},{\"name\":\"genotypeLikelihoods\",\"type\":{\"type\":\"array\",\"items\":\"float\"},\"doc\":\"Log scaled likelihoods that we have n copies of this alternate allele.\\n   The number of elements in this array should be equal to the ploidy at this\\n   site, plus 1.\\n\\n   @note Analogous to VCF's PL.\",\"default\":[]},{\"name\":\"nonReferenceLikelihoods\",\"type\":{\"type\":\"array\",\"items\":\"float\"},\"doc\":\"Log scaled likelihoods that we have n non-reference alleles at this site.\\n   The number of elements in this array should be equal to the ploidy at this\\n   site, plus 1.\",\"default\":[]},{\"name\":\"strandBiasComponents\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Component statistics which comprise the Fisher's Exact Test to detect strand bias.\\n   If populated, this element should have length 4.\",\"default\":[]},{\"name\":\"splitFromMultiAllelic\",\"type\":[\"boolean\",\"null\"],\"doc\":\"We split multi-allelic VCF lines into multiple\\n   single-alternate records.  This bit is set if that happened for this\\n   record.\",\"default\":false},{\"name\":\"isPhased\",\"type\":[\"boolean\",\"null\"],\"doc\":\"True if this genotype is phased.\\n\\n   @see phaseSetId\\n   @see phaseQuality\",\"default\":false},{\"name\":\"phaseSetId\",\"type\":[\"null\",\"int\"],\"doc\":\"The ID of this phase set, if this genotype is phased. Should only be populated\\n   if isPhased == true; else should be null.\\n\\n   @see isPhased\",\"default\":null},{\"name\":\"phaseQuality\",\"type\":[\"null\",\"int\"],\"doc\":\"Phred scaled quality score for the phasing of this genotype, if this genotype\\n   is phased. Should only be populated if isPhased == true; else should be null.\\n\\n   @see isPhased\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** The variant called at this site. */
@@ -95,6 +96,63 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * All-args constructor.
+   * @param variant The variant called at this site.
+   * @param variantCallingAnnotations Statistics collected at this site, if available.
+   * @param sampleId The unique identifier for this sample.
+   * @param sampleDescription A description of this sample.
+   * @param processingDescription A string describing the provenance of this sample and the processing applied
+   in genotyping this sample.
+   * @param alleles An array describing the genotype called at this site. The length of this
+   array is equal to the ploidy of the sample at this site. This array may
+   reference OtherAlt alleles if this site is multi-allelic in this sample.
+   * @param expectedAlleleDosage The expected dosage of the alternate allele in this sample.
+   * @param referenceReadDepth The number of reads that show evidence for the reference at this site.
+
+   @see alternateReadDepth
+   @see readDepth
+   * @param alternateReadDepth The number of reads that show evidence for this alternate allele at this site.
+
+   @see referenceReadDepth
+   @see readDepth
+   * @param readDepth The total number of reads at this site. May not equal (alternateReadDepth +
+   referenceReadDepth) if this site shows evidence of multiple alternate alleles.
+
+   @see referenceReadDepth
+   @see alternateReadDepth
+
+   @note Analogous to VCF's DP.
+   * @param minReadDepth The minimum number of reads seen at this site across samples when joint
+   calling variants.
+
+   @note Analogous to VCF's MIN_DP.
+   * @param genotypeQuality The phred-scaled probability that we're correct for this genotype call.
+
+   @note Analogous to VCF's GQ.
+   * @param genotypeLikelihoods Log scaled likelihoods that we have n copies of this alternate allele.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+
+   @note Analogous to VCF's PL.
+   * @param nonReferenceLikelihoods Log scaled likelihoods that we have n non-reference alleles at this site.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+   * @param strandBiasComponents Component statistics which comprise the Fisher's Exact Test to detect strand bias.
+   If populated, this element should have length 4.
+   * @param splitFromMultiAllelic We split multi-allelic VCF lines into multiple
+   single-alternate records.  This bit is set if that happened for this
+   record.
+   * @param isPhased True if this genotype is phased.
+
+   @see phaseSetId
+   @see phaseQuality
+   * @param phaseSetId The ID of this phase set, if this genotype is phased. Should only be populated
+   if isPhased == true; else should be null.
+
+   @see isPhased
+   * @param phaseQuality Phred scaled quality score for the phasing of this genotype, if this genotype
+   is phased. Should only be populated if isPhased == true; else should be null.
+
+   @see isPhased
    */
   public Genotype(org.bdgenomics.formats.avro.Variant variant, org.bdgenomics.formats.avro.VariantCallingAnnotations variantCallingAnnotations, java.lang.CharSequence sampleId, java.lang.CharSequence sampleDescription, java.lang.CharSequence processingDescription, java.util.List<org.bdgenomics.formats.avro.GenotypeAllele> alleles, java.lang.Float expectedAlleleDosage, java.lang.Integer referenceReadDepth, java.lang.Integer alternateReadDepth, java.lang.Integer readDepth, java.lang.Integer minReadDepth, java.lang.Integer genotypeQuality, java.util.List<java.lang.Float> genotypeLikelihoods, java.util.List<java.lang.Float> nonReferenceLikelihoods, java.util.List<java.lang.Integer> strandBiasComponents, java.lang.Boolean splitFromMultiAllelic, java.lang.Boolean isPhased, java.lang.Integer phaseSetId, java.lang.Integer phaseQuality) {
     this.variant = variant;
@@ -173,14 +231,16 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'variant' field.
-   * The variant called at this site.   */
+   * @return The variant called at this site.
+   */
   public org.bdgenomics.formats.avro.Variant getVariant() {
     return variant;
   }
 
   /**
    * Sets the value of the 'variant' field.
-   * The variant called at this site.   * @param value the value to set.
+   * The variant called at this site.
+   * @param value the value to set.
    */
   public void setVariant(org.bdgenomics.formats.avro.Variant value) {
     this.variant = value;
@@ -188,14 +248,16 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'variantCallingAnnotations' field.
-   * Statistics collected at this site, if available.   */
+   * @return Statistics collected at this site, if available.
+   */
   public org.bdgenomics.formats.avro.VariantCallingAnnotations getVariantCallingAnnotations() {
     return variantCallingAnnotations;
   }
 
   /**
    * Sets the value of the 'variantCallingAnnotations' field.
-   * Statistics collected at this site, if available.   * @param value the value to set.
+   * Statistics collected at this site, if available.
+   * @param value the value to set.
    */
   public void setVariantCallingAnnotations(org.bdgenomics.formats.avro.VariantCallingAnnotations value) {
     this.variantCallingAnnotations = value;
@@ -203,14 +265,16 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'sampleId' field.
-   * The unique identifier for this sample.   */
+   * @return The unique identifier for this sample.
+   */
   public java.lang.CharSequence getSampleId() {
     return sampleId;
   }
 
   /**
    * Sets the value of the 'sampleId' field.
-   * The unique identifier for this sample.   * @param value the value to set.
+   * The unique identifier for this sample.
+   * @param value the value to set.
    */
   public void setSampleId(java.lang.CharSequence value) {
     this.sampleId = value;
@@ -218,14 +282,16 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'sampleDescription' field.
-   * A description of this sample.   */
+   * @return A description of this sample.
+   */
   public java.lang.CharSequence getSampleDescription() {
     return sampleDescription;
   }
 
   /**
    * Sets the value of the 'sampleDescription' field.
-   * A description of this sample.   * @param value the value to set.
+   * A description of this sample.
+   * @param value the value to set.
    */
   public void setSampleDescription(java.lang.CharSequence value) {
     this.sampleDescription = value;
@@ -233,8 +299,9 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'processingDescription' field.
-   * A string describing the provenance of this sample and the processing applied
-   in genotyping this sample.   */
+   * @return A string describing the provenance of this sample and the processing applied
+   in genotyping this sample.
+   */
   public java.lang.CharSequence getProcessingDescription() {
     return processingDescription;
   }
@@ -242,7 +309,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
   /**
    * Sets the value of the 'processingDescription' field.
    * A string describing the provenance of this sample and the processing applied
-   in genotyping this sample.   * @param value the value to set.
+   in genotyping this sample.
+   * @param value the value to set.
    */
   public void setProcessingDescription(java.lang.CharSequence value) {
     this.processingDescription = value;
@@ -250,9 +318,10 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'alleles' field.
-   * An array describing the genotype called at this site. The length of this
+   * @return An array describing the genotype called at this site. The length of this
    array is equal to the ploidy of the sample at this site. This array may
-   reference OtherAlt alleles if this site is multi-allelic in this sample.   */
+   reference OtherAlt alleles if this site is multi-allelic in this sample.
+   */
   public java.util.List<org.bdgenomics.formats.avro.GenotypeAllele> getAlleles() {
     return alleles;
   }
@@ -261,7 +330,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'alleles' field.
    * An array describing the genotype called at this site. The length of this
    array is equal to the ploidy of the sample at this site. This array may
-   reference OtherAlt alleles if this site is multi-allelic in this sample.   * @param value the value to set.
+   reference OtherAlt alleles if this site is multi-allelic in this sample.
+   * @param value the value to set.
    */
   public void setAlleles(java.util.List<org.bdgenomics.formats.avro.GenotypeAllele> value) {
     this.alleles = value;
@@ -269,14 +339,16 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'expectedAlleleDosage' field.
-   * The expected dosage of the alternate allele in this sample.   */
+   * @return The expected dosage of the alternate allele in this sample.
+   */
   public java.lang.Float getExpectedAlleleDosage() {
     return expectedAlleleDosage;
   }
 
   /**
    * Sets the value of the 'expectedAlleleDosage' field.
-   * The expected dosage of the alternate allele in this sample.   * @param value the value to set.
+   * The expected dosage of the alternate allele in this sample.
+   * @param value the value to set.
    */
   public void setExpectedAlleleDosage(java.lang.Float value) {
     this.expectedAlleleDosage = value;
@@ -284,10 +356,11 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'referenceReadDepth' field.
-   * The number of reads that show evidence for the reference at this site.
+   * @return The number of reads that show evidence for the reference at this site.
 
    @see alternateReadDepth
-   @see readDepth   */
+   @see readDepth
+   */
   public java.lang.Integer getReferenceReadDepth() {
     return referenceReadDepth;
   }
@@ -297,7 +370,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    * The number of reads that show evidence for the reference at this site.
 
    @see alternateReadDepth
-   @see readDepth   * @param value the value to set.
+   @see readDepth
+   * @param value the value to set.
    */
   public void setReferenceReadDepth(java.lang.Integer value) {
     this.referenceReadDepth = value;
@@ -305,10 +379,11 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'alternateReadDepth' field.
-   * The number of reads that show evidence for this alternate allele at this site.
+   * @return The number of reads that show evidence for this alternate allele at this site.
 
    @see referenceReadDepth
-   @see readDepth   */
+   @see readDepth
+   */
   public java.lang.Integer getAlternateReadDepth() {
     return alternateReadDepth;
   }
@@ -318,7 +393,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    * The number of reads that show evidence for this alternate allele at this site.
 
    @see referenceReadDepth
-   @see readDepth   * @param value the value to set.
+   @see readDepth
+   * @param value the value to set.
    */
   public void setAlternateReadDepth(java.lang.Integer value) {
     this.alternateReadDepth = value;
@@ -326,13 +402,14 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'readDepth' field.
-   * The total number of reads at this site. May not equal (alternateReadDepth +
+   * @return The total number of reads at this site. May not equal (alternateReadDepth +
    referenceReadDepth) if this site shows evidence of multiple alternate alleles.
 
    @see referenceReadDepth
    @see alternateReadDepth
 
-   @note Analogous to VCF's DP.   */
+   @note Analogous to VCF's DP.
+   */
   public java.lang.Integer getReadDepth() {
     return readDepth;
   }
@@ -345,7 +422,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    @see referenceReadDepth
    @see alternateReadDepth
 
-   @note Analogous to VCF's DP.   * @param value the value to set.
+   @note Analogous to VCF's DP.
+   * @param value the value to set.
    */
   public void setReadDepth(java.lang.Integer value) {
     this.readDepth = value;
@@ -353,10 +431,11 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'minReadDepth' field.
-   * The minimum number of reads seen at this site across samples when joint
+   * @return The minimum number of reads seen at this site across samples when joint
    calling variants.
 
-   @note Analogous to VCF's MIN_DP.   */
+   @note Analogous to VCF's MIN_DP.
+   */
   public java.lang.Integer getMinReadDepth() {
     return minReadDepth;
   }
@@ -366,7 +445,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    * The minimum number of reads seen at this site across samples when joint
    calling variants.
 
-   @note Analogous to VCF's MIN_DP.   * @param value the value to set.
+   @note Analogous to VCF's MIN_DP.
+   * @param value the value to set.
    */
   public void setMinReadDepth(java.lang.Integer value) {
     this.minReadDepth = value;
@@ -374,9 +454,10 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'genotypeQuality' field.
-   * The phred-scaled probability that we're correct for this genotype call.
+   * @return The phred-scaled probability that we're correct for this genotype call.
 
-   @note Analogous to VCF's GQ.   */
+   @note Analogous to VCF's GQ.
+   */
   public java.lang.Integer getGenotypeQuality() {
     return genotypeQuality;
   }
@@ -385,7 +466,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'genotypeQuality' field.
    * The phred-scaled probability that we're correct for this genotype call.
 
-   @note Analogous to VCF's GQ.   * @param value the value to set.
+   @note Analogous to VCF's GQ.
+   * @param value the value to set.
    */
   public void setGenotypeQuality(java.lang.Integer value) {
     this.genotypeQuality = value;
@@ -393,11 +475,12 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'genotypeLikelihoods' field.
-   * Log scaled likelihoods that we have n copies of this alternate allele.
+   * @return Log scaled likelihoods that we have n copies of this alternate allele.
    The number of elements in this array should be equal to the ploidy at this
    site, plus 1.
 
-   @note Analogous to VCF's PL.   */
+   @note Analogous to VCF's PL.
+   */
   public java.util.List<java.lang.Float> getGenotypeLikelihoods() {
     return genotypeLikelihoods;
   }
@@ -408,7 +491,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    The number of elements in this array should be equal to the ploidy at this
    site, plus 1.
 
-   @note Analogous to VCF's PL.   * @param value the value to set.
+   @note Analogous to VCF's PL.
+   * @param value the value to set.
    */
   public void setGenotypeLikelihoods(java.util.List<java.lang.Float> value) {
     this.genotypeLikelihoods = value;
@@ -416,9 +500,10 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'nonReferenceLikelihoods' field.
-   * Log scaled likelihoods that we have n non-reference alleles at this site.
+   * @return Log scaled likelihoods that we have n non-reference alleles at this site.
    The number of elements in this array should be equal to the ploidy at this
-   site, plus 1.   */
+   site, plus 1.
+   */
   public java.util.List<java.lang.Float> getNonReferenceLikelihoods() {
     return nonReferenceLikelihoods;
   }
@@ -427,7 +512,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'nonReferenceLikelihoods' field.
    * Log scaled likelihoods that we have n non-reference alleles at this site.
    The number of elements in this array should be equal to the ploidy at this
-   site, plus 1.   * @param value the value to set.
+   site, plus 1.
+   * @param value the value to set.
    */
   public void setNonReferenceLikelihoods(java.util.List<java.lang.Float> value) {
     this.nonReferenceLikelihoods = value;
@@ -435,8 +521,9 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'strandBiasComponents' field.
-   * Component statistics which comprise the Fisher's Exact Test to detect strand bias.
-   If populated, this element should have length 4.   */
+   * @return Component statistics which comprise the Fisher's Exact Test to detect strand bias.
+   If populated, this element should have length 4.
+   */
   public java.util.List<java.lang.Integer> getStrandBiasComponents() {
     return strandBiasComponents;
   }
@@ -444,7 +531,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
   /**
    * Sets the value of the 'strandBiasComponents' field.
    * Component statistics which comprise the Fisher's Exact Test to detect strand bias.
-   If populated, this element should have length 4.   * @param value the value to set.
+   If populated, this element should have length 4.
+   * @param value the value to set.
    */
   public void setStrandBiasComponents(java.util.List<java.lang.Integer> value) {
     this.strandBiasComponents = value;
@@ -452,9 +540,10 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'splitFromMultiAllelic' field.
-   * We split multi-allelic VCF lines into multiple
+   * @return We split multi-allelic VCF lines into multiple
    single-alternate records.  This bit is set if that happened for this
-   record.   */
+   record.
+   */
   public java.lang.Boolean getSplitFromMultiAllelic() {
     return splitFromMultiAllelic;
   }
@@ -463,7 +552,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'splitFromMultiAllelic' field.
    * We split multi-allelic VCF lines into multiple
    single-alternate records.  This bit is set if that happened for this
-   record.   * @param value the value to set.
+   record.
+   * @param value the value to set.
    */
   public void setSplitFromMultiAllelic(java.lang.Boolean value) {
     this.splitFromMultiAllelic = value;
@@ -471,10 +561,11 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'isPhased' field.
-   * True if this genotype is phased.
+   * @return True if this genotype is phased.
 
    @see phaseSetId
-   @see phaseQuality   */
+   @see phaseQuality
+   */
   public java.lang.Boolean getIsPhased() {
     return isPhased;
   }
@@ -484,7 +575,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    * True if this genotype is phased.
 
    @see phaseSetId
-   @see phaseQuality   * @param value the value to set.
+   @see phaseQuality
+   * @param value the value to set.
    */
   public void setIsPhased(java.lang.Boolean value) {
     this.isPhased = value;
@@ -492,10 +584,11 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'phaseSetId' field.
-   * The ID of this phase set, if this genotype is phased. Should only be populated
+   * @return The ID of this phase set, if this genotype is phased. Should only be populated
    if isPhased == true; else should be null.
 
-   @see isPhased   */
+   @see isPhased
+   */
   public java.lang.Integer getPhaseSetId() {
     return phaseSetId;
   }
@@ -505,7 +598,8 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    * The ID of this phase set, if this genotype is phased. Should only be populated
    if isPhased == true; else should be null.
 
-   @see isPhased   * @param value the value to set.
+   @see isPhased
+   * @param value the value to set.
    */
   public void setPhaseSetId(java.lang.Integer value) {
     this.phaseSetId = value;
@@ -513,10 +607,11 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'phaseQuality' field.
-   * Phred scaled quality score for the phasing of this genotype, if this genotype
+   * @return Phred scaled quality score for the phasing of this genotype, if this genotype
    is phased. Should only be populated if isPhased == true; else should be null.
 
-   @see isPhased   */
+   @see isPhased
+   */
   public java.lang.Integer getPhaseQuality() {
     return phaseQuality;
   }
@@ -526,23 +621,35 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
    * Phred scaled quality score for the phasing of this genotype, if this genotype
    is phased. Should only be populated if isPhased == true; else should be null.
 
-   @see isPhased   * @param value the value to set.
+   @see isPhased
+   * @param value the value to set.
    */
   public void setPhaseQuality(java.lang.Integer value) {
     this.phaseQuality = value;
   }
 
-  /** Creates a new Genotype RecordBuilder */
+  /**
+   * Creates a new Genotype RecordBuilder.
+   * @return A new Genotype RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Genotype.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Genotype.Builder();
   }
   
-  /** Creates a new Genotype RecordBuilder by copying an existing Builder */
+  /**
+   * Creates a new Genotype RecordBuilder by copying an existing Builder.
+   * @param other The existing builder to copy.
+   * @return A new Genotype RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Genotype.Builder newBuilder(org.bdgenomics.formats.avro.Genotype.Builder other) {
     return new org.bdgenomics.formats.avro.Genotype.Builder(other);
   }
   
-  /** Creates a new Genotype RecordBuilder by copying an existing Genotype instance */
+  /**
+   * Creates a new Genotype RecordBuilder by copying an existing Genotype instance.
+   * @param other The existing instance to copy.
+   * @return A new Genotype RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Genotype.Builder newBuilder(org.bdgenomics.formats.avro.Genotype other) {
     return new org.bdgenomics.formats.avro.Genotype.Builder(other);
   }
@@ -553,24 +660,83 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Genotype>
     implements org.apache.avro.data.RecordBuilder<Genotype> {
 
+    /** The variant called at this site. */
     private org.bdgenomics.formats.avro.Variant variant;
+    private org.bdgenomics.formats.avro.Variant.Builder variantBuilder;
+    /** Statistics collected at this site, if available. */
     private org.bdgenomics.formats.avro.VariantCallingAnnotations variantCallingAnnotations;
+    private org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder variantCallingAnnotationsBuilder;
+    /** The unique identifier for this sample. */
     private java.lang.CharSequence sampleId;
+    /** A description of this sample. */
     private java.lang.CharSequence sampleDescription;
+    /** A string describing the provenance of this sample and the processing applied
+   in genotyping this sample. */
     private java.lang.CharSequence processingDescription;
+    /** An array describing the genotype called at this site. The length of this
+   array is equal to the ploidy of the sample at this site. This array may
+   reference OtherAlt alleles if this site is multi-allelic in this sample. */
     private java.util.List<org.bdgenomics.formats.avro.GenotypeAllele> alleles;
+    /** The expected dosage of the alternate allele in this sample. */
     private java.lang.Float expectedAlleleDosage;
+    /** The number of reads that show evidence for the reference at this site.
+
+   @see alternateReadDepth
+   @see readDepth */
     private java.lang.Integer referenceReadDepth;
+    /** The number of reads that show evidence for this alternate allele at this site.
+
+   @see referenceReadDepth
+   @see readDepth */
     private java.lang.Integer alternateReadDepth;
+    /** The total number of reads at this site. May not equal (alternateReadDepth +
+   referenceReadDepth) if this site shows evidence of multiple alternate alleles.
+
+   @see referenceReadDepth
+   @see alternateReadDepth
+
+   @note Analogous to VCF's DP. */
     private java.lang.Integer readDepth;
+    /** The minimum number of reads seen at this site across samples when joint
+   calling variants.
+
+   @note Analogous to VCF's MIN_DP. */
     private java.lang.Integer minReadDepth;
+    /** The phred-scaled probability that we're correct for this genotype call.
+
+   @note Analogous to VCF's GQ. */
     private java.lang.Integer genotypeQuality;
+    /** Log scaled likelihoods that we have n copies of this alternate allele.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+
+   @note Analogous to VCF's PL. */
     private java.util.List<java.lang.Float> genotypeLikelihoods;
+    /** Log scaled likelihoods that we have n non-reference alleles at this site.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1. */
     private java.util.List<java.lang.Float> nonReferenceLikelihoods;
+    /** Component statistics which comprise the Fisher's Exact Test to detect strand bias.
+   If populated, this element should have length 4. */
     private java.util.List<java.lang.Integer> strandBiasComponents;
+    /** We split multi-allelic VCF lines into multiple
+   single-alternate records.  This bit is set if that happened for this
+   record. */
     private java.lang.Boolean splitFromMultiAllelic;
+    /** True if this genotype is phased.
+
+   @see phaseSetId
+   @see phaseQuality */
     private java.lang.Boolean isPhased;
+    /** The ID of this phase set, if this genotype is phased. Should only be populated
+   if isPhased == true; else should be null.
+
+   @see isPhased */
     private java.lang.Integer phaseSetId;
+    /** Phred scaled quality score for the phasing of this genotype, if this genotype
+   is phased. Should only be populated if isPhased == true; else should be null.
+
+   @see isPhased */
     private java.lang.Integer phaseQuality;
 
     /** Creates a new Builder */
@@ -578,16 +744,25 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
       super(org.bdgenomics.formats.avro.Genotype.SCHEMA$);
     }
     
-    /** Creates a Builder by copying an existing Builder */
+    /**
+     * Creates a Builder by copying an existing Builder.
+     * @param other The existing Builder to copy.
+     */
     private Builder(org.bdgenomics.formats.avro.Genotype.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.variant)) {
         this.variant = data().deepCopy(fields()[0].schema(), other.variant);
         fieldSetFlags()[0] = true;
       }
+      if (other.hasVariantBuilder()) {
+        this.variantBuilder = org.bdgenomics.formats.avro.Variant.newBuilder(other.getVariantBuilder());
+      }
       if (isValidValue(fields()[1], other.variantCallingAnnotations)) {
         this.variantCallingAnnotations = data().deepCopy(fields()[1].schema(), other.variantCallingAnnotations);
         fieldSetFlags()[1] = true;
+      }
+      if (other.hasVariantCallingAnnotationsBuilder()) {
+        this.variantCallingAnnotationsBuilder = org.bdgenomics.formats.avro.VariantCallingAnnotations.newBuilder(other.getVariantCallingAnnotationsBuilder());
       }
       if (isValidValue(fields()[2], other.sampleId)) {
         this.sampleId = data().deepCopy(fields()[2].schema(), other.sampleId);
@@ -659,17 +834,22 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
       }
     }
     
-    /** Creates a Builder by copying an existing Genotype instance */
+    /**
+     * Creates a Builder by copying an existing Genotype instance
+     * @param other The existing instance to copy.
+     */
     private Builder(org.bdgenomics.formats.avro.Genotype other) {
             super(org.bdgenomics.formats.avro.Genotype.SCHEMA$);
       if (isValidValue(fields()[0], other.variant)) {
         this.variant = data().deepCopy(fields()[0].schema(), other.variant);
         fieldSetFlags()[0] = true;
       }
+      this.variantBuilder = null;
       if (isValidValue(fields()[1], other.variantCallingAnnotations)) {
         this.variantCallingAnnotations = data().deepCopy(fields()[1].schema(), other.variantCallingAnnotations);
         fieldSetFlags()[1] = true;
       }
+      this.variantCallingAnnotationsBuilder = null;
       if (isValidValue(fields()[2], other.sampleId)) {
         this.sampleId = data().deepCopy(fields()[2].schema(), other.sampleId);
         fieldSetFlags()[2] = true;
@@ -740,475 +920,1043 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
       }
     }
 
-    /** Gets the value of the 'variant' field */
+    /**
+      * Gets the value of the 'variant' field.
+      * The variant called at this site.
+      * @return The value.
+      */
     public org.bdgenomics.formats.avro.Variant getVariant() {
       return variant;
     }
-    
-    /** Sets the value of the 'variant' field */
+
+    /**
+      * Sets the value of the 'variant' field.
+      * The variant called at this site.
+      * @param value The value of 'variant'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setVariant(org.bdgenomics.formats.avro.Variant value) {
       validate(fields()[0], value);
+      this.variantBuilder = null;
       this.variant = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-    
-    /** Checks whether the 'variant' field has been set */
+
+    /**
+      * Checks whether the 'variant' field has been set.
+      * The variant called at this site.
+      * @return True if the 'variant' field has been set, false otherwise.
+      */
     public boolean hasVariant() {
       return fieldSetFlags()[0];
     }
-    
-    /** Clears the value of the 'variant' field */
+
+    /**
+     * Gets the Builder instance for the 'variant' field and creates one if it doesn't exist yet.
+     * The variant called at this site.
+     * @return This builder.
+     */
+    public org.bdgenomics.formats.avro.Variant.Builder getVariantBuilder() {
+      if (variantBuilder == null) {
+        if (hasVariant()) {
+          setVariantBuilder(org.bdgenomics.formats.avro.Variant.newBuilder(variant));
+        } else {
+          setVariantBuilder(org.bdgenomics.formats.avro.Variant.newBuilder());
+        }
+      }
+      return variantBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'variant' field
+     * The variant called at this site.
+     * @return This builder.
+     */
+    public org.bdgenomics.formats.avro.Genotype.Builder setVariantBuilder(org.bdgenomics.formats.avro.Variant.Builder value) {
+      clearVariant();
+      variantBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'variant' field has an active Builder instance
+     * The variant called at this site.
+     * @return True if the 'variant' field has an active Builder instance
+     */
+    public boolean hasVariantBuilder() {
+      return variantBuilder != null;
+    }
+
+    /**
+      * Clears the value of the 'variant' field.
+      * The variant called at this site.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearVariant() {
       variant = null;
+      variantBuilder = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /** Gets the value of the 'variantCallingAnnotations' field */
+    /**
+      * Gets the value of the 'variantCallingAnnotations' field.
+      * Statistics collected at this site, if available.
+      * @return The value.
+      */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations getVariantCallingAnnotations() {
       return variantCallingAnnotations;
     }
-    
-    /** Sets the value of the 'variantCallingAnnotations' field */
+
+    /**
+      * Sets the value of the 'variantCallingAnnotations' field.
+      * Statistics collected at this site, if available.
+      * @param value The value of 'variantCallingAnnotations'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setVariantCallingAnnotations(org.bdgenomics.formats.avro.VariantCallingAnnotations value) {
       validate(fields()[1], value);
+      this.variantCallingAnnotationsBuilder = null;
       this.variantCallingAnnotations = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-    
-    /** Checks whether the 'variantCallingAnnotations' field has been set */
+
+    /**
+      * Checks whether the 'variantCallingAnnotations' field has been set.
+      * Statistics collected at this site, if available.
+      * @return True if the 'variantCallingAnnotations' field has been set, false otherwise.
+      */
     public boolean hasVariantCallingAnnotations() {
       return fieldSetFlags()[1];
     }
-    
-    /** Clears the value of the 'variantCallingAnnotations' field */
+
+    /**
+     * Gets the Builder instance for the 'variantCallingAnnotations' field and creates one if it doesn't exist yet.
+     * Statistics collected at this site, if available.
+     * @return This builder.
+     */
+    public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder getVariantCallingAnnotationsBuilder() {
+      if (variantCallingAnnotationsBuilder == null) {
+        if (hasVariantCallingAnnotations()) {
+          setVariantCallingAnnotationsBuilder(org.bdgenomics.formats.avro.VariantCallingAnnotations.newBuilder(variantCallingAnnotations));
+        } else {
+          setVariantCallingAnnotationsBuilder(org.bdgenomics.formats.avro.VariantCallingAnnotations.newBuilder());
+        }
+      }
+      return variantCallingAnnotationsBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'variantCallingAnnotations' field
+     * Statistics collected at this site, if available.
+     * @return This builder.
+     */
+    public org.bdgenomics.formats.avro.Genotype.Builder setVariantCallingAnnotationsBuilder(org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder value) {
+      clearVariantCallingAnnotations();
+      variantCallingAnnotationsBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'variantCallingAnnotations' field has an active Builder instance
+     * Statistics collected at this site, if available.
+     * @return True if the 'variantCallingAnnotations' field has an active Builder instance
+     */
+    public boolean hasVariantCallingAnnotationsBuilder() {
+      return variantCallingAnnotationsBuilder != null;
+    }
+
+    /**
+      * Clears the value of the 'variantCallingAnnotations' field.
+      * Statistics collected at this site, if available.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearVariantCallingAnnotations() {
       variantCallingAnnotations = null;
+      variantCallingAnnotationsBuilder = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /** Gets the value of the 'sampleId' field */
+    /**
+      * Gets the value of the 'sampleId' field.
+      * The unique identifier for this sample.
+      * @return The value.
+      */
     public java.lang.CharSequence getSampleId() {
       return sampleId;
     }
-    
-    /** Sets the value of the 'sampleId' field */
+
+    /**
+      * Sets the value of the 'sampleId' field.
+      * The unique identifier for this sample.
+      * @param value The value of 'sampleId'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setSampleId(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.sampleId = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-    
-    /** Checks whether the 'sampleId' field has been set */
+
+    /**
+      * Checks whether the 'sampleId' field has been set.
+      * The unique identifier for this sample.
+      * @return True if the 'sampleId' field has been set, false otherwise.
+      */
     public boolean hasSampleId() {
       return fieldSetFlags()[2];
     }
-    
-    /** Clears the value of the 'sampleId' field */
+
+
+    /**
+      * Clears the value of the 'sampleId' field.
+      * The unique identifier for this sample.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearSampleId() {
       sampleId = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /** Gets the value of the 'sampleDescription' field */
+    /**
+      * Gets the value of the 'sampleDescription' field.
+      * A description of this sample.
+      * @return The value.
+      */
     public java.lang.CharSequence getSampleDescription() {
       return sampleDescription;
     }
-    
-    /** Sets the value of the 'sampleDescription' field */
+
+    /**
+      * Sets the value of the 'sampleDescription' field.
+      * A description of this sample.
+      * @param value The value of 'sampleDescription'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setSampleDescription(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.sampleDescription = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-    
-    /** Checks whether the 'sampleDescription' field has been set */
+
+    /**
+      * Checks whether the 'sampleDescription' field has been set.
+      * A description of this sample.
+      * @return True if the 'sampleDescription' field has been set, false otherwise.
+      */
     public boolean hasSampleDescription() {
       return fieldSetFlags()[3];
     }
-    
-    /** Clears the value of the 'sampleDescription' field */
+
+
+    /**
+      * Clears the value of the 'sampleDescription' field.
+      * A description of this sample.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearSampleDescription() {
       sampleDescription = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /** Gets the value of the 'processingDescription' field */
+    /**
+      * Gets the value of the 'processingDescription' field.
+      * A string describing the provenance of this sample and the processing applied
+   in genotyping this sample.
+      * @return The value.
+      */
     public java.lang.CharSequence getProcessingDescription() {
       return processingDescription;
     }
-    
-    /** Sets the value of the 'processingDescription' field */
+
+    /**
+      * Sets the value of the 'processingDescription' field.
+      * A string describing the provenance of this sample and the processing applied
+   in genotyping this sample.
+      * @param value The value of 'processingDescription'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setProcessingDescription(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.processingDescription = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-    
-    /** Checks whether the 'processingDescription' field has been set */
+
+    /**
+      * Checks whether the 'processingDescription' field has been set.
+      * A string describing the provenance of this sample and the processing applied
+   in genotyping this sample.
+      * @return True if the 'processingDescription' field has been set, false otherwise.
+      */
     public boolean hasProcessingDescription() {
       return fieldSetFlags()[4];
     }
-    
-    /** Clears the value of the 'processingDescription' field */
+
+
+    /**
+      * Clears the value of the 'processingDescription' field.
+      * A string describing the provenance of this sample and the processing applied
+   in genotyping this sample.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearProcessingDescription() {
       processingDescription = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /** Gets the value of the 'alleles' field */
+    /**
+      * Gets the value of the 'alleles' field.
+      * An array describing the genotype called at this site. The length of this
+   array is equal to the ploidy of the sample at this site. This array may
+   reference OtherAlt alleles if this site is multi-allelic in this sample.
+      * @return The value.
+      */
     public java.util.List<org.bdgenomics.formats.avro.GenotypeAllele> getAlleles() {
       return alleles;
     }
-    
-    /** Sets the value of the 'alleles' field */
+
+    /**
+      * Sets the value of the 'alleles' field.
+      * An array describing the genotype called at this site. The length of this
+   array is equal to the ploidy of the sample at this site. This array may
+   reference OtherAlt alleles if this site is multi-allelic in this sample.
+      * @param value The value of 'alleles'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setAlleles(java.util.List<org.bdgenomics.formats.avro.GenotypeAllele> value) {
       validate(fields()[5], value);
       this.alleles = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-    
-    /** Checks whether the 'alleles' field has been set */
+
+    /**
+      * Checks whether the 'alleles' field has been set.
+      * An array describing the genotype called at this site. The length of this
+   array is equal to the ploidy of the sample at this site. This array may
+   reference OtherAlt alleles if this site is multi-allelic in this sample.
+      * @return True if the 'alleles' field has been set, false otherwise.
+      */
     public boolean hasAlleles() {
       return fieldSetFlags()[5];
     }
-    
-    /** Clears the value of the 'alleles' field */
+
+
+    /**
+      * Clears the value of the 'alleles' field.
+      * An array describing the genotype called at this site. The length of this
+   array is equal to the ploidy of the sample at this site. This array may
+   reference OtherAlt alleles if this site is multi-allelic in this sample.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearAlleles() {
       alleles = null;
       fieldSetFlags()[5] = false;
       return this;
     }
 
-    /** Gets the value of the 'expectedAlleleDosage' field */
+    /**
+      * Gets the value of the 'expectedAlleleDosage' field.
+      * The expected dosage of the alternate allele in this sample.
+      * @return The value.
+      */
     public java.lang.Float getExpectedAlleleDosage() {
       return expectedAlleleDosage;
     }
-    
-    /** Sets the value of the 'expectedAlleleDosage' field */
+
+    /**
+      * Sets the value of the 'expectedAlleleDosage' field.
+      * The expected dosage of the alternate allele in this sample.
+      * @param value The value of 'expectedAlleleDosage'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setExpectedAlleleDosage(java.lang.Float value) {
       validate(fields()[6], value);
       this.expectedAlleleDosage = value;
       fieldSetFlags()[6] = true;
       return this; 
     }
-    
-    /** Checks whether the 'expectedAlleleDosage' field has been set */
+
+    /**
+      * Checks whether the 'expectedAlleleDosage' field has been set.
+      * The expected dosage of the alternate allele in this sample.
+      * @return True if the 'expectedAlleleDosage' field has been set, false otherwise.
+      */
     public boolean hasExpectedAlleleDosage() {
       return fieldSetFlags()[6];
     }
-    
-    /** Clears the value of the 'expectedAlleleDosage' field */
+
+
+    /**
+      * Clears the value of the 'expectedAlleleDosage' field.
+      * The expected dosage of the alternate allele in this sample.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearExpectedAlleleDosage() {
       expectedAlleleDosage = null;
       fieldSetFlags()[6] = false;
       return this;
     }
 
-    /** Gets the value of the 'referenceReadDepth' field */
+    /**
+      * Gets the value of the 'referenceReadDepth' field.
+      * The number of reads that show evidence for the reference at this site.
+
+   @see alternateReadDepth
+   @see readDepth
+      * @return The value.
+      */
     public java.lang.Integer getReferenceReadDepth() {
       return referenceReadDepth;
     }
-    
-    /** Sets the value of the 'referenceReadDepth' field */
+
+    /**
+      * Sets the value of the 'referenceReadDepth' field.
+      * The number of reads that show evidence for the reference at this site.
+
+   @see alternateReadDepth
+   @see readDepth
+      * @param value The value of 'referenceReadDepth'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setReferenceReadDepth(java.lang.Integer value) {
       validate(fields()[7], value);
       this.referenceReadDepth = value;
       fieldSetFlags()[7] = true;
       return this; 
     }
-    
-    /** Checks whether the 'referenceReadDepth' field has been set */
+
+    /**
+      * Checks whether the 'referenceReadDepth' field has been set.
+      * The number of reads that show evidence for the reference at this site.
+
+   @see alternateReadDepth
+   @see readDepth
+      * @return True if the 'referenceReadDepth' field has been set, false otherwise.
+      */
     public boolean hasReferenceReadDepth() {
       return fieldSetFlags()[7];
     }
-    
-    /** Clears the value of the 'referenceReadDepth' field */
+
+
+    /**
+      * Clears the value of the 'referenceReadDepth' field.
+      * The number of reads that show evidence for the reference at this site.
+
+   @see alternateReadDepth
+   @see readDepth
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearReferenceReadDepth() {
       referenceReadDepth = null;
       fieldSetFlags()[7] = false;
       return this;
     }
 
-    /** Gets the value of the 'alternateReadDepth' field */
+    /**
+      * Gets the value of the 'alternateReadDepth' field.
+      * The number of reads that show evidence for this alternate allele at this site.
+
+   @see referenceReadDepth
+   @see readDepth
+      * @return The value.
+      */
     public java.lang.Integer getAlternateReadDepth() {
       return alternateReadDepth;
     }
-    
-    /** Sets the value of the 'alternateReadDepth' field */
+
+    /**
+      * Sets the value of the 'alternateReadDepth' field.
+      * The number of reads that show evidence for this alternate allele at this site.
+
+   @see referenceReadDepth
+   @see readDepth
+      * @param value The value of 'alternateReadDepth'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setAlternateReadDepth(java.lang.Integer value) {
       validate(fields()[8], value);
       this.alternateReadDepth = value;
       fieldSetFlags()[8] = true;
       return this; 
     }
-    
-    /** Checks whether the 'alternateReadDepth' field has been set */
+
+    /**
+      * Checks whether the 'alternateReadDepth' field has been set.
+      * The number of reads that show evidence for this alternate allele at this site.
+
+   @see referenceReadDepth
+   @see readDepth
+      * @return True if the 'alternateReadDepth' field has been set, false otherwise.
+      */
     public boolean hasAlternateReadDepth() {
       return fieldSetFlags()[8];
     }
-    
-    /** Clears the value of the 'alternateReadDepth' field */
+
+
+    /**
+      * Clears the value of the 'alternateReadDepth' field.
+      * The number of reads that show evidence for this alternate allele at this site.
+
+   @see referenceReadDepth
+   @see readDepth
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearAlternateReadDepth() {
       alternateReadDepth = null;
       fieldSetFlags()[8] = false;
       return this;
     }
 
-    /** Gets the value of the 'readDepth' field */
+    /**
+      * Gets the value of the 'readDepth' field.
+      * The total number of reads at this site. May not equal (alternateReadDepth +
+   referenceReadDepth) if this site shows evidence of multiple alternate alleles.
+
+   @see referenceReadDepth
+   @see alternateReadDepth
+
+   @note Analogous to VCF's DP.
+      * @return The value.
+      */
     public java.lang.Integer getReadDepth() {
       return readDepth;
     }
-    
-    /** Sets the value of the 'readDepth' field */
+
+    /**
+      * Sets the value of the 'readDepth' field.
+      * The total number of reads at this site. May not equal (alternateReadDepth +
+   referenceReadDepth) if this site shows evidence of multiple alternate alleles.
+
+   @see referenceReadDepth
+   @see alternateReadDepth
+
+   @note Analogous to VCF's DP.
+      * @param value The value of 'readDepth'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setReadDepth(java.lang.Integer value) {
       validate(fields()[9], value);
       this.readDepth = value;
       fieldSetFlags()[9] = true;
       return this; 
     }
-    
-    /** Checks whether the 'readDepth' field has been set */
+
+    /**
+      * Checks whether the 'readDepth' field has been set.
+      * The total number of reads at this site. May not equal (alternateReadDepth +
+   referenceReadDepth) if this site shows evidence of multiple alternate alleles.
+
+   @see referenceReadDepth
+   @see alternateReadDepth
+
+   @note Analogous to VCF's DP.
+      * @return True if the 'readDepth' field has been set, false otherwise.
+      */
     public boolean hasReadDepth() {
       return fieldSetFlags()[9];
     }
-    
-    /** Clears the value of the 'readDepth' field */
+
+
+    /**
+      * Clears the value of the 'readDepth' field.
+      * The total number of reads at this site. May not equal (alternateReadDepth +
+   referenceReadDepth) if this site shows evidence of multiple alternate alleles.
+
+   @see referenceReadDepth
+   @see alternateReadDepth
+
+   @note Analogous to VCF's DP.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearReadDepth() {
       readDepth = null;
       fieldSetFlags()[9] = false;
       return this;
     }
 
-    /** Gets the value of the 'minReadDepth' field */
+    /**
+      * Gets the value of the 'minReadDepth' field.
+      * The minimum number of reads seen at this site across samples when joint
+   calling variants.
+
+   @note Analogous to VCF's MIN_DP.
+      * @return The value.
+      */
     public java.lang.Integer getMinReadDepth() {
       return minReadDepth;
     }
-    
-    /** Sets the value of the 'minReadDepth' field */
+
+    /**
+      * Sets the value of the 'minReadDepth' field.
+      * The minimum number of reads seen at this site across samples when joint
+   calling variants.
+
+   @note Analogous to VCF's MIN_DP.
+      * @param value The value of 'minReadDepth'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setMinReadDepth(java.lang.Integer value) {
       validate(fields()[10], value);
       this.minReadDepth = value;
       fieldSetFlags()[10] = true;
       return this; 
     }
-    
-    /** Checks whether the 'minReadDepth' field has been set */
+
+    /**
+      * Checks whether the 'minReadDepth' field has been set.
+      * The minimum number of reads seen at this site across samples when joint
+   calling variants.
+
+   @note Analogous to VCF's MIN_DP.
+      * @return True if the 'minReadDepth' field has been set, false otherwise.
+      */
     public boolean hasMinReadDepth() {
       return fieldSetFlags()[10];
     }
-    
-    /** Clears the value of the 'minReadDepth' field */
+
+
+    /**
+      * Clears the value of the 'minReadDepth' field.
+      * The minimum number of reads seen at this site across samples when joint
+   calling variants.
+
+   @note Analogous to VCF's MIN_DP.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearMinReadDepth() {
       minReadDepth = null;
       fieldSetFlags()[10] = false;
       return this;
     }
 
-    /** Gets the value of the 'genotypeQuality' field */
+    /**
+      * Gets the value of the 'genotypeQuality' field.
+      * The phred-scaled probability that we're correct for this genotype call.
+
+   @note Analogous to VCF's GQ.
+      * @return The value.
+      */
     public java.lang.Integer getGenotypeQuality() {
       return genotypeQuality;
     }
-    
-    /** Sets the value of the 'genotypeQuality' field */
+
+    /**
+      * Sets the value of the 'genotypeQuality' field.
+      * The phred-scaled probability that we're correct for this genotype call.
+
+   @note Analogous to VCF's GQ.
+      * @param value The value of 'genotypeQuality'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setGenotypeQuality(java.lang.Integer value) {
       validate(fields()[11], value);
       this.genotypeQuality = value;
       fieldSetFlags()[11] = true;
       return this; 
     }
-    
-    /** Checks whether the 'genotypeQuality' field has been set */
+
+    /**
+      * Checks whether the 'genotypeQuality' field has been set.
+      * The phred-scaled probability that we're correct for this genotype call.
+
+   @note Analogous to VCF's GQ.
+      * @return True if the 'genotypeQuality' field has been set, false otherwise.
+      */
     public boolean hasGenotypeQuality() {
       return fieldSetFlags()[11];
     }
-    
-    /** Clears the value of the 'genotypeQuality' field */
+
+
+    /**
+      * Clears the value of the 'genotypeQuality' field.
+      * The phred-scaled probability that we're correct for this genotype call.
+
+   @note Analogous to VCF's GQ.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearGenotypeQuality() {
       genotypeQuality = null;
       fieldSetFlags()[11] = false;
       return this;
     }
 
-    /** Gets the value of the 'genotypeLikelihoods' field */
+    /**
+      * Gets the value of the 'genotypeLikelihoods' field.
+      * Log scaled likelihoods that we have n copies of this alternate allele.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+
+   @note Analogous to VCF's PL.
+      * @return The value.
+      */
     public java.util.List<java.lang.Float> getGenotypeLikelihoods() {
       return genotypeLikelihoods;
     }
-    
-    /** Sets the value of the 'genotypeLikelihoods' field */
+
+    /**
+      * Sets the value of the 'genotypeLikelihoods' field.
+      * Log scaled likelihoods that we have n copies of this alternate allele.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+
+   @note Analogous to VCF's PL.
+      * @param value The value of 'genotypeLikelihoods'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setGenotypeLikelihoods(java.util.List<java.lang.Float> value) {
       validate(fields()[12], value);
       this.genotypeLikelihoods = value;
       fieldSetFlags()[12] = true;
       return this; 
     }
-    
-    /** Checks whether the 'genotypeLikelihoods' field has been set */
+
+    /**
+      * Checks whether the 'genotypeLikelihoods' field has been set.
+      * Log scaled likelihoods that we have n copies of this alternate allele.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+
+   @note Analogous to VCF's PL.
+      * @return True if the 'genotypeLikelihoods' field has been set, false otherwise.
+      */
     public boolean hasGenotypeLikelihoods() {
       return fieldSetFlags()[12];
     }
-    
-    /** Clears the value of the 'genotypeLikelihoods' field */
+
+
+    /**
+      * Clears the value of the 'genotypeLikelihoods' field.
+      * Log scaled likelihoods that we have n copies of this alternate allele.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+
+   @note Analogous to VCF's PL.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearGenotypeLikelihoods() {
       genotypeLikelihoods = null;
       fieldSetFlags()[12] = false;
       return this;
     }
 
-    /** Gets the value of the 'nonReferenceLikelihoods' field */
+    /**
+      * Gets the value of the 'nonReferenceLikelihoods' field.
+      * Log scaled likelihoods that we have n non-reference alleles at this site.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+      * @return The value.
+      */
     public java.util.List<java.lang.Float> getNonReferenceLikelihoods() {
       return nonReferenceLikelihoods;
     }
-    
-    /** Sets the value of the 'nonReferenceLikelihoods' field */
+
+    /**
+      * Sets the value of the 'nonReferenceLikelihoods' field.
+      * Log scaled likelihoods that we have n non-reference alleles at this site.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+      * @param value The value of 'nonReferenceLikelihoods'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setNonReferenceLikelihoods(java.util.List<java.lang.Float> value) {
       validate(fields()[13], value);
       this.nonReferenceLikelihoods = value;
       fieldSetFlags()[13] = true;
       return this; 
     }
-    
-    /** Checks whether the 'nonReferenceLikelihoods' field has been set */
+
+    /**
+      * Checks whether the 'nonReferenceLikelihoods' field has been set.
+      * Log scaled likelihoods that we have n non-reference alleles at this site.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+      * @return True if the 'nonReferenceLikelihoods' field has been set, false otherwise.
+      */
     public boolean hasNonReferenceLikelihoods() {
       return fieldSetFlags()[13];
     }
-    
-    /** Clears the value of the 'nonReferenceLikelihoods' field */
+
+
+    /**
+      * Clears the value of the 'nonReferenceLikelihoods' field.
+      * Log scaled likelihoods that we have n non-reference alleles at this site.
+   The number of elements in this array should be equal to the ploidy at this
+   site, plus 1.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearNonReferenceLikelihoods() {
       nonReferenceLikelihoods = null;
       fieldSetFlags()[13] = false;
       return this;
     }
 
-    /** Gets the value of the 'strandBiasComponents' field */
+    /**
+      * Gets the value of the 'strandBiasComponents' field.
+      * Component statistics which comprise the Fisher's Exact Test to detect strand bias.
+   If populated, this element should have length 4.
+      * @return The value.
+      */
     public java.util.List<java.lang.Integer> getStrandBiasComponents() {
       return strandBiasComponents;
     }
-    
-    /** Sets the value of the 'strandBiasComponents' field */
+
+    /**
+      * Sets the value of the 'strandBiasComponents' field.
+      * Component statistics which comprise the Fisher's Exact Test to detect strand bias.
+   If populated, this element should have length 4.
+      * @param value The value of 'strandBiasComponents'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setStrandBiasComponents(java.util.List<java.lang.Integer> value) {
       validate(fields()[14], value);
       this.strandBiasComponents = value;
       fieldSetFlags()[14] = true;
       return this; 
     }
-    
-    /** Checks whether the 'strandBiasComponents' field has been set */
+
+    /**
+      * Checks whether the 'strandBiasComponents' field has been set.
+      * Component statistics which comprise the Fisher's Exact Test to detect strand bias.
+   If populated, this element should have length 4.
+      * @return True if the 'strandBiasComponents' field has been set, false otherwise.
+      */
     public boolean hasStrandBiasComponents() {
       return fieldSetFlags()[14];
     }
-    
-    /** Clears the value of the 'strandBiasComponents' field */
+
+
+    /**
+      * Clears the value of the 'strandBiasComponents' field.
+      * Component statistics which comprise the Fisher's Exact Test to detect strand bias.
+   If populated, this element should have length 4.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearStrandBiasComponents() {
       strandBiasComponents = null;
       fieldSetFlags()[14] = false;
       return this;
     }
 
-    /** Gets the value of the 'splitFromMultiAllelic' field */
+    /**
+      * Gets the value of the 'splitFromMultiAllelic' field.
+      * We split multi-allelic VCF lines into multiple
+   single-alternate records.  This bit is set if that happened for this
+   record.
+      * @return The value.
+      */
     public java.lang.Boolean getSplitFromMultiAllelic() {
       return splitFromMultiAllelic;
     }
-    
-    /** Sets the value of the 'splitFromMultiAllelic' field */
+
+    /**
+      * Sets the value of the 'splitFromMultiAllelic' field.
+      * We split multi-allelic VCF lines into multiple
+   single-alternate records.  This bit is set if that happened for this
+   record.
+      * @param value The value of 'splitFromMultiAllelic'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setSplitFromMultiAllelic(java.lang.Boolean value) {
       validate(fields()[15], value);
       this.splitFromMultiAllelic = value;
       fieldSetFlags()[15] = true;
       return this; 
     }
-    
-    /** Checks whether the 'splitFromMultiAllelic' field has been set */
+
+    /**
+      * Checks whether the 'splitFromMultiAllelic' field has been set.
+      * We split multi-allelic VCF lines into multiple
+   single-alternate records.  This bit is set if that happened for this
+   record.
+      * @return True if the 'splitFromMultiAllelic' field has been set, false otherwise.
+      */
     public boolean hasSplitFromMultiAllelic() {
       return fieldSetFlags()[15];
     }
-    
-    /** Clears the value of the 'splitFromMultiAllelic' field */
+
+
+    /**
+      * Clears the value of the 'splitFromMultiAllelic' field.
+      * We split multi-allelic VCF lines into multiple
+   single-alternate records.  This bit is set if that happened for this
+   record.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearSplitFromMultiAllelic() {
       splitFromMultiAllelic = null;
       fieldSetFlags()[15] = false;
       return this;
     }
 
-    /** Gets the value of the 'isPhased' field */
+    /**
+      * Gets the value of the 'isPhased' field.
+      * True if this genotype is phased.
+
+   @see phaseSetId
+   @see phaseQuality
+      * @return The value.
+      */
     public java.lang.Boolean getIsPhased() {
       return isPhased;
     }
-    
-    /** Sets the value of the 'isPhased' field */
+
+    /**
+      * Sets the value of the 'isPhased' field.
+      * True if this genotype is phased.
+
+   @see phaseSetId
+   @see phaseQuality
+      * @param value The value of 'isPhased'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setIsPhased(java.lang.Boolean value) {
       validate(fields()[16], value);
       this.isPhased = value;
       fieldSetFlags()[16] = true;
       return this; 
     }
-    
-    /** Checks whether the 'isPhased' field has been set */
+
+    /**
+      * Checks whether the 'isPhased' field has been set.
+      * True if this genotype is phased.
+
+   @see phaseSetId
+   @see phaseQuality
+      * @return True if the 'isPhased' field has been set, false otherwise.
+      */
     public boolean hasIsPhased() {
       return fieldSetFlags()[16];
     }
-    
-    /** Clears the value of the 'isPhased' field */
+
+
+    /**
+      * Clears the value of the 'isPhased' field.
+      * True if this genotype is phased.
+
+   @see phaseSetId
+   @see phaseQuality
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearIsPhased() {
       isPhased = null;
       fieldSetFlags()[16] = false;
       return this;
     }
 
-    /** Gets the value of the 'phaseSetId' field */
+    /**
+      * Gets the value of the 'phaseSetId' field.
+      * The ID of this phase set, if this genotype is phased. Should only be populated
+   if isPhased == true; else should be null.
+
+   @see isPhased
+      * @return The value.
+      */
     public java.lang.Integer getPhaseSetId() {
       return phaseSetId;
     }
-    
-    /** Sets the value of the 'phaseSetId' field */
+
+    /**
+      * Sets the value of the 'phaseSetId' field.
+      * The ID of this phase set, if this genotype is phased. Should only be populated
+   if isPhased == true; else should be null.
+
+   @see isPhased
+      * @param value The value of 'phaseSetId'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setPhaseSetId(java.lang.Integer value) {
       validate(fields()[17], value);
       this.phaseSetId = value;
       fieldSetFlags()[17] = true;
       return this; 
     }
-    
-    /** Checks whether the 'phaseSetId' field has been set */
+
+    /**
+      * Checks whether the 'phaseSetId' field has been set.
+      * The ID of this phase set, if this genotype is phased. Should only be populated
+   if isPhased == true; else should be null.
+
+   @see isPhased
+      * @return True if the 'phaseSetId' field has been set, false otherwise.
+      */
     public boolean hasPhaseSetId() {
       return fieldSetFlags()[17];
     }
-    
-    /** Clears the value of the 'phaseSetId' field */
+
+
+    /**
+      * Clears the value of the 'phaseSetId' field.
+      * The ID of this phase set, if this genotype is phased. Should only be populated
+   if isPhased == true; else should be null.
+
+   @see isPhased
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearPhaseSetId() {
       phaseSetId = null;
       fieldSetFlags()[17] = false;
       return this;
     }
 
-    /** Gets the value of the 'phaseQuality' field */
+    /**
+      * Gets the value of the 'phaseQuality' field.
+      * Phred scaled quality score for the phasing of this genotype, if this genotype
+   is phased. Should only be populated if isPhased == true; else should be null.
+
+   @see isPhased
+      * @return The value.
+      */
     public java.lang.Integer getPhaseQuality() {
       return phaseQuality;
     }
-    
-    /** Sets the value of the 'phaseQuality' field */
+
+    /**
+      * Sets the value of the 'phaseQuality' field.
+      * Phred scaled quality score for the phasing of this genotype, if this genotype
+   is phased. Should only be populated if isPhased == true; else should be null.
+
+   @see isPhased
+      * @param value The value of 'phaseQuality'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder setPhaseQuality(java.lang.Integer value) {
       validate(fields()[18], value);
       this.phaseQuality = value;
       fieldSetFlags()[18] = true;
       return this; 
     }
-    
-    /** Checks whether the 'phaseQuality' field has been set */
+
+    /**
+      * Checks whether the 'phaseQuality' field has been set.
+      * Phred scaled quality score for the phasing of this genotype, if this genotype
+   is phased. Should only be populated if isPhased == true; else should be null.
+
+   @see isPhased
+      * @return True if the 'phaseQuality' field has been set, false otherwise.
+      */
     public boolean hasPhaseQuality() {
       return fieldSetFlags()[18];
     }
-    
-    /** Clears the value of the 'phaseQuality' field */
+
+
+    /**
+      * Clears the value of the 'phaseQuality' field.
+      * Phred scaled quality score for the phasing of this genotype, if this genotype
+   is phased. Should only be populated if isPhased == true; else should be null.
+
+   @see isPhased
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Genotype.Builder clearPhaseQuality() {
       phaseQuality = null;
       fieldSetFlags()[18] = false;
@@ -1219,8 +1967,16 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
     public Genotype build() {
       try {
         Genotype record = new Genotype();
-        record.variant = fieldSetFlags()[0] ? this.variant : (org.bdgenomics.formats.avro.Variant) defaultValue(fields()[0]);
-        record.variantCallingAnnotations = fieldSetFlags()[1] ? this.variantCallingAnnotations : (org.bdgenomics.formats.avro.VariantCallingAnnotations) defaultValue(fields()[1]);
+        if (variantBuilder != null) {
+          record.variant = this.variantBuilder.build();
+        } else {
+          record.variant = fieldSetFlags()[0] ? this.variant : (org.bdgenomics.formats.avro.Variant) defaultValue(fields()[0]);
+        }
+        if (variantCallingAnnotationsBuilder != null) {
+          record.variantCallingAnnotations = this.variantCallingAnnotationsBuilder.build();
+        } else {
+          record.variantCallingAnnotations = fieldSetFlags()[1] ? this.variantCallingAnnotations : (org.bdgenomics.formats.avro.VariantCallingAnnotations) defaultValue(fields()[1]);
+        }
         record.sampleId = fieldSetFlags()[2] ? this.sampleId : (java.lang.CharSequence) defaultValue(fields()[2]);
         record.sampleDescription = fieldSetFlags()[3] ? this.sampleDescription : (java.lang.CharSequence) defaultValue(fields()[3]);
         record.processingDescription = fieldSetFlags()[4] ? this.processingDescription : (java.lang.CharSequence) defaultValue(fields()[4]);
@@ -1244,4 +2000,21 @@ public class Genotype extends org.apache.avro.specific.SpecificRecordBase implem
       }
     }
   }
+
+  private static final org.apache.avro.io.DatumWriter
+    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
+
+  @Override public void writeExternal(java.io.ObjectOutput out)
+    throws java.io.IOException {
+    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
+  }
+
+  private static final org.apache.avro.io.DatumReader
+    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
+
+  @Override public void readExternal(java.io.ObjectInput in)
+    throws java.io.IOException {
+    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
+  }
+
 }

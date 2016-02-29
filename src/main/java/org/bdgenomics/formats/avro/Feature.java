@@ -7,6 +7,7 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Feature extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -7061426659193823694L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Feature\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"featureId\",\"type\":[\"null\",\"string\"],\"doc\":\"Preferably unique ID for this Feature object\",\"default\":null},{\"name\":\"featureType\",\"type\":[\"null\",\"string\"],\"doc\":\"The type of feature this is (aka, \\\"track\\\").\\n\\n   Examples are \\\"conservation\\\", \\\"centipede\\\", \\\"gene\\\"\",\"default\":null},{\"name\":\"source\",\"type\":[\"null\",\"string\"],\"doc\":\"The original source for this feature.\\n\\n   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.)\",\"default\":null},{\"name\":\"contig\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Contig\",\"doc\":\"Record for describing a reference assembly. Not used for storing the contents\\n of said assembly.\\n\\n @see NucleotideContigFragment\",\"fields\":[{\"name\":\"contigName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this contig in the assembly (e.g., \\\"chr1\\\").\",\"default\":null},{\"name\":\"contigLength\",\"type\":[\"null\",\"long\"],\"doc\":\"The length of this contig.\",\"default\":null},{\"name\":\"contigMD5\",\"type\":[\"null\",\"string\"],\"doc\":\"The MD5 checksum of the assembly for this contig.\",\"default\":null},{\"name\":\"referenceURL\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL at which this reference assembly can be found.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this assembly (e.g., \\\"hg19\\\").\",\"default\":null},{\"name\":\"species\",\"type\":[\"null\",\"string\"],\"doc\":\"The species that this assembly is for.\",\"default\":null},{\"name\":\"referenceIndex\",\"type\":[\"null\",\"int\"],\"doc\":\"Optional 0-based index of this contig in a SAM file header that it was read\\n   from; helps output SAMs/BAMs with headers in the same order as they started\\n   with, before a conversion to ADAM.\",\"default\":null}]}],\"doc\":\"The contig this feature is located on\",\"default\":null},{\"name\":\"start\",\"type\":[\"null\",\"long\"],\"doc\":\"Start coordinate on the contig\",\"default\":null},{\"name\":\"end\",\"type\":[\"null\",\"long\"],\"doc\":\"End coordinate on the contig\",\"default\":null},{\"name\":\"strand\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"Strand\",\"symbols\":[\"Forward\",\"Reverse\",\"Independent\"]}],\"doc\":\"Strand information for this feature\",\"default\":null},{\"name\":\"value\",\"type\":[\"null\",\"double\"],\"doc\":\"The value associated with this feature (if double)\",\"default\":null},{\"name\":\"dbxrefs\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dbxref\",\"fields\":[{\"name\":\"accession\",\"type\":\"string\"},{\"name\":\"db\",\"type\":\"string\"}]}},\"doc\":\"Cross-references into other databases.\",\"default\":[]},{\"name\":\"parentIds\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"doc\":\"List of parent featureIds, for implementing feature hierachies/graphs.\",\"default\":[]},{\"name\":\"attributes\",\"type\":{\"type\":\"map\",\"values\":\"string\"},\"doc\":\"Additional feature info that doesn't fit into the standard fields above.\\n\\n   They are all encoded as (string, string) key-value pairs.\",\"default\":{}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** Preferably unique ID for this Feature object */
@@ -47,6 +48,23 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * All-args constructor.
+   * @param featureId Preferably unique ID for this Feature object
+   * @param featureType The type of feature this is (aka, "track").
+
+   Examples are "conservation", "centipede", "gene"
+   * @param source The original source for this feature.
+
+   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.)
+   * @param contig The contig this feature is located on
+   * @param start Start coordinate on the contig
+   * @param end End coordinate on the contig
+   * @param strand Strand information for this feature
+   * @param value The value associated with this feature (if double)
+   * @param dbxrefs Cross-references into other databases.
+   * @param parentIds List of parent featureIds, for implementing feature hierachies/graphs.
+   * @param attributes Additional feature info that doesn't fit into the standard fields above.
+
+   They are all encoded as (string, string) key-value pairs.
    */
   public Feature(java.lang.CharSequence featureId, java.lang.CharSequence featureType, java.lang.CharSequence source, org.bdgenomics.formats.avro.Contig contig, java.lang.Long start, java.lang.Long end, org.bdgenomics.formats.avro.Strand strand, java.lang.Double value, java.util.List<org.bdgenomics.formats.avro.Dbxref> dbxrefs, java.util.List<java.lang.CharSequence> parentIds, java.util.Map<java.lang.CharSequence,java.lang.CharSequence> attributes) {
     this.featureId = featureId;
@@ -101,14 +119,16 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'featureId' field.
-   * Preferably unique ID for this Feature object   */
+   * @return Preferably unique ID for this Feature object
+   */
   public java.lang.CharSequence getFeatureId() {
     return featureId;
   }
 
   /**
    * Sets the value of the 'featureId' field.
-   * Preferably unique ID for this Feature object   * @param value the value to set.
+   * Preferably unique ID for this Feature object
+   * @param value the value to set.
    */
   public void setFeatureId(java.lang.CharSequence value) {
     this.featureId = value;
@@ -116,9 +136,10 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'featureType' field.
-   * The type of feature this is (aka, "track").
+   * @return The type of feature this is (aka, "track").
 
-   Examples are "conservation", "centipede", "gene"   */
+   Examples are "conservation", "centipede", "gene"
+   */
   public java.lang.CharSequence getFeatureType() {
     return featureType;
   }
@@ -127,7 +148,8 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'featureType' field.
    * The type of feature this is (aka, "track").
 
-   Examples are "conservation", "centipede", "gene"   * @param value the value to set.
+   Examples are "conservation", "centipede", "gene"
+   * @param value the value to set.
    */
   public void setFeatureType(java.lang.CharSequence value) {
     this.featureType = value;
@@ -135,9 +157,10 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'source' field.
-   * The original source for this feature.
+   * @return The original source for this feature.
 
-   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.)   */
+   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.)
+   */
   public java.lang.CharSequence getSource() {
     return source;
   }
@@ -146,7 +169,8 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'source' field.
    * The original source for this feature.
 
-   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.)   * @param value the value to set.
+   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.)
+   * @param value the value to set.
    */
   public void setSource(java.lang.CharSequence value) {
     this.source = value;
@@ -154,14 +178,16 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'contig' field.
-   * The contig this feature is located on   */
+   * @return The contig this feature is located on
+   */
   public org.bdgenomics.formats.avro.Contig getContig() {
     return contig;
   }
 
   /**
    * Sets the value of the 'contig' field.
-   * The contig this feature is located on   * @param value the value to set.
+   * The contig this feature is located on
+   * @param value the value to set.
    */
   public void setContig(org.bdgenomics.formats.avro.Contig value) {
     this.contig = value;
@@ -169,14 +195,16 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'start' field.
-   * Start coordinate on the contig   */
+   * @return Start coordinate on the contig
+   */
   public java.lang.Long getStart() {
     return start;
   }
 
   /**
    * Sets the value of the 'start' field.
-   * Start coordinate on the contig   * @param value the value to set.
+   * Start coordinate on the contig
+   * @param value the value to set.
    */
   public void setStart(java.lang.Long value) {
     this.start = value;
@@ -184,14 +212,16 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'end' field.
-   * End coordinate on the contig   */
+   * @return End coordinate on the contig
+   */
   public java.lang.Long getEnd() {
     return end;
   }
 
   /**
    * Sets the value of the 'end' field.
-   * End coordinate on the contig   * @param value the value to set.
+   * End coordinate on the contig
+   * @param value the value to set.
    */
   public void setEnd(java.lang.Long value) {
     this.end = value;
@@ -199,14 +229,16 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'strand' field.
-   * Strand information for this feature   */
+   * @return Strand information for this feature
+   */
   public org.bdgenomics.formats.avro.Strand getStrand() {
     return strand;
   }
 
   /**
    * Sets the value of the 'strand' field.
-   * Strand information for this feature   * @param value the value to set.
+   * Strand information for this feature
+   * @param value the value to set.
    */
   public void setStrand(org.bdgenomics.formats.avro.Strand value) {
     this.strand = value;
@@ -214,14 +246,16 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'value' field.
-   * The value associated with this feature (if double)   */
+   * @return The value associated with this feature (if double)
+   */
   public java.lang.Double getValue() {
     return value;
   }
 
   /**
    * Sets the value of the 'value' field.
-   * The value associated with this feature (if double)   * @param value the value to set.
+   * The value associated with this feature (if double)
+   * @param value the value to set.
    */
   public void setValue(java.lang.Double value) {
     this.value = value;
@@ -229,14 +263,16 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'dbxrefs' field.
-   * Cross-references into other databases.   */
+   * @return Cross-references into other databases.
+   */
   public java.util.List<org.bdgenomics.formats.avro.Dbxref> getDbxrefs() {
     return dbxrefs;
   }
 
   /**
    * Sets the value of the 'dbxrefs' field.
-   * Cross-references into other databases.   * @param value the value to set.
+   * Cross-references into other databases.
+   * @param value the value to set.
    */
   public void setDbxrefs(java.util.List<org.bdgenomics.formats.avro.Dbxref> value) {
     this.dbxrefs = value;
@@ -244,14 +280,16 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'parentIds' field.
-   * List of parent featureIds, for implementing feature hierachies/graphs.   */
+   * @return List of parent featureIds, for implementing feature hierachies/graphs.
+   */
   public java.util.List<java.lang.CharSequence> getParentIds() {
     return parentIds;
   }
 
   /**
    * Sets the value of the 'parentIds' field.
-   * List of parent featureIds, for implementing feature hierachies/graphs.   * @param value the value to set.
+   * List of parent featureIds, for implementing feature hierachies/graphs.
+   * @param value the value to set.
    */
   public void setParentIds(java.util.List<java.lang.CharSequence> value) {
     this.parentIds = value;
@@ -259,9 +297,10 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'attributes' field.
-   * Additional feature info that doesn't fit into the standard fields above.
+   * @return Additional feature info that doesn't fit into the standard fields above.
 
-   They are all encoded as (string, string) key-value pairs.   */
+   They are all encoded as (string, string) key-value pairs.
+   */
   public java.util.Map<java.lang.CharSequence,java.lang.CharSequence> getAttributes() {
     return attributes;
   }
@@ -270,23 +309,35 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'attributes' field.
    * Additional feature info that doesn't fit into the standard fields above.
 
-   They are all encoded as (string, string) key-value pairs.   * @param value the value to set.
+   They are all encoded as (string, string) key-value pairs.
+   * @param value the value to set.
    */
   public void setAttributes(java.util.Map<java.lang.CharSequence,java.lang.CharSequence> value) {
     this.attributes = value;
   }
 
-  /** Creates a new Feature RecordBuilder */
+  /**
+   * Creates a new Feature RecordBuilder.
+   * @return A new Feature RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Feature.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Feature.Builder();
   }
   
-  /** Creates a new Feature RecordBuilder by copying an existing Builder */
+  /**
+   * Creates a new Feature RecordBuilder by copying an existing Builder.
+   * @param other The existing builder to copy.
+   * @return A new Feature RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Feature.Builder newBuilder(org.bdgenomics.formats.avro.Feature.Builder other) {
     return new org.bdgenomics.formats.avro.Feature.Builder(other);
   }
   
-  /** Creates a new Feature RecordBuilder by copying an existing Feature instance */
+  /**
+   * Creates a new Feature RecordBuilder by copying an existing Feature instance.
+   * @param other The existing instance to copy.
+   * @return A new Feature RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Feature.Builder newBuilder(org.bdgenomics.formats.avro.Feature other) {
     return new org.bdgenomics.formats.avro.Feature.Builder(other);
   }
@@ -297,16 +348,34 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Feature>
     implements org.apache.avro.data.RecordBuilder<Feature> {
 
+    /** Preferably unique ID for this Feature object */
     private java.lang.CharSequence featureId;
+    /** The type of feature this is (aka, "track").
+
+   Examples are "conservation", "centipede", "gene" */
     private java.lang.CharSequence featureType;
+    /** The original source for this feature.
+
+   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.) */
     private java.lang.CharSequence source;
+    /** The contig this feature is located on */
     private org.bdgenomics.formats.avro.Contig contig;
+    private org.bdgenomics.formats.avro.Contig.Builder contigBuilder;
+    /** Start coordinate on the contig */
     private java.lang.Long start;
+    /** End coordinate on the contig */
     private java.lang.Long end;
+    /** Strand information for this feature */
     private org.bdgenomics.formats.avro.Strand strand;
+    /** The value associated with this feature (if double) */
     private java.lang.Double value;
+    /** Cross-references into other databases. */
     private java.util.List<org.bdgenomics.formats.avro.Dbxref> dbxrefs;
+    /** List of parent featureIds, for implementing feature hierachies/graphs. */
     private java.util.List<java.lang.CharSequence> parentIds;
+    /** Additional feature info that doesn't fit into the standard fields above.
+
+   They are all encoded as (string, string) key-value pairs. */
     private java.util.Map<java.lang.CharSequence,java.lang.CharSequence> attributes;
 
     /** Creates a new Builder */
@@ -314,7 +383,10 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       super(org.bdgenomics.formats.avro.Feature.SCHEMA$);
     }
     
-    /** Creates a Builder by copying an existing Builder */
+    /**
+     * Creates a Builder by copying an existing Builder.
+     * @param other The existing Builder to copy.
+     */
     private Builder(org.bdgenomics.formats.avro.Feature.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.featureId)) {
@@ -333,6 +405,9 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
         this.contig = data().deepCopy(fields()[3].schema(), other.contig);
         fieldSetFlags()[3] = true;
       }
+      if (other.hasContigBuilder()) {
+        this.contigBuilder = org.bdgenomics.formats.avro.Contig.newBuilder(other.getContigBuilder());
+      }
       if (isValidValue(fields()[4], other.start)) {
         this.start = data().deepCopy(fields()[4].schema(), other.start);
         fieldSetFlags()[4] = true;
@@ -363,7 +438,10 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       }
     }
     
-    /** Creates a Builder by copying an existing Feature instance */
+    /**
+     * Creates a Builder by copying an existing Feature instance
+     * @param other The existing instance to copy.
+     */
     private Builder(org.bdgenomics.formats.avro.Feature other) {
             super(org.bdgenomics.formats.avro.Feature.SCHEMA$);
       if (isValidValue(fields()[0], other.featureId)) {
@@ -382,6 +460,7 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
         this.contig = data().deepCopy(fields()[3].schema(), other.contig);
         fieldSetFlags()[3] = true;
       }
+      this.contigBuilder = null;
       if (isValidValue(fields()[4], other.start)) {
         this.start = data().deepCopy(fields()[4].schema(), other.start);
         fieldSetFlags()[4] = true;
@@ -412,275 +491,534 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       }
     }
 
-    /** Gets the value of the 'featureId' field */
+    /**
+      * Gets the value of the 'featureId' field.
+      * Preferably unique ID for this Feature object
+      * @return The value.
+      */
     public java.lang.CharSequence getFeatureId() {
       return featureId;
     }
-    
-    /** Sets the value of the 'featureId' field */
+
+    /**
+      * Sets the value of the 'featureId' field.
+      * Preferably unique ID for this Feature object
+      * @param value The value of 'featureId'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setFeatureId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.featureId = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-    
-    /** Checks whether the 'featureId' field has been set */
+
+    /**
+      * Checks whether the 'featureId' field has been set.
+      * Preferably unique ID for this Feature object
+      * @return True if the 'featureId' field has been set, false otherwise.
+      */
     public boolean hasFeatureId() {
       return fieldSetFlags()[0];
     }
-    
-    /** Clears the value of the 'featureId' field */
+
+
+    /**
+      * Clears the value of the 'featureId' field.
+      * Preferably unique ID for this Feature object
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearFeatureId() {
       featureId = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /** Gets the value of the 'featureType' field */
+    /**
+      * Gets the value of the 'featureType' field.
+      * The type of feature this is (aka, "track").
+
+   Examples are "conservation", "centipede", "gene"
+      * @return The value.
+      */
     public java.lang.CharSequence getFeatureType() {
       return featureType;
     }
-    
-    /** Sets the value of the 'featureType' field */
+
+    /**
+      * Sets the value of the 'featureType' field.
+      * The type of feature this is (aka, "track").
+
+   Examples are "conservation", "centipede", "gene"
+      * @param value The value of 'featureType'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setFeatureType(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.featureType = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-    
-    /** Checks whether the 'featureType' field has been set */
+
+    /**
+      * Checks whether the 'featureType' field has been set.
+      * The type of feature this is (aka, "track").
+
+   Examples are "conservation", "centipede", "gene"
+      * @return True if the 'featureType' field has been set, false otherwise.
+      */
     public boolean hasFeatureType() {
       return fieldSetFlags()[1];
     }
-    
-    /** Clears the value of the 'featureType' field */
+
+
+    /**
+      * Clears the value of the 'featureType' field.
+      * The type of feature this is (aka, "track").
+
+   Examples are "conservation", "centipede", "gene"
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearFeatureType() {
       featureType = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /** Gets the value of the 'source' field */
+    /**
+      * Gets the value of the 'source' field.
+      * The original source for this feature.
+
+   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.)
+      * @return The value.
+      */
     public java.lang.CharSequence getSource() {
       return source;
     }
-    
-    /** Sets the value of the 'source' field */
+
+    /**
+      * Sets the value of the 'source' field.
+      * The original source for this feature.
+
+   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.)
+      * @param value The value of 'source'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setSource(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.source = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-    
-    /** Checks whether the 'source' field has been set */
+
+    /**
+      * Checks whether the 'source' field has been set.
+      * The original source for this feature.
+
+   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.)
+      * @return True if the 'source' field has been set, false otherwise.
+      */
     public boolean hasSource() {
       return fieldSetFlags()[2];
     }
-    
-    /** Clears the value of the 'source' field */
+
+
+    /**
+      * Clears the value of the 'source' field.
+      * The original source for this feature.
+
+   Path/filename/URL and/or the file type (e.g., BED, GFF, etc.)
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearSource() {
       source = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /** Gets the value of the 'contig' field */
+    /**
+      * Gets the value of the 'contig' field.
+      * The contig this feature is located on
+      * @return The value.
+      */
     public org.bdgenomics.formats.avro.Contig getContig() {
       return contig;
     }
-    
-    /** Sets the value of the 'contig' field */
+
+    /**
+      * Sets the value of the 'contig' field.
+      * The contig this feature is located on
+      * @param value The value of 'contig'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setContig(org.bdgenomics.formats.avro.Contig value) {
       validate(fields()[3], value);
+      this.contigBuilder = null;
       this.contig = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-    
-    /** Checks whether the 'contig' field has been set */
+
+    /**
+      * Checks whether the 'contig' field has been set.
+      * The contig this feature is located on
+      * @return True if the 'contig' field has been set, false otherwise.
+      */
     public boolean hasContig() {
       return fieldSetFlags()[3];
     }
-    
-    /** Clears the value of the 'contig' field */
+
+    /**
+     * Gets the Builder instance for the 'contig' field and creates one if it doesn't exist yet.
+     * The contig this feature is located on
+     * @return This builder.
+     */
+    public org.bdgenomics.formats.avro.Contig.Builder getContigBuilder() {
+      if (contigBuilder == null) {
+        if (hasContig()) {
+          setContigBuilder(org.bdgenomics.formats.avro.Contig.newBuilder(contig));
+        } else {
+          setContigBuilder(org.bdgenomics.formats.avro.Contig.newBuilder());
+        }
+      }
+      return contigBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'contig' field
+     * The contig this feature is located on
+     * @return This builder.
+     */
+    public org.bdgenomics.formats.avro.Feature.Builder setContigBuilder(org.bdgenomics.formats.avro.Contig.Builder value) {
+      clearContig();
+      contigBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'contig' field has an active Builder instance
+     * The contig this feature is located on
+     * @return True if the 'contig' field has an active Builder instance
+     */
+    public boolean hasContigBuilder() {
+      return contigBuilder != null;
+    }
+
+    /**
+      * Clears the value of the 'contig' field.
+      * The contig this feature is located on
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearContig() {
       contig = null;
+      contigBuilder = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /** Gets the value of the 'start' field */
+    /**
+      * Gets the value of the 'start' field.
+      * Start coordinate on the contig
+      * @return The value.
+      */
     public java.lang.Long getStart() {
       return start;
     }
-    
-    /** Sets the value of the 'start' field */
+
+    /**
+      * Sets the value of the 'start' field.
+      * Start coordinate on the contig
+      * @param value The value of 'start'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setStart(java.lang.Long value) {
       validate(fields()[4], value);
       this.start = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-    
-    /** Checks whether the 'start' field has been set */
+
+    /**
+      * Checks whether the 'start' field has been set.
+      * Start coordinate on the contig
+      * @return True if the 'start' field has been set, false otherwise.
+      */
     public boolean hasStart() {
       return fieldSetFlags()[4];
     }
-    
-    /** Clears the value of the 'start' field */
+
+
+    /**
+      * Clears the value of the 'start' field.
+      * Start coordinate on the contig
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearStart() {
       start = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /** Gets the value of the 'end' field */
+    /**
+      * Gets the value of the 'end' field.
+      * End coordinate on the contig
+      * @return The value.
+      */
     public java.lang.Long getEnd() {
       return end;
     }
-    
-    /** Sets the value of the 'end' field */
+
+    /**
+      * Sets the value of the 'end' field.
+      * End coordinate on the contig
+      * @param value The value of 'end'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setEnd(java.lang.Long value) {
       validate(fields()[5], value);
       this.end = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-    
-    /** Checks whether the 'end' field has been set */
+
+    /**
+      * Checks whether the 'end' field has been set.
+      * End coordinate on the contig
+      * @return True if the 'end' field has been set, false otherwise.
+      */
     public boolean hasEnd() {
       return fieldSetFlags()[5];
     }
-    
-    /** Clears the value of the 'end' field */
+
+
+    /**
+      * Clears the value of the 'end' field.
+      * End coordinate on the contig
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearEnd() {
       end = null;
       fieldSetFlags()[5] = false;
       return this;
     }
 
-    /** Gets the value of the 'strand' field */
+    /**
+      * Gets the value of the 'strand' field.
+      * Strand information for this feature
+      * @return The value.
+      */
     public org.bdgenomics.formats.avro.Strand getStrand() {
       return strand;
     }
-    
-    /** Sets the value of the 'strand' field */
+
+    /**
+      * Sets the value of the 'strand' field.
+      * Strand information for this feature
+      * @param value The value of 'strand'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setStrand(org.bdgenomics.formats.avro.Strand value) {
       validate(fields()[6], value);
       this.strand = value;
       fieldSetFlags()[6] = true;
       return this; 
     }
-    
-    /** Checks whether the 'strand' field has been set */
+
+    /**
+      * Checks whether the 'strand' field has been set.
+      * Strand information for this feature
+      * @return True if the 'strand' field has been set, false otherwise.
+      */
     public boolean hasStrand() {
       return fieldSetFlags()[6];
     }
-    
-    /** Clears the value of the 'strand' field */
+
+
+    /**
+      * Clears the value of the 'strand' field.
+      * Strand information for this feature
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearStrand() {
       strand = null;
       fieldSetFlags()[6] = false;
       return this;
     }
 
-    /** Gets the value of the 'value' field */
+    /**
+      * Gets the value of the 'value' field.
+      * The value associated with this feature (if double)
+      * @return The value.
+      */
     public java.lang.Double getValue() {
       return value;
     }
-    
-    /** Sets the value of the 'value' field */
+
+    /**
+      * Sets the value of the 'value' field.
+      * The value associated with this feature (if double)
+      * @param value The value of 'value'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setValue(java.lang.Double value) {
       validate(fields()[7], value);
       this.value = value;
       fieldSetFlags()[7] = true;
       return this; 
     }
-    
-    /** Checks whether the 'value' field has been set */
+
+    /**
+      * Checks whether the 'value' field has been set.
+      * The value associated with this feature (if double)
+      * @return True if the 'value' field has been set, false otherwise.
+      */
     public boolean hasValue() {
       return fieldSetFlags()[7];
     }
-    
-    /** Clears the value of the 'value' field */
+
+
+    /**
+      * Clears the value of the 'value' field.
+      * The value associated with this feature (if double)
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearValue() {
       value = null;
       fieldSetFlags()[7] = false;
       return this;
     }
 
-    /** Gets the value of the 'dbxrefs' field */
+    /**
+      * Gets the value of the 'dbxrefs' field.
+      * Cross-references into other databases.
+      * @return The value.
+      */
     public java.util.List<org.bdgenomics.formats.avro.Dbxref> getDbxrefs() {
       return dbxrefs;
     }
-    
-    /** Sets the value of the 'dbxrefs' field */
+
+    /**
+      * Sets the value of the 'dbxrefs' field.
+      * Cross-references into other databases.
+      * @param value The value of 'dbxrefs'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setDbxrefs(java.util.List<org.bdgenomics.formats.avro.Dbxref> value) {
       validate(fields()[8], value);
       this.dbxrefs = value;
       fieldSetFlags()[8] = true;
       return this; 
     }
-    
-    /** Checks whether the 'dbxrefs' field has been set */
+
+    /**
+      * Checks whether the 'dbxrefs' field has been set.
+      * Cross-references into other databases.
+      * @return True if the 'dbxrefs' field has been set, false otherwise.
+      */
     public boolean hasDbxrefs() {
       return fieldSetFlags()[8];
     }
-    
-    /** Clears the value of the 'dbxrefs' field */
+
+
+    /**
+      * Clears the value of the 'dbxrefs' field.
+      * Cross-references into other databases.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearDbxrefs() {
       dbxrefs = null;
       fieldSetFlags()[8] = false;
       return this;
     }
 
-    /** Gets the value of the 'parentIds' field */
+    /**
+      * Gets the value of the 'parentIds' field.
+      * List of parent featureIds, for implementing feature hierachies/graphs.
+      * @return The value.
+      */
     public java.util.List<java.lang.CharSequence> getParentIds() {
       return parentIds;
     }
-    
-    /** Sets the value of the 'parentIds' field */
+
+    /**
+      * Sets the value of the 'parentIds' field.
+      * List of parent featureIds, for implementing feature hierachies/graphs.
+      * @param value The value of 'parentIds'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setParentIds(java.util.List<java.lang.CharSequence> value) {
       validate(fields()[9], value);
       this.parentIds = value;
       fieldSetFlags()[9] = true;
       return this; 
     }
-    
-    /** Checks whether the 'parentIds' field has been set */
+
+    /**
+      * Checks whether the 'parentIds' field has been set.
+      * List of parent featureIds, for implementing feature hierachies/graphs.
+      * @return True if the 'parentIds' field has been set, false otherwise.
+      */
     public boolean hasParentIds() {
       return fieldSetFlags()[9];
     }
-    
-    /** Clears the value of the 'parentIds' field */
+
+
+    /**
+      * Clears the value of the 'parentIds' field.
+      * List of parent featureIds, for implementing feature hierachies/graphs.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearParentIds() {
       parentIds = null;
       fieldSetFlags()[9] = false;
       return this;
     }
 
-    /** Gets the value of the 'attributes' field */
+    /**
+      * Gets the value of the 'attributes' field.
+      * Additional feature info that doesn't fit into the standard fields above.
+
+   They are all encoded as (string, string) key-value pairs.
+      * @return The value.
+      */
     public java.util.Map<java.lang.CharSequence,java.lang.CharSequence> getAttributes() {
       return attributes;
     }
-    
-    /** Sets the value of the 'attributes' field */
+
+    /**
+      * Sets the value of the 'attributes' field.
+      * Additional feature info that doesn't fit into the standard fields above.
+
+   They are all encoded as (string, string) key-value pairs.
+      * @param value The value of 'attributes'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder setAttributes(java.util.Map<java.lang.CharSequence,java.lang.CharSequence> value) {
       validate(fields()[10], value);
       this.attributes = value;
       fieldSetFlags()[10] = true;
       return this; 
     }
-    
-    /** Checks whether the 'attributes' field has been set */
+
+    /**
+      * Checks whether the 'attributes' field has been set.
+      * Additional feature info that doesn't fit into the standard fields above.
+
+   They are all encoded as (string, string) key-value pairs.
+      * @return True if the 'attributes' field has been set, false otherwise.
+      */
     public boolean hasAttributes() {
       return fieldSetFlags()[10];
     }
-    
-    /** Clears the value of the 'attributes' field */
+
+
+    /**
+      * Clears the value of the 'attributes' field.
+      * Additional feature info that doesn't fit into the standard fields above.
+
+   They are all encoded as (string, string) key-value pairs.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Feature.Builder clearAttributes() {
       attributes = null;
       fieldSetFlags()[10] = false;
@@ -694,7 +1032,11 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
         record.featureId = fieldSetFlags()[0] ? this.featureId : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.featureType = fieldSetFlags()[1] ? this.featureType : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.source = fieldSetFlags()[2] ? this.source : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.contig = fieldSetFlags()[3] ? this.contig : (org.bdgenomics.formats.avro.Contig) defaultValue(fields()[3]);
+        if (contigBuilder != null) {
+          record.contig = this.contigBuilder.build();
+        } else {
+          record.contig = fieldSetFlags()[3] ? this.contig : (org.bdgenomics.formats.avro.Contig) defaultValue(fields()[3]);
+        }
         record.start = fieldSetFlags()[4] ? this.start : (java.lang.Long) defaultValue(fields()[4]);
         record.end = fieldSetFlags()[5] ? this.end : (java.lang.Long) defaultValue(fields()[5]);
         record.strand = fieldSetFlags()[6] ? this.strand : (org.bdgenomics.formats.avro.Strand) defaultValue(fields()[6]);
@@ -708,4 +1050,21 @@ public class Feature extends org.apache.avro.specific.SpecificRecordBase impleme
       }
     }
   }
+
+  private static final org.apache.avro.io.DatumWriter
+    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
+
+  @Override public void writeExternal(java.io.ObjectOutput out)
+    throws java.io.IOException {
+    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
+  }
+
+  private static final org.apache.avro.io.DatumReader
+    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
+
+  @Override public void readExternal(java.io.ObjectInput in)
+    throws java.io.IOException {
+    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
+  }
+
 }

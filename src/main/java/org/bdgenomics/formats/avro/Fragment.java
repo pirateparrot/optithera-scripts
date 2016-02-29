@@ -9,6 +9,7 @@ package org.bdgenomics.formats.avro;
    one or more reads. */
 @org.apache.avro.specific.AvroGenerated
 public class Fragment extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -4648179307411027034L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Fragment\",\"namespace\":\"org.bdgenomics.formats.avro\",\"doc\":\"The DNA fragment that is was targeted by the sequencer, resulting in\\n   one or more reads.\",\"fields\":[{\"name\":\"readName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this Fragment.\",\"default\":null},{\"name\":\"instrument\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"runId\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"fragmentSize\",\"type\":[\"null\",\"int\"],\"doc\":\"Fragment's insert size derived from alignment, if the reads have been\\n   aligned.\",\"default\":null},{\"name\":\"sequences\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Sequence\",\"fields\":[{\"name\":\"bases\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"qualities\",\"type\":[\"null\",\"string\"],\"default\":null}]}},\"doc\":\"The sequences read from this fragment.\",\"default\":[]},{\"name\":\"alignments\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"AlignmentRecord\",\"fields\":[{\"name\":\"readNum\",\"type\":[\"int\",\"null\"],\"doc\":\"Read number within the array of fragment reads.\",\"default\":0},{\"name\":\"contig\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Contig\",\"doc\":\"Record for describing a reference assembly. Not used for storing the contents\\n of said assembly.\\n\\n @see NucleotideContigFragment\",\"fields\":[{\"name\":\"contigName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this contig in the assembly (e.g., \\\"chr1\\\").\",\"default\":null},{\"name\":\"contigLength\",\"type\":[\"null\",\"long\"],\"doc\":\"The length of this contig.\",\"default\":null},{\"name\":\"contigMD5\",\"type\":[\"null\",\"string\"],\"doc\":\"The MD5 checksum of the assembly for this contig.\",\"default\":null},{\"name\":\"referenceURL\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL at which this reference assembly can be found.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this assembly (e.g., \\\"hg19\\\").\",\"default\":null},{\"name\":\"species\",\"type\":[\"null\",\"string\"],\"doc\":\"The species that this assembly is for.\",\"default\":null},{\"name\":\"referenceIndex\",\"type\":[\"null\",\"int\"],\"doc\":\"Optional 0-based index of this contig in a SAM file header that it was read\\n   from; helps output SAMs/BAMs with headers in the same order as they started\\n   with, before a conversion to ADAM.\",\"default\":null}]}],\"doc\":\"The reference sequence details for the reference chromosome that\\n   this read is aligned to. If the read is unaligned, this field should\\n   be null.\",\"default\":null},{\"name\":\"start\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position for the start of this read's alignment.\\n   Should be null if the read is unaligned.\",\"default\":null},{\"name\":\"oldPosition\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position where this read used to start before\\n   local realignment.\\n   Stores the same data as the OP field in the SAM format.\",\"default\":null},{\"name\":\"end\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position for the end of this read's alignment.\\n   Should be null if the read is unaligned.\",\"default\":null},{\"name\":\"mapq\",\"type\":[\"null\",\"int\"],\"doc\":\"The global mapping quality of this read.\",\"default\":null},{\"name\":\"readName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this read. This should be unique within the read group\\n   that this read is from, and can be used to identify other reads that\\n   are derived from a single fragment.\",\"default\":null},{\"name\":\"sequence\",\"type\":[\"null\",\"string\"],\"doc\":\"The bases in this alignment. If the read has been hard clipped, this may\\n   not represent all the bases in the original read.\",\"default\":null},{\"name\":\"qual\",\"type\":[\"null\",\"string\"],\"doc\":\"The per-base quality scores in this alignment. If the read has been hard\\n   clipped, this may not represent all the bases in the original read.\\n   Additionally, if the error scores have been recalibrated, this field\\n   will not contain the original base quality scores.\\n\\n   @see origQual\",\"default\":null},{\"name\":\"cigar\",\"type\":[\"null\",\"string\"],\"doc\":\"The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that\\n   describes the local alignment of this read. Contains {length, operator}\\n   pairs for all contiguous alignment operations. The operators include:\\n\\n   * M, ALIGNMENT_MATCH: An alignment match indicates that a sequence can be\\n     aligned to the reference without evidence of an INDEL. Unlike the\\n     SEQUENCE_MATCH and SEQUENCE_MISMATCH operators, the ALIGNMENT_MATCH\\n     operator does not indicate whether the reference and read sequences are an\\n     exact match.\\n   * I, INSERT: The insert operator indicates that the read contains evidence of\\n     bases being inserted into the reference.\\n   * D, DELETE: The delete operator indicates that the read contains evidence of\\n     bases being deleted from the reference.\\n   * N, SKIP: The skip operator indicates that this read skips a long segment of\\n     the reference, but the bases have not been deleted. This operator is\\n     commonly used when working with RNA-seq data, where reads may skip long\\n     segments of the reference between exons.\\n   * S, CLIP_SOFT: The soft clip operator indicates that bases at the start/end\\n     of a read have not been considered during alignment. This may occur if the\\n     majority of a read maps, except for low quality bases at the start/end of\\n     a read. Bases that are soft clipped will still be stored in the read.\\n   * H, CLIP_HARD: The hard clip operator indicates that bases at the start/end of\\n     a read have been omitted from this alignment. This may occur if this linear\\n     alignment is part of a chimeric alignment, or if the read has been trimmed\\n     (e.g., during error correction, or to trim poly-A tails for RNA-seq).\\n   * P, PAD: The pad operator indicates that there is padding in an alignment.\\n   * =, SEQUENCE_MATCH: This operator indicates that this portion of the aligned\\n     sequence exactly matches the reference (e.g., all bases are equal to the\\n     reference bases).\\n   * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the\\n     aligned sequence is an alignment match to the reference, but a sequence\\n     mismatch (e.g., the bases are not equal to the reference). This can\\n     indicate a SNP or a read error.\",\"default\":null},{\"name\":\"oldCigar\",\"type\":[\"null\",\"string\"],\"doc\":\"Stores the CIGAR string present before local indel realignment.\\n   Stores the same data as the OC field in the SAM format.\\n\\n   @see cigar\",\"default\":null},{\"name\":\"basesTrimmedFromStart\",\"type\":[\"int\",\"null\"],\"doc\":\"The number of bases in this read/alignment that have been trimmed from the\\n   start of the read. By default, this is equal to 0. If the value is non-zero,\\n   that means that the start of the read has been hard-clipped.\\n\\n   @see cigar\",\"default\":0},{\"name\":\"basesTrimmedFromEnd\",\"type\":[\"int\",\"null\"],\"doc\":\"The number of bases in this read/alignment that have been trimmed from the\\n   end of the read. By default, this is equal to 0. If the value is non-zero,\\n   that means that the end of the read has been hard-clipped.\\n\\n   @see cigar\",\"default\":0},{\"name\":\"readPaired\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"properPair\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"readMapped\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"mateMapped\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"failedVendorQualityChecks\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"duplicateRead\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"readNegativeStrand\",\"type\":[\"boolean\",\"null\"],\"doc\":\"True if this alignment is mapped as a reverse compliment. This field\\n   defaults to false.\",\"default\":false},{\"name\":\"mateNegativeStrand\",\"type\":[\"boolean\",\"null\"],\"doc\":\"True if the mate pair of this alignment is mapped as a reverse compliment.\\n   This field defaults to false.\",\"default\":false},{\"name\":\"primaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is either the best linear alignment,\\n   or the first linear alignment in a chimeric alignment. Defaults to false.\\n\\n   @see secondaryAlignment\\n   @see supplementaryAlignment\",\"default\":false},{\"name\":\"secondaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is a lower quality linear alig","nment\\n   for a multiply-mapped read. Defaults to false.\\n\\n   @see primaryAlignment\\n   @see supplementaryAlignment\",\"default\":false},{\"name\":\"supplementaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is a non-primary linear alignment in\\n   a chimeric alignment. Defaults to false.\\n\\n   @see primaryAlignment\\n   @see secondaryAlignment\",\"default\":false},{\"name\":\"mismatchingPositions\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"origQual\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attributes\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupName\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupSequencingCenter\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupDescription\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupRunDateEpoch\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"recordGroupFlowOrder\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupKeySequence\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupLibrary\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupPredictedMedianInsertSize\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"recordGroupPlatform\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupPlatformUnit\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupSample\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"mateAlignmentStart\",\"type\":[\"null\",\"long\"],\"doc\":\"The start position of the mate of this read. Should be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"mateAlignmentEnd\",\"type\":[\"null\",\"long\"],\"doc\":\"The end position of the mate of this read. Should be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"mateContig\",\"type\":[\"null\",\"Contig\"],\"doc\":\"The reference contig of the mate of this read. Should be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"inferredInsertSize\",\"type\":[\"null\",\"long\"],\"doc\":\"The distance between this read and it's mate as inferred from alignment.\",\"default\":null}]}},\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** The name of this Fragment. */
@@ -31,6 +32,10 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * All-args constructor.
+   * @param readName The name of this Fragment.
+   * @param fragmentSize Fragment's insert size derived from alignment, if the reads have been
+   aligned.
+   * @param sequences The sequences read from this fragment.
    */
   public Fragment(java.lang.CharSequence readName, java.lang.CharSequence instrument, java.lang.CharSequence runId, java.lang.Integer fragmentSize, java.util.List<org.bdgenomics.formats.avro.Sequence> sequences, java.util.List<org.bdgenomics.formats.avro.AlignmentRecord> alignments) {
     this.readName = readName;
@@ -70,14 +75,16 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'readName' field.
-   * The name of this Fragment.   */
+   * @return The name of this Fragment.
+   */
   public java.lang.CharSequence getReadName() {
     return readName;
   }
 
   /**
    * Sets the value of the 'readName' field.
-   * The name of this Fragment.   * @param value the value to set.
+   * The name of this Fragment.
+   * @param value the value to set.
    */
   public void setReadName(java.lang.CharSequence value) {
     this.readName = value;
@@ -115,8 +122,9 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'fragmentSize' field.
-   * Fragment's insert size derived from alignment, if the reads have been
-   aligned.   */
+   * @return Fragment's insert size derived from alignment, if the reads have been
+   aligned.
+   */
   public java.lang.Integer getFragmentSize() {
     return fragmentSize;
   }
@@ -124,7 +132,8 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
   /**
    * Sets the value of the 'fragmentSize' field.
    * Fragment's insert size derived from alignment, if the reads have been
-   aligned.   * @param value the value to set.
+   aligned.
+   * @param value the value to set.
    */
   public void setFragmentSize(java.lang.Integer value) {
     this.fragmentSize = value;
@@ -132,14 +141,16 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * Gets the value of the 'sequences' field.
-   * The sequences read from this fragment.   */
+   * @return The sequences read from this fragment.
+   */
   public java.util.List<org.bdgenomics.formats.avro.Sequence> getSequences() {
     return sequences;
   }
 
   /**
    * Sets the value of the 'sequences' field.
-   * The sequences read from this fragment.   * @param value the value to set.
+   * The sequences read from this fragment.
+   * @param value the value to set.
    */
   public void setSequences(java.util.List<org.bdgenomics.formats.avro.Sequence> value) {
     this.sequences = value;
@@ -160,17 +171,28 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
     this.alignments = value;
   }
 
-  /** Creates a new Fragment RecordBuilder */
+  /**
+   * Creates a new Fragment RecordBuilder.
+   * @return A new Fragment RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Fragment.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Fragment.Builder();
   }
   
-  /** Creates a new Fragment RecordBuilder by copying an existing Builder */
+  /**
+   * Creates a new Fragment RecordBuilder by copying an existing Builder.
+   * @param other The existing builder to copy.
+   * @return A new Fragment RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Fragment.Builder newBuilder(org.bdgenomics.formats.avro.Fragment.Builder other) {
     return new org.bdgenomics.formats.avro.Fragment.Builder(other);
   }
   
-  /** Creates a new Fragment RecordBuilder by copying an existing Fragment instance */
+  /**
+   * Creates a new Fragment RecordBuilder by copying an existing Fragment instance.
+   * @param other The existing instance to copy.
+   * @return A new Fragment RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Fragment.Builder newBuilder(org.bdgenomics.formats.avro.Fragment other) {
     return new org.bdgenomics.formats.avro.Fragment.Builder(other);
   }
@@ -181,10 +203,14 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Fragment>
     implements org.apache.avro.data.RecordBuilder<Fragment> {
 
+    /** The name of this Fragment. */
     private java.lang.CharSequence readName;
     private java.lang.CharSequence instrument;
     private java.lang.CharSequence runId;
+    /** Fragment's insert size derived from alignment, if the reads have been
+   aligned. */
     private java.lang.Integer fragmentSize;
+    /** The sequences read from this fragment. */
     private java.util.List<org.bdgenomics.formats.avro.Sequence> sequences;
     private java.util.List<org.bdgenomics.formats.avro.AlignmentRecord> alignments;
 
@@ -193,7 +219,10 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
       super(org.bdgenomics.formats.avro.Fragment.SCHEMA$);
     }
     
-    /** Creates a Builder by copying an existing Builder */
+    /**
+     * Creates a Builder by copying an existing Builder.
+     * @param other The existing Builder to copy.
+     */
     private Builder(org.bdgenomics.formats.avro.Fragment.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.readName)) {
@@ -222,7 +251,10 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
       }
     }
     
-    /** Creates a Builder by copying an existing Fragment instance */
+    /**
+     * Creates a Builder by copying an existing Fragment instance
+     * @param other The existing instance to copy.
+     */
     private Builder(org.bdgenomics.formats.avro.Fragment other) {
             super(org.bdgenomics.formats.avro.Fragment.SCHEMA$);
       if (isValidValue(fields()[0], other.readName)) {
@@ -251,150 +283,250 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
       }
     }
 
-    /** Gets the value of the 'readName' field */
+    /**
+      * Gets the value of the 'readName' field.
+      * The name of this Fragment.
+      * @return The value.
+      */
     public java.lang.CharSequence getReadName() {
       return readName;
     }
-    
-    /** Sets the value of the 'readName' field */
+
+    /**
+      * Sets the value of the 'readName' field.
+      * The name of this Fragment.
+      * @param value The value of 'readName'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder setReadName(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.readName = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-    
-    /** Checks whether the 'readName' field has been set */
+
+    /**
+      * Checks whether the 'readName' field has been set.
+      * The name of this Fragment.
+      * @return True if the 'readName' field has been set, false otherwise.
+      */
     public boolean hasReadName() {
       return fieldSetFlags()[0];
     }
-    
-    /** Clears the value of the 'readName' field */
+
+
+    /**
+      * Clears the value of the 'readName' field.
+      * The name of this Fragment.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder clearReadName() {
       readName = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /** Gets the value of the 'instrument' field */
+    /**
+      * Gets the value of the 'instrument' field.
+      * @return The value.
+      */
     public java.lang.CharSequence getInstrument() {
       return instrument;
     }
-    
-    /** Sets the value of the 'instrument' field */
+
+    /**
+      * Sets the value of the 'instrument' field.
+      * @param value The value of 'instrument'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder setInstrument(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.instrument = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-    
-    /** Checks whether the 'instrument' field has been set */
+
+    /**
+      * Checks whether the 'instrument' field has been set.
+      * @return True if the 'instrument' field has been set, false otherwise.
+      */
     public boolean hasInstrument() {
       return fieldSetFlags()[1];
     }
-    
-    /** Clears the value of the 'instrument' field */
+
+
+    /**
+      * Clears the value of the 'instrument' field.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder clearInstrument() {
       instrument = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /** Gets the value of the 'runId' field */
+    /**
+      * Gets the value of the 'runId' field.
+      * @return The value.
+      */
     public java.lang.CharSequence getRunId() {
       return runId;
     }
-    
-    /** Sets the value of the 'runId' field */
+
+    /**
+      * Sets the value of the 'runId' field.
+      * @param value The value of 'runId'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder setRunId(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.runId = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-    
-    /** Checks whether the 'runId' field has been set */
+
+    /**
+      * Checks whether the 'runId' field has been set.
+      * @return True if the 'runId' field has been set, false otherwise.
+      */
     public boolean hasRunId() {
       return fieldSetFlags()[2];
     }
-    
-    /** Clears the value of the 'runId' field */
+
+
+    /**
+      * Clears the value of the 'runId' field.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder clearRunId() {
       runId = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /** Gets the value of the 'fragmentSize' field */
+    /**
+      * Gets the value of the 'fragmentSize' field.
+      * Fragment's insert size derived from alignment, if the reads have been
+   aligned.
+      * @return The value.
+      */
     public java.lang.Integer getFragmentSize() {
       return fragmentSize;
     }
-    
-    /** Sets the value of the 'fragmentSize' field */
+
+    /**
+      * Sets the value of the 'fragmentSize' field.
+      * Fragment's insert size derived from alignment, if the reads have been
+   aligned.
+      * @param value The value of 'fragmentSize'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder setFragmentSize(java.lang.Integer value) {
       validate(fields()[3], value);
       this.fragmentSize = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-    
-    /** Checks whether the 'fragmentSize' field has been set */
+
+    /**
+      * Checks whether the 'fragmentSize' field has been set.
+      * Fragment's insert size derived from alignment, if the reads have been
+   aligned.
+      * @return True if the 'fragmentSize' field has been set, false otherwise.
+      */
     public boolean hasFragmentSize() {
       return fieldSetFlags()[3];
     }
-    
-    /** Clears the value of the 'fragmentSize' field */
+
+
+    /**
+      * Clears the value of the 'fragmentSize' field.
+      * Fragment's insert size derived from alignment, if the reads have been
+   aligned.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder clearFragmentSize() {
       fragmentSize = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /** Gets the value of the 'sequences' field */
+    /**
+      * Gets the value of the 'sequences' field.
+      * The sequences read from this fragment.
+      * @return The value.
+      */
     public java.util.List<org.bdgenomics.formats.avro.Sequence> getSequences() {
       return sequences;
     }
-    
-    /** Sets the value of the 'sequences' field */
+
+    /**
+      * Sets the value of the 'sequences' field.
+      * The sequences read from this fragment.
+      * @param value The value of 'sequences'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder setSequences(java.util.List<org.bdgenomics.formats.avro.Sequence> value) {
       validate(fields()[4], value);
       this.sequences = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-    
-    /** Checks whether the 'sequences' field has been set */
+
+    /**
+      * Checks whether the 'sequences' field has been set.
+      * The sequences read from this fragment.
+      * @return True if the 'sequences' field has been set, false otherwise.
+      */
     public boolean hasSequences() {
       return fieldSetFlags()[4];
     }
-    
-    /** Clears the value of the 'sequences' field */
+
+
+    /**
+      * Clears the value of the 'sequences' field.
+      * The sequences read from this fragment.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder clearSequences() {
       sequences = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /** Gets the value of the 'alignments' field */
+    /**
+      * Gets the value of the 'alignments' field.
+      * @return The value.
+      */
     public java.util.List<org.bdgenomics.formats.avro.AlignmentRecord> getAlignments() {
       return alignments;
     }
-    
-    /** Sets the value of the 'alignments' field */
+
+    /**
+      * Sets the value of the 'alignments' field.
+      * @param value The value of 'alignments'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder setAlignments(java.util.List<org.bdgenomics.formats.avro.AlignmentRecord> value) {
       validate(fields()[5], value);
       this.alignments = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-    
-    /** Checks whether the 'alignments' field has been set */
+
+    /**
+      * Checks whether the 'alignments' field has been set.
+      * @return True if the 'alignments' field has been set, false otherwise.
+      */
     public boolean hasAlignments() {
       return fieldSetFlags()[5];
     }
-    
-    /** Clears the value of the 'alignments' field */
+
+
+    /**
+      * Clears the value of the 'alignments' field.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Fragment.Builder clearAlignments() {
       alignments = null;
       fieldSetFlags()[5] = false;
@@ -417,4 +549,21 @@ public class Fragment extends org.apache.avro.specific.SpecificRecordBase implem
       }
     }
   }
+
+  private static final org.apache.avro.io.DatumWriter
+    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
+
+  @Override public void writeExternal(java.io.ObjectOutput out)
+    throws java.io.IOException {
+    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
+  }
+
+  private static final org.apache.avro.io.DatumReader
+    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
+
+  @Override public void readExternal(java.io.ObjectInput in)
+    throws java.io.IOException {
+    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
+  }
+
 }

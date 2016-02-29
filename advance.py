@@ -137,7 +137,7 @@ print "Executing SQL query 1/2..."
 cursor1.execute("""
 	SELECT G.person_id, G.genotype_version, G.genotype
 	FROM "public"."snp_genotype" AS G
-	ORDER BY person_id ASC, genotype_version ASC LIMIT 5;
+	ORDER BY person_id ASC, genotype_version ASC LIMIT 3;
 """)
 
 print "Executing SQL query 2/2..."

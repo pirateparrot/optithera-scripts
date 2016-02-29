@@ -7,6 +7,7 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Variant extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 3033594572526878836L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Variant\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"variantErrorProbability\",\"type\":[\"null\",\"int\"],\"doc\":\"The Phred scaled error probability of a variant, given the probabilities of\\n   the variant in a population.\",\"default\":null},{\"name\":\"contig\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Contig\",\"doc\":\"Record for describing a reference assembly. Not used for storing the contents\\n of said assembly.\\n\\n @see NucleotideContigFragment\",\"fields\":[{\"name\":\"contigName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this contig in the assembly (e.g., \\\"chr1\\\").\",\"default\":null},{\"name\":\"contigLength\",\"type\":[\"null\",\"long\"],\"doc\":\"The length of this contig.\",\"default\":null},{\"name\":\"contigMD5\",\"type\":[\"null\",\"string\"],\"doc\":\"The MD5 checksum of the assembly for this contig.\",\"default\":null},{\"name\":\"referenceURL\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL at which this reference assembly can be found.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this assembly (e.g., \\\"hg19\\\").\",\"default\":null},{\"name\":\"species\",\"type\":[\"null\",\"string\"],\"doc\":\"The species that this assembly is for.\",\"default\":null},{\"name\":\"referenceIndex\",\"type\":[\"null\",\"int\"],\"doc\":\"Optional 0-based index of this contig in a SAM file header that it was read\\n   from; helps output SAMs/BAMs with headers in the same order as they started\\n   with, before a conversion to ADAM.\",\"default\":null}]}],\"doc\":\"The reference contig that this variant exists on.\",\"default\":null},{\"name\":\"start\",\"type\":[\"null\",\"long\"],\"doc\":\"The 0-based start position of this variant on the reference contig.\",\"default\":null},{\"name\":\"end\",\"type\":[\"null\",\"long\"],\"doc\":\"The 0-based, exclusive end position of this variant on the reference contig.\",\"default\":null},{\"name\":\"referenceAllele\",\"type\":[\"null\",\"string\"],\"doc\":\"A string describing the reference allele at this site.\",\"default\":null},{\"name\":\"alternateAllele\",\"type\":[\"null\",\"string\"],\"doc\":\"A string describing the variant allele at this site. Should be left null if\\n   the site is a structural variant.\",\"default\":null},{\"name\":\"svAllele\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"StructuralVariant\",\"fields\":[{\"name\":\"type\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"StructuralVariantType\",\"doc\":\"Descriptors for the type of a structural variant. The most specific descriptor\\n should be used, if possible. E.g., duplication should be used instead of\\n insertion if the inserted sequence is not novel. Tandem duplication should\\n be used instead of duplication if the duplication is known to follow the\\n duplicated sequence.\",\"symbols\":[\"DELETION\",\"INSERTION\",\"INVERSION\",\"MOBILE_INSERTION\",\"MOBILE_DELETION\",\"DUPLICATION\",\"TANDEM_DUPLICATION\"]}],\"doc\":\"The type of this structural variant.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL of the FASTA/NucleotideContig assembly for this structural variant,\\n   if one is available.\",\"default\":null},{\"name\":\"precise\",\"type\":[\"boolean\",\"null\"],\"doc\":\"Whether this structural variant call has precise breakpoints or not. Default\\n   value is true. If the call is imprecise, confidence intervals should be provided.\",\"default\":true},{\"name\":\"startWindow\",\"type\":[\"null\",\"int\"],\"doc\":\"The size of the confidence window around the start of the structural variant.\",\"default\":null},{\"name\":\"endWindow\",\"type\":[\"null\",\"int\"],\"doc\":\"The size of the confidence window around the end of the structural variant.\",\"default\":null}]}],\"doc\":\"The structural variant at this site, if the alternate allele is a structural\\n   variant. If the site is not a structural variant, this field should be left\\n   null.\",\"default\":null},{\"name\":\"isSomatic\",\"type\":[\"boolean\",\"null\"],\"doc\":\"A boolean describing whether this variant call is somatic; in this case, the\\n   `referenceAllele` will have been observed in another sample.\",\"default\":false}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** The Phred scaled error probability of a variant, given the probabilities of
@@ -40,6 +41,19 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * All-args constructor.
+   * @param variantErrorProbability The Phred scaled error probability of a variant, given the probabilities of
+   the variant in a population.
+   * @param contig The reference contig that this variant exists on.
+   * @param start The 0-based start position of this variant on the reference contig.
+   * @param end The 0-based, exclusive end position of this variant on the reference contig.
+   * @param referenceAllele A string describing the reference allele at this site.
+   * @param alternateAllele A string describing the variant allele at this site. Should be left null if
+   the site is a structural variant.
+   * @param svAllele The structural variant at this site, if the alternate allele is a structural
+   variant. If the site is not a structural variant, this field should be left
+   null.
+   * @param isSomatic A boolean describing whether this variant call is somatic; in this case, the
+   `referenceAllele` will have been observed in another sample.
    */
   public Variant(java.lang.Integer variantErrorProbability, org.bdgenomics.formats.avro.Contig contig, java.lang.Long start, java.lang.Long end, java.lang.CharSequence referenceAllele, java.lang.CharSequence alternateAllele, org.bdgenomics.formats.avro.StructuralVariant svAllele, java.lang.Boolean isSomatic) {
     this.variantErrorProbability = variantErrorProbability;
@@ -85,8 +99,9 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'variantErrorProbability' field.
-   * The Phred scaled error probability of a variant, given the probabilities of
-   the variant in a population.   */
+   * @return The Phred scaled error probability of a variant, given the probabilities of
+   the variant in a population.
+   */
   public java.lang.Integer getVariantErrorProbability() {
     return variantErrorProbability;
   }
@@ -94,7 +109,8 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
   /**
    * Sets the value of the 'variantErrorProbability' field.
    * The Phred scaled error probability of a variant, given the probabilities of
-   the variant in a population.   * @param value the value to set.
+   the variant in a population.
+   * @param value the value to set.
    */
   public void setVariantErrorProbability(java.lang.Integer value) {
     this.variantErrorProbability = value;
@@ -102,14 +118,16 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'contig' field.
-   * The reference contig that this variant exists on.   */
+   * @return The reference contig that this variant exists on.
+   */
   public org.bdgenomics.formats.avro.Contig getContig() {
     return contig;
   }
 
   /**
    * Sets the value of the 'contig' field.
-   * The reference contig that this variant exists on.   * @param value the value to set.
+   * The reference contig that this variant exists on.
+   * @param value the value to set.
    */
   public void setContig(org.bdgenomics.formats.avro.Contig value) {
     this.contig = value;
@@ -117,14 +135,16 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'start' field.
-   * The 0-based start position of this variant on the reference contig.   */
+   * @return The 0-based start position of this variant on the reference contig.
+   */
   public java.lang.Long getStart() {
     return start;
   }
 
   /**
    * Sets the value of the 'start' field.
-   * The 0-based start position of this variant on the reference contig.   * @param value the value to set.
+   * The 0-based start position of this variant on the reference contig.
+   * @param value the value to set.
    */
   public void setStart(java.lang.Long value) {
     this.start = value;
@@ -132,14 +152,16 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'end' field.
-   * The 0-based, exclusive end position of this variant on the reference contig.   */
+   * @return The 0-based, exclusive end position of this variant on the reference contig.
+   */
   public java.lang.Long getEnd() {
     return end;
   }
 
   /**
    * Sets the value of the 'end' field.
-   * The 0-based, exclusive end position of this variant on the reference contig.   * @param value the value to set.
+   * The 0-based, exclusive end position of this variant on the reference contig.
+   * @param value the value to set.
    */
   public void setEnd(java.lang.Long value) {
     this.end = value;
@@ -147,14 +169,16 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'referenceAllele' field.
-   * A string describing the reference allele at this site.   */
+   * @return A string describing the reference allele at this site.
+   */
   public java.lang.CharSequence getReferenceAllele() {
     return referenceAllele;
   }
 
   /**
    * Sets the value of the 'referenceAllele' field.
-   * A string describing the reference allele at this site.   * @param value the value to set.
+   * A string describing the reference allele at this site.
+   * @param value the value to set.
    */
   public void setReferenceAllele(java.lang.CharSequence value) {
     this.referenceAllele = value;
@@ -162,8 +186,9 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'alternateAllele' field.
-   * A string describing the variant allele at this site. Should be left null if
-   the site is a structural variant.   */
+   * @return A string describing the variant allele at this site. Should be left null if
+   the site is a structural variant.
+   */
   public java.lang.CharSequence getAlternateAllele() {
     return alternateAllele;
   }
@@ -171,7 +196,8 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
   /**
    * Sets the value of the 'alternateAllele' field.
    * A string describing the variant allele at this site. Should be left null if
-   the site is a structural variant.   * @param value the value to set.
+   the site is a structural variant.
+   * @param value the value to set.
    */
   public void setAlternateAllele(java.lang.CharSequence value) {
     this.alternateAllele = value;
@@ -179,9 +205,10 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'svAllele' field.
-   * The structural variant at this site, if the alternate allele is a structural
+   * @return The structural variant at this site, if the alternate allele is a structural
    variant. If the site is not a structural variant, this field should be left
-   null.   */
+   null.
+   */
   public org.bdgenomics.formats.avro.StructuralVariant getSvAllele() {
     return svAllele;
   }
@@ -190,7 +217,8 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'svAllele' field.
    * The structural variant at this site, if the alternate allele is a structural
    variant. If the site is not a structural variant, this field should be left
-   null.   * @param value the value to set.
+   null.
+   * @param value the value to set.
    */
   public void setSvAllele(org.bdgenomics.formats.avro.StructuralVariant value) {
     this.svAllele = value;
@@ -198,8 +226,9 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
 
   /**
    * Gets the value of the 'isSomatic' field.
-   * A boolean describing whether this variant call is somatic; in this case, the
-   `referenceAllele` will have been observed in another sample.   */
+   * @return A boolean describing whether this variant call is somatic; in this case, the
+   `referenceAllele` will have been observed in another sample.
+   */
   public java.lang.Boolean getIsSomatic() {
     return isSomatic;
   }
@@ -207,23 +236,35 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
   /**
    * Sets the value of the 'isSomatic' field.
    * A boolean describing whether this variant call is somatic; in this case, the
-   `referenceAllele` will have been observed in another sample.   * @param value the value to set.
+   `referenceAllele` will have been observed in another sample.
+   * @param value the value to set.
    */
   public void setIsSomatic(java.lang.Boolean value) {
     this.isSomatic = value;
   }
 
-  /** Creates a new Variant RecordBuilder */
+  /**
+   * Creates a new Variant RecordBuilder.
+   * @return A new Variant RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Variant.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Variant.Builder();
   }
   
-  /** Creates a new Variant RecordBuilder by copying an existing Builder */
+  /**
+   * Creates a new Variant RecordBuilder by copying an existing Builder.
+   * @param other The existing builder to copy.
+   * @return A new Variant RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Variant.Builder newBuilder(org.bdgenomics.formats.avro.Variant.Builder other) {
     return new org.bdgenomics.formats.avro.Variant.Builder(other);
   }
   
-  /** Creates a new Variant RecordBuilder by copying an existing Variant instance */
+  /**
+   * Creates a new Variant RecordBuilder by copying an existing Variant instance.
+   * @param other The existing instance to copy.
+   * @return A new Variant RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Variant.Builder newBuilder(org.bdgenomics.formats.avro.Variant other) {
     return new org.bdgenomics.formats.avro.Variant.Builder(other);
   }
@@ -234,13 +275,28 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Variant>
     implements org.apache.avro.data.RecordBuilder<Variant> {
 
+    /** The Phred scaled error probability of a variant, given the probabilities of
+   the variant in a population. */
     private java.lang.Integer variantErrorProbability;
+    /** The reference contig that this variant exists on. */
     private org.bdgenomics.formats.avro.Contig contig;
+    private org.bdgenomics.formats.avro.Contig.Builder contigBuilder;
+    /** The 0-based start position of this variant on the reference contig. */
     private java.lang.Long start;
+    /** The 0-based, exclusive end position of this variant on the reference contig. */
     private java.lang.Long end;
+    /** A string describing the reference allele at this site. */
     private java.lang.CharSequence referenceAllele;
+    /** A string describing the variant allele at this site. Should be left null if
+   the site is a structural variant. */
     private java.lang.CharSequence alternateAllele;
+    /** The structural variant at this site, if the alternate allele is a structural
+   variant. If the site is not a structural variant, this field should be left
+   null. */
     private org.bdgenomics.formats.avro.StructuralVariant svAllele;
+    private org.bdgenomics.formats.avro.StructuralVariant.Builder svAlleleBuilder;
+    /** A boolean describing whether this variant call is somatic; in this case, the
+   `referenceAllele` will have been observed in another sample. */
     private java.lang.Boolean isSomatic;
 
     /** Creates a new Builder */
@@ -248,7 +304,10 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
       super(org.bdgenomics.formats.avro.Variant.SCHEMA$);
     }
     
-    /** Creates a Builder by copying an existing Builder */
+    /**
+     * Creates a Builder by copying an existing Builder.
+     * @param other The existing Builder to copy.
+     */
     private Builder(org.bdgenomics.formats.avro.Variant.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.variantErrorProbability)) {
@@ -259,6 +318,9 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
         this.contig = data().deepCopy(fields()[1].schema(), other.contig);
         fieldSetFlags()[1] = true;
       }
+      if (other.hasContigBuilder()) {
+        this.contigBuilder = org.bdgenomics.formats.avro.Contig.newBuilder(other.getContigBuilder());
+      }
       if (isValidValue(fields()[2], other.start)) {
         this.start = data().deepCopy(fields()[2].schema(), other.start);
         fieldSetFlags()[2] = true;
@@ -279,13 +341,19 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
         this.svAllele = data().deepCopy(fields()[6].schema(), other.svAllele);
         fieldSetFlags()[6] = true;
       }
+      if (other.hasSvAlleleBuilder()) {
+        this.svAlleleBuilder = org.bdgenomics.formats.avro.StructuralVariant.newBuilder(other.getSvAlleleBuilder());
+      }
       if (isValidValue(fields()[7], other.isSomatic)) {
         this.isSomatic = data().deepCopy(fields()[7].schema(), other.isSomatic);
         fieldSetFlags()[7] = true;
       }
     }
     
-    /** Creates a Builder by copying an existing Variant instance */
+    /**
+     * Creates a Builder by copying an existing Variant instance
+     * @param other The existing instance to copy.
+     */
     private Builder(org.bdgenomics.formats.avro.Variant other) {
             super(org.bdgenomics.formats.avro.Variant.SCHEMA$);
       if (isValidValue(fields()[0], other.variantErrorProbability)) {
@@ -296,6 +364,7 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
         this.contig = data().deepCopy(fields()[1].schema(), other.contig);
         fieldSetFlags()[1] = true;
       }
+      this.contigBuilder = null;
       if (isValidValue(fields()[2], other.start)) {
         this.start = data().deepCopy(fields()[2].schema(), other.start);
         fieldSetFlags()[2] = true;
@@ -316,206 +385,451 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
         this.svAllele = data().deepCopy(fields()[6].schema(), other.svAllele);
         fieldSetFlags()[6] = true;
       }
+      this.svAlleleBuilder = null;
       if (isValidValue(fields()[7], other.isSomatic)) {
         this.isSomatic = data().deepCopy(fields()[7].schema(), other.isSomatic);
         fieldSetFlags()[7] = true;
       }
     }
 
-    /** Gets the value of the 'variantErrorProbability' field */
+    /**
+      * Gets the value of the 'variantErrorProbability' field.
+      * The Phred scaled error probability of a variant, given the probabilities of
+   the variant in a population.
+      * @return The value.
+      */
     public java.lang.Integer getVariantErrorProbability() {
       return variantErrorProbability;
     }
-    
-    /** Sets the value of the 'variantErrorProbability' field */
+
+    /**
+      * Sets the value of the 'variantErrorProbability' field.
+      * The Phred scaled error probability of a variant, given the probabilities of
+   the variant in a population.
+      * @param value The value of 'variantErrorProbability'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder setVariantErrorProbability(java.lang.Integer value) {
       validate(fields()[0], value);
       this.variantErrorProbability = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-    
-    /** Checks whether the 'variantErrorProbability' field has been set */
+
+    /**
+      * Checks whether the 'variantErrorProbability' field has been set.
+      * The Phred scaled error probability of a variant, given the probabilities of
+   the variant in a population.
+      * @return True if the 'variantErrorProbability' field has been set, false otherwise.
+      */
     public boolean hasVariantErrorProbability() {
       return fieldSetFlags()[0];
     }
-    
-    /** Clears the value of the 'variantErrorProbability' field */
+
+
+    /**
+      * Clears the value of the 'variantErrorProbability' field.
+      * The Phred scaled error probability of a variant, given the probabilities of
+   the variant in a population.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder clearVariantErrorProbability() {
       variantErrorProbability = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /** Gets the value of the 'contig' field */
+    /**
+      * Gets the value of the 'contig' field.
+      * The reference contig that this variant exists on.
+      * @return The value.
+      */
     public org.bdgenomics.formats.avro.Contig getContig() {
       return contig;
     }
-    
-    /** Sets the value of the 'contig' field */
+
+    /**
+      * Sets the value of the 'contig' field.
+      * The reference contig that this variant exists on.
+      * @param value The value of 'contig'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder setContig(org.bdgenomics.formats.avro.Contig value) {
       validate(fields()[1], value);
+      this.contigBuilder = null;
       this.contig = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-    
-    /** Checks whether the 'contig' field has been set */
+
+    /**
+      * Checks whether the 'contig' field has been set.
+      * The reference contig that this variant exists on.
+      * @return True if the 'contig' field has been set, false otherwise.
+      */
     public boolean hasContig() {
       return fieldSetFlags()[1];
     }
-    
-    /** Clears the value of the 'contig' field */
+
+    /**
+     * Gets the Builder instance for the 'contig' field and creates one if it doesn't exist yet.
+     * The reference contig that this variant exists on.
+     * @return This builder.
+     */
+    public org.bdgenomics.formats.avro.Contig.Builder getContigBuilder() {
+      if (contigBuilder == null) {
+        if (hasContig()) {
+          setContigBuilder(org.bdgenomics.formats.avro.Contig.newBuilder(contig));
+        } else {
+          setContigBuilder(org.bdgenomics.formats.avro.Contig.newBuilder());
+        }
+      }
+      return contigBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'contig' field
+     * The reference contig that this variant exists on.
+     * @return This builder.
+     */
+    public org.bdgenomics.formats.avro.Variant.Builder setContigBuilder(org.bdgenomics.formats.avro.Contig.Builder value) {
+      clearContig();
+      contigBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'contig' field has an active Builder instance
+     * The reference contig that this variant exists on.
+     * @return True if the 'contig' field has an active Builder instance
+     */
+    public boolean hasContigBuilder() {
+      return contigBuilder != null;
+    }
+
+    /**
+      * Clears the value of the 'contig' field.
+      * The reference contig that this variant exists on.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder clearContig() {
       contig = null;
+      contigBuilder = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /** Gets the value of the 'start' field */
+    /**
+      * Gets the value of the 'start' field.
+      * The 0-based start position of this variant on the reference contig.
+      * @return The value.
+      */
     public java.lang.Long getStart() {
       return start;
     }
-    
-    /** Sets the value of the 'start' field */
+
+    /**
+      * Sets the value of the 'start' field.
+      * The 0-based start position of this variant on the reference contig.
+      * @param value The value of 'start'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder setStart(java.lang.Long value) {
       validate(fields()[2], value);
       this.start = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-    
-    /** Checks whether the 'start' field has been set */
+
+    /**
+      * Checks whether the 'start' field has been set.
+      * The 0-based start position of this variant on the reference contig.
+      * @return True if the 'start' field has been set, false otherwise.
+      */
     public boolean hasStart() {
       return fieldSetFlags()[2];
     }
-    
-    /** Clears the value of the 'start' field */
+
+
+    /**
+      * Clears the value of the 'start' field.
+      * The 0-based start position of this variant on the reference contig.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder clearStart() {
       start = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /** Gets the value of the 'end' field */
+    /**
+      * Gets the value of the 'end' field.
+      * The 0-based, exclusive end position of this variant on the reference contig.
+      * @return The value.
+      */
     public java.lang.Long getEnd() {
       return end;
     }
-    
-    /** Sets the value of the 'end' field */
+
+    /**
+      * Sets the value of the 'end' field.
+      * The 0-based, exclusive end position of this variant on the reference contig.
+      * @param value The value of 'end'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder setEnd(java.lang.Long value) {
       validate(fields()[3], value);
       this.end = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-    
-    /** Checks whether the 'end' field has been set */
+
+    /**
+      * Checks whether the 'end' field has been set.
+      * The 0-based, exclusive end position of this variant on the reference contig.
+      * @return True if the 'end' field has been set, false otherwise.
+      */
     public boolean hasEnd() {
       return fieldSetFlags()[3];
     }
-    
-    /** Clears the value of the 'end' field */
+
+
+    /**
+      * Clears the value of the 'end' field.
+      * The 0-based, exclusive end position of this variant on the reference contig.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder clearEnd() {
       end = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /** Gets the value of the 'referenceAllele' field */
+    /**
+      * Gets the value of the 'referenceAllele' field.
+      * A string describing the reference allele at this site.
+      * @return The value.
+      */
     public java.lang.CharSequence getReferenceAllele() {
       return referenceAllele;
     }
-    
-    /** Sets the value of the 'referenceAllele' field */
+
+    /**
+      * Sets the value of the 'referenceAllele' field.
+      * A string describing the reference allele at this site.
+      * @param value The value of 'referenceAllele'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder setReferenceAllele(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.referenceAllele = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-    
-    /** Checks whether the 'referenceAllele' field has been set */
+
+    /**
+      * Checks whether the 'referenceAllele' field has been set.
+      * A string describing the reference allele at this site.
+      * @return True if the 'referenceAllele' field has been set, false otherwise.
+      */
     public boolean hasReferenceAllele() {
       return fieldSetFlags()[4];
     }
-    
-    /** Clears the value of the 'referenceAllele' field */
+
+
+    /**
+      * Clears the value of the 'referenceAllele' field.
+      * A string describing the reference allele at this site.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder clearReferenceAllele() {
       referenceAllele = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /** Gets the value of the 'alternateAllele' field */
+    /**
+      * Gets the value of the 'alternateAllele' field.
+      * A string describing the variant allele at this site. Should be left null if
+   the site is a structural variant.
+      * @return The value.
+      */
     public java.lang.CharSequence getAlternateAllele() {
       return alternateAllele;
     }
-    
-    /** Sets the value of the 'alternateAllele' field */
+
+    /**
+      * Sets the value of the 'alternateAllele' field.
+      * A string describing the variant allele at this site. Should be left null if
+   the site is a structural variant.
+      * @param value The value of 'alternateAllele'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder setAlternateAllele(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.alternateAllele = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-    
-    /** Checks whether the 'alternateAllele' field has been set */
+
+    /**
+      * Checks whether the 'alternateAllele' field has been set.
+      * A string describing the variant allele at this site. Should be left null if
+   the site is a structural variant.
+      * @return True if the 'alternateAllele' field has been set, false otherwise.
+      */
     public boolean hasAlternateAllele() {
       return fieldSetFlags()[5];
     }
-    
-    /** Clears the value of the 'alternateAllele' field */
+
+
+    /**
+      * Clears the value of the 'alternateAllele' field.
+      * A string describing the variant allele at this site. Should be left null if
+   the site is a structural variant.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder clearAlternateAllele() {
       alternateAllele = null;
       fieldSetFlags()[5] = false;
       return this;
     }
 
-    /** Gets the value of the 'svAllele' field */
+    /**
+      * Gets the value of the 'svAllele' field.
+      * The structural variant at this site, if the alternate allele is a structural
+   variant. If the site is not a structural variant, this field should be left
+   null.
+      * @return The value.
+      */
     public org.bdgenomics.formats.avro.StructuralVariant getSvAllele() {
       return svAllele;
     }
-    
-    /** Sets the value of the 'svAllele' field */
+
+    /**
+      * Sets the value of the 'svAllele' field.
+      * The structural variant at this site, if the alternate allele is a structural
+   variant. If the site is not a structural variant, this field should be left
+   null.
+      * @param value The value of 'svAllele'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder setSvAllele(org.bdgenomics.formats.avro.StructuralVariant value) {
       validate(fields()[6], value);
+      this.svAlleleBuilder = null;
       this.svAllele = value;
       fieldSetFlags()[6] = true;
       return this; 
     }
-    
-    /** Checks whether the 'svAllele' field has been set */
+
+    /**
+      * Checks whether the 'svAllele' field has been set.
+      * The structural variant at this site, if the alternate allele is a structural
+   variant. If the site is not a structural variant, this field should be left
+   null.
+      * @return True if the 'svAllele' field has been set, false otherwise.
+      */
     public boolean hasSvAllele() {
       return fieldSetFlags()[6];
     }
-    
-    /** Clears the value of the 'svAllele' field */
+
+    /**
+     * Gets the Builder instance for the 'svAllele' field and creates one if it doesn't exist yet.
+     * The structural variant at this site, if the alternate allele is a structural
+   variant. If the site is not a structural variant, this field should be left
+   null.
+     * @return This builder.
+     */
+    public org.bdgenomics.formats.avro.StructuralVariant.Builder getSvAlleleBuilder() {
+      if (svAlleleBuilder == null) {
+        if (hasSvAllele()) {
+          setSvAlleleBuilder(org.bdgenomics.formats.avro.StructuralVariant.newBuilder(svAllele));
+        } else {
+          setSvAlleleBuilder(org.bdgenomics.formats.avro.StructuralVariant.newBuilder());
+        }
+      }
+      return svAlleleBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'svAllele' field
+     * The structural variant at this site, if the alternate allele is a structural
+   variant. If the site is not a structural variant, this field should be left
+   null.
+     * @return This builder.
+     */
+    public org.bdgenomics.formats.avro.Variant.Builder setSvAlleleBuilder(org.bdgenomics.formats.avro.StructuralVariant.Builder value) {
+      clearSvAllele();
+      svAlleleBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'svAllele' field has an active Builder instance
+     * The structural variant at this site, if the alternate allele is a structural
+   variant. If the site is not a structural variant, this field should be left
+   null.
+     * @return True if the 'svAllele' field has an active Builder instance
+     */
+    public boolean hasSvAlleleBuilder() {
+      return svAlleleBuilder != null;
+    }
+
+    /**
+      * Clears the value of the 'svAllele' field.
+      * The structural variant at this site, if the alternate allele is a structural
+   variant. If the site is not a structural variant, this field should be left
+   null.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder clearSvAllele() {
       svAllele = null;
+      svAlleleBuilder = null;
       fieldSetFlags()[6] = false;
       return this;
     }
 
-    /** Gets the value of the 'isSomatic' field */
+    /**
+      * Gets the value of the 'isSomatic' field.
+      * A boolean describing whether this variant call is somatic; in this case, the
+   `referenceAllele` will have been observed in another sample.
+      * @return The value.
+      */
     public java.lang.Boolean getIsSomatic() {
       return isSomatic;
     }
-    
-    /** Sets the value of the 'isSomatic' field */
+
+    /**
+      * Sets the value of the 'isSomatic' field.
+      * A boolean describing whether this variant call is somatic; in this case, the
+   `referenceAllele` will have been observed in another sample.
+      * @param value The value of 'isSomatic'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder setIsSomatic(java.lang.Boolean value) {
       validate(fields()[7], value);
       this.isSomatic = value;
       fieldSetFlags()[7] = true;
       return this; 
     }
-    
-    /** Checks whether the 'isSomatic' field has been set */
+
+    /**
+      * Checks whether the 'isSomatic' field has been set.
+      * A boolean describing whether this variant call is somatic; in this case, the
+   `referenceAllele` will have been observed in another sample.
+      * @return True if the 'isSomatic' field has been set, false otherwise.
+      */
     public boolean hasIsSomatic() {
       return fieldSetFlags()[7];
     }
-    
-    /** Clears the value of the 'isSomatic' field */
+
+
+    /**
+      * Clears the value of the 'isSomatic' field.
+      * A boolean describing whether this variant call is somatic; in this case, the
+   `referenceAllele` will have been observed in another sample.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Variant.Builder clearIsSomatic() {
       isSomatic = null;
       fieldSetFlags()[7] = false;
@@ -527,12 +841,20 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
       try {
         Variant record = new Variant();
         record.variantErrorProbability = fieldSetFlags()[0] ? this.variantErrorProbability : (java.lang.Integer) defaultValue(fields()[0]);
-        record.contig = fieldSetFlags()[1] ? this.contig : (org.bdgenomics.formats.avro.Contig) defaultValue(fields()[1]);
+        if (contigBuilder != null) {
+          record.contig = this.contigBuilder.build();
+        } else {
+          record.contig = fieldSetFlags()[1] ? this.contig : (org.bdgenomics.formats.avro.Contig) defaultValue(fields()[1]);
+        }
         record.start = fieldSetFlags()[2] ? this.start : (java.lang.Long) defaultValue(fields()[2]);
         record.end = fieldSetFlags()[3] ? this.end : (java.lang.Long) defaultValue(fields()[3]);
         record.referenceAllele = fieldSetFlags()[4] ? this.referenceAllele : (java.lang.CharSequence) defaultValue(fields()[4]);
         record.alternateAllele = fieldSetFlags()[5] ? this.alternateAllele : (java.lang.CharSequence) defaultValue(fields()[5]);
-        record.svAllele = fieldSetFlags()[6] ? this.svAllele : (org.bdgenomics.formats.avro.StructuralVariant) defaultValue(fields()[6]);
+        if (svAlleleBuilder != null) {
+          record.svAllele = this.svAlleleBuilder.build();
+        } else {
+          record.svAllele = fieldSetFlags()[6] ? this.svAllele : (org.bdgenomics.formats.avro.StructuralVariant) defaultValue(fields()[6]);
+        }
         record.isSomatic = fieldSetFlags()[7] ? this.isSomatic : (java.lang.Boolean) defaultValue(fields()[7]);
         return record;
       } catch (Exception e) {
@@ -540,4 +862,21 @@ public class Variant extends org.apache.avro.specific.SpecificRecordBase impleme
       }
     }
   }
+
+  private static final org.apache.avro.io.DatumWriter
+    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
+
+  @Override public void writeExternal(java.io.ObjectOutput out)
+    throws java.io.IOException {
+    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
+  }
+
+  private static final org.apache.avro.io.DatumReader
+    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
+
+  @Override public void readExternal(java.io.ObjectInput in)
+    throws java.io.IOException {
+    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
+  }
+
 }

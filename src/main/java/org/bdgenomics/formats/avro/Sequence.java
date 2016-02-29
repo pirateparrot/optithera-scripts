@@ -7,6 +7,7 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Sequence extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 9123332621392864421L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Sequence\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"bases\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"qualities\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   @Deprecated public java.lang.CharSequence bases;
@@ -76,17 +77,28 @@ public class Sequence extends org.apache.avro.specific.SpecificRecordBase implem
     this.qualities = value;
   }
 
-  /** Creates a new Sequence RecordBuilder */
+  /**
+   * Creates a new Sequence RecordBuilder.
+   * @return A new Sequence RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Sequence.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Sequence.Builder();
   }
   
-  /** Creates a new Sequence RecordBuilder by copying an existing Builder */
+  /**
+   * Creates a new Sequence RecordBuilder by copying an existing Builder.
+   * @param other The existing builder to copy.
+   * @return A new Sequence RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Sequence.Builder newBuilder(org.bdgenomics.formats.avro.Sequence.Builder other) {
     return new org.bdgenomics.formats.avro.Sequence.Builder(other);
   }
   
-  /** Creates a new Sequence RecordBuilder by copying an existing Sequence instance */
+  /**
+   * Creates a new Sequence RecordBuilder by copying an existing Sequence instance.
+   * @param other The existing instance to copy.
+   * @return A new Sequence RecordBuilder
+   */
   public static org.bdgenomics.formats.avro.Sequence.Builder newBuilder(org.bdgenomics.formats.avro.Sequence other) {
     return new org.bdgenomics.formats.avro.Sequence.Builder(other);
   }
@@ -105,7 +117,10 @@ public class Sequence extends org.apache.avro.specific.SpecificRecordBase implem
       super(org.bdgenomics.formats.avro.Sequence.SCHEMA$);
     }
     
-    /** Creates a Builder by copying an existing Builder */
+    /**
+     * Creates a Builder by copying an existing Builder.
+     * @param other The existing Builder to copy.
+     */
     private Builder(org.bdgenomics.formats.avro.Sequence.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.bases)) {
@@ -118,7 +133,10 @@ public class Sequence extends org.apache.avro.specific.SpecificRecordBase implem
       }
     }
     
-    /** Creates a Builder by copying an existing Sequence instance */
+    /**
+     * Creates a Builder by copying an existing Sequence instance
+     * @param other The existing instance to copy.
+     */
     private Builder(org.bdgenomics.formats.avro.Sequence other) {
             super(org.bdgenomics.formats.avro.Sequence.SCHEMA$);
       if (isValidValue(fields()[0], other.bases)) {
@@ -131,50 +149,78 @@ public class Sequence extends org.apache.avro.specific.SpecificRecordBase implem
       }
     }
 
-    /** Gets the value of the 'bases' field */
+    /**
+      * Gets the value of the 'bases' field.
+      * @return The value.
+      */
     public java.lang.CharSequence getBases() {
       return bases;
     }
-    
-    /** Sets the value of the 'bases' field */
+
+    /**
+      * Sets the value of the 'bases' field.
+      * @param value The value of 'bases'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Sequence.Builder setBases(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.bases = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-    
-    /** Checks whether the 'bases' field has been set */
+
+    /**
+      * Checks whether the 'bases' field has been set.
+      * @return True if the 'bases' field has been set, false otherwise.
+      */
     public boolean hasBases() {
       return fieldSetFlags()[0];
     }
-    
-    /** Clears the value of the 'bases' field */
+
+
+    /**
+      * Clears the value of the 'bases' field.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Sequence.Builder clearBases() {
       bases = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /** Gets the value of the 'qualities' field */
+    /**
+      * Gets the value of the 'qualities' field.
+      * @return The value.
+      */
     public java.lang.CharSequence getQualities() {
       return qualities;
     }
-    
-    /** Sets the value of the 'qualities' field */
+
+    /**
+      * Sets the value of the 'qualities' field.
+      * @param value The value of 'qualities'.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Sequence.Builder setQualities(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.qualities = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-    
-    /** Checks whether the 'qualities' field has been set */
+
+    /**
+      * Checks whether the 'qualities' field has been set.
+      * @return True if the 'qualities' field has been set, false otherwise.
+      */
     public boolean hasQualities() {
       return fieldSetFlags()[1];
     }
-    
-    /** Clears the value of the 'qualities' field */
+
+
+    /**
+      * Clears the value of the 'qualities' field.
+      * @return This builder.
+      */
     public org.bdgenomics.formats.avro.Sequence.Builder clearQualities() {
       qualities = null;
       fieldSetFlags()[1] = false;
@@ -193,4 +239,21 @@ public class Sequence extends org.apache.avro.specific.SpecificRecordBase implem
       }
     }
   }
+
+  private static final org.apache.avro.io.DatumWriter
+    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
+
+  @Override public void writeExternal(java.io.ObjectOutput out)
+    throws java.io.IOException {
+    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
+  }
+
+  private static final org.apache.avro.io.DatumReader
+    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
+
+  @Override public void readExternal(java.io.ObjectInput in)
+    throws java.io.IOException {
+    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
+  }
+
 }
