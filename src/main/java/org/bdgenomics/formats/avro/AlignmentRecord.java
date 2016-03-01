@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -9064051434035827809L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AlignmentRecord\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"readInFragment\",\"type\":[\"int\",\"null\"],\"doc\":\"Read number within the array of fragment reads.\",\"default\":0},{\"name\":\"contig\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Contig\",\"doc\":\"Record for describing a reference assembly. Not used for storing the contents\\n of said assembly.\\n\\n @see NucleotideContigFragment\",\"fields\":[{\"name\":\"contigName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this contig in the assembly (e.g., \\\"chr1\\\").\",\"default\":null},{\"name\":\"contigLength\",\"type\":[\"null\",\"long\"],\"doc\":\"The length of this contig.\",\"default\":null},{\"name\":\"contigMD5\",\"type\":[\"null\",\"string\"],\"doc\":\"The MD5 checksum of the assembly for this contig.\",\"default\":null},{\"name\":\"referenceURL\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL at which this reference assembly can be found.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this assembly (e.g., \\\"hg19\\\").\",\"default\":null},{\"name\":\"species\",\"type\":[\"null\",\"string\"],\"doc\":\"The species that this assembly is for.\",\"default\":null},{\"name\":\"referenceIndex\",\"type\":[\"null\",\"int\"],\"doc\":\"Optional 0-based index of this contig in a SAM file header that it was read\\n   from; helps output SAMs/BAMs with headers in the same order as they started\\n   with, before a conversion to ADAM.\",\"default\":null}]}],\"doc\":\"The reference sequence details for the reference chromosome that\\n   this read is aligned to. If the read is unaligned, this field should\\n   be null.\",\"default\":null},{\"name\":\"start\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position for the start of this read's alignment.\\n   Should be null if the read is unaligned.\",\"default\":null},{\"name\":\"oldPosition\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position where this read used to start before\\n   local realignment.\\n   Stores the same data as the OP field in the SAM format.\",\"default\":null},{\"name\":\"end\",\"type\":[\"null\",\"long\"],\"doc\":\"0 based reference position for the end of this read's alignment.\\n   Should be null if the read is unaligned.\",\"default\":null},{\"name\":\"mapq\",\"type\":[\"null\",\"int\"],\"doc\":\"The global mapping quality of this read.\",\"default\":null},{\"name\":\"readName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this read. This should be unique within the read group\\n   that this read is from, and can be used to identify other reads that\\n   are derived from a single fragment.\",\"default\":null},{\"name\":\"sequence\",\"type\":[\"null\",\"string\"],\"doc\":\"The bases in this alignment. If the read has been hard clipped, this may\\n   not represent all the bases in the original read.\",\"default\":null},{\"name\":\"qual\",\"type\":[\"null\",\"string\"],\"doc\":\"The per-base quality scores in this alignment. If the read has been hard\\n   clipped, this may not represent all the bases in the original read.\\n   Additionally, if the error scores have been recalibrated, this field\\n   will not contain the original base quality scores.\\n\\n   @see origQual\",\"default\":null},{\"name\":\"cigar\",\"type\":[\"null\",\"string\"],\"doc\":\"The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that\\n   describes the local alignment of this read. Contains {length, operator}\\n   pairs for all contiguous alignment operations. The operators include:\\n\\n   * M, ALIGNMENT_MATCH: An alignment match indicates that a sequence can be\\n     aligned to the reference without evidence of an INDEL. Unlike the\\n     SEQUENCE_MATCH and SEQUENCE_MISMATCH operators, the ALIGNMENT_MATCH\\n     operator does not indicate whether the reference and read sequences are an\\n     exact match.\\n   * I, INSERT: The insert operator indicates that the read contains evidence of\\n     bases being inserted into the reference.\\n   * D, DELETE: The delete operator indicates that the read contains evidence of\\n     bases being deleted from the reference.\\n   * N, SKIP: The skip operator indicates that this read skips a long segment of\\n     the reference, but the bases have not been deleted. This operator is\\n     commonly used when working with RNA-seq data, where reads may skip long\\n     segments of the reference between exons.\\n   * S, CLIP_SOFT: The soft clip operator indicates that bases at the start/end\\n     of a read have not been considered during alignment. This may occur if the\\n     majority of a read maps, except for low quality bases at the start/end of\\n     a read. Bases that are soft clipped will still be stored in the read.\\n   * H, CLIP_HARD: The hard clip operator indicates that bases at the start/end of\\n     a read have been omitted from this alignment. This may occur if this linear\\n     alignment is part of a chimeric alignment, or if the read has been trimmed\\n     (e.g., during error correction, or to trim poly-A tails for RNA-seq).\\n   * P, PAD: The pad operator indicates that there is padding in an alignment.\\n   * =, SEQUENCE_MATCH: This operator indicates that this portion of the aligned\\n     sequence exactly matches the reference (e.g., all bases are equal to the\\n     reference bases).\\n   * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the\\n     aligned sequence is an alignment match to the reference, but a sequence\\n     mismatch (e.g., the bases are not equal to the reference). This can\\n     indicate a SNP or a read error.\",\"default\":null},{\"name\":\"oldCigar\",\"type\":[\"null\",\"string\"],\"doc\":\"Stores the CIGAR string present before local indel realignment.\\n   Stores the same data as the OC field in the SAM format.\\n\\n   @see cigar\",\"default\":null},{\"name\":\"basesTrimmedFromStart\",\"type\":[\"int\",\"null\"],\"doc\":\"The number of bases in this read/alignment that have been trimmed from the\\n   start of the read. By default, this is equal to 0. If the value is non-zero,\\n   that means that the start of the read has been hard-clipped.\\n\\n   @see cigar\",\"default\":0},{\"name\":\"basesTrimmedFromEnd\",\"type\":[\"int\",\"null\"],\"doc\":\"The number of bases in this read/alignment that have been trimmed from the\\n   end of the read. By default, this is equal to 0. If the value is non-zero,\\n   that means that the end of the read has been hard-clipped.\\n\\n   @see cigar\",\"default\":0},{\"name\":\"readPaired\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"properPair\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"readMapped\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"mateMapped\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"failedVendorQualityChecks\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"duplicateRead\",\"type\":[\"boolean\",\"null\"],\"default\":false},{\"name\":\"readNegativeStrand\",\"type\":[\"boolean\",\"null\"],\"doc\":\"True if this alignment is mapped as a reverse compliment. This field\\n   defaults to false.\",\"default\":false},{\"name\":\"mateNegativeStrand\",\"type\":[\"boolean\",\"null\"],\"doc\":\"True if the mate pair of this alignment is mapped as a reverse compliment.\\n   This field defaults to false.\",\"default\":false},{\"name\":\"primaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is either the best linear alignment,\\n   or the first linear alignment in a chimeric alignment. Defaults to false.\\n\\n   @see secondaryAlignment\\n   @see supplementaryAlignment\",\"default\":false},{\"name\":\"secondaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is a lower quality linear alignment\\n   for a multiply-mapped read. Defaults to false.\\n\\n   @see primaryAlignment\\n   @see supplementaryAlignment\",\"default\":false},{\"name\":\"supplementaryAlignment\",\"type\":[\"boolean\",\"null\"],\"doc\":\"This field is true if this alignment is a non-primary linear alignment in\\n   a chimeric alignment. Defaults to false.\\n\\n   @see primaryAlignment\\n   @see secondaryAlignment\",\"default\":false},{\"name\":\"mismatchingPositions\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"origQual\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"attributes\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupName\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"recordGroupSample\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"mateAlignmentStart\",\"type\":[\"null\",\"long\"],\"doc\":\"The start position of the mate of this read. Should"," be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"mateAlignmentEnd\",\"type\":[\"null\",\"long\"],\"doc\":\"The end position of the mate of this read. Should be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"mateContig\",\"type\":[\"null\",\"Contig\"],\"doc\":\"The reference contig of the mate of this read. Should be set to null if the\\n   mate is unaligned, or if the mate does not exist.\",\"default\":null},{\"name\":\"inferredInsertSize\",\"type\":[\"null\",\"long\"],\"doc\":\"The distance between this read and it's mate as inferred from alignment.\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** Read number within the array of fragment reads. */
@@ -149,102 +148,6 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * All-args constructor.
-   * @param readInFragment Read number within the array of fragment reads.
-   * @param contig The reference sequence details for the reference chromosome that
-   this read is aligned to. If the read is unaligned, this field should
-   be null.
-   * @param start 0 based reference position for the start of this read's alignment.
-   Should be null if the read is unaligned.
-   * @param oldPosition 0 based reference position where this read used to start before
-   local realignment.
-   Stores the same data as the OP field in the SAM format.
-   * @param end 0 based reference position for the end of this read's alignment.
-   Should be null if the read is unaligned.
-   * @param mapq The global mapping quality of this read.
-   * @param readName The name of this read. This should be unique within the read group
-   that this read is from, and can be used to identify other reads that
-   are derived from a single fragment.
-   * @param sequence The bases in this alignment. If the read has been hard clipped, this may
-   not represent all the bases in the original read.
-   * @param qual The per-base quality scores in this alignment. If the read has been hard
-   clipped, this may not represent all the bases in the original read.
-   Additionally, if the error scores have been recalibrated, this field
-   will not contain the original base quality scores.
-
-   @see origQual
-   * @param cigar The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that
-   describes the local alignment of this read. Contains {length, operator}
-   pairs for all contiguous alignment operations. The operators include:
-
-   * M, ALIGNMENT_MATCH: An alignment match indicates that a sequence can be
-     aligned to the reference without evidence of an INDEL. Unlike the
-     SEQUENCE_MATCH and SEQUENCE_MISMATCH operators, the ALIGNMENT_MATCH
-     operator does not indicate whether the reference and read sequences are an
-     exact match.
-   * I, INSERT: The insert operator indicates that the read contains evidence of
-     bases being inserted into the reference.
-   * D, DELETE: The delete operator indicates that the read contains evidence of
-     bases being deleted from the reference.
-   * N, SKIP: The skip operator indicates that this read skips a long segment of
-     the reference, but the bases have not been deleted. This operator is
-     commonly used when working with RNA-seq data, where reads may skip long
-     segments of the reference between exons.
-   * S, CLIP_SOFT: The soft clip operator indicates that bases at the start/end
-     of a read have not been considered during alignment. This may occur if the
-     majority of a read maps, except for low quality bases at the start/end of
-     a read. Bases that are soft clipped will still be stored in the read.
-   * H, CLIP_HARD: The hard clip operator indicates that bases at the start/end of
-     a read have been omitted from this alignment. This may occur if this linear
-     alignment is part of a chimeric alignment, or if the read has been trimmed
-     (e.g., during error correction, or to trim poly-A tails for RNA-seq).
-   * P, PAD: The pad operator indicates that there is padding in an alignment.
-   * =, SEQUENCE_MATCH: This operator indicates that this portion of the aligned
-     sequence exactly matches the reference (e.g., all bases are equal to the
-     reference bases).
-   * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the
-     aligned sequence is an alignment match to the reference, but a sequence
-     mismatch (e.g., the bases are not equal to the reference). This can
-     indicate a SNP or a read error.
-   * @param oldCigar Stores the CIGAR string present before local indel realignment.
-   Stores the same data as the OC field in the SAM format.
-
-   @see cigar
-   * @param basesTrimmedFromStart The number of bases in this read/alignment that have been trimmed from the
-   start of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the start of the read has been hard-clipped.
-
-   @see cigar
-   * @param basesTrimmedFromEnd The number of bases in this read/alignment that have been trimmed from the
-   end of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the end of the read has been hard-clipped.
-
-   @see cigar
-   * @param readNegativeStrand True if this alignment is mapped as a reverse compliment. This field
-   defaults to false.
-   * @param mateNegativeStrand True if the mate pair of this alignment is mapped as a reverse compliment.
-   This field defaults to false.
-   * @param primaryAlignment This field is true if this alignment is either the best linear alignment,
-   or the first linear alignment in a chimeric alignment. Defaults to false.
-
-   @see secondaryAlignment
-   @see supplementaryAlignment
-   * @param secondaryAlignment This field is true if this alignment is a lower quality linear alignment
-   for a multiply-mapped read. Defaults to false.
-
-   @see primaryAlignment
-   @see supplementaryAlignment
-   * @param supplementaryAlignment This field is true if this alignment is a non-primary linear alignment in
-   a chimeric alignment. Defaults to false.
-
-   @see primaryAlignment
-   @see secondaryAlignment
-   * @param mateAlignmentStart The start position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-   * @param mateAlignmentEnd The end position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-   * @param mateContig The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-   * @param inferredInsertSize The distance between this read and it's mate as inferred from alignment.
    */
   public AlignmentRecord(java.lang.Integer readInFragment, org.bdgenomics.formats.avro.Contig contig, java.lang.Long start, java.lang.Long oldPosition, java.lang.Long end, java.lang.Integer mapq, java.lang.CharSequence readName, java.lang.CharSequence sequence, java.lang.CharSequence qual, java.lang.CharSequence cigar, java.lang.CharSequence oldCigar, java.lang.Integer basesTrimmedFromStart, java.lang.Integer basesTrimmedFromEnd, java.lang.Boolean readPaired, java.lang.Boolean properPair, java.lang.Boolean readMapped, java.lang.Boolean mateMapped, java.lang.Boolean failedVendorQualityChecks, java.lang.Boolean duplicateRead, java.lang.Boolean readNegativeStrand, java.lang.Boolean mateNegativeStrand, java.lang.Boolean primaryAlignment, java.lang.Boolean secondaryAlignment, java.lang.Boolean supplementaryAlignment, java.lang.CharSequence mismatchingPositions, java.lang.CharSequence origQual, java.lang.CharSequence attributes, java.lang.CharSequence recordGroupName, java.lang.CharSequence recordGroupSample, java.lang.Long mateAlignmentStart, java.lang.Long mateAlignmentEnd, org.bdgenomics.formats.avro.Contig mateContig, java.lang.Long inferredInsertSize) {
     this.readInFragment = readInFragment;
@@ -365,16 +268,14 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'readInFragment' field.
-   * @return Read number within the array of fragment reads.
-   */
+   * Read number within the array of fragment reads.   */
   public java.lang.Integer getReadInFragment() {
     return readInFragment;
   }
 
   /**
    * Sets the value of the 'readInFragment' field.
-   * Read number within the array of fragment reads.
-   * @param value the value to set.
+   * Read number within the array of fragment reads.   * @param value the value to set.
    */
   public void setReadInFragment(java.lang.Integer value) {
     this.readInFragment = value;
@@ -382,10 +283,9 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'contig' field.
-   * @return The reference sequence details for the reference chromosome that
+   * The reference sequence details for the reference chromosome that
    this read is aligned to. If the read is unaligned, this field should
-   be null.
-   */
+   be null.   */
   public org.bdgenomics.formats.avro.Contig getContig() {
     return contig;
   }
@@ -394,8 +294,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'contig' field.
    * The reference sequence details for the reference chromosome that
    this read is aligned to. If the read is unaligned, this field should
-   be null.
-   * @param value the value to set.
+   be null.   * @param value the value to set.
    */
   public void setContig(org.bdgenomics.formats.avro.Contig value) {
     this.contig = value;
@@ -403,9 +302,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'start' field.
-   * @return 0 based reference position for the start of this read's alignment.
-   Should be null if the read is unaligned.
-   */
+   * 0 based reference position for the start of this read's alignment.
+   Should be null if the read is unaligned.   */
   public java.lang.Long getStart() {
     return start;
   }
@@ -413,8 +311,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   /**
    * Sets the value of the 'start' field.
    * 0 based reference position for the start of this read's alignment.
-   Should be null if the read is unaligned.
-   * @param value the value to set.
+   Should be null if the read is unaligned.   * @param value the value to set.
    */
   public void setStart(java.lang.Long value) {
     this.start = value;
@@ -422,10 +319,9 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'oldPosition' field.
-   * @return 0 based reference position where this read used to start before
+   * 0 based reference position where this read used to start before
    local realignment.
-   Stores the same data as the OP field in the SAM format.
-   */
+   Stores the same data as the OP field in the SAM format.   */
   public java.lang.Long getOldPosition() {
     return oldPosition;
   }
@@ -434,8 +330,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'oldPosition' field.
    * 0 based reference position where this read used to start before
    local realignment.
-   Stores the same data as the OP field in the SAM format.
-   * @param value the value to set.
+   Stores the same data as the OP field in the SAM format.   * @param value the value to set.
    */
   public void setOldPosition(java.lang.Long value) {
     this.oldPosition = value;
@@ -443,9 +338,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'end' field.
-   * @return 0 based reference position for the end of this read's alignment.
-   Should be null if the read is unaligned.
-   */
+   * 0 based reference position for the end of this read's alignment.
+   Should be null if the read is unaligned.   */
   public java.lang.Long getEnd() {
     return end;
   }
@@ -453,8 +347,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   /**
    * Sets the value of the 'end' field.
    * 0 based reference position for the end of this read's alignment.
-   Should be null if the read is unaligned.
-   * @param value the value to set.
+   Should be null if the read is unaligned.   * @param value the value to set.
    */
   public void setEnd(java.lang.Long value) {
     this.end = value;
@@ -462,16 +355,14 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'mapq' field.
-   * @return The global mapping quality of this read.
-   */
+   * The global mapping quality of this read.   */
   public java.lang.Integer getMapq() {
     return mapq;
   }
 
   /**
    * Sets the value of the 'mapq' field.
-   * The global mapping quality of this read.
-   * @param value the value to set.
+   * The global mapping quality of this read.   * @param value the value to set.
    */
   public void setMapq(java.lang.Integer value) {
     this.mapq = value;
@@ -479,10 +370,9 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'readName' field.
-   * @return The name of this read. This should be unique within the read group
+   * The name of this read. This should be unique within the read group
    that this read is from, and can be used to identify other reads that
-   are derived from a single fragment.
-   */
+   are derived from a single fragment.   */
   public java.lang.CharSequence getReadName() {
     return readName;
   }
@@ -491,8 +381,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'readName' field.
    * The name of this read. This should be unique within the read group
    that this read is from, and can be used to identify other reads that
-   are derived from a single fragment.
-   * @param value the value to set.
+   are derived from a single fragment.   * @param value the value to set.
    */
   public void setReadName(java.lang.CharSequence value) {
     this.readName = value;
@@ -500,9 +389,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'sequence' field.
-   * @return The bases in this alignment. If the read has been hard clipped, this may
-   not represent all the bases in the original read.
-   */
+   * The bases in this alignment. If the read has been hard clipped, this may
+   not represent all the bases in the original read.   */
   public java.lang.CharSequence getSequence() {
     return sequence;
   }
@@ -510,8 +398,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   /**
    * Sets the value of the 'sequence' field.
    * The bases in this alignment. If the read has been hard clipped, this may
-   not represent all the bases in the original read.
-   * @param value the value to set.
+   not represent all the bases in the original read.   * @param value the value to set.
    */
   public void setSequence(java.lang.CharSequence value) {
     this.sequence = value;
@@ -519,13 +406,12 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'qual' field.
-   * @return The per-base quality scores in this alignment. If the read has been hard
+   * The per-base quality scores in this alignment. If the read has been hard
    clipped, this may not represent all the bases in the original read.
    Additionally, if the error scores have been recalibrated, this field
    will not contain the original base quality scores.
 
-   @see origQual
-   */
+   @see origQual   */
   public java.lang.CharSequence getQual() {
     return qual;
   }
@@ -537,8 +423,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    Additionally, if the error scores have been recalibrated, this field
    will not contain the original base quality scores.
 
-   @see origQual
-   * @param value the value to set.
+   @see origQual   * @param value the value to set.
    */
   public void setQual(java.lang.CharSequence value) {
     this.qual = value;
@@ -546,7 +431,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'cigar' field.
-   * @return The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that
+   * The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that
    describes the local alignment of this read. Contains {length, operator}
    pairs for all contiguous alignment operations. The operators include:
 
@@ -578,8 +463,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the
      aligned sequence is an alignment match to the reference, but a sequence
      mismatch (e.g., the bases are not equal to the reference). This can
-     indicate a SNP or a read error.
-   */
+     indicate a SNP or a read error.   */
   public java.lang.CharSequence getCigar() {
     return cigar;
   }
@@ -618,8 +502,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the
      aligned sequence is an alignment match to the reference, but a sequence
      mismatch (e.g., the bases are not equal to the reference). This can
-     indicate a SNP or a read error.
-   * @param value the value to set.
+     indicate a SNP or a read error.   * @param value the value to set.
    */
   public void setCigar(java.lang.CharSequence value) {
     this.cigar = value;
@@ -627,11 +510,10 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'oldCigar' field.
-   * @return Stores the CIGAR string present before local indel realignment.
+   * Stores the CIGAR string present before local indel realignment.
    Stores the same data as the OC field in the SAM format.
 
-   @see cigar
-   */
+   @see cigar   */
   public java.lang.CharSequence getOldCigar() {
     return oldCigar;
   }
@@ -641,8 +523,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    * Stores the CIGAR string present before local indel realignment.
    Stores the same data as the OC field in the SAM format.
 
-   @see cigar
-   * @param value the value to set.
+   @see cigar   * @param value the value to set.
    */
   public void setOldCigar(java.lang.CharSequence value) {
     this.oldCigar = value;
@@ -650,12 +531,11 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'basesTrimmedFromStart' field.
-   * @return The number of bases in this read/alignment that have been trimmed from the
+   * The number of bases in this read/alignment that have been trimmed from the
    start of the read. By default, this is equal to 0. If the value is non-zero,
    that means that the start of the read has been hard-clipped.
 
-   @see cigar
-   */
+   @see cigar   */
   public java.lang.Integer getBasesTrimmedFromStart() {
     return basesTrimmedFromStart;
   }
@@ -666,8 +546,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    start of the read. By default, this is equal to 0. If the value is non-zero,
    that means that the start of the read has been hard-clipped.
 
-   @see cigar
-   * @param value the value to set.
+   @see cigar   * @param value the value to set.
    */
   public void setBasesTrimmedFromStart(java.lang.Integer value) {
     this.basesTrimmedFromStart = value;
@@ -675,12 +554,11 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'basesTrimmedFromEnd' field.
-   * @return The number of bases in this read/alignment that have been trimmed from the
+   * The number of bases in this read/alignment that have been trimmed from the
    end of the read. By default, this is equal to 0. If the value is non-zero,
    that means that the end of the read has been hard-clipped.
 
-   @see cigar
-   */
+   @see cigar   */
   public java.lang.Integer getBasesTrimmedFromEnd() {
     return basesTrimmedFromEnd;
   }
@@ -691,8 +569,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    end of the read. By default, this is equal to 0. If the value is non-zero,
    that means that the end of the read has been hard-clipped.
 
-   @see cigar
-   * @param value the value to set.
+   @see cigar   * @param value the value to set.
    */
   public void setBasesTrimmedFromEnd(java.lang.Integer value) {
     this.basesTrimmedFromEnd = value;
@@ -790,9 +667,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'readNegativeStrand' field.
-   * @return True if this alignment is mapped as a reverse compliment. This field
-   defaults to false.
-   */
+   * True if this alignment is mapped as a reverse compliment. This field
+   defaults to false.   */
   public java.lang.Boolean getReadNegativeStrand() {
     return readNegativeStrand;
   }
@@ -800,8 +676,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   /**
    * Sets the value of the 'readNegativeStrand' field.
    * True if this alignment is mapped as a reverse compliment. This field
-   defaults to false.
-   * @param value the value to set.
+   defaults to false.   * @param value the value to set.
    */
   public void setReadNegativeStrand(java.lang.Boolean value) {
     this.readNegativeStrand = value;
@@ -809,9 +684,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'mateNegativeStrand' field.
-   * @return True if the mate pair of this alignment is mapped as a reverse compliment.
-   This field defaults to false.
-   */
+   * True if the mate pair of this alignment is mapped as a reverse compliment.
+   This field defaults to false.   */
   public java.lang.Boolean getMateNegativeStrand() {
     return mateNegativeStrand;
   }
@@ -819,8 +693,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   /**
    * Sets the value of the 'mateNegativeStrand' field.
    * True if the mate pair of this alignment is mapped as a reverse compliment.
-   This field defaults to false.
-   * @param value the value to set.
+   This field defaults to false.   * @param value the value to set.
    */
   public void setMateNegativeStrand(java.lang.Boolean value) {
     this.mateNegativeStrand = value;
@@ -828,12 +701,11 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'primaryAlignment' field.
-   * @return This field is true if this alignment is either the best linear alignment,
+   * This field is true if this alignment is either the best linear alignment,
    or the first linear alignment in a chimeric alignment. Defaults to false.
 
    @see secondaryAlignment
-   @see supplementaryAlignment
-   */
+   @see supplementaryAlignment   */
   public java.lang.Boolean getPrimaryAlignment() {
     return primaryAlignment;
   }
@@ -844,8 +716,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    or the first linear alignment in a chimeric alignment. Defaults to false.
 
    @see secondaryAlignment
-   @see supplementaryAlignment
-   * @param value the value to set.
+   @see supplementaryAlignment   * @param value the value to set.
    */
   public void setPrimaryAlignment(java.lang.Boolean value) {
     this.primaryAlignment = value;
@@ -853,12 +724,11 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'secondaryAlignment' field.
-   * @return This field is true if this alignment is a lower quality linear alignment
+   * This field is true if this alignment is a lower quality linear alignment
    for a multiply-mapped read. Defaults to false.
 
    @see primaryAlignment
-   @see supplementaryAlignment
-   */
+   @see supplementaryAlignment   */
   public java.lang.Boolean getSecondaryAlignment() {
     return secondaryAlignment;
   }
@@ -869,8 +739,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    for a multiply-mapped read. Defaults to false.
 
    @see primaryAlignment
-   @see supplementaryAlignment
-   * @param value the value to set.
+   @see supplementaryAlignment   * @param value the value to set.
    */
   public void setSecondaryAlignment(java.lang.Boolean value) {
     this.secondaryAlignment = value;
@@ -878,12 +747,11 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'supplementaryAlignment' field.
-   * @return This field is true if this alignment is a non-primary linear alignment in
+   * This field is true if this alignment is a non-primary linear alignment in
    a chimeric alignment. Defaults to false.
 
    @see primaryAlignment
-   @see secondaryAlignment
-   */
+   @see secondaryAlignment   */
   public java.lang.Boolean getSupplementaryAlignment() {
     return supplementaryAlignment;
   }
@@ -894,8 +762,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
    a chimeric alignment. Defaults to false.
 
    @see primaryAlignment
-   @see secondaryAlignment
-   * @param value the value to set.
+   @see secondaryAlignment   * @param value the value to set.
    */
   public void setSupplementaryAlignment(java.lang.Boolean value) {
     this.supplementaryAlignment = value;
@@ -978,9 +845,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'mateAlignmentStart' field.
-   * @return The start position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-   */
+   * The start position of the mate of this read. Should be set to null if the
+   mate is unaligned, or if the mate does not exist.   */
   public java.lang.Long getMateAlignmentStart() {
     return mateAlignmentStart;
   }
@@ -988,8 +854,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   /**
    * Sets the value of the 'mateAlignmentStart' field.
    * The start position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-   * @param value the value to set.
+   mate is unaligned, or if the mate does not exist.   * @param value the value to set.
    */
   public void setMateAlignmentStart(java.lang.Long value) {
     this.mateAlignmentStart = value;
@@ -997,9 +862,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'mateAlignmentEnd' field.
-   * @return The end position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-   */
+   * The end position of the mate of this read. Should be set to null if the
+   mate is unaligned, or if the mate does not exist.   */
   public java.lang.Long getMateAlignmentEnd() {
     return mateAlignmentEnd;
   }
@@ -1007,8 +871,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   /**
    * Sets the value of the 'mateAlignmentEnd' field.
    * The end position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-   * @param value the value to set.
+   mate is unaligned, or if the mate does not exist.   * @param value the value to set.
    */
   public void setMateAlignmentEnd(java.lang.Long value) {
     this.mateAlignmentEnd = value;
@@ -1016,9 +879,8 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'mateContig' field.
-   * @return The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-   */
+   * The reference contig of the mate of this read. Should be set to null if the
+   mate is unaligned, or if the mate does not exist.   */
   public org.bdgenomics.formats.avro.Contig getMateContig() {
     return mateContig;
   }
@@ -1026,8 +888,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   /**
    * Sets the value of the 'mateContig' field.
    * The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-   * @param value the value to set.
+   mate is unaligned, or if the mate does not exist.   * @param value the value to set.
    */
   public void setMateContig(org.bdgenomics.formats.avro.Contig value) {
     this.mateContig = value;
@@ -1035,43 +896,30 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * Gets the value of the 'inferredInsertSize' field.
-   * @return The distance between this read and it's mate as inferred from alignment.
-   */
+   * The distance between this read and it's mate as inferred from alignment.   */
   public java.lang.Long getInferredInsertSize() {
     return inferredInsertSize;
   }
 
   /**
    * Sets the value of the 'inferredInsertSize' field.
-   * The distance between this read and it's mate as inferred from alignment.
-   * @param value the value to set.
+   * The distance between this read and it's mate as inferred from alignment.   * @param value the value to set.
    */
   public void setInferredInsertSize(java.lang.Long value) {
     this.inferredInsertSize = value;
   }
 
-  /**
-   * Creates a new AlignmentRecord RecordBuilder.
-   * @return A new AlignmentRecord RecordBuilder
-   */
+  /** Creates a new AlignmentRecord RecordBuilder */
   public static org.bdgenomics.formats.avro.AlignmentRecord.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.AlignmentRecord.Builder();
   }
   
-  /**
-   * Creates a new AlignmentRecord RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new AlignmentRecord RecordBuilder
-   */
+  /** Creates a new AlignmentRecord RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.AlignmentRecord.Builder newBuilder(org.bdgenomics.formats.avro.AlignmentRecord.Builder other) {
     return new org.bdgenomics.formats.avro.AlignmentRecord.Builder(other);
   }
   
-  /**
-   * Creates a new AlignmentRecord RecordBuilder by copying an existing AlignmentRecord instance.
-   * @param other The existing instance to copy.
-   * @return A new AlignmentRecord RecordBuilder
-   */
+  /** Creates a new AlignmentRecord RecordBuilder by copying an existing AlignmentRecord instance */
   public static org.bdgenomics.formats.avro.AlignmentRecord.Builder newBuilder(org.bdgenomics.formats.avro.AlignmentRecord other) {
     return new org.bdgenomics.formats.avro.AlignmentRecord.Builder(other);
   }
@@ -1082,89 +930,18 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<AlignmentRecord>
     implements org.apache.avro.data.RecordBuilder<AlignmentRecord> {
 
-    /** Read number within the array of fragment reads. */
     private java.lang.Integer readInFragment;
-    /** The reference sequence details for the reference chromosome that
-   this read is aligned to. If the read is unaligned, this field should
-   be null. */
     private org.bdgenomics.formats.avro.Contig contig;
-    private org.bdgenomics.formats.avro.Contig.Builder contigBuilder;
-    /** 0 based reference position for the start of this read's alignment.
-   Should be null if the read is unaligned. */
     private java.lang.Long start;
-    /** 0 based reference position where this read used to start before
-   local realignment.
-   Stores the same data as the OP field in the SAM format. */
     private java.lang.Long oldPosition;
-    /** 0 based reference position for the end of this read's alignment.
-   Should be null if the read is unaligned. */
     private java.lang.Long end;
-    /** The global mapping quality of this read. */
     private java.lang.Integer mapq;
-    /** The name of this read. This should be unique within the read group
-   that this read is from, and can be used to identify other reads that
-   are derived from a single fragment. */
     private java.lang.CharSequence readName;
-    /** The bases in this alignment. If the read has been hard clipped, this may
-   not represent all the bases in the original read. */
     private java.lang.CharSequence sequence;
-    /** The per-base quality scores in this alignment. If the read has been hard
-   clipped, this may not represent all the bases in the original read.
-   Additionally, if the error scores have been recalibrated, this field
-   will not contain the original base quality scores.
-
-   @see origQual */
     private java.lang.CharSequence qual;
-    /** The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that
-   describes the local alignment of this read. Contains {length, operator}
-   pairs for all contiguous alignment operations. The operators include:
-
-   * M, ALIGNMENT_MATCH: An alignment match indicates that a sequence can be
-     aligned to the reference without evidence of an INDEL. Unlike the
-     SEQUENCE_MATCH and SEQUENCE_MISMATCH operators, the ALIGNMENT_MATCH
-     operator does not indicate whether the reference and read sequences are an
-     exact match.
-   * I, INSERT: The insert operator indicates that the read contains evidence of
-     bases being inserted into the reference.
-   * D, DELETE: The delete operator indicates that the read contains evidence of
-     bases being deleted from the reference.
-   * N, SKIP: The skip operator indicates that this read skips a long segment of
-     the reference, but the bases have not been deleted. This operator is
-     commonly used when working with RNA-seq data, where reads may skip long
-     segments of the reference between exons.
-   * S, CLIP_SOFT: The soft clip operator indicates that bases at the start/end
-     of a read have not been considered during alignment. This may occur if the
-     majority of a read maps, except for low quality bases at the start/end of
-     a read. Bases that are soft clipped will still be stored in the read.
-   * H, CLIP_HARD: The hard clip operator indicates that bases at the start/end of
-     a read have been omitted from this alignment. This may occur if this linear
-     alignment is part of a chimeric alignment, or if the read has been trimmed
-     (e.g., during error correction, or to trim poly-A tails for RNA-seq).
-   * P, PAD: The pad operator indicates that there is padding in an alignment.
-   * =, SEQUENCE_MATCH: This operator indicates that this portion of the aligned
-     sequence exactly matches the reference (e.g., all bases are equal to the
-     reference bases).
-   * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the
-     aligned sequence is an alignment match to the reference, but a sequence
-     mismatch (e.g., the bases are not equal to the reference). This can
-     indicate a SNP or a read error. */
     private java.lang.CharSequence cigar;
-    /** Stores the CIGAR string present before local indel realignment.
-   Stores the same data as the OC field in the SAM format.
-
-   @see cigar */
     private java.lang.CharSequence oldCigar;
-    /** The number of bases in this read/alignment that have been trimmed from the
-   start of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the start of the read has been hard-clipped.
-
-   @see cigar */
     private java.lang.Integer basesTrimmedFromStart;
-    /** The number of bases in this read/alignment that have been trimmed from the
-   end of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the end of the read has been hard-clipped.
-
-   @see cigar */
     private java.lang.Integer basesTrimmedFromEnd;
     private java.lang.Boolean readPaired;
     private java.lang.Boolean properPair;
@@ -1172,46 +949,19 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
     private java.lang.Boolean mateMapped;
     private java.lang.Boolean failedVendorQualityChecks;
     private java.lang.Boolean duplicateRead;
-    /** True if this alignment is mapped as a reverse compliment. This field
-   defaults to false. */
     private java.lang.Boolean readNegativeStrand;
-    /** True if the mate pair of this alignment is mapped as a reverse compliment.
-   This field defaults to false. */
     private java.lang.Boolean mateNegativeStrand;
-    /** This field is true if this alignment is either the best linear alignment,
-   or the first linear alignment in a chimeric alignment. Defaults to false.
-
-   @see secondaryAlignment
-   @see supplementaryAlignment */
     private java.lang.Boolean primaryAlignment;
-    /** This field is true if this alignment is a lower quality linear alignment
-   for a multiply-mapped read. Defaults to false.
-
-   @see primaryAlignment
-   @see supplementaryAlignment */
     private java.lang.Boolean secondaryAlignment;
-    /** This field is true if this alignment is a non-primary linear alignment in
-   a chimeric alignment. Defaults to false.
-
-   @see primaryAlignment
-   @see secondaryAlignment */
     private java.lang.Boolean supplementaryAlignment;
     private java.lang.CharSequence mismatchingPositions;
     private java.lang.CharSequence origQual;
     private java.lang.CharSequence attributes;
     private java.lang.CharSequence recordGroupName;
     private java.lang.CharSequence recordGroupSample;
-    /** The start position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist. */
     private java.lang.Long mateAlignmentStart;
-    /** The end position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist. */
     private java.lang.Long mateAlignmentEnd;
-    /** The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist. */
     private org.bdgenomics.formats.avro.Contig mateContig;
-    private org.bdgenomics.formats.avro.Contig.Builder mateContigBuilder;
-    /** The distance between this read and it's mate as inferred from alignment. */
     private java.lang.Long inferredInsertSize;
 
     /** Creates a new Builder */
@@ -1219,10 +969,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       super(org.bdgenomics.formats.avro.AlignmentRecord.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.AlignmentRecord.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.readInFragment)) {
@@ -1233,9 +980,6 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
         this.contig = data().deepCopy(fields()[1].schema(), other.contig);
         fieldSetFlags()[1] = true;
       }
-      if (other.hasContigBuilder()) {
-        this.contigBuilder = org.bdgenomics.formats.avro.Contig.newBuilder(other.getContigBuilder());
-      }
       if (isValidValue(fields()[2], other.start)) {
         this.start = data().deepCopy(fields()[2].schema(), other.start);
         fieldSetFlags()[2] = true;
@@ -1356,19 +1100,13 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
         this.mateContig = data().deepCopy(fields()[31].schema(), other.mateContig);
         fieldSetFlags()[31] = true;
       }
-      if (other.hasMateContigBuilder()) {
-        this.mateContigBuilder = org.bdgenomics.formats.avro.Contig.newBuilder(other.getMateContigBuilder());
-      }
       if (isValidValue(fields()[32], other.inferredInsertSize)) {
         this.inferredInsertSize = data().deepCopy(fields()[32].schema(), other.inferredInsertSize);
         fieldSetFlags()[32] = true;
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing AlignmentRecord instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing AlignmentRecord instance */
     private Builder(org.bdgenomics.formats.avro.AlignmentRecord other) {
             super(org.bdgenomics.formats.avro.AlignmentRecord.SCHEMA$);
       if (isValidValue(fields()[0], other.readInFragment)) {
@@ -1379,7 +1117,6 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
         this.contig = data().deepCopy(fields()[1].schema(), other.contig);
         fieldSetFlags()[1] = true;
       }
-      this.contigBuilder = null;
       if (isValidValue(fields()[2], other.start)) {
         this.start = data().deepCopy(fields()[2].schema(), other.start);
         fieldSetFlags()[2] = true;
@@ -1500,1761 +1237,831 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
         this.mateContig = data().deepCopy(fields()[31].schema(), other.mateContig);
         fieldSetFlags()[31] = true;
       }
-      this.mateContigBuilder = null;
       if (isValidValue(fields()[32], other.inferredInsertSize)) {
         this.inferredInsertSize = data().deepCopy(fields()[32].schema(), other.inferredInsertSize);
         fieldSetFlags()[32] = true;
       }
     }
 
-    /**
-      * Gets the value of the 'readInFragment' field.
-      * Read number within the array of fragment reads.
-      * @return The value.
-      */
+    /** Gets the value of the 'readInFragment' field */
     public java.lang.Integer getReadInFragment() {
       return readInFragment;
     }
-
-    /**
-      * Sets the value of the 'readInFragment' field.
-      * Read number within the array of fragment reads.
-      * @param value The value of 'readInFragment'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'readInFragment' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setReadInFragment(java.lang.Integer value) {
       validate(fields()[0], value);
       this.readInFragment = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'readInFragment' field has been set.
-      * Read number within the array of fragment reads.
-      * @return True if the 'readInFragment' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'readInFragment' field has been set */
     public boolean hasReadInFragment() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'readInFragment' field.
-      * Read number within the array of fragment reads.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'readInFragment' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearReadInFragment() {
       readInFragment = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'contig' field.
-      * The reference sequence details for the reference chromosome that
-   this read is aligned to. If the read is unaligned, this field should
-   be null.
-      * @return The value.
-      */
+    /** Gets the value of the 'contig' field */
     public org.bdgenomics.formats.avro.Contig getContig() {
       return contig;
     }
-
-    /**
-      * Sets the value of the 'contig' field.
-      * The reference sequence details for the reference chromosome that
-   this read is aligned to. If the read is unaligned, this field should
-   be null.
-      * @param value The value of 'contig'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'contig' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setContig(org.bdgenomics.formats.avro.Contig value) {
       validate(fields()[1], value);
-      this.contigBuilder = null;
       this.contig = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'contig' field has been set.
-      * The reference sequence details for the reference chromosome that
-   this read is aligned to. If the read is unaligned, this field should
-   be null.
-      * @return True if the 'contig' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'contig' field has been set */
     public boolean hasContig() {
       return fieldSetFlags()[1];
     }
-
-    /**
-     * Gets the Builder instance for the 'contig' field and creates one if it doesn't exist yet.
-     * The reference sequence details for the reference chromosome that
-   this read is aligned to. If the read is unaligned, this field should
-   be null.
-     * @return This builder.
-     */
-    public org.bdgenomics.formats.avro.Contig.Builder getContigBuilder() {
-      if (contigBuilder == null) {
-        if (hasContig()) {
-          setContigBuilder(org.bdgenomics.formats.avro.Contig.newBuilder(contig));
-        } else {
-          setContigBuilder(org.bdgenomics.formats.avro.Contig.newBuilder());
-        }
-      }
-      return contigBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'contig' field
-     * The reference sequence details for the reference chromosome that
-   this read is aligned to. If the read is unaligned, this field should
-   be null.
-     * @return This builder.
-     */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setContigBuilder(org.bdgenomics.formats.avro.Contig.Builder value) {
-      clearContig();
-      contigBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'contig' field has an active Builder instance
-     * The reference sequence details for the reference chromosome that
-   this read is aligned to. If the read is unaligned, this field should
-   be null.
-     * @return True if the 'contig' field has an active Builder instance
-     */
-    public boolean hasContigBuilder() {
-      return contigBuilder != null;
-    }
-
-    /**
-      * Clears the value of the 'contig' field.
-      * The reference sequence details for the reference chromosome that
-   this read is aligned to. If the read is unaligned, this field should
-   be null.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'contig' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearContig() {
       contig = null;
-      contigBuilder = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'start' field.
-      * 0 based reference position for the start of this read's alignment.
-   Should be null if the read is unaligned.
-      * @return The value.
-      */
+    /** Gets the value of the 'start' field */
     public java.lang.Long getStart() {
       return start;
     }
-
-    /**
-      * Sets the value of the 'start' field.
-      * 0 based reference position for the start of this read's alignment.
-   Should be null if the read is unaligned.
-      * @param value The value of 'start'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'start' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setStart(java.lang.Long value) {
       validate(fields()[2], value);
       this.start = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'start' field has been set.
-      * 0 based reference position for the start of this read's alignment.
-   Should be null if the read is unaligned.
-      * @return True if the 'start' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'start' field has been set */
     public boolean hasStart() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'start' field.
-      * 0 based reference position for the start of this read's alignment.
-   Should be null if the read is unaligned.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'start' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearStart() {
       start = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'oldPosition' field.
-      * 0 based reference position where this read used to start before
-   local realignment.
-   Stores the same data as the OP field in the SAM format.
-      * @return The value.
-      */
+    /** Gets the value of the 'oldPosition' field */
     public java.lang.Long getOldPosition() {
       return oldPosition;
     }
-
-    /**
-      * Sets the value of the 'oldPosition' field.
-      * 0 based reference position where this read used to start before
-   local realignment.
-   Stores the same data as the OP field in the SAM format.
-      * @param value The value of 'oldPosition'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'oldPosition' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setOldPosition(java.lang.Long value) {
       validate(fields()[3], value);
       this.oldPosition = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'oldPosition' field has been set.
-      * 0 based reference position where this read used to start before
-   local realignment.
-   Stores the same data as the OP field in the SAM format.
-      * @return True if the 'oldPosition' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'oldPosition' field has been set */
     public boolean hasOldPosition() {
       return fieldSetFlags()[3];
     }
-
-
-    /**
-      * Clears the value of the 'oldPosition' field.
-      * 0 based reference position where this read used to start before
-   local realignment.
-   Stores the same data as the OP field in the SAM format.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'oldPosition' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearOldPosition() {
       oldPosition = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'end' field.
-      * 0 based reference position for the end of this read's alignment.
-   Should be null if the read is unaligned.
-      * @return The value.
-      */
+    /** Gets the value of the 'end' field */
     public java.lang.Long getEnd() {
       return end;
     }
-
-    /**
-      * Sets the value of the 'end' field.
-      * 0 based reference position for the end of this read's alignment.
-   Should be null if the read is unaligned.
-      * @param value The value of 'end'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'end' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setEnd(java.lang.Long value) {
       validate(fields()[4], value);
       this.end = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'end' field has been set.
-      * 0 based reference position for the end of this read's alignment.
-   Should be null if the read is unaligned.
-      * @return True if the 'end' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'end' field has been set */
     public boolean hasEnd() {
       return fieldSetFlags()[4];
     }
-
-
-    /**
-      * Clears the value of the 'end' field.
-      * 0 based reference position for the end of this read's alignment.
-   Should be null if the read is unaligned.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'end' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearEnd() {
       end = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mapq' field.
-      * The global mapping quality of this read.
-      * @return The value.
-      */
+    /** Gets the value of the 'mapq' field */
     public java.lang.Integer getMapq() {
       return mapq;
     }
-
-    /**
-      * Sets the value of the 'mapq' field.
-      * The global mapping quality of this read.
-      * @param value The value of 'mapq'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mapq' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMapq(java.lang.Integer value) {
       validate(fields()[5], value);
       this.mapq = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mapq' field has been set.
-      * The global mapping quality of this read.
-      * @return True if the 'mapq' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mapq' field has been set */
     public boolean hasMapq() {
       return fieldSetFlags()[5];
     }
-
-
-    /**
-      * Clears the value of the 'mapq' field.
-      * The global mapping quality of this read.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mapq' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearMapq() {
       mapq = null;
       fieldSetFlags()[5] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'readName' field.
-      * The name of this read. This should be unique within the read group
-   that this read is from, and can be used to identify other reads that
-   are derived from a single fragment.
-      * @return The value.
-      */
+    /** Gets the value of the 'readName' field */
     public java.lang.CharSequence getReadName() {
       return readName;
     }
-
-    /**
-      * Sets the value of the 'readName' field.
-      * The name of this read. This should be unique within the read group
-   that this read is from, and can be used to identify other reads that
-   are derived from a single fragment.
-      * @param value The value of 'readName'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'readName' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setReadName(java.lang.CharSequence value) {
       validate(fields()[6], value);
       this.readName = value;
       fieldSetFlags()[6] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'readName' field has been set.
-      * The name of this read. This should be unique within the read group
-   that this read is from, and can be used to identify other reads that
-   are derived from a single fragment.
-      * @return True if the 'readName' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'readName' field has been set */
     public boolean hasReadName() {
       return fieldSetFlags()[6];
     }
-
-
-    /**
-      * Clears the value of the 'readName' field.
-      * The name of this read. This should be unique within the read group
-   that this read is from, and can be used to identify other reads that
-   are derived from a single fragment.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'readName' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearReadName() {
       readName = null;
       fieldSetFlags()[6] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'sequence' field.
-      * The bases in this alignment. If the read has been hard clipped, this may
-   not represent all the bases in the original read.
-      * @return The value.
-      */
+    /** Gets the value of the 'sequence' field */
     public java.lang.CharSequence getSequence() {
       return sequence;
     }
-
-    /**
-      * Sets the value of the 'sequence' field.
-      * The bases in this alignment. If the read has been hard clipped, this may
-   not represent all the bases in the original read.
-      * @param value The value of 'sequence'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'sequence' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setSequence(java.lang.CharSequence value) {
       validate(fields()[7], value);
       this.sequence = value;
       fieldSetFlags()[7] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'sequence' field has been set.
-      * The bases in this alignment. If the read has been hard clipped, this may
-   not represent all the bases in the original read.
-      * @return True if the 'sequence' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'sequence' field has been set */
     public boolean hasSequence() {
       return fieldSetFlags()[7];
     }
-
-
-    /**
-      * Clears the value of the 'sequence' field.
-      * The bases in this alignment. If the read has been hard clipped, this may
-   not represent all the bases in the original read.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'sequence' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearSequence() {
       sequence = null;
       fieldSetFlags()[7] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'qual' field.
-      * The per-base quality scores in this alignment. If the read has been hard
-   clipped, this may not represent all the bases in the original read.
-   Additionally, if the error scores have been recalibrated, this field
-   will not contain the original base quality scores.
-
-   @see origQual
-      * @return The value.
-      */
+    /** Gets the value of the 'qual' field */
     public java.lang.CharSequence getQual() {
       return qual;
     }
-
-    /**
-      * Sets the value of the 'qual' field.
-      * The per-base quality scores in this alignment. If the read has been hard
-   clipped, this may not represent all the bases in the original read.
-   Additionally, if the error scores have been recalibrated, this field
-   will not contain the original base quality scores.
-
-   @see origQual
-      * @param value The value of 'qual'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'qual' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setQual(java.lang.CharSequence value) {
       validate(fields()[8], value);
       this.qual = value;
       fieldSetFlags()[8] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'qual' field has been set.
-      * The per-base quality scores in this alignment. If the read has been hard
-   clipped, this may not represent all the bases in the original read.
-   Additionally, if the error scores have been recalibrated, this field
-   will not contain the original base quality scores.
-
-   @see origQual
-      * @return True if the 'qual' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'qual' field has been set */
     public boolean hasQual() {
       return fieldSetFlags()[8];
     }
-
-
-    /**
-      * Clears the value of the 'qual' field.
-      * The per-base quality scores in this alignment. If the read has been hard
-   clipped, this may not represent all the bases in the original read.
-   Additionally, if the error scores have been recalibrated, this field
-   will not contain the original base quality scores.
-
-   @see origQual
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'qual' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearQual() {
       qual = null;
       fieldSetFlags()[8] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'cigar' field.
-      * The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that
-   describes the local alignment of this read. Contains {length, operator}
-   pairs for all contiguous alignment operations. The operators include:
-
-   * M, ALIGNMENT_MATCH: An alignment match indicates that a sequence can be
-     aligned to the reference without evidence of an INDEL. Unlike the
-     SEQUENCE_MATCH and SEQUENCE_MISMATCH operators, the ALIGNMENT_MATCH
-     operator does not indicate whether the reference and read sequences are an
-     exact match.
-   * I, INSERT: The insert operator indicates that the read contains evidence of
-     bases being inserted into the reference.
-   * D, DELETE: The delete operator indicates that the read contains evidence of
-     bases being deleted from the reference.
-   * N, SKIP: The skip operator indicates that this read skips a long segment of
-     the reference, but the bases have not been deleted. This operator is
-     commonly used when working with RNA-seq data, where reads may skip long
-     segments of the reference between exons.
-   * S, CLIP_SOFT: The soft clip operator indicates that bases at the start/end
-     of a read have not been considered during alignment. This may occur if the
-     majority of a read maps, except for low quality bases at the start/end of
-     a read. Bases that are soft clipped will still be stored in the read.
-   * H, CLIP_HARD: The hard clip operator indicates that bases at the start/end of
-     a read have been omitted from this alignment. This may occur if this linear
-     alignment is part of a chimeric alignment, or if the read has been trimmed
-     (e.g., during error correction, or to trim poly-A tails for RNA-seq).
-   * P, PAD: The pad operator indicates that there is padding in an alignment.
-   * =, SEQUENCE_MATCH: This operator indicates that this portion of the aligned
-     sequence exactly matches the reference (e.g., all bases are equal to the
-     reference bases).
-   * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the
-     aligned sequence is an alignment match to the reference, but a sequence
-     mismatch (e.g., the bases are not equal to the reference). This can
-     indicate a SNP or a read error.
-      * @return The value.
-      */
+    /** Gets the value of the 'cigar' field */
     public java.lang.CharSequence getCigar() {
       return cigar;
     }
-
-    /**
-      * Sets the value of the 'cigar' field.
-      * The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that
-   describes the local alignment of this read. Contains {length, operator}
-   pairs for all contiguous alignment operations. The operators include:
-
-   * M, ALIGNMENT_MATCH: An alignment match indicates that a sequence can be
-     aligned to the reference without evidence of an INDEL. Unlike the
-     SEQUENCE_MATCH and SEQUENCE_MISMATCH operators, the ALIGNMENT_MATCH
-     operator does not indicate whether the reference and read sequences are an
-     exact match.
-   * I, INSERT: The insert operator indicates that the read contains evidence of
-     bases being inserted into the reference.
-   * D, DELETE: The delete operator indicates that the read contains evidence of
-     bases being deleted from the reference.
-   * N, SKIP: The skip operator indicates that this read skips a long segment of
-     the reference, but the bases have not been deleted. This operator is
-     commonly used when working with RNA-seq data, where reads may skip long
-     segments of the reference between exons.
-   * S, CLIP_SOFT: The soft clip operator indicates that bases at the start/end
-     of a read have not been considered during alignment. This may occur if the
-     majority of a read maps, except for low quality bases at the start/end of
-     a read. Bases that are soft clipped will still be stored in the read.
-   * H, CLIP_HARD: The hard clip operator indicates that bases at the start/end of
-     a read have been omitted from this alignment. This may occur if this linear
-     alignment is part of a chimeric alignment, or if the read has been trimmed
-     (e.g., during error correction, or to trim poly-A tails for RNA-seq).
-   * P, PAD: The pad operator indicates that there is padding in an alignment.
-   * =, SEQUENCE_MATCH: This operator indicates that this portion of the aligned
-     sequence exactly matches the reference (e.g., all bases are equal to the
-     reference bases).
-   * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the
-     aligned sequence is an alignment match to the reference, but a sequence
-     mismatch (e.g., the bases are not equal to the reference). This can
-     indicate a SNP or a read error.
-      * @param value The value of 'cigar'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'cigar' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setCigar(java.lang.CharSequence value) {
       validate(fields()[9], value);
       this.cigar = value;
       fieldSetFlags()[9] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'cigar' field has been set.
-      * The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that
-   describes the local alignment of this read. Contains {length, operator}
-   pairs for all contiguous alignment operations. The operators include:
-
-   * M, ALIGNMENT_MATCH: An alignment match indicates that a sequence can be
-     aligned to the reference without evidence of an INDEL. Unlike the
-     SEQUENCE_MATCH and SEQUENCE_MISMATCH operators, the ALIGNMENT_MATCH
-     operator does not indicate whether the reference and read sequences are an
-     exact match.
-   * I, INSERT: The insert operator indicates that the read contains evidence of
-     bases being inserted into the reference.
-   * D, DELETE: The delete operator indicates that the read contains evidence of
-     bases being deleted from the reference.
-   * N, SKIP: The skip operator indicates that this read skips a long segment of
-     the reference, but the bases have not been deleted. This operator is
-     commonly used when working with RNA-seq data, where reads may skip long
-     segments of the reference between exons.
-   * S, CLIP_SOFT: The soft clip operator indicates that bases at the start/end
-     of a read have not been considered during alignment. This may occur if the
-     majority of a read maps, except for low quality bases at the start/end of
-     a read. Bases that are soft clipped will still be stored in the read.
-   * H, CLIP_HARD: The hard clip operator indicates that bases at the start/end of
-     a read have been omitted from this alignment. This may occur if this linear
-     alignment is part of a chimeric alignment, or if the read has been trimmed
-     (e.g., during error correction, or to trim poly-A tails for RNA-seq).
-   * P, PAD: The pad operator indicates that there is padding in an alignment.
-   * =, SEQUENCE_MATCH: This operator indicates that this portion of the aligned
-     sequence exactly matches the reference (e.g., all bases are equal to the
-     reference bases).
-   * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the
-     aligned sequence is an alignment match to the reference, but a sequence
-     mismatch (e.g., the bases are not equal to the reference). This can
-     indicate a SNP or a read error.
-      * @return True if the 'cigar' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'cigar' field has been set */
     public boolean hasCigar() {
       return fieldSetFlags()[9];
     }
-
-
-    /**
-      * Clears the value of the 'cigar' field.
-      * The Compact Ideosyncratic Gapped Alignment Report (CIGAR) string that
-   describes the local alignment of this read. Contains {length, operator}
-   pairs for all contiguous alignment operations. The operators include:
-
-   * M, ALIGNMENT_MATCH: An alignment match indicates that a sequence can be
-     aligned to the reference without evidence of an INDEL. Unlike the
-     SEQUENCE_MATCH and SEQUENCE_MISMATCH operators, the ALIGNMENT_MATCH
-     operator does not indicate whether the reference and read sequences are an
-     exact match.
-   * I, INSERT: The insert operator indicates that the read contains evidence of
-     bases being inserted into the reference.
-   * D, DELETE: The delete operator indicates that the read contains evidence of
-     bases being deleted from the reference.
-   * N, SKIP: The skip operator indicates that this read skips a long segment of
-     the reference, but the bases have not been deleted. This operator is
-     commonly used when working with RNA-seq data, where reads may skip long
-     segments of the reference between exons.
-   * S, CLIP_SOFT: The soft clip operator indicates that bases at the start/end
-     of a read have not been considered during alignment. This may occur if the
-     majority of a read maps, except for low quality bases at the start/end of
-     a read. Bases that are soft clipped will still be stored in the read.
-   * H, CLIP_HARD: The hard clip operator indicates that bases at the start/end of
-     a read have been omitted from this alignment. This may occur if this linear
-     alignment is part of a chimeric alignment, or if the read has been trimmed
-     (e.g., during error correction, or to trim poly-A tails for RNA-seq).
-   * P, PAD: The pad operator indicates that there is padding in an alignment.
-   * =, SEQUENCE_MATCH: This operator indicates that this portion of the aligned
-     sequence exactly matches the reference (e.g., all bases are equal to the
-     reference bases).
-   * X, SEQUENCE_MISMATCH: This operator indicates that this portion of the
-     aligned sequence is an alignment match to the reference, but a sequence
-     mismatch (e.g., the bases are not equal to the reference). This can
-     indicate a SNP or a read error.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'cigar' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearCigar() {
       cigar = null;
       fieldSetFlags()[9] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'oldCigar' field.
-      * Stores the CIGAR string present before local indel realignment.
-   Stores the same data as the OC field in the SAM format.
-
-   @see cigar
-      * @return The value.
-      */
+    /** Gets the value of the 'oldCigar' field */
     public java.lang.CharSequence getOldCigar() {
       return oldCigar;
     }
-
-    /**
-      * Sets the value of the 'oldCigar' field.
-      * Stores the CIGAR string present before local indel realignment.
-   Stores the same data as the OC field in the SAM format.
-
-   @see cigar
-      * @param value The value of 'oldCigar'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'oldCigar' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setOldCigar(java.lang.CharSequence value) {
       validate(fields()[10], value);
       this.oldCigar = value;
       fieldSetFlags()[10] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'oldCigar' field has been set.
-      * Stores the CIGAR string present before local indel realignment.
-   Stores the same data as the OC field in the SAM format.
-
-   @see cigar
-      * @return True if the 'oldCigar' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'oldCigar' field has been set */
     public boolean hasOldCigar() {
       return fieldSetFlags()[10];
     }
-
-
-    /**
-      * Clears the value of the 'oldCigar' field.
-      * Stores the CIGAR string present before local indel realignment.
-   Stores the same data as the OC field in the SAM format.
-
-   @see cigar
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'oldCigar' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearOldCigar() {
       oldCigar = null;
       fieldSetFlags()[10] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'basesTrimmedFromStart' field.
-      * The number of bases in this read/alignment that have been trimmed from the
-   start of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the start of the read has been hard-clipped.
-
-   @see cigar
-      * @return The value.
-      */
+    /** Gets the value of the 'basesTrimmedFromStart' field */
     public java.lang.Integer getBasesTrimmedFromStart() {
       return basesTrimmedFromStart;
     }
-
-    /**
-      * Sets the value of the 'basesTrimmedFromStart' field.
-      * The number of bases in this read/alignment that have been trimmed from the
-   start of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the start of the read has been hard-clipped.
-
-   @see cigar
-      * @param value The value of 'basesTrimmedFromStart'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'basesTrimmedFromStart' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setBasesTrimmedFromStart(java.lang.Integer value) {
       validate(fields()[11], value);
       this.basesTrimmedFromStart = value;
       fieldSetFlags()[11] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'basesTrimmedFromStart' field has been set.
-      * The number of bases in this read/alignment that have been trimmed from the
-   start of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the start of the read has been hard-clipped.
-
-   @see cigar
-      * @return True if the 'basesTrimmedFromStart' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'basesTrimmedFromStart' field has been set */
     public boolean hasBasesTrimmedFromStart() {
       return fieldSetFlags()[11];
     }
-
-
-    /**
-      * Clears the value of the 'basesTrimmedFromStart' field.
-      * The number of bases in this read/alignment that have been trimmed from the
-   start of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the start of the read has been hard-clipped.
-
-   @see cigar
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'basesTrimmedFromStart' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearBasesTrimmedFromStart() {
       basesTrimmedFromStart = null;
       fieldSetFlags()[11] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'basesTrimmedFromEnd' field.
-      * The number of bases in this read/alignment that have been trimmed from the
-   end of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the end of the read has been hard-clipped.
-
-   @see cigar
-      * @return The value.
-      */
+    /** Gets the value of the 'basesTrimmedFromEnd' field */
     public java.lang.Integer getBasesTrimmedFromEnd() {
       return basesTrimmedFromEnd;
     }
-
-    /**
-      * Sets the value of the 'basesTrimmedFromEnd' field.
-      * The number of bases in this read/alignment that have been trimmed from the
-   end of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the end of the read has been hard-clipped.
-
-   @see cigar
-      * @param value The value of 'basesTrimmedFromEnd'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'basesTrimmedFromEnd' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setBasesTrimmedFromEnd(java.lang.Integer value) {
       validate(fields()[12], value);
       this.basesTrimmedFromEnd = value;
       fieldSetFlags()[12] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'basesTrimmedFromEnd' field has been set.
-      * The number of bases in this read/alignment that have been trimmed from the
-   end of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the end of the read has been hard-clipped.
-
-   @see cigar
-      * @return True if the 'basesTrimmedFromEnd' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'basesTrimmedFromEnd' field has been set */
     public boolean hasBasesTrimmedFromEnd() {
       return fieldSetFlags()[12];
     }
-
-
-    /**
-      * Clears the value of the 'basesTrimmedFromEnd' field.
-      * The number of bases in this read/alignment that have been trimmed from the
-   end of the read. By default, this is equal to 0. If the value is non-zero,
-   that means that the end of the read has been hard-clipped.
-
-   @see cigar
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'basesTrimmedFromEnd' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearBasesTrimmedFromEnd() {
       basesTrimmedFromEnd = null;
       fieldSetFlags()[12] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'readPaired' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'readPaired' field */
     public java.lang.Boolean getReadPaired() {
       return readPaired;
     }
-
-    /**
-      * Sets the value of the 'readPaired' field.
-      * @param value The value of 'readPaired'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'readPaired' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setReadPaired(java.lang.Boolean value) {
       validate(fields()[13], value);
       this.readPaired = value;
       fieldSetFlags()[13] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'readPaired' field has been set.
-      * @return True if the 'readPaired' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'readPaired' field has been set */
     public boolean hasReadPaired() {
       return fieldSetFlags()[13];
     }
-
-
-    /**
-      * Clears the value of the 'readPaired' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'readPaired' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearReadPaired() {
       readPaired = null;
       fieldSetFlags()[13] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'properPair' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'properPair' field */
     public java.lang.Boolean getProperPair() {
       return properPair;
     }
-
-    /**
-      * Sets the value of the 'properPair' field.
-      * @param value The value of 'properPair'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'properPair' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setProperPair(java.lang.Boolean value) {
       validate(fields()[14], value);
       this.properPair = value;
       fieldSetFlags()[14] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'properPair' field has been set.
-      * @return True if the 'properPair' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'properPair' field has been set */
     public boolean hasProperPair() {
       return fieldSetFlags()[14];
     }
-
-
-    /**
-      * Clears the value of the 'properPair' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'properPair' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearProperPair() {
       properPair = null;
       fieldSetFlags()[14] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'readMapped' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'readMapped' field */
     public java.lang.Boolean getReadMapped() {
       return readMapped;
     }
-
-    /**
-      * Sets the value of the 'readMapped' field.
-      * @param value The value of 'readMapped'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'readMapped' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setReadMapped(java.lang.Boolean value) {
       validate(fields()[15], value);
       this.readMapped = value;
       fieldSetFlags()[15] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'readMapped' field has been set.
-      * @return True if the 'readMapped' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'readMapped' field has been set */
     public boolean hasReadMapped() {
       return fieldSetFlags()[15];
     }
-
-
-    /**
-      * Clears the value of the 'readMapped' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'readMapped' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearReadMapped() {
       readMapped = null;
       fieldSetFlags()[15] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mateMapped' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'mateMapped' field */
     public java.lang.Boolean getMateMapped() {
       return mateMapped;
     }
-
-    /**
-      * Sets the value of the 'mateMapped' field.
-      * @param value The value of 'mateMapped'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mateMapped' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMateMapped(java.lang.Boolean value) {
       validate(fields()[16], value);
       this.mateMapped = value;
       fieldSetFlags()[16] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mateMapped' field has been set.
-      * @return True if the 'mateMapped' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mateMapped' field has been set */
     public boolean hasMateMapped() {
       return fieldSetFlags()[16];
     }
-
-
-    /**
-      * Clears the value of the 'mateMapped' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mateMapped' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearMateMapped() {
       mateMapped = null;
       fieldSetFlags()[16] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'failedVendorQualityChecks' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'failedVendorQualityChecks' field */
     public java.lang.Boolean getFailedVendorQualityChecks() {
       return failedVendorQualityChecks;
     }
-
-    /**
-      * Sets the value of the 'failedVendorQualityChecks' field.
-      * @param value The value of 'failedVendorQualityChecks'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'failedVendorQualityChecks' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setFailedVendorQualityChecks(java.lang.Boolean value) {
       validate(fields()[17], value);
       this.failedVendorQualityChecks = value;
       fieldSetFlags()[17] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'failedVendorQualityChecks' field has been set.
-      * @return True if the 'failedVendorQualityChecks' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'failedVendorQualityChecks' field has been set */
     public boolean hasFailedVendorQualityChecks() {
       return fieldSetFlags()[17];
     }
-
-
-    /**
-      * Clears the value of the 'failedVendorQualityChecks' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'failedVendorQualityChecks' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearFailedVendorQualityChecks() {
       failedVendorQualityChecks = null;
       fieldSetFlags()[17] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'duplicateRead' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'duplicateRead' field */
     public java.lang.Boolean getDuplicateRead() {
       return duplicateRead;
     }
-
-    /**
-      * Sets the value of the 'duplicateRead' field.
-      * @param value The value of 'duplicateRead'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'duplicateRead' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setDuplicateRead(java.lang.Boolean value) {
       validate(fields()[18], value);
       this.duplicateRead = value;
       fieldSetFlags()[18] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'duplicateRead' field has been set.
-      * @return True if the 'duplicateRead' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'duplicateRead' field has been set */
     public boolean hasDuplicateRead() {
       return fieldSetFlags()[18];
     }
-
-
-    /**
-      * Clears the value of the 'duplicateRead' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'duplicateRead' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearDuplicateRead() {
       duplicateRead = null;
       fieldSetFlags()[18] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'readNegativeStrand' field.
-      * True if this alignment is mapped as a reverse compliment. This field
-   defaults to false.
-      * @return The value.
-      */
+    /** Gets the value of the 'readNegativeStrand' field */
     public java.lang.Boolean getReadNegativeStrand() {
       return readNegativeStrand;
     }
-
-    /**
-      * Sets the value of the 'readNegativeStrand' field.
-      * True if this alignment is mapped as a reverse compliment. This field
-   defaults to false.
-      * @param value The value of 'readNegativeStrand'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'readNegativeStrand' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setReadNegativeStrand(java.lang.Boolean value) {
       validate(fields()[19], value);
       this.readNegativeStrand = value;
       fieldSetFlags()[19] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'readNegativeStrand' field has been set.
-      * True if this alignment is mapped as a reverse compliment. This field
-   defaults to false.
-      * @return True if the 'readNegativeStrand' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'readNegativeStrand' field has been set */
     public boolean hasReadNegativeStrand() {
       return fieldSetFlags()[19];
     }
-
-
-    /**
-      * Clears the value of the 'readNegativeStrand' field.
-      * True if this alignment is mapped as a reverse compliment. This field
-   defaults to false.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'readNegativeStrand' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearReadNegativeStrand() {
       readNegativeStrand = null;
       fieldSetFlags()[19] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mateNegativeStrand' field.
-      * True if the mate pair of this alignment is mapped as a reverse compliment.
-   This field defaults to false.
-      * @return The value.
-      */
+    /** Gets the value of the 'mateNegativeStrand' field */
     public java.lang.Boolean getMateNegativeStrand() {
       return mateNegativeStrand;
     }
-
-    /**
-      * Sets the value of the 'mateNegativeStrand' field.
-      * True if the mate pair of this alignment is mapped as a reverse compliment.
-   This field defaults to false.
-      * @param value The value of 'mateNegativeStrand'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mateNegativeStrand' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMateNegativeStrand(java.lang.Boolean value) {
       validate(fields()[20], value);
       this.mateNegativeStrand = value;
       fieldSetFlags()[20] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mateNegativeStrand' field has been set.
-      * True if the mate pair of this alignment is mapped as a reverse compliment.
-   This field defaults to false.
-      * @return True if the 'mateNegativeStrand' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mateNegativeStrand' field has been set */
     public boolean hasMateNegativeStrand() {
       return fieldSetFlags()[20];
     }
-
-
-    /**
-      * Clears the value of the 'mateNegativeStrand' field.
-      * True if the mate pair of this alignment is mapped as a reverse compliment.
-   This field defaults to false.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mateNegativeStrand' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearMateNegativeStrand() {
       mateNegativeStrand = null;
       fieldSetFlags()[20] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'primaryAlignment' field.
-      * This field is true if this alignment is either the best linear alignment,
-   or the first linear alignment in a chimeric alignment. Defaults to false.
-
-   @see secondaryAlignment
-   @see supplementaryAlignment
-      * @return The value.
-      */
+    /** Gets the value of the 'primaryAlignment' field */
     public java.lang.Boolean getPrimaryAlignment() {
       return primaryAlignment;
     }
-
-    /**
-      * Sets the value of the 'primaryAlignment' field.
-      * This field is true if this alignment is either the best linear alignment,
-   or the first linear alignment in a chimeric alignment. Defaults to false.
-
-   @see secondaryAlignment
-   @see supplementaryAlignment
-      * @param value The value of 'primaryAlignment'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'primaryAlignment' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setPrimaryAlignment(java.lang.Boolean value) {
       validate(fields()[21], value);
       this.primaryAlignment = value;
       fieldSetFlags()[21] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'primaryAlignment' field has been set.
-      * This field is true if this alignment is either the best linear alignment,
-   or the first linear alignment in a chimeric alignment. Defaults to false.
-
-   @see secondaryAlignment
-   @see supplementaryAlignment
-      * @return True if the 'primaryAlignment' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'primaryAlignment' field has been set */
     public boolean hasPrimaryAlignment() {
       return fieldSetFlags()[21];
     }
-
-
-    /**
-      * Clears the value of the 'primaryAlignment' field.
-      * This field is true if this alignment is either the best linear alignment,
-   or the first linear alignment in a chimeric alignment. Defaults to false.
-
-   @see secondaryAlignment
-   @see supplementaryAlignment
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'primaryAlignment' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearPrimaryAlignment() {
       primaryAlignment = null;
       fieldSetFlags()[21] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'secondaryAlignment' field.
-      * This field is true if this alignment is a lower quality linear alignment
-   for a multiply-mapped read. Defaults to false.
-
-   @see primaryAlignment
-   @see supplementaryAlignment
-      * @return The value.
-      */
+    /** Gets the value of the 'secondaryAlignment' field */
     public java.lang.Boolean getSecondaryAlignment() {
       return secondaryAlignment;
     }
-
-    /**
-      * Sets the value of the 'secondaryAlignment' field.
-      * This field is true if this alignment is a lower quality linear alignment
-   for a multiply-mapped read. Defaults to false.
-
-   @see primaryAlignment
-   @see supplementaryAlignment
-      * @param value The value of 'secondaryAlignment'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'secondaryAlignment' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setSecondaryAlignment(java.lang.Boolean value) {
       validate(fields()[22], value);
       this.secondaryAlignment = value;
       fieldSetFlags()[22] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'secondaryAlignment' field has been set.
-      * This field is true if this alignment is a lower quality linear alignment
-   for a multiply-mapped read. Defaults to false.
-
-   @see primaryAlignment
-   @see supplementaryAlignment
-      * @return True if the 'secondaryAlignment' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'secondaryAlignment' field has been set */
     public boolean hasSecondaryAlignment() {
       return fieldSetFlags()[22];
     }
-
-
-    /**
-      * Clears the value of the 'secondaryAlignment' field.
-      * This field is true if this alignment is a lower quality linear alignment
-   for a multiply-mapped read. Defaults to false.
-
-   @see primaryAlignment
-   @see supplementaryAlignment
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'secondaryAlignment' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearSecondaryAlignment() {
       secondaryAlignment = null;
       fieldSetFlags()[22] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'supplementaryAlignment' field.
-      * This field is true if this alignment is a non-primary linear alignment in
-   a chimeric alignment. Defaults to false.
-
-   @see primaryAlignment
-   @see secondaryAlignment
-      * @return The value.
-      */
+    /** Gets the value of the 'supplementaryAlignment' field */
     public java.lang.Boolean getSupplementaryAlignment() {
       return supplementaryAlignment;
     }
-
-    /**
-      * Sets the value of the 'supplementaryAlignment' field.
-      * This field is true if this alignment is a non-primary linear alignment in
-   a chimeric alignment. Defaults to false.
-
-   @see primaryAlignment
-   @see secondaryAlignment
-      * @param value The value of 'supplementaryAlignment'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'supplementaryAlignment' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setSupplementaryAlignment(java.lang.Boolean value) {
       validate(fields()[23], value);
       this.supplementaryAlignment = value;
       fieldSetFlags()[23] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'supplementaryAlignment' field has been set.
-      * This field is true if this alignment is a non-primary linear alignment in
-   a chimeric alignment. Defaults to false.
-
-   @see primaryAlignment
-   @see secondaryAlignment
-      * @return True if the 'supplementaryAlignment' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'supplementaryAlignment' field has been set */
     public boolean hasSupplementaryAlignment() {
       return fieldSetFlags()[23];
     }
-
-
-    /**
-      * Clears the value of the 'supplementaryAlignment' field.
-      * This field is true if this alignment is a non-primary linear alignment in
-   a chimeric alignment. Defaults to false.
-
-   @see primaryAlignment
-   @see secondaryAlignment
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'supplementaryAlignment' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearSupplementaryAlignment() {
       supplementaryAlignment = null;
       fieldSetFlags()[23] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mismatchingPositions' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'mismatchingPositions' field */
     public java.lang.CharSequence getMismatchingPositions() {
       return mismatchingPositions;
     }
-
-    /**
-      * Sets the value of the 'mismatchingPositions' field.
-      * @param value The value of 'mismatchingPositions'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mismatchingPositions' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMismatchingPositions(java.lang.CharSequence value) {
       validate(fields()[24], value);
       this.mismatchingPositions = value;
       fieldSetFlags()[24] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mismatchingPositions' field has been set.
-      * @return True if the 'mismatchingPositions' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mismatchingPositions' field has been set */
     public boolean hasMismatchingPositions() {
       return fieldSetFlags()[24];
     }
-
-
-    /**
-      * Clears the value of the 'mismatchingPositions' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mismatchingPositions' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearMismatchingPositions() {
       mismatchingPositions = null;
       fieldSetFlags()[24] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'origQual' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'origQual' field */
     public java.lang.CharSequence getOrigQual() {
       return origQual;
     }
-
-    /**
-      * Sets the value of the 'origQual' field.
-      * @param value The value of 'origQual'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'origQual' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setOrigQual(java.lang.CharSequence value) {
       validate(fields()[25], value);
       this.origQual = value;
       fieldSetFlags()[25] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'origQual' field has been set.
-      * @return True if the 'origQual' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'origQual' field has been set */
     public boolean hasOrigQual() {
       return fieldSetFlags()[25];
     }
-
-
-    /**
-      * Clears the value of the 'origQual' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'origQual' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearOrigQual() {
       origQual = null;
       fieldSetFlags()[25] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'attributes' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'attributes' field */
     public java.lang.CharSequence getAttributes() {
       return attributes;
     }
-
-    /**
-      * Sets the value of the 'attributes' field.
-      * @param value The value of 'attributes'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'attributes' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setAttributes(java.lang.CharSequence value) {
       validate(fields()[26], value);
       this.attributes = value;
       fieldSetFlags()[26] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'attributes' field has been set.
-      * @return True if the 'attributes' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'attributes' field has been set */
     public boolean hasAttributes() {
       return fieldSetFlags()[26];
     }
-
-
-    /**
-      * Clears the value of the 'attributes' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'attributes' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearAttributes() {
       attributes = null;
       fieldSetFlags()[26] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'recordGroupName' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'recordGroupName' field */
     public java.lang.CharSequence getRecordGroupName() {
       return recordGroupName;
     }
-
-    /**
-      * Sets the value of the 'recordGroupName' field.
-      * @param value The value of 'recordGroupName'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'recordGroupName' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupName(java.lang.CharSequence value) {
       validate(fields()[27], value);
       this.recordGroupName = value;
       fieldSetFlags()[27] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'recordGroupName' field has been set.
-      * @return True if the 'recordGroupName' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'recordGroupName' field has been set */
     public boolean hasRecordGroupName() {
       return fieldSetFlags()[27];
     }
-
-
-    /**
-      * Clears the value of the 'recordGroupName' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'recordGroupName' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupName() {
       recordGroupName = null;
       fieldSetFlags()[27] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'recordGroupSample' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'recordGroupSample' field */
     public java.lang.CharSequence getRecordGroupSample() {
       return recordGroupSample;
     }
-
-    /**
-      * Sets the value of the 'recordGroupSample' field.
-      * @param value The value of 'recordGroupSample'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'recordGroupSample' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setRecordGroupSample(java.lang.CharSequence value) {
       validate(fields()[28], value);
       this.recordGroupSample = value;
       fieldSetFlags()[28] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'recordGroupSample' field has been set.
-      * @return True if the 'recordGroupSample' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'recordGroupSample' field has been set */
     public boolean hasRecordGroupSample() {
       return fieldSetFlags()[28];
     }
-
-
-    /**
-      * Clears the value of the 'recordGroupSample' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'recordGroupSample' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearRecordGroupSample() {
       recordGroupSample = null;
       fieldSetFlags()[28] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mateAlignmentStart' field.
-      * The start position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @return The value.
-      */
+    /** Gets the value of the 'mateAlignmentStart' field */
     public java.lang.Long getMateAlignmentStart() {
       return mateAlignmentStart;
     }
-
-    /**
-      * Sets the value of the 'mateAlignmentStart' field.
-      * The start position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @param value The value of 'mateAlignmentStart'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mateAlignmentStart' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMateAlignmentStart(java.lang.Long value) {
       validate(fields()[29], value);
       this.mateAlignmentStart = value;
       fieldSetFlags()[29] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mateAlignmentStart' field has been set.
-      * The start position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @return True if the 'mateAlignmentStart' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mateAlignmentStart' field has been set */
     public boolean hasMateAlignmentStart() {
       return fieldSetFlags()[29];
     }
-
-
-    /**
-      * Clears the value of the 'mateAlignmentStart' field.
-      * The start position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mateAlignmentStart' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearMateAlignmentStart() {
       mateAlignmentStart = null;
       fieldSetFlags()[29] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mateAlignmentEnd' field.
-      * The end position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @return The value.
-      */
+    /** Gets the value of the 'mateAlignmentEnd' field */
     public java.lang.Long getMateAlignmentEnd() {
       return mateAlignmentEnd;
     }
-
-    /**
-      * Sets the value of the 'mateAlignmentEnd' field.
-      * The end position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @param value The value of 'mateAlignmentEnd'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mateAlignmentEnd' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMateAlignmentEnd(java.lang.Long value) {
       validate(fields()[30], value);
       this.mateAlignmentEnd = value;
       fieldSetFlags()[30] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mateAlignmentEnd' field has been set.
-      * The end position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @return True if the 'mateAlignmentEnd' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mateAlignmentEnd' field has been set */
     public boolean hasMateAlignmentEnd() {
       return fieldSetFlags()[30];
     }
-
-
-    /**
-      * Clears the value of the 'mateAlignmentEnd' field.
-      * The end position of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mateAlignmentEnd' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearMateAlignmentEnd() {
       mateAlignmentEnd = null;
       fieldSetFlags()[30] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mateContig' field.
-      * The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @return The value.
-      */
+    /** Gets the value of the 'mateContig' field */
     public org.bdgenomics.formats.avro.Contig getMateContig() {
       return mateContig;
     }
-
-    /**
-      * Sets the value of the 'mateContig' field.
-      * The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @param value The value of 'mateContig'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mateContig' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMateContig(org.bdgenomics.formats.avro.Contig value) {
       validate(fields()[31], value);
-      this.mateContigBuilder = null;
       this.mateContig = value;
       fieldSetFlags()[31] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mateContig' field has been set.
-      * The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @return True if the 'mateContig' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mateContig' field has been set */
     public boolean hasMateContig() {
       return fieldSetFlags()[31];
     }
-
-    /**
-     * Gets the Builder instance for the 'mateContig' field and creates one if it doesn't exist yet.
-     * The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-     * @return This builder.
-     */
-    public org.bdgenomics.formats.avro.Contig.Builder getMateContigBuilder() {
-      if (mateContigBuilder == null) {
-        if (hasMateContig()) {
-          setMateContigBuilder(org.bdgenomics.formats.avro.Contig.newBuilder(mateContig));
-        } else {
-          setMateContigBuilder(org.bdgenomics.formats.avro.Contig.newBuilder());
-        }
-      }
-      return mateContigBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'mateContig' field
-     * The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-     * @return This builder.
-     */
-    public org.bdgenomics.formats.avro.AlignmentRecord.Builder setMateContigBuilder(org.bdgenomics.formats.avro.Contig.Builder value) {
-      clearMateContig();
-      mateContigBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'mateContig' field has an active Builder instance
-     * The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-     * @return True if the 'mateContig' field has an active Builder instance
-     */
-    public boolean hasMateContigBuilder() {
-      return mateContigBuilder != null;
-    }
-
-    /**
-      * Clears the value of the 'mateContig' field.
-      * The reference contig of the mate of this read. Should be set to null if the
-   mate is unaligned, or if the mate does not exist.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mateContig' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearMateContig() {
       mateContig = null;
-      mateContigBuilder = null;
       fieldSetFlags()[31] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'inferredInsertSize' field.
-      * The distance between this read and it's mate as inferred from alignment.
-      * @return The value.
-      */
+    /** Gets the value of the 'inferredInsertSize' field */
     public java.lang.Long getInferredInsertSize() {
       return inferredInsertSize;
     }
-
-    /**
-      * Sets the value of the 'inferredInsertSize' field.
-      * The distance between this read and it's mate as inferred from alignment.
-      * @param value The value of 'inferredInsertSize'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'inferredInsertSize' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder setInferredInsertSize(java.lang.Long value) {
       validate(fields()[32], value);
       this.inferredInsertSize = value;
       fieldSetFlags()[32] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'inferredInsertSize' field has been set.
-      * The distance between this read and it's mate as inferred from alignment.
-      * @return True if the 'inferredInsertSize' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'inferredInsertSize' field has been set */
     public boolean hasInferredInsertSize() {
       return fieldSetFlags()[32];
     }
-
-
-    /**
-      * Clears the value of the 'inferredInsertSize' field.
-      * The distance between this read and it's mate as inferred from alignment.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'inferredInsertSize' field */
     public org.bdgenomics.formats.avro.AlignmentRecord.Builder clearInferredInsertSize() {
       inferredInsertSize = null;
       fieldSetFlags()[32] = false;
@@ -3266,11 +2073,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       try {
         AlignmentRecord record = new AlignmentRecord();
         record.readInFragment = fieldSetFlags()[0] ? this.readInFragment : (java.lang.Integer) defaultValue(fields()[0]);
-        if (contigBuilder != null) {
-          record.contig = this.contigBuilder.build();
-        } else {
-          record.contig = fieldSetFlags()[1] ? this.contig : (org.bdgenomics.formats.avro.Contig) defaultValue(fields()[1]);
-        }
+        record.contig = fieldSetFlags()[1] ? this.contig : (org.bdgenomics.formats.avro.Contig) defaultValue(fields()[1]);
         record.start = fieldSetFlags()[2] ? this.start : (java.lang.Long) defaultValue(fields()[2]);
         record.oldPosition = fieldSetFlags()[3] ? this.oldPosition : (java.lang.Long) defaultValue(fields()[3]);
         record.end = fieldSetFlags()[4] ? this.end : (java.lang.Long) defaultValue(fields()[4]);
@@ -3300,11 +2103,7 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
         record.recordGroupSample = fieldSetFlags()[28] ? this.recordGroupSample : (java.lang.CharSequence) defaultValue(fields()[28]);
         record.mateAlignmentStart = fieldSetFlags()[29] ? this.mateAlignmentStart : (java.lang.Long) defaultValue(fields()[29]);
         record.mateAlignmentEnd = fieldSetFlags()[30] ? this.mateAlignmentEnd : (java.lang.Long) defaultValue(fields()[30]);
-        if (mateContigBuilder != null) {
-          record.mateContig = this.mateContigBuilder.build();
-        } else {
-          record.mateContig = fieldSetFlags()[31] ? this.mateContig : (org.bdgenomics.formats.avro.Contig) defaultValue(fields()[31]);
-        }
+        record.mateContig = fieldSetFlags()[31] ? this.mateContig : (org.bdgenomics.formats.avro.Contig) defaultValue(fields()[31]);
         record.inferredInsertSize = fieldSetFlags()[32] ? this.inferredInsertSize : (java.lang.Long) defaultValue(fields()[32]);
         return record;
       } catch (Exception e) {
@@ -3312,21 +2111,4 @@ public class AlignmentRecord extends org.apache.avro.specific.SpecificRecordBase
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

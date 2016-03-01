@@ -11,7 +11,6 @@ package org.bdgenomics.formats.avro;
  @see NucleotideContigFragment */
 @org.apache.avro.specific.AvroGenerated
 public class Contig extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8302313831756045309L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Contig\",\"namespace\":\"org.bdgenomics.formats.avro\",\"doc\":\"Record for describing a reference assembly. Not used for storing the contents\\n of said assembly.\\n\\n @see NucleotideContigFragment\",\"fields\":[{\"name\":\"contigName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this contig in the assembly (e.g., \\\"chr1\\\").\",\"default\":null},{\"name\":\"contigLength\",\"type\":[\"null\",\"long\"],\"doc\":\"The length of this contig.\",\"default\":null},{\"name\":\"contigMD5\",\"type\":[\"null\",\"string\"],\"doc\":\"The MD5 checksum of the assembly for this contig.\",\"default\":null},{\"name\":\"referenceURL\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL at which this reference assembly can be found.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this assembly (e.g., \\\"hg19\\\").\",\"default\":null},{\"name\":\"species\",\"type\":[\"null\",\"string\"],\"doc\":\"The species that this assembly is for.\",\"default\":null},{\"name\":\"referenceIndex\",\"type\":[\"null\",\"int\"],\"doc\":\"Optional 0-based index of this contig in a SAM file header that it was read\\n   from; helps output SAMs/BAMs with headers in the same order as they started\\n   with, before a conversion to ADAM.\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** The name of this contig in the assembly (e.g., "chr1"). */
@@ -40,15 +39,6 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * All-args constructor.
-   * @param contigName The name of this contig in the assembly (e.g., "chr1").
-   * @param contigLength The length of this contig.
-   * @param contigMD5 The MD5 checksum of the assembly for this contig.
-   * @param referenceURL The URL at which this reference assembly can be found.
-   * @param assembly The name of this assembly (e.g., "hg19").
-   * @param species The species that this assembly is for.
-   * @param referenceIndex Optional 0-based index of this contig in a SAM file header that it was read
-   from; helps output SAMs/BAMs with headers in the same order as they started
-   with, before a conversion to ADAM.
    */
   public Contig(java.lang.CharSequence contigName, java.lang.Long contigLength, java.lang.CharSequence contigMD5, java.lang.CharSequence referenceURL, java.lang.CharSequence assembly, java.lang.CharSequence species, java.lang.Integer referenceIndex) {
     this.contigName = contigName;
@@ -91,16 +81,14 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Gets the value of the 'contigName' field.
-   * @return The name of this contig in the assembly (e.g., "chr1").
-   */
+   * The name of this contig in the assembly (e.g., "chr1").   */
   public java.lang.CharSequence getContigName() {
     return contigName;
   }
 
   /**
    * Sets the value of the 'contigName' field.
-   * The name of this contig in the assembly (e.g., "chr1").
-   * @param value the value to set.
+   * The name of this contig in the assembly (e.g., "chr1").   * @param value the value to set.
    */
   public void setContigName(java.lang.CharSequence value) {
     this.contigName = value;
@@ -108,16 +96,14 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Gets the value of the 'contigLength' field.
-   * @return The length of this contig.
-   */
+   * The length of this contig.   */
   public java.lang.Long getContigLength() {
     return contigLength;
   }
 
   /**
    * Sets the value of the 'contigLength' field.
-   * The length of this contig.
-   * @param value the value to set.
+   * The length of this contig.   * @param value the value to set.
    */
   public void setContigLength(java.lang.Long value) {
     this.contigLength = value;
@@ -125,16 +111,14 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Gets the value of the 'contigMD5' field.
-   * @return The MD5 checksum of the assembly for this contig.
-   */
+   * The MD5 checksum of the assembly for this contig.   */
   public java.lang.CharSequence getContigMD5() {
     return contigMD5;
   }
 
   /**
    * Sets the value of the 'contigMD5' field.
-   * The MD5 checksum of the assembly for this contig.
-   * @param value the value to set.
+   * The MD5 checksum of the assembly for this contig.   * @param value the value to set.
    */
   public void setContigMD5(java.lang.CharSequence value) {
     this.contigMD5 = value;
@@ -142,16 +126,14 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Gets the value of the 'referenceURL' field.
-   * @return The URL at which this reference assembly can be found.
-   */
+   * The URL at which this reference assembly can be found.   */
   public java.lang.CharSequence getReferenceURL() {
     return referenceURL;
   }
 
   /**
    * Sets the value of the 'referenceURL' field.
-   * The URL at which this reference assembly can be found.
-   * @param value the value to set.
+   * The URL at which this reference assembly can be found.   * @param value the value to set.
    */
   public void setReferenceURL(java.lang.CharSequence value) {
     this.referenceURL = value;
@@ -159,16 +141,14 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Gets the value of the 'assembly' field.
-   * @return The name of this assembly (e.g., "hg19").
-   */
+   * The name of this assembly (e.g., "hg19").   */
   public java.lang.CharSequence getAssembly() {
     return assembly;
   }
 
   /**
    * Sets the value of the 'assembly' field.
-   * The name of this assembly (e.g., "hg19").
-   * @param value the value to set.
+   * The name of this assembly (e.g., "hg19").   * @param value the value to set.
    */
   public void setAssembly(java.lang.CharSequence value) {
     this.assembly = value;
@@ -176,16 +156,14 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Gets the value of the 'species' field.
-   * @return The species that this assembly is for.
-   */
+   * The species that this assembly is for.   */
   public java.lang.CharSequence getSpecies() {
     return species;
   }
 
   /**
    * Sets the value of the 'species' field.
-   * The species that this assembly is for.
-   * @param value the value to set.
+   * The species that this assembly is for.   * @param value the value to set.
    */
   public void setSpecies(java.lang.CharSequence value) {
     this.species = value;
@@ -193,10 +171,9 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
 
   /**
    * Gets the value of the 'referenceIndex' field.
-   * @return Optional 0-based index of this contig in a SAM file header that it was read
+   * Optional 0-based index of this contig in a SAM file header that it was read
    from; helps output SAMs/BAMs with headers in the same order as they started
-   with, before a conversion to ADAM.
-   */
+   with, before a conversion to ADAM.   */
   public java.lang.Integer getReferenceIndex() {
     return referenceIndex;
   }
@@ -205,35 +182,23 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
    * Sets the value of the 'referenceIndex' field.
    * Optional 0-based index of this contig in a SAM file header that it was read
    from; helps output SAMs/BAMs with headers in the same order as they started
-   with, before a conversion to ADAM.
-   * @param value the value to set.
+   with, before a conversion to ADAM.   * @param value the value to set.
    */
   public void setReferenceIndex(java.lang.Integer value) {
     this.referenceIndex = value;
   }
 
-  /**
-   * Creates a new Contig RecordBuilder.
-   * @return A new Contig RecordBuilder
-   */
+  /** Creates a new Contig RecordBuilder */
   public static org.bdgenomics.formats.avro.Contig.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Contig.Builder();
   }
   
-  /**
-   * Creates a new Contig RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new Contig RecordBuilder
-   */
+  /** Creates a new Contig RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.Contig.Builder newBuilder(org.bdgenomics.formats.avro.Contig.Builder other) {
     return new org.bdgenomics.formats.avro.Contig.Builder(other);
   }
   
-  /**
-   * Creates a new Contig RecordBuilder by copying an existing Contig instance.
-   * @param other The existing instance to copy.
-   * @return A new Contig RecordBuilder
-   */
+  /** Creates a new Contig RecordBuilder by copying an existing Contig instance */
   public static org.bdgenomics.formats.avro.Contig.Builder newBuilder(org.bdgenomics.formats.avro.Contig other) {
     return new org.bdgenomics.formats.avro.Contig.Builder(other);
   }
@@ -244,21 +209,12 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Contig>
     implements org.apache.avro.data.RecordBuilder<Contig> {
 
-    /** The name of this contig in the assembly (e.g., "chr1"). */
     private java.lang.CharSequence contigName;
-    /** The length of this contig. */
     private java.lang.Long contigLength;
-    /** The MD5 checksum of the assembly for this contig. */
     private java.lang.CharSequence contigMD5;
-    /** The URL at which this reference assembly can be found. */
     private java.lang.CharSequence referenceURL;
-    /** The name of this assembly (e.g., "hg19"). */
     private java.lang.CharSequence assembly;
-    /** The species that this assembly is for. */
     private java.lang.CharSequence species;
-    /** Optional 0-based index of this contig in a SAM file header that it was read
-   from; helps output SAMs/BAMs with headers in the same order as they started
-   with, before a conversion to ADAM. */
     private java.lang.Integer referenceIndex;
 
     /** Creates a new Builder */
@@ -266,10 +222,7 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
       super(org.bdgenomics.formats.avro.Contig.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.Contig.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.contigName)) {
@@ -302,10 +255,7 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing Contig instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing Contig instance */
     private Builder(org.bdgenomics.formats.avro.Contig other) {
             super(org.bdgenomics.formats.avro.Contig.SCHEMA$);
       if (isValidValue(fields()[0], other.contigName)) {
@@ -338,309 +288,175 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
       }
     }
 
-    /**
-      * Gets the value of the 'contigName' field.
-      * The name of this contig in the assembly (e.g., "chr1").
-      * @return The value.
-      */
+    /** Gets the value of the 'contigName' field */
     public java.lang.CharSequence getContigName() {
       return contigName;
     }
-
-    /**
-      * Sets the value of the 'contigName' field.
-      * The name of this contig in the assembly (e.g., "chr1").
-      * @param value The value of 'contigName'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'contigName' field */
     public org.bdgenomics.formats.avro.Contig.Builder setContigName(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.contigName = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'contigName' field has been set.
-      * The name of this contig in the assembly (e.g., "chr1").
-      * @return True if the 'contigName' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'contigName' field has been set */
     public boolean hasContigName() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'contigName' field.
-      * The name of this contig in the assembly (e.g., "chr1").
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'contigName' field */
     public org.bdgenomics.formats.avro.Contig.Builder clearContigName() {
       contigName = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'contigLength' field.
-      * The length of this contig.
-      * @return The value.
-      */
+    /** Gets the value of the 'contigLength' field */
     public java.lang.Long getContigLength() {
       return contigLength;
     }
-
-    /**
-      * Sets the value of the 'contigLength' field.
-      * The length of this contig.
-      * @param value The value of 'contigLength'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'contigLength' field */
     public org.bdgenomics.formats.avro.Contig.Builder setContigLength(java.lang.Long value) {
       validate(fields()[1], value);
       this.contigLength = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'contigLength' field has been set.
-      * The length of this contig.
-      * @return True if the 'contigLength' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'contigLength' field has been set */
     public boolean hasContigLength() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'contigLength' field.
-      * The length of this contig.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'contigLength' field */
     public org.bdgenomics.formats.avro.Contig.Builder clearContigLength() {
       contigLength = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'contigMD5' field.
-      * The MD5 checksum of the assembly for this contig.
-      * @return The value.
-      */
+    /** Gets the value of the 'contigMD5' field */
     public java.lang.CharSequence getContigMD5() {
       return contigMD5;
     }
-
-    /**
-      * Sets the value of the 'contigMD5' field.
-      * The MD5 checksum of the assembly for this contig.
-      * @param value The value of 'contigMD5'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'contigMD5' field */
     public org.bdgenomics.formats.avro.Contig.Builder setContigMD5(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.contigMD5 = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'contigMD5' field has been set.
-      * The MD5 checksum of the assembly for this contig.
-      * @return True if the 'contigMD5' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'contigMD5' field has been set */
     public boolean hasContigMD5() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'contigMD5' field.
-      * The MD5 checksum of the assembly for this contig.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'contigMD5' field */
     public org.bdgenomics.formats.avro.Contig.Builder clearContigMD5() {
       contigMD5 = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'referenceURL' field.
-      * The URL at which this reference assembly can be found.
-      * @return The value.
-      */
+    /** Gets the value of the 'referenceURL' field */
     public java.lang.CharSequence getReferenceURL() {
       return referenceURL;
     }
-
-    /**
-      * Sets the value of the 'referenceURL' field.
-      * The URL at which this reference assembly can be found.
-      * @param value The value of 'referenceURL'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'referenceURL' field */
     public org.bdgenomics.formats.avro.Contig.Builder setReferenceURL(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.referenceURL = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'referenceURL' field has been set.
-      * The URL at which this reference assembly can be found.
-      * @return True if the 'referenceURL' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'referenceURL' field has been set */
     public boolean hasReferenceURL() {
       return fieldSetFlags()[3];
     }
-
-
-    /**
-      * Clears the value of the 'referenceURL' field.
-      * The URL at which this reference assembly can be found.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'referenceURL' field */
     public org.bdgenomics.formats.avro.Contig.Builder clearReferenceURL() {
       referenceURL = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'assembly' field.
-      * The name of this assembly (e.g., "hg19").
-      * @return The value.
-      */
+    /** Gets the value of the 'assembly' field */
     public java.lang.CharSequence getAssembly() {
       return assembly;
     }
-
-    /**
-      * Sets the value of the 'assembly' field.
-      * The name of this assembly (e.g., "hg19").
-      * @param value The value of 'assembly'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'assembly' field */
     public org.bdgenomics.formats.avro.Contig.Builder setAssembly(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.assembly = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'assembly' field has been set.
-      * The name of this assembly (e.g., "hg19").
-      * @return True if the 'assembly' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'assembly' field has been set */
     public boolean hasAssembly() {
       return fieldSetFlags()[4];
     }
-
-
-    /**
-      * Clears the value of the 'assembly' field.
-      * The name of this assembly (e.g., "hg19").
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'assembly' field */
     public org.bdgenomics.formats.avro.Contig.Builder clearAssembly() {
       assembly = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'species' field.
-      * The species that this assembly is for.
-      * @return The value.
-      */
+    /** Gets the value of the 'species' field */
     public java.lang.CharSequence getSpecies() {
       return species;
     }
-
-    /**
-      * Sets the value of the 'species' field.
-      * The species that this assembly is for.
-      * @param value The value of 'species'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'species' field */
     public org.bdgenomics.formats.avro.Contig.Builder setSpecies(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.species = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'species' field has been set.
-      * The species that this assembly is for.
-      * @return True if the 'species' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'species' field has been set */
     public boolean hasSpecies() {
       return fieldSetFlags()[5];
     }
-
-
-    /**
-      * Clears the value of the 'species' field.
-      * The species that this assembly is for.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'species' field */
     public org.bdgenomics.formats.avro.Contig.Builder clearSpecies() {
       species = null;
       fieldSetFlags()[5] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'referenceIndex' field.
-      * Optional 0-based index of this contig in a SAM file header that it was read
-   from; helps output SAMs/BAMs with headers in the same order as they started
-   with, before a conversion to ADAM.
-      * @return The value.
-      */
+    /** Gets the value of the 'referenceIndex' field */
     public java.lang.Integer getReferenceIndex() {
       return referenceIndex;
     }
-
-    /**
-      * Sets the value of the 'referenceIndex' field.
-      * Optional 0-based index of this contig in a SAM file header that it was read
-   from; helps output SAMs/BAMs with headers in the same order as they started
-   with, before a conversion to ADAM.
-      * @param value The value of 'referenceIndex'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'referenceIndex' field */
     public org.bdgenomics.formats.avro.Contig.Builder setReferenceIndex(java.lang.Integer value) {
       validate(fields()[6], value);
       this.referenceIndex = value;
       fieldSetFlags()[6] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'referenceIndex' field has been set.
-      * Optional 0-based index of this contig in a SAM file header that it was read
-   from; helps output SAMs/BAMs with headers in the same order as they started
-   with, before a conversion to ADAM.
-      * @return True if the 'referenceIndex' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'referenceIndex' field has been set */
     public boolean hasReferenceIndex() {
       return fieldSetFlags()[6];
     }
-
-
-    /**
-      * Clears the value of the 'referenceIndex' field.
-      * Optional 0-based index of this contig in a SAM file header that it was read
-   from; helps output SAMs/BAMs with headers in the same order as they started
-   with, before a conversion to ADAM.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'referenceIndex' field */
     public org.bdgenomics.formats.avro.Contig.Builder clearReferenceIndex() {
       referenceIndex = null;
       fieldSetFlags()[6] = false;
@@ -664,21 +480,4 @@ public class Contig extends org.apache.avro.specific.SpecificRecordBase implemen
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class VariantEffect extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 4540328335791433747L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"VariantEffect\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"hgvs\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"referenceAminoAcid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"alternateAminoAcid\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"geneId\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"transcriptId\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   @Deprecated public java.lang.CharSequence hgvs;
@@ -134,28 +133,17 @@ public class VariantEffect extends org.apache.avro.specific.SpecificRecordBase i
     this.transcriptId = value;
   }
 
-  /**
-   * Creates a new VariantEffect RecordBuilder.
-   * @return A new VariantEffect RecordBuilder
-   */
+  /** Creates a new VariantEffect RecordBuilder */
   public static org.bdgenomics.formats.avro.VariantEffect.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.VariantEffect.Builder();
   }
   
-  /**
-   * Creates a new VariantEffect RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new VariantEffect RecordBuilder
-   */
+  /** Creates a new VariantEffect RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.VariantEffect.Builder newBuilder(org.bdgenomics.formats.avro.VariantEffect.Builder other) {
     return new org.bdgenomics.formats.avro.VariantEffect.Builder(other);
   }
   
-  /**
-   * Creates a new VariantEffect RecordBuilder by copying an existing VariantEffect instance.
-   * @param other The existing instance to copy.
-   * @return A new VariantEffect RecordBuilder
-   */
+  /** Creates a new VariantEffect RecordBuilder by copying an existing VariantEffect instance */
   public static org.bdgenomics.formats.avro.VariantEffect.Builder newBuilder(org.bdgenomics.formats.avro.VariantEffect other) {
     return new org.bdgenomics.formats.avro.VariantEffect.Builder(other);
   }
@@ -177,10 +165,7 @@ public class VariantEffect extends org.apache.avro.specific.SpecificRecordBase i
       super(org.bdgenomics.formats.avro.VariantEffect.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.VariantEffect.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.hgvs)) {
@@ -205,10 +190,7 @@ public class VariantEffect extends org.apache.avro.specific.SpecificRecordBase i
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing VariantEffect instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing VariantEffect instance */
     private Builder(org.bdgenomics.formats.avro.VariantEffect other) {
             super(org.bdgenomics.formats.avro.VariantEffect.SCHEMA$);
       if (isValidValue(fields()[0], other.hgvs)) {
@@ -233,195 +215,125 @@ public class VariantEffect extends org.apache.avro.specific.SpecificRecordBase i
       }
     }
 
-    /**
-      * Gets the value of the 'hgvs' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'hgvs' field */
     public java.lang.CharSequence getHgvs() {
       return hgvs;
     }
-
-    /**
-      * Sets the value of the 'hgvs' field.
-      * @param value The value of 'hgvs'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'hgvs' field */
     public org.bdgenomics.formats.avro.VariantEffect.Builder setHgvs(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.hgvs = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'hgvs' field has been set.
-      * @return True if the 'hgvs' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'hgvs' field has been set */
     public boolean hasHgvs() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'hgvs' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'hgvs' field */
     public org.bdgenomics.formats.avro.VariantEffect.Builder clearHgvs() {
       hgvs = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'referenceAminoAcid' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'referenceAminoAcid' field */
     public java.lang.CharSequence getReferenceAminoAcid() {
       return referenceAminoAcid;
     }
-
-    /**
-      * Sets the value of the 'referenceAminoAcid' field.
-      * @param value The value of 'referenceAminoAcid'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'referenceAminoAcid' field */
     public org.bdgenomics.formats.avro.VariantEffect.Builder setReferenceAminoAcid(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.referenceAminoAcid = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'referenceAminoAcid' field has been set.
-      * @return True if the 'referenceAminoAcid' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'referenceAminoAcid' field has been set */
     public boolean hasReferenceAminoAcid() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'referenceAminoAcid' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'referenceAminoAcid' field */
     public org.bdgenomics.formats.avro.VariantEffect.Builder clearReferenceAminoAcid() {
       referenceAminoAcid = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'alternateAminoAcid' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'alternateAminoAcid' field */
     public java.lang.CharSequence getAlternateAminoAcid() {
       return alternateAminoAcid;
     }
-
-    /**
-      * Sets the value of the 'alternateAminoAcid' field.
-      * @param value The value of 'alternateAminoAcid'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'alternateAminoAcid' field */
     public org.bdgenomics.formats.avro.VariantEffect.Builder setAlternateAminoAcid(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.alternateAminoAcid = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'alternateAminoAcid' field has been set.
-      * @return True if the 'alternateAminoAcid' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'alternateAminoAcid' field has been set */
     public boolean hasAlternateAminoAcid() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'alternateAminoAcid' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'alternateAminoAcid' field */
     public org.bdgenomics.formats.avro.VariantEffect.Builder clearAlternateAminoAcid() {
       alternateAminoAcid = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'geneId' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'geneId' field */
     public java.lang.CharSequence getGeneId() {
       return geneId;
     }
-
-    /**
-      * Sets the value of the 'geneId' field.
-      * @param value The value of 'geneId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'geneId' field */
     public org.bdgenomics.formats.avro.VariantEffect.Builder setGeneId(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.geneId = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'geneId' field has been set.
-      * @return True if the 'geneId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'geneId' field has been set */
     public boolean hasGeneId() {
       return fieldSetFlags()[3];
     }
-
-
-    /**
-      * Clears the value of the 'geneId' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'geneId' field */
     public org.bdgenomics.formats.avro.VariantEffect.Builder clearGeneId() {
       geneId = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'transcriptId' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'transcriptId' field */
     public java.lang.CharSequence getTranscriptId() {
       return transcriptId;
     }
-
-    /**
-      * Sets the value of the 'transcriptId' field.
-      * @param value The value of 'transcriptId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'transcriptId' field */
     public org.bdgenomics.formats.avro.VariantEffect.Builder setTranscriptId(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.transcriptId = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'transcriptId' field has been set.
-      * @return True if the 'transcriptId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'transcriptId' field has been set */
     public boolean hasTranscriptId() {
       return fieldSetFlags()[4];
     }
-
-
-    /**
-      * Clears the value of the 'transcriptId' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'transcriptId' field */
     public org.bdgenomics.formats.avro.VariantEffect.Builder clearTranscriptId() {
       transcriptId = null;
       fieldSetFlags()[4] = false;
@@ -443,21 +355,4 @@ public class VariantEffect extends org.apache.avro.specific.SpecificRecordBase i
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Phenotype extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3961772989643533679L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Phenotype\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"doc\":\"Name of the phenotype (e.g. 'left lower extremity amputation').\",\"default\":null},{\"name\":\"phenotypeGroup\",\"type\":[\"null\",\"string\"],\"doc\":\"Group of the phenotype (e.g. 'eye color').\",\"default\":null},{\"name\":\"phenotypeType\",\"type\":[\"null\",\"string\"],\"doc\":\"Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').\",\"default\":null},{\"name\":\"measure\",\"type\":[\"null\",\"string\"],\"doc\":\"Qualitative (\\\"0\\\", or \\\"1\\\") or quantitative measure or observation on the \\n   individual.\",\"default\":null},{\"name\":\"measureDataType\",\"type\":{\"type\":\"enum\",\"name\":\"MeasureDataType\",\"symbols\":[\"Unknown\",\"Boolean\",\"Integer\",\"Decimal\"]},\"doc\":\"Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').\",\"default\":\"Unknown\"},{\"name\":\"measureUnits\",\"type\":[\"null\",\"string\"],\"doc\":\"Units of the measure (e.g. 'umol/L', 'beats/minute').\",\"default\":null},{\"name\":\"description\",\"type\":[\"null\",\"string\"],\"doc\":\"Long description of the phenotype.\",\"default\":null},{\"name\":\"diagnosisDateEpoch\",\"type\":[\"null\",\"long\"],\"doc\":\"Date of the diagnosis (if any).\\n\\n   Stored as a number of milliseconds since the UNIX Epoch \\n   (Jan. 1st 1970 at 00:00:00 in UTC timezone).\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** Name of the phenotype (e.g. 'left lower extremity amputation'). */
@@ -40,18 +39,6 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
 
   /**
    * All-args constructor.
-   * @param name Name of the phenotype (e.g. 'left lower extremity amputation').
-   * @param phenotypeGroup Group of the phenotype (e.g. 'eye color').
-   * @param phenotypeType Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').
-   * @param measure Qualitative ("0", or "1") or quantitative measure or observation on the 
-   individual.
-   * @param measureDataType Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').
-   * @param measureUnits Units of the measure (e.g. 'umol/L', 'beats/minute').
-   * @param description Long description of the phenotype.
-   * @param diagnosisDateEpoch Date of the diagnosis (if any).
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
    */
   public Phenotype(java.lang.CharSequence name, java.lang.CharSequence phenotypeGroup, java.lang.CharSequence phenotypeType, java.lang.CharSequence measure, org.bdgenomics.formats.avro.MeasureDataType measureDataType, java.lang.CharSequence measureUnits, java.lang.CharSequence description, java.lang.Long diagnosisDateEpoch) {
     this.name = name;
@@ -97,16 +84,14 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
 
   /**
    * Gets the value of the 'name' field.
-   * @return Name of the phenotype (e.g. 'left lower extremity amputation').
-   */
+   * Name of the phenotype (e.g. 'left lower extremity amputation').   */
   public java.lang.CharSequence getName() {
     return name;
   }
 
   /**
    * Sets the value of the 'name' field.
-   * Name of the phenotype (e.g. 'left lower extremity amputation').
-   * @param value the value to set.
+   * Name of the phenotype (e.g. 'left lower extremity amputation').   * @param value the value to set.
    */
   public void setName(java.lang.CharSequence value) {
     this.name = value;
@@ -114,16 +99,14 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
 
   /**
    * Gets the value of the 'phenotypeGroup' field.
-   * @return Group of the phenotype (e.g. 'eye color').
-   */
+   * Group of the phenotype (e.g. 'eye color').   */
   public java.lang.CharSequence getPhenotypeGroup() {
     return phenotypeGroup;
   }
 
   /**
    * Sets the value of the 'phenotypeGroup' field.
-   * Group of the phenotype (e.g. 'eye color').
-   * @param value the value to set.
+   * Group of the phenotype (e.g. 'eye color').   * @param value the value to set.
    */
   public void setPhenotypeGroup(java.lang.CharSequence value) {
     this.phenotypeGroup = value;
@@ -131,16 +114,14 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
 
   /**
    * Gets the value of the 'phenotypeType' field.
-   * @return Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').
-   */
+   * Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').   */
   public java.lang.CharSequence getPhenotypeType() {
     return phenotypeType;
   }
 
   /**
    * Sets the value of the 'phenotypeType' field.
-   * Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').
-   * @param value the value to set.
+   * Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').   * @param value the value to set.
    */
   public void setPhenotypeType(java.lang.CharSequence value) {
     this.phenotypeType = value;
@@ -148,9 +129,8 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
 
   /**
    * Gets the value of the 'measure' field.
-   * @return Qualitative ("0", or "1") or quantitative measure or observation on the 
-   individual.
-   */
+   * Qualitative ("0", or "1") or quantitative measure or observation on the 
+   individual.   */
   public java.lang.CharSequence getMeasure() {
     return measure;
   }
@@ -158,8 +138,7 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
   /**
    * Sets the value of the 'measure' field.
    * Qualitative ("0", or "1") or quantitative measure or observation on the 
-   individual.
-   * @param value the value to set.
+   individual.   * @param value the value to set.
    */
   public void setMeasure(java.lang.CharSequence value) {
     this.measure = value;
@@ -167,16 +146,14 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
 
   /**
    * Gets the value of the 'measureDataType' field.
-   * @return Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').
-   */
+   * Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').   */
   public org.bdgenomics.formats.avro.MeasureDataType getMeasureDataType() {
     return measureDataType;
   }
 
   /**
    * Sets the value of the 'measureDataType' field.
-   * Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').
-   * @param value the value to set.
+   * Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').   * @param value the value to set.
    */
   public void setMeasureDataType(org.bdgenomics.formats.avro.MeasureDataType value) {
     this.measureDataType = value;
@@ -184,16 +161,14 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
 
   /**
    * Gets the value of the 'measureUnits' field.
-   * @return Units of the measure (e.g. 'umol/L', 'beats/minute').
-   */
+   * Units of the measure (e.g. 'umol/L', 'beats/minute').   */
   public java.lang.CharSequence getMeasureUnits() {
     return measureUnits;
   }
 
   /**
    * Sets the value of the 'measureUnits' field.
-   * Units of the measure (e.g. 'umol/L', 'beats/minute').
-   * @param value the value to set.
+   * Units of the measure (e.g. 'umol/L', 'beats/minute').   * @param value the value to set.
    */
   public void setMeasureUnits(java.lang.CharSequence value) {
     this.measureUnits = value;
@@ -201,16 +176,14 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
 
   /**
    * Gets the value of the 'description' field.
-   * @return Long description of the phenotype.
-   */
+   * Long description of the phenotype.   */
   public java.lang.CharSequence getDescription() {
     return description;
   }
 
   /**
    * Sets the value of the 'description' field.
-   * Long description of the phenotype.
-   * @param value the value to set.
+   * Long description of the phenotype.   * @param value the value to set.
    */
   public void setDescription(java.lang.CharSequence value) {
     this.description = value;
@@ -218,11 +191,10 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
 
   /**
    * Gets the value of the 'diagnosisDateEpoch' field.
-   * @return Date of the diagnosis (if any).
+   * Date of the diagnosis (if any).
 
    Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   */
+   (Jan. 1st 1970 at 00:00:00 in UTC timezone).   */
   public java.lang.Long getDiagnosisDateEpoch() {
     return diagnosisDateEpoch;
   }
@@ -232,35 +204,23 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
    * Date of the diagnosis (if any).
 
    Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   * @param value the value to set.
+   (Jan. 1st 1970 at 00:00:00 in UTC timezone).   * @param value the value to set.
    */
   public void setDiagnosisDateEpoch(java.lang.Long value) {
     this.diagnosisDateEpoch = value;
   }
 
-  /**
-   * Creates a new Phenotype RecordBuilder.
-   * @return A new Phenotype RecordBuilder
-   */
+  /** Creates a new Phenotype RecordBuilder */
   public static org.bdgenomics.formats.avro.Phenotype.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Phenotype.Builder();
   }
   
-  /**
-   * Creates a new Phenotype RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new Phenotype RecordBuilder
-   */
+  /** Creates a new Phenotype RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.Phenotype.Builder newBuilder(org.bdgenomics.formats.avro.Phenotype.Builder other) {
     return new org.bdgenomics.formats.avro.Phenotype.Builder(other);
   }
   
-  /**
-   * Creates a new Phenotype RecordBuilder by copying an existing Phenotype instance.
-   * @param other The existing instance to copy.
-   * @return A new Phenotype RecordBuilder
-   */
+  /** Creates a new Phenotype RecordBuilder by copying an existing Phenotype instance */
   public static org.bdgenomics.formats.avro.Phenotype.Builder newBuilder(org.bdgenomics.formats.avro.Phenotype other) {
     return new org.bdgenomics.formats.avro.Phenotype.Builder(other);
   }
@@ -271,25 +231,13 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Phenotype>
     implements org.apache.avro.data.RecordBuilder<Phenotype> {
 
-    /** Name of the phenotype (e.g. 'left lower extremity amputation'). */
     private java.lang.CharSequence name;
-    /** Group of the phenotype (e.g. 'eye color'). */
     private java.lang.CharSequence phenotypeGroup;
-    /** Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription'). */
     private java.lang.CharSequence phenotypeType;
-    /** Qualitative ("0", or "1") or quantitative measure or observation on the 
-   individual. */
     private java.lang.CharSequence measure;
-    /** Native data type of the measure (e.g. 'boolean', 'integer', 'decimal'). */
     private org.bdgenomics.formats.avro.MeasureDataType measureDataType;
-    /** Units of the measure (e.g. 'umol/L', 'beats/minute'). */
     private java.lang.CharSequence measureUnits;
-    /** Long description of the phenotype. */
     private java.lang.CharSequence description;
-    /** Date of the diagnosis (if any).
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone). */
     private java.lang.Long diagnosisDateEpoch;
 
     /** Creates a new Builder */
@@ -297,10 +245,7 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
       super(org.bdgenomics.formats.avro.Phenotype.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.Phenotype.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.name)) {
@@ -337,10 +282,7 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing Phenotype instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing Phenotype instance */
     private Builder(org.bdgenomics.formats.avro.Phenotype other) {
             super(org.bdgenomics.formats.avro.Phenotype.SCHEMA$);
       if (isValidValue(fields()[0], other.name)) {
@@ -377,360 +319,200 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
       }
     }
 
-    /**
-      * Gets the value of the 'name' field.
-      * Name of the phenotype (e.g. 'left lower extremity amputation').
-      * @return The value.
-      */
+    /** Gets the value of the 'name' field */
     public java.lang.CharSequence getName() {
       return name;
     }
-
-    /**
-      * Sets the value of the 'name' field.
-      * Name of the phenotype (e.g. 'left lower extremity amputation').
-      * @param value The value of 'name'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'name' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder setName(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.name = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'name' field has been set.
-      * Name of the phenotype (e.g. 'left lower extremity amputation').
-      * @return True if the 'name' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'name' field has been set */
     public boolean hasName() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'name' field.
-      * Name of the phenotype (e.g. 'left lower extremity amputation').
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'name' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder clearName() {
       name = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'phenotypeGroup' field.
-      * Group of the phenotype (e.g. 'eye color').
-      * @return The value.
-      */
+    /** Gets the value of the 'phenotypeGroup' field */
     public java.lang.CharSequence getPhenotypeGroup() {
       return phenotypeGroup;
     }
-
-    /**
-      * Sets the value of the 'phenotypeGroup' field.
-      * Group of the phenotype (e.g. 'eye color').
-      * @param value The value of 'phenotypeGroup'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'phenotypeGroup' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder setPhenotypeGroup(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.phenotypeGroup = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'phenotypeGroup' field has been set.
-      * Group of the phenotype (e.g. 'eye color').
-      * @return True if the 'phenotypeGroup' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'phenotypeGroup' field has been set */
     public boolean hasPhenotypeGroup() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'phenotypeGroup' field.
-      * Group of the phenotype (e.g. 'eye color').
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'phenotypeGroup' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder clearPhenotypeGroup() {
       phenotypeGroup = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'phenotypeType' field.
-      * Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').
-      * @return The value.
-      */
+    /** Gets the value of the 'phenotypeType' field */
     public java.lang.CharSequence getPhenotypeType() {
       return phenotypeType;
     }
-
-    /**
-      * Sets the value of the 'phenotypeType' field.
-      * Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').
-      * @param value The value of 'phenotypeType'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'phenotypeType' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder setPhenotypeType(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.phenotypeType = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'phenotypeType' field has been set.
-      * Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').
-      * @return True if the 'phenotypeType' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'phenotypeType' field has been set */
     public boolean hasPhenotypeType() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'phenotypeType' field.
-      * Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'phenotypeType' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder clearPhenotypeType() {
       phenotypeType = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'measure' field.
-      * Qualitative ("0", or "1") or quantitative measure or observation on the 
-   individual.
-      * @return The value.
-      */
+    /** Gets the value of the 'measure' field */
     public java.lang.CharSequence getMeasure() {
       return measure;
     }
-
-    /**
-      * Sets the value of the 'measure' field.
-      * Qualitative ("0", or "1") or quantitative measure or observation on the 
-   individual.
-      * @param value The value of 'measure'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'measure' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder setMeasure(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.measure = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'measure' field has been set.
-      * Qualitative ("0", or "1") or quantitative measure or observation on the 
-   individual.
-      * @return True if the 'measure' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'measure' field has been set */
     public boolean hasMeasure() {
       return fieldSetFlags()[3];
     }
-
-
-    /**
-      * Clears the value of the 'measure' field.
-      * Qualitative ("0", or "1") or quantitative measure or observation on the 
-   individual.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'measure' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder clearMeasure() {
       measure = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'measureDataType' field.
-      * Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').
-      * @return The value.
-      */
+    /** Gets the value of the 'measureDataType' field */
     public org.bdgenomics.formats.avro.MeasureDataType getMeasureDataType() {
       return measureDataType;
     }
-
-    /**
-      * Sets the value of the 'measureDataType' field.
-      * Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').
-      * @param value The value of 'measureDataType'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'measureDataType' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder setMeasureDataType(org.bdgenomics.formats.avro.MeasureDataType value) {
       validate(fields()[4], value);
       this.measureDataType = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'measureDataType' field has been set.
-      * Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').
-      * @return True if the 'measureDataType' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'measureDataType' field has been set */
     public boolean hasMeasureDataType() {
       return fieldSetFlags()[4];
     }
-
-
-    /**
-      * Clears the value of the 'measureDataType' field.
-      * Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'measureDataType' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder clearMeasureDataType() {
       measureDataType = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'measureUnits' field.
-      * Units of the measure (e.g. 'umol/L', 'beats/minute').
-      * @return The value.
-      */
+    /** Gets the value of the 'measureUnits' field */
     public java.lang.CharSequence getMeasureUnits() {
       return measureUnits;
     }
-
-    /**
-      * Sets the value of the 'measureUnits' field.
-      * Units of the measure (e.g. 'umol/L', 'beats/minute').
-      * @param value The value of 'measureUnits'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'measureUnits' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder setMeasureUnits(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.measureUnits = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'measureUnits' field has been set.
-      * Units of the measure (e.g. 'umol/L', 'beats/minute').
-      * @return True if the 'measureUnits' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'measureUnits' field has been set */
     public boolean hasMeasureUnits() {
       return fieldSetFlags()[5];
     }
-
-
-    /**
-      * Clears the value of the 'measureUnits' field.
-      * Units of the measure (e.g. 'umol/L', 'beats/minute').
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'measureUnits' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder clearMeasureUnits() {
       measureUnits = null;
       fieldSetFlags()[5] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'description' field.
-      * Long description of the phenotype.
-      * @return The value.
-      */
+    /** Gets the value of the 'description' field */
     public java.lang.CharSequence getDescription() {
       return description;
     }
-
-    /**
-      * Sets the value of the 'description' field.
-      * Long description of the phenotype.
-      * @param value The value of 'description'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'description' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder setDescription(java.lang.CharSequence value) {
       validate(fields()[6], value);
       this.description = value;
       fieldSetFlags()[6] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'description' field has been set.
-      * Long description of the phenotype.
-      * @return True if the 'description' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'description' field has been set */
     public boolean hasDescription() {
       return fieldSetFlags()[6];
     }
-
-
-    /**
-      * Clears the value of the 'description' field.
-      * Long description of the phenotype.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'description' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder clearDescription() {
       description = null;
       fieldSetFlags()[6] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'diagnosisDateEpoch' field.
-      * Date of the diagnosis (if any).
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return The value.
-      */
+    /** Gets the value of the 'diagnosisDateEpoch' field */
     public java.lang.Long getDiagnosisDateEpoch() {
       return diagnosisDateEpoch;
     }
-
-    /**
-      * Sets the value of the 'diagnosisDateEpoch' field.
-      * Date of the diagnosis (if any).
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @param value The value of 'diagnosisDateEpoch'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'diagnosisDateEpoch' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder setDiagnosisDateEpoch(java.lang.Long value) {
       validate(fields()[7], value);
       this.diagnosisDateEpoch = value;
       fieldSetFlags()[7] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'diagnosisDateEpoch' field has been set.
-      * Date of the diagnosis (if any).
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return True if the 'diagnosisDateEpoch' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'diagnosisDateEpoch' field has been set */
     public boolean hasDiagnosisDateEpoch() {
       return fieldSetFlags()[7];
     }
-
-
-    /**
-      * Clears the value of the 'diagnosisDateEpoch' field.
-      * Date of the diagnosis (if any).
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'diagnosisDateEpoch' field */
     public org.bdgenomics.formats.avro.Phenotype.Builder clearDiagnosisDateEpoch() {
       diagnosisDateEpoch = null;
       fieldSetFlags()[7] = false;
@@ -755,21 +537,4 @@ public class Phenotype extends org.apache.avro.specific.SpecificRecordBase imple
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class RecordGroupMetadata extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -261990954686585195L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RecordGroupMetadata\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"doc\":\"Record group identifier.\",\"default\":null},{\"name\":\"sample\",\"type\":[\"null\",\"string\"],\"doc\":\"Name of the sample that the record group is from.\",\"default\":null},{\"name\":\"sequencingCenter\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"description\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"runDateEpoch\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"flowOrder\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"keySequence\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"library\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"predictedMedianInsertSize\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"platform\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"platformUnit\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** Record group identifier. */
@@ -33,8 +32,6 @@ public class RecordGroupMetadata extends org.apache.avro.specific.SpecificRecord
 
   /**
    * All-args constructor.
-   * @param name Record group identifier.
-   * @param sample Name of the sample that the record group is from.
    */
   public RecordGroupMetadata(java.lang.CharSequence name, java.lang.CharSequence sample, java.lang.CharSequence sequencingCenter, java.lang.CharSequence description, java.lang.Long runDateEpoch, java.lang.CharSequence flowOrder, java.lang.CharSequence keySequence, java.lang.CharSequence library, java.lang.Integer predictedMedianInsertSize, java.lang.CharSequence platform, java.lang.CharSequence platformUnit) {
     this.name = name;
@@ -89,16 +86,14 @@ public class RecordGroupMetadata extends org.apache.avro.specific.SpecificRecord
 
   /**
    * Gets the value of the 'name' field.
-   * @return Record group identifier.
-   */
+   * Record group identifier.   */
   public java.lang.CharSequence getName() {
     return name;
   }
 
   /**
    * Sets the value of the 'name' field.
-   * Record group identifier.
-   * @param value the value to set.
+   * Record group identifier.   * @param value the value to set.
    */
   public void setName(java.lang.CharSequence value) {
     this.name = value;
@@ -106,16 +101,14 @@ public class RecordGroupMetadata extends org.apache.avro.specific.SpecificRecord
 
   /**
    * Gets the value of the 'sample' field.
-   * @return Name of the sample that the record group is from.
-   */
+   * Name of the sample that the record group is from.   */
   public java.lang.CharSequence getSample() {
     return sample;
   }
 
   /**
    * Sets the value of the 'sample' field.
-   * Name of the sample that the record group is from.
-   * @param value the value to set.
+   * Name of the sample that the record group is from.   * @param value the value to set.
    */
   public void setSample(java.lang.CharSequence value) {
     this.sample = value;
@@ -256,28 +249,17 @@ public class RecordGroupMetadata extends org.apache.avro.specific.SpecificRecord
     this.platformUnit = value;
   }
 
-  /**
-   * Creates a new RecordGroupMetadata RecordBuilder.
-   * @return A new RecordGroupMetadata RecordBuilder
-   */
+  /** Creates a new RecordGroupMetadata RecordBuilder */
   public static org.bdgenomics.formats.avro.RecordGroupMetadata.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.RecordGroupMetadata.Builder();
   }
   
-  /**
-   * Creates a new RecordGroupMetadata RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new RecordGroupMetadata RecordBuilder
-   */
+  /** Creates a new RecordGroupMetadata RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.RecordGroupMetadata.Builder newBuilder(org.bdgenomics.formats.avro.RecordGroupMetadata.Builder other) {
     return new org.bdgenomics.formats.avro.RecordGroupMetadata.Builder(other);
   }
   
-  /**
-   * Creates a new RecordGroupMetadata RecordBuilder by copying an existing RecordGroupMetadata instance.
-   * @param other The existing instance to copy.
-   * @return A new RecordGroupMetadata RecordBuilder
-   */
+  /** Creates a new RecordGroupMetadata RecordBuilder by copying an existing RecordGroupMetadata instance */
   public static org.bdgenomics.formats.avro.RecordGroupMetadata.Builder newBuilder(org.bdgenomics.formats.avro.RecordGroupMetadata other) {
     return new org.bdgenomics.formats.avro.RecordGroupMetadata.Builder(other);
   }
@@ -288,9 +270,7 @@ public class RecordGroupMetadata extends org.apache.avro.specific.SpecificRecord
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<RecordGroupMetadata>
     implements org.apache.avro.data.RecordBuilder<RecordGroupMetadata> {
 
-    /** Record group identifier. */
     private java.lang.CharSequence name;
-    /** Name of the sample that the record group is from. */
     private java.lang.CharSequence sample;
     private java.lang.CharSequence sequencingCenter;
     private java.lang.CharSequence description;
@@ -307,10 +287,7 @@ public class RecordGroupMetadata extends org.apache.avro.specific.SpecificRecord
       super(org.bdgenomics.formats.avro.RecordGroupMetadata.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.RecordGroupMetadata.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.name)) {
@@ -359,10 +336,7 @@ public class RecordGroupMetadata extends org.apache.avro.specific.SpecificRecord
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing RecordGroupMetadata instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing RecordGroupMetadata instance */
     private Builder(org.bdgenomics.formats.avro.RecordGroupMetadata other) {
             super(org.bdgenomics.formats.avro.RecordGroupMetadata.SCHEMA$);
       if (isValidValue(fields()[0], other.name)) {
@@ -411,437 +385,275 @@ public class RecordGroupMetadata extends org.apache.avro.specific.SpecificRecord
       }
     }
 
-    /**
-      * Gets the value of the 'name' field.
-      * Record group identifier.
-      * @return The value.
-      */
+    /** Gets the value of the 'name' field */
     public java.lang.CharSequence getName() {
       return name;
     }
-
-    /**
-      * Sets the value of the 'name' field.
-      * Record group identifier.
-      * @param value The value of 'name'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'name' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setName(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.name = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'name' field has been set.
-      * Record group identifier.
-      * @return True if the 'name' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'name' field has been set */
     public boolean hasName() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'name' field.
-      * Record group identifier.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'name' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearName() {
       name = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'sample' field.
-      * Name of the sample that the record group is from.
-      * @return The value.
-      */
+    /** Gets the value of the 'sample' field */
     public java.lang.CharSequence getSample() {
       return sample;
     }
-
-    /**
-      * Sets the value of the 'sample' field.
-      * Name of the sample that the record group is from.
-      * @param value The value of 'sample'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'sample' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setSample(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.sample = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'sample' field has been set.
-      * Name of the sample that the record group is from.
-      * @return True if the 'sample' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'sample' field has been set */
     public boolean hasSample() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'sample' field.
-      * Name of the sample that the record group is from.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'sample' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearSample() {
       sample = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'sequencingCenter' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'sequencingCenter' field */
     public java.lang.CharSequence getSequencingCenter() {
       return sequencingCenter;
     }
-
-    /**
-      * Sets the value of the 'sequencingCenter' field.
-      * @param value The value of 'sequencingCenter'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'sequencingCenter' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setSequencingCenter(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.sequencingCenter = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'sequencingCenter' field has been set.
-      * @return True if the 'sequencingCenter' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'sequencingCenter' field has been set */
     public boolean hasSequencingCenter() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'sequencingCenter' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'sequencingCenter' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearSequencingCenter() {
       sequencingCenter = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'description' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'description' field */
     public java.lang.CharSequence getDescription() {
       return description;
     }
-
-    /**
-      * Sets the value of the 'description' field.
-      * @param value The value of 'description'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'description' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setDescription(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.description = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'description' field has been set.
-      * @return True if the 'description' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'description' field has been set */
     public boolean hasDescription() {
       return fieldSetFlags()[3];
     }
-
-
-    /**
-      * Clears the value of the 'description' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'description' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearDescription() {
       description = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'runDateEpoch' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'runDateEpoch' field */
     public java.lang.Long getRunDateEpoch() {
       return runDateEpoch;
     }
-
-    /**
-      * Sets the value of the 'runDateEpoch' field.
-      * @param value The value of 'runDateEpoch'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'runDateEpoch' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setRunDateEpoch(java.lang.Long value) {
       validate(fields()[4], value);
       this.runDateEpoch = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'runDateEpoch' field has been set.
-      * @return True if the 'runDateEpoch' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'runDateEpoch' field has been set */
     public boolean hasRunDateEpoch() {
       return fieldSetFlags()[4];
     }
-
-
-    /**
-      * Clears the value of the 'runDateEpoch' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'runDateEpoch' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearRunDateEpoch() {
       runDateEpoch = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'flowOrder' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'flowOrder' field */
     public java.lang.CharSequence getFlowOrder() {
       return flowOrder;
     }
-
-    /**
-      * Sets the value of the 'flowOrder' field.
-      * @param value The value of 'flowOrder'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'flowOrder' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setFlowOrder(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.flowOrder = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'flowOrder' field has been set.
-      * @return True if the 'flowOrder' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'flowOrder' field has been set */
     public boolean hasFlowOrder() {
       return fieldSetFlags()[5];
     }
-
-
-    /**
-      * Clears the value of the 'flowOrder' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'flowOrder' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearFlowOrder() {
       flowOrder = null;
       fieldSetFlags()[5] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'keySequence' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'keySequence' field */
     public java.lang.CharSequence getKeySequence() {
       return keySequence;
     }
-
-    /**
-      * Sets the value of the 'keySequence' field.
-      * @param value The value of 'keySequence'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'keySequence' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setKeySequence(java.lang.CharSequence value) {
       validate(fields()[6], value);
       this.keySequence = value;
       fieldSetFlags()[6] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'keySequence' field has been set.
-      * @return True if the 'keySequence' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'keySequence' field has been set */
     public boolean hasKeySequence() {
       return fieldSetFlags()[6];
     }
-
-
-    /**
-      * Clears the value of the 'keySequence' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'keySequence' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearKeySequence() {
       keySequence = null;
       fieldSetFlags()[6] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'library' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'library' field */
     public java.lang.CharSequence getLibrary() {
       return library;
     }
-
-    /**
-      * Sets the value of the 'library' field.
-      * @param value The value of 'library'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'library' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setLibrary(java.lang.CharSequence value) {
       validate(fields()[7], value);
       this.library = value;
       fieldSetFlags()[7] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'library' field has been set.
-      * @return True if the 'library' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'library' field has been set */
     public boolean hasLibrary() {
       return fieldSetFlags()[7];
     }
-
-
-    /**
-      * Clears the value of the 'library' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'library' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearLibrary() {
       library = null;
       fieldSetFlags()[7] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'predictedMedianInsertSize' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'predictedMedianInsertSize' field */
     public java.lang.Integer getPredictedMedianInsertSize() {
       return predictedMedianInsertSize;
     }
-
-    /**
-      * Sets the value of the 'predictedMedianInsertSize' field.
-      * @param value The value of 'predictedMedianInsertSize'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'predictedMedianInsertSize' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setPredictedMedianInsertSize(java.lang.Integer value) {
       validate(fields()[8], value);
       this.predictedMedianInsertSize = value;
       fieldSetFlags()[8] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'predictedMedianInsertSize' field has been set.
-      * @return True if the 'predictedMedianInsertSize' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'predictedMedianInsertSize' field has been set */
     public boolean hasPredictedMedianInsertSize() {
       return fieldSetFlags()[8];
     }
-
-
-    /**
-      * Clears the value of the 'predictedMedianInsertSize' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'predictedMedianInsertSize' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearPredictedMedianInsertSize() {
       predictedMedianInsertSize = null;
       fieldSetFlags()[8] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'platform' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'platform' field */
     public java.lang.CharSequence getPlatform() {
       return platform;
     }
-
-    /**
-      * Sets the value of the 'platform' field.
-      * @param value The value of 'platform'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'platform' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setPlatform(java.lang.CharSequence value) {
       validate(fields()[9], value);
       this.platform = value;
       fieldSetFlags()[9] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'platform' field has been set.
-      * @return True if the 'platform' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'platform' field has been set */
     public boolean hasPlatform() {
       return fieldSetFlags()[9];
     }
-
-
-    /**
-      * Clears the value of the 'platform' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'platform' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearPlatform() {
       platform = null;
       fieldSetFlags()[9] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'platformUnit' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'platformUnit' field */
     public java.lang.CharSequence getPlatformUnit() {
       return platformUnit;
     }
-
-    /**
-      * Sets the value of the 'platformUnit' field.
-      * @param value The value of 'platformUnit'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'platformUnit' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder setPlatformUnit(java.lang.CharSequence value) {
       validate(fields()[10], value);
       this.platformUnit = value;
       fieldSetFlags()[10] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'platformUnit' field has been set.
-      * @return True if the 'platformUnit' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'platformUnit' field has been set */
     public boolean hasPlatformUnit() {
       return fieldSetFlags()[10];
     }
-
-
-    /**
-      * Clears the value of the 'platformUnit' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'platformUnit' field */
     public org.bdgenomics.formats.avro.RecordGroupMetadata.Builder clearPlatformUnit() {
       platformUnit = null;
       fieldSetFlags()[10] = false;
@@ -869,21 +681,4 @@ public class RecordGroupMetadata extends org.apache.avro.specific.SpecificRecord
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Batch extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3023237729718769823L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Batch\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"batchDateEpoch\",\"type\":[\"null\",\"long\"],\"doc\":\"Creation date of this batch.\\n\\n   Stored as a number of milliseconds since the UNIX Epoch \\n   (Jan. 1st 1970 at 00:00:00 in UTC timezone).\",\"default\":null},{\"name\":\"batchType\",\"type\":[\"null\",\"string\"],\"doc\":\"Type of the batch (e.g. sample batch, genotyping batch, etc).\",\"default\":null},{\"name\":\"description\",\"type\":[\"null\",\"string\"],\"doc\":\"Textual description of this batch.\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** Creation date of this batch.
@@ -29,12 +28,6 @@ public class Batch extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * All-args constructor.
-   * @param batchDateEpoch Creation date of this batch.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   * @param batchType Type of the batch (e.g. sample batch, genotyping batch, etc).
-   * @param description Textual description of this batch.
    */
   public Batch(java.lang.Long batchDateEpoch, java.lang.CharSequence batchType, java.lang.CharSequence description) {
     this.batchDateEpoch = batchDateEpoch;
@@ -65,11 +58,10 @@ public class Batch extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'batchDateEpoch' field.
-   * @return Creation date of this batch.
+   * Creation date of this batch.
 
    Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   */
+   (Jan. 1st 1970 at 00:00:00 in UTC timezone).   */
   public java.lang.Long getBatchDateEpoch() {
     return batchDateEpoch;
   }
@@ -79,8 +71,7 @@ public class Batch extends org.apache.avro.specific.SpecificRecordBase implement
    * Creation date of this batch.
 
    Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   * @param value the value to set.
+   (Jan. 1st 1970 at 00:00:00 in UTC timezone).   * @param value the value to set.
    */
   public void setBatchDateEpoch(java.lang.Long value) {
     this.batchDateEpoch = value;
@@ -88,16 +79,14 @@ public class Batch extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'batchType' field.
-   * @return Type of the batch (e.g. sample batch, genotyping batch, etc).
-   */
+   * Type of the batch (e.g. sample batch, genotyping batch, etc).   */
   public java.lang.CharSequence getBatchType() {
     return batchType;
   }
 
   /**
    * Sets the value of the 'batchType' field.
-   * Type of the batch (e.g. sample batch, genotyping batch, etc).
-   * @param value the value to set.
+   * Type of the batch (e.g. sample batch, genotyping batch, etc).   * @param value the value to set.
    */
   public void setBatchType(java.lang.CharSequence value) {
     this.batchType = value;
@@ -105,43 +94,30 @@ public class Batch extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'description' field.
-   * @return Textual description of this batch.
-   */
+   * Textual description of this batch.   */
   public java.lang.CharSequence getDescription() {
     return description;
   }
 
   /**
    * Sets the value of the 'description' field.
-   * Textual description of this batch.
-   * @param value the value to set.
+   * Textual description of this batch.   * @param value the value to set.
    */
   public void setDescription(java.lang.CharSequence value) {
     this.description = value;
   }
 
-  /**
-   * Creates a new Batch RecordBuilder.
-   * @return A new Batch RecordBuilder
-   */
+  /** Creates a new Batch RecordBuilder */
   public static org.bdgenomics.formats.avro.Batch.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Batch.Builder();
   }
   
-  /**
-   * Creates a new Batch RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new Batch RecordBuilder
-   */
+  /** Creates a new Batch RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.Batch.Builder newBuilder(org.bdgenomics.formats.avro.Batch.Builder other) {
     return new org.bdgenomics.formats.avro.Batch.Builder(other);
   }
   
-  /**
-   * Creates a new Batch RecordBuilder by copying an existing Batch instance.
-   * @param other The existing instance to copy.
-   * @return A new Batch RecordBuilder
-   */
+  /** Creates a new Batch RecordBuilder by copying an existing Batch instance */
   public static org.bdgenomics.formats.avro.Batch.Builder newBuilder(org.bdgenomics.formats.avro.Batch other) {
     return new org.bdgenomics.formats.avro.Batch.Builder(other);
   }
@@ -152,14 +128,8 @@ public class Batch extends org.apache.avro.specific.SpecificRecordBase implement
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Batch>
     implements org.apache.avro.data.RecordBuilder<Batch> {
 
-    /** Creation date of this batch.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone). */
     private java.lang.Long batchDateEpoch;
-    /** Type of the batch (e.g. sample batch, genotyping batch, etc). */
     private java.lang.CharSequence batchType;
-    /** Textual description of this batch. */
     private java.lang.CharSequence description;
 
     /** Creates a new Builder */
@@ -167,10 +137,7 @@ public class Batch extends org.apache.avro.specific.SpecificRecordBase implement
       super(org.bdgenomics.formats.avro.Batch.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.Batch.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.batchDateEpoch)) {
@@ -187,10 +154,7 @@ public class Batch extends org.apache.avro.specific.SpecificRecordBase implement
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing Batch instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing Batch instance */
     private Builder(org.bdgenomics.formats.avro.Batch other) {
             super(org.bdgenomics.formats.avro.Batch.SCHEMA$);
       if (isValidValue(fields()[0], other.batchDateEpoch)) {
@@ -207,141 +171,75 @@ public class Batch extends org.apache.avro.specific.SpecificRecordBase implement
       }
     }
 
-    /**
-      * Gets the value of the 'batchDateEpoch' field.
-      * Creation date of this batch.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return The value.
-      */
+    /** Gets the value of the 'batchDateEpoch' field */
     public java.lang.Long getBatchDateEpoch() {
       return batchDateEpoch;
     }
-
-    /**
-      * Sets the value of the 'batchDateEpoch' field.
-      * Creation date of this batch.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @param value The value of 'batchDateEpoch'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'batchDateEpoch' field */
     public org.bdgenomics.formats.avro.Batch.Builder setBatchDateEpoch(java.lang.Long value) {
       validate(fields()[0], value);
       this.batchDateEpoch = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'batchDateEpoch' field has been set.
-      * Creation date of this batch.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return True if the 'batchDateEpoch' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'batchDateEpoch' field has been set */
     public boolean hasBatchDateEpoch() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'batchDateEpoch' field.
-      * Creation date of this batch.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'batchDateEpoch' field */
     public org.bdgenomics.formats.avro.Batch.Builder clearBatchDateEpoch() {
       batchDateEpoch = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'batchType' field.
-      * Type of the batch (e.g. sample batch, genotyping batch, etc).
-      * @return The value.
-      */
+    /** Gets the value of the 'batchType' field */
     public java.lang.CharSequence getBatchType() {
       return batchType;
     }
-
-    /**
-      * Sets the value of the 'batchType' field.
-      * Type of the batch (e.g. sample batch, genotyping batch, etc).
-      * @param value The value of 'batchType'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'batchType' field */
     public org.bdgenomics.formats.avro.Batch.Builder setBatchType(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.batchType = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'batchType' field has been set.
-      * Type of the batch (e.g. sample batch, genotyping batch, etc).
-      * @return True if the 'batchType' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'batchType' field has been set */
     public boolean hasBatchType() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'batchType' field.
-      * Type of the batch (e.g. sample batch, genotyping batch, etc).
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'batchType' field */
     public org.bdgenomics.formats.avro.Batch.Builder clearBatchType() {
       batchType = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'description' field.
-      * Textual description of this batch.
-      * @return The value.
-      */
+    /** Gets the value of the 'description' field */
     public java.lang.CharSequence getDescription() {
       return description;
     }
-
-    /**
-      * Sets the value of the 'description' field.
-      * Textual description of this batch.
-      * @param value The value of 'description'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'description' field */
     public org.bdgenomics.formats.avro.Batch.Builder setDescription(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.description = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'description' field has been set.
-      * Textual description of this batch.
-      * @return True if the 'description' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'description' field has been set */
     public boolean hasDescription() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'description' field.
-      * Textual description of this batch.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'description' field */
     public org.bdgenomics.formats.avro.Batch.Builder clearDescription() {
       description = null;
       fieldSetFlags()[2] = false;
@@ -361,21 +259,4 @@ public class Batch extends org.apache.avro.specific.SpecificRecordBase implement
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

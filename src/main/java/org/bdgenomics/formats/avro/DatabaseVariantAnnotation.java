@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class DatabaseVariantAnnotation extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8381523951405149399L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"DatabaseVariantAnnotation\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"variant\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Variant\",\"fields\":[{\"name\":\"variantErrorProbability\",\"type\":[\"null\",\"int\"],\"doc\":\"The Phred scaled error probability of a variant, given the probabilities of\\n   the variant in a population.\",\"default\":null},{\"name\":\"contig\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Contig\",\"doc\":\"Record for describing a reference assembly. Not used for storing the contents\\n of said assembly.\\n\\n @see NucleotideContigFragment\",\"fields\":[{\"name\":\"contigName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this contig in the assembly (e.g., \\\"chr1\\\").\",\"default\":null},{\"name\":\"contigLength\",\"type\":[\"null\",\"long\"],\"doc\":\"The length of this contig.\",\"default\":null},{\"name\":\"contigMD5\",\"type\":[\"null\",\"string\"],\"doc\":\"The MD5 checksum of the assembly for this contig.\",\"default\":null},{\"name\":\"referenceURL\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL at which this reference assembly can be found.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this assembly (e.g., \\\"hg19\\\").\",\"default\":null},{\"name\":\"species\",\"type\":[\"null\",\"string\"],\"doc\":\"The species that this assembly is for.\",\"default\":null},{\"name\":\"referenceIndex\",\"type\":[\"null\",\"int\"],\"doc\":\"Optional 0-based index of this contig in a SAM file header that it was read\\n   from; helps output SAMs/BAMs with headers in the same order as they started\\n   with, before a conversion to ADAM.\",\"default\":null}]}],\"doc\":\"The reference contig that this variant exists on.\",\"default\":null},{\"name\":\"start\",\"type\":[\"null\",\"long\"],\"doc\":\"The 0-based start position of this variant on the reference contig.\",\"default\":null},{\"name\":\"end\",\"type\":[\"null\",\"long\"],\"doc\":\"The 0-based, exclusive end position of this variant on the reference contig.\",\"default\":null},{\"name\":\"referenceAllele\",\"type\":[\"null\",\"string\"],\"doc\":\"A string describing the reference allele at this site.\",\"default\":null},{\"name\":\"alternateAllele\",\"type\":[\"null\",\"string\"],\"doc\":\"A string describing the variant allele at this site. Should be left null if\\n   the site is a structural variant.\",\"default\":null},{\"name\":\"svAllele\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"StructuralVariant\",\"fields\":[{\"name\":\"type\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"StructuralVariantType\",\"doc\":\"Descriptors for the type of a structural variant. The most specific descriptor\\n should be used, if possible. E.g., duplication should be used instead of\\n insertion if the inserted sequence is not novel. Tandem duplication should\\n be used instead of duplication if the duplication is known to follow the\\n duplicated sequence.\",\"symbols\":[\"DELETION\",\"INSERTION\",\"INVERSION\",\"MOBILE_INSERTION\",\"MOBILE_DELETION\",\"DUPLICATION\",\"TANDEM_DUPLICATION\"]}],\"doc\":\"The type of this structural variant.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL of the FASTA/NucleotideContig assembly for this structural variant,\\n   if one is available.\",\"default\":null},{\"name\":\"precise\",\"type\":[\"boolean\",\"null\"],\"doc\":\"Whether this structural variant call has precise breakpoints or not. Default\\n   value is true. If the call is imprecise, confidence intervals should be provided.\",\"default\":true},{\"name\":\"startWindow\",\"type\":[\"null\",\"int\"],\"doc\":\"The size of the confidence window around the start of the structural variant.\",\"default\":null},{\"name\":\"endWindow\",\"type\":[\"null\",\"int\"],\"doc\":\"The size of the confidence window around the end of the structural variant.\",\"default\":null}]}],\"doc\":\"The structural variant at this site, if the alternate allele is a structural\\n   variant. If the site is not a structural variant, this field should be left\\n   null.\",\"default\":null},{\"name\":\"isSomatic\",\"type\":[\"boolean\",\"null\"],\"doc\":\"A boolean describing whether this variant call is somatic; in this case, the\\n   `referenceAllele` will have been observed in another sample.\",\"default\":false}]}]},{\"name\":\"dbSnpId\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"geneSymbol\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"omimId\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"cosmicId\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"clinvarId\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"clinicalSignificance\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"gerpNr\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"gerpRs\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"phylop\",\"type\":[\"null\",\"float\"],\"default\":null},{\"name\":\"ancestralAllele\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"thousandGenomesAlleleCount\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"thousandGenomesAlleleFrequency\",\"type\":[\"null\",\"float\"],\"default\":null},{\"name\":\"siftScore\",\"type\":[\"null\",\"float\"],\"default\":null},{\"name\":\"siftScoreConverted\",\"type\":[\"null\",\"float\"],\"default\":null},{\"name\":\"siftPred\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"mutationTasterScore\",\"type\":[\"null\",\"float\"],\"default\":null},{\"name\":\"mutationTasterScoreConverted\",\"type\":[\"null\",\"float\"],\"default\":null},{\"name\":\"mutationTasterPred\",\"type\":[\"null\",\"string\"],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   @Deprecated public org.bdgenomics.formats.avro.Variant variant;
@@ -400,28 +399,17 @@ public class DatabaseVariantAnnotation extends org.apache.avro.specific.Specific
     this.mutationTasterPred = value;
   }
 
-  /**
-   * Creates a new DatabaseVariantAnnotation RecordBuilder.
-   * @return A new DatabaseVariantAnnotation RecordBuilder
-   */
+  /** Creates a new DatabaseVariantAnnotation RecordBuilder */
   public static org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder();
   }
   
-  /**
-   * Creates a new DatabaseVariantAnnotation RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new DatabaseVariantAnnotation RecordBuilder
-   */
+  /** Creates a new DatabaseVariantAnnotation RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder newBuilder(org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder other) {
     return new org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder(other);
   }
   
-  /**
-   * Creates a new DatabaseVariantAnnotation RecordBuilder by copying an existing DatabaseVariantAnnotation instance.
-   * @param other The existing instance to copy.
-   * @return A new DatabaseVariantAnnotation RecordBuilder
-   */
+  /** Creates a new DatabaseVariantAnnotation RecordBuilder by copying an existing DatabaseVariantAnnotation instance */
   public static org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder newBuilder(org.bdgenomics.formats.avro.DatabaseVariantAnnotation other) {
     return new org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder(other);
   }
@@ -433,7 +421,6 @@ public class DatabaseVariantAnnotation extends org.apache.avro.specific.Specific
     implements org.apache.avro.data.RecordBuilder<DatabaseVariantAnnotation> {
 
     private org.bdgenomics.formats.avro.Variant variant;
-    private org.bdgenomics.formats.avro.Variant.Builder variantBuilder;
     private java.lang.Integer dbSnpId;
     private java.lang.CharSequence geneSymbol;
     private java.lang.CharSequence omimId;
@@ -458,18 +445,12 @@ public class DatabaseVariantAnnotation extends org.apache.avro.specific.Specific
       super(org.bdgenomics.formats.avro.DatabaseVariantAnnotation.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.variant)) {
         this.variant = data().deepCopy(fields()[0].schema(), other.variant);
         fieldSetFlags()[0] = true;
-      }
-      if (other.hasVariantBuilder()) {
-        this.variantBuilder = org.bdgenomics.formats.avro.Variant.newBuilder(other.getVariantBuilder());
       }
       if (isValidValue(fields()[1], other.dbSnpId)) {
         this.dbSnpId = data().deepCopy(fields()[1].schema(), other.dbSnpId);
@@ -545,17 +526,13 @@ public class DatabaseVariantAnnotation extends org.apache.avro.specific.Specific
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing DatabaseVariantAnnotation instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing DatabaseVariantAnnotation instance */
     private Builder(org.bdgenomics.formats.avro.DatabaseVariantAnnotation other) {
             super(org.bdgenomics.formats.avro.DatabaseVariantAnnotation.SCHEMA$);
       if (isValidValue(fields()[0], other.variant)) {
         this.variant = data().deepCopy(fields()[0].schema(), other.variant);
         fieldSetFlags()[0] = true;
       }
-      this.variantBuilder = null;
       if (isValidValue(fields()[1], other.dbSnpId)) {
         this.dbSnpId = data().deepCopy(fields()[1].schema(), other.dbSnpId);
         fieldSetFlags()[1] = true;
@@ -630,775 +607,475 @@ public class DatabaseVariantAnnotation extends org.apache.avro.specific.Specific
       }
     }
 
-    /**
-      * Gets the value of the 'variant' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'variant' field */
     public org.bdgenomics.formats.avro.Variant getVariant() {
       return variant;
     }
-
-    /**
-      * Sets the value of the 'variant' field.
-      * @param value The value of 'variant'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'variant' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setVariant(org.bdgenomics.formats.avro.Variant value) {
       validate(fields()[0], value);
-      this.variantBuilder = null;
       this.variant = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'variant' field has been set.
-      * @return True if the 'variant' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'variant' field has been set */
     public boolean hasVariant() {
       return fieldSetFlags()[0];
     }
-
-    /**
-     * Gets the Builder instance for the 'variant' field and creates one if it doesn't exist yet.
-     * @return This builder.
-     */
-    public org.bdgenomics.formats.avro.Variant.Builder getVariantBuilder() {
-      if (variantBuilder == null) {
-        if (hasVariant()) {
-          setVariantBuilder(org.bdgenomics.formats.avro.Variant.newBuilder(variant));
-        } else {
-          setVariantBuilder(org.bdgenomics.formats.avro.Variant.newBuilder());
-        }
-      }
-      return variantBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'variant' field
-     * @return This builder.
-     */
-    public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setVariantBuilder(org.bdgenomics.formats.avro.Variant.Builder value) {
-      clearVariant();
-      variantBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'variant' field has an active Builder instance
-     * @return True if the 'variant' field has an active Builder instance
-     */
-    public boolean hasVariantBuilder() {
-      return variantBuilder != null;
-    }
-
-    /**
-      * Clears the value of the 'variant' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'variant' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearVariant() {
       variant = null;
-      variantBuilder = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'dbSnpId' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'dbSnpId' field */
     public java.lang.Integer getDbSnpId() {
       return dbSnpId;
     }
-
-    /**
-      * Sets the value of the 'dbSnpId' field.
-      * @param value The value of 'dbSnpId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'dbSnpId' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setDbSnpId(java.lang.Integer value) {
       validate(fields()[1], value);
       this.dbSnpId = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'dbSnpId' field has been set.
-      * @return True if the 'dbSnpId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'dbSnpId' field has been set */
     public boolean hasDbSnpId() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'dbSnpId' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'dbSnpId' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearDbSnpId() {
       dbSnpId = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'geneSymbol' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'geneSymbol' field */
     public java.lang.CharSequence getGeneSymbol() {
       return geneSymbol;
     }
-
-    /**
-      * Sets the value of the 'geneSymbol' field.
-      * @param value The value of 'geneSymbol'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'geneSymbol' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setGeneSymbol(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.geneSymbol = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'geneSymbol' field has been set.
-      * @return True if the 'geneSymbol' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'geneSymbol' field has been set */
     public boolean hasGeneSymbol() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'geneSymbol' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'geneSymbol' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearGeneSymbol() {
       geneSymbol = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'omimId' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'omimId' field */
     public java.lang.CharSequence getOmimId() {
       return omimId;
     }
-
-    /**
-      * Sets the value of the 'omimId' field.
-      * @param value The value of 'omimId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'omimId' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setOmimId(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.omimId = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'omimId' field has been set.
-      * @return True if the 'omimId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'omimId' field has been set */
     public boolean hasOmimId() {
       return fieldSetFlags()[3];
     }
-
-
-    /**
-      * Clears the value of the 'omimId' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'omimId' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearOmimId() {
       omimId = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'cosmicId' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'cosmicId' field */
     public java.lang.CharSequence getCosmicId() {
       return cosmicId;
     }
-
-    /**
-      * Sets the value of the 'cosmicId' field.
-      * @param value The value of 'cosmicId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'cosmicId' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setCosmicId(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.cosmicId = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'cosmicId' field has been set.
-      * @return True if the 'cosmicId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'cosmicId' field has been set */
     public boolean hasCosmicId() {
       return fieldSetFlags()[4];
     }
-
-
-    /**
-      * Clears the value of the 'cosmicId' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'cosmicId' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearCosmicId() {
       cosmicId = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'clinvarId' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'clinvarId' field */
     public java.lang.CharSequence getClinvarId() {
       return clinvarId;
     }
-
-    /**
-      * Sets the value of the 'clinvarId' field.
-      * @param value The value of 'clinvarId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'clinvarId' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setClinvarId(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.clinvarId = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'clinvarId' field has been set.
-      * @return True if the 'clinvarId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'clinvarId' field has been set */
     public boolean hasClinvarId() {
       return fieldSetFlags()[5];
     }
-
-
-    /**
-      * Clears the value of the 'clinvarId' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'clinvarId' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearClinvarId() {
       clinvarId = null;
       fieldSetFlags()[5] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'clinicalSignificance' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'clinicalSignificance' field */
     public java.lang.CharSequence getClinicalSignificance() {
       return clinicalSignificance;
     }
-
-    /**
-      * Sets the value of the 'clinicalSignificance' field.
-      * @param value The value of 'clinicalSignificance'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'clinicalSignificance' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setClinicalSignificance(java.lang.CharSequence value) {
       validate(fields()[6], value);
       this.clinicalSignificance = value;
       fieldSetFlags()[6] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'clinicalSignificance' field has been set.
-      * @return True if the 'clinicalSignificance' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'clinicalSignificance' field has been set */
     public boolean hasClinicalSignificance() {
       return fieldSetFlags()[6];
     }
-
-
-    /**
-      * Clears the value of the 'clinicalSignificance' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'clinicalSignificance' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearClinicalSignificance() {
       clinicalSignificance = null;
       fieldSetFlags()[6] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'gerpNr' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'gerpNr' field */
     public java.lang.CharSequence getGerpNr() {
       return gerpNr;
     }
-
-    /**
-      * Sets the value of the 'gerpNr' field.
-      * @param value The value of 'gerpNr'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'gerpNr' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setGerpNr(java.lang.CharSequence value) {
       validate(fields()[7], value);
       this.gerpNr = value;
       fieldSetFlags()[7] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'gerpNr' field has been set.
-      * @return True if the 'gerpNr' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'gerpNr' field has been set */
     public boolean hasGerpNr() {
       return fieldSetFlags()[7];
     }
-
-
-    /**
-      * Clears the value of the 'gerpNr' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'gerpNr' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearGerpNr() {
       gerpNr = null;
       fieldSetFlags()[7] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'gerpRs' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'gerpRs' field */
     public java.lang.CharSequence getGerpRs() {
       return gerpRs;
     }
-
-    /**
-      * Sets the value of the 'gerpRs' field.
-      * @param value The value of 'gerpRs'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'gerpRs' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setGerpRs(java.lang.CharSequence value) {
       validate(fields()[8], value);
       this.gerpRs = value;
       fieldSetFlags()[8] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'gerpRs' field has been set.
-      * @return True if the 'gerpRs' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'gerpRs' field has been set */
     public boolean hasGerpRs() {
       return fieldSetFlags()[8];
     }
-
-
-    /**
-      * Clears the value of the 'gerpRs' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'gerpRs' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearGerpRs() {
       gerpRs = null;
       fieldSetFlags()[8] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'phylop' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'phylop' field */
     public java.lang.Float getPhylop() {
       return phylop;
     }
-
-    /**
-      * Sets the value of the 'phylop' field.
-      * @param value The value of 'phylop'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'phylop' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setPhylop(java.lang.Float value) {
       validate(fields()[9], value);
       this.phylop = value;
       fieldSetFlags()[9] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'phylop' field has been set.
-      * @return True if the 'phylop' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'phylop' field has been set */
     public boolean hasPhylop() {
       return fieldSetFlags()[9];
     }
-
-
-    /**
-      * Clears the value of the 'phylop' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'phylop' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearPhylop() {
       phylop = null;
       fieldSetFlags()[9] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'ancestralAllele' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'ancestralAllele' field */
     public java.lang.CharSequence getAncestralAllele() {
       return ancestralAllele;
     }
-
-    /**
-      * Sets the value of the 'ancestralAllele' field.
-      * @param value The value of 'ancestralAllele'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'ancestralAllele' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setAncestralAllele(java.lang.CharSequence value) {
       validate(fields()[10], value);
       this.ancestralAllele = value;
       fieldSetFlags()[10] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'ancestralAllele' field has been set.
-      * @return True if the 'ancestralAllele' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'ancestralAllele' field has been set */
     public boolean hasAncestralAllele() {
       return fieldSetFlags()[10];
     }
-
-
-    /**
-      * Clears the value of the 'ancestralAllele' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'ancestralAllele' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearAncestralAllele() {
       ancestralAllele = null;
       fieldSetFlags()[10] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'thousandGenomesAlleleCount' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'thousandGenomesAlleleCount' field */
     public java.lang.Integer getThousandGenomesAlleleCount() {
       return thousandGenomesAlleleCount;
     }
-
-    /**
-      * Sets the value of the 'thousandGenomesAlleleCount' field.
-      * @param value The value of 'thousandGenomesAlleleCount'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'thousandGenomesAlleleCount' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setThousandGenomesAlleleCount(java.lang.Integer value) {
       validate(fields()[11], value);
       this.thousandGenomesAlleleCount = value;
       fieldSetFlags()[11] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'thousandGenomesAlleleCount' field has been set.
-      * @return True if the 'thousandGenomesAlleleCount' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'thousandGenomesAlleleCount' field has been set */
     public boolean hasThousandGenomesAlleleCount() {
       return fieldSetFlags()[11];
     }
-
-
-    /**
-      * Clears the value of the 'thousandGenomesAlleleCount' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'thousandGenomesAlleleCount' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearThousandGenomesAlleleCount() {
       thousandGenomesAlleleCount = null;
       fieldSetFlags()[11] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'thousandGenomesAlleleFrequency' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'thousandGenomesAlleleFrequency' field */
     public java.lang.Float getThousandGenomesAlleleFrequency() {
       return thousandGenomesAlleleFrequency;
     }
-
-    /**
-      * Sets the value of the 'thousandGenomesAlleleFrequency' field.
-      * @param value The value of 'thousandGenomesAlleleFrequency'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'thousandGenomesAlleleFrequency' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setThousandGenomesAlleleFrequency(java.lang.Float value) {
       validate(fields()[12], value);
       this.thousandGenomesAlleleFrequency = value;
       fieldSetFlags()[12] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'thousandGenomesAlleleFrequency' field has been set.
-      * @return True if the 'thousandGenomesAlleleFrequency' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'thousandGenomesAlleleFrequency' field has been set */
     public boolean hasThousandGenomesAlleleFrequency() {
       return fieldSetFlags()[12];
     }
-
-
-    /**
-      * Clears the value of the 'thousandGenomesAlleleFrequency' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'thousandGenomesAlleleFrequency' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearThousandGenomesAlleleFrequency() {
       thousandGenomesAlleleFrequency = null;
       fieldSetFlags()[12] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'siftScore' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'siftScore' field */
     public java.lang.Float getSiftScore() {
       return siftScore;
     }
-
-    /**
-      * Sets the value of the 'siftScore' field.
-      * @param value The value of 'siftScore'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'siftScore' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setSiftScore(java.lang.Float value) {
       validate(fields()[13], value);
       this.siftScore = value;
       fieldSetFlags()[13] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'siftScore' field has been set.
-      * @return True if the 'siftScore' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'siftScore' field has been set */
     public boolean hasSiftScore() {
       return fieldSetFlags()[13];
     }
-
-
-    /**
-      * Clears the value of the 'siftScore' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'siftScore' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearSiftScore() {
       siftScore = null;
       fieldSetFlags()[13] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'siftScoreConverted' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'siftScoreConverted' field */
     public java.lang.Float getSiftScoreConverted() {
       return siftScoreConverted;
     }
-
-    /**
-      * Sets the value of the 'siftScoreConverted' field.
-      * @param value The value of 'siftScoreConverted'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'siftScoreConverted' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setSiftScoreConverted(java.lang.Float value) {
       validate(fields()[14], value);
       this.siftScoreConverted = value;
       fieldSetFlags()[14] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'siftScoreConverted' field has been set.
-      * @return True if the 'siftScoreConverted' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'siftScoreConverted' field has been set */
     public boolean hasSiftScoreConverted() {
       return fieldSetFlags()[14];
     }
-
-
-    /**
-      * Clears the value of the 'siftScoreConverted' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'siftScoreConverted' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearSiftScoreConverted() {
       siftScoreConverted = null;
       fieldSetFlags()[14] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'siftPred' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'siftPred' field */
     public java.lang.CharSequence getSiftPred() {
       return siftPred;
     }
-
-    /**
-      * Sets the value of the 'siftPred' field.
-      * @param value The value of 'siftPred'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'siftPred' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setSiftPred(java.lang.CharSequence value) {
       validate(fields()[15], value);
       this.siftPred = value;
       fieldSetFlags()[15] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'siftPred' field has been set.
-      * @return True if the 'siftPred' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'siftPred' field has been set */
     public boolean hasSiftPred() {
       return fieldSetFlags()[15];
     }
-
-
-    /**
-      * Clears the value of the 'siftPred' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'siftPred' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearSiftPred() {
       siftPred = null;
       fieldSetFlags()[15] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mutationTasterScore' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'mutationTasterScore' field */
     public java.lang.Float getMutationTasterScore() {
       return mutationTasterScore;
     }
-
-    /**
-      * Sets the value of the 'mutationTasterScore' field.
-      * @param value The value of 'mutationTasterScore'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mutationTasterScore' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setMutationTasterScore(java.lang.Float value) {
       validate(fields()[16], value);
       this.mutationTasterScore = value;
       fieldSetFlags()[16] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mutationTasterScore' field has been set.
-      * @return True if the 'mutationTasterScore' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mutationTasterScore' field has been set */
     public boolean hasMutationTasterScore() {
       return fieldSetFlags()[16];
     }
-
-
-    /**
-      * Clears the value of the 'mutationTasterScore' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mutationTasterScore' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearMutationTasterScore() {
       mutationTasterScore = null;
       fieldSetFlags()[16] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mutationTasterScoreConverted' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'mutationTasterScoreConverted' field */
     public java.lang.Float getMutationTasterScoreConverted() {
       return mutationTasterScoreConverted;
     }
-
-    /**
-      * Sets the value of the 'mutationTasterScoreConverted' field.
-      * @param value The value of 'mutationTasterScoreConverted'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mutationTasterScoreConverted' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setMutationTasterScoreConverted(java.lang.Float value) {
       validate(fields()[17], value);
       this.mutationTasterScoreConverted = value;
       fieldSetFlags()[17] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mutationTasterScoreConverted' field has been set.
-      * @return True if the 'mutationTasterScoreConverted' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mutationTasterScoreConverted' field has been set */
     public boolean hasMutationTasterScoreConverted() {
       return fieldSetFlags()[17];
     }
-
-
-    /**
-      * Clears the value of the 'mutationTasterScoreConverted' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mutationTasterScoreConverted' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearMutationTasterScoreConverted() {
       mutationTasterScoreConverted = null;
       fieldSetFlags()[17] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mutationTasterPred' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'mutationTasterPred' field */
     public java.lang.CharSequence getMutationTasterPred() {
       return mutationTasterPred;
     }
-
-    /**
-      * Sets the value of the 'mutationTasterPred' field.
-      * @param value The value of 'mutationTasterPred'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mutationTasterPred' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder setMutationTasterPred(java.lang.CharSequence value) {
       validate(fields()[18], value);
       this.mutationTasterPred = value;
       fieldSetFlags()[18] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mutationTasterPred' field has been set.
-      * @return True if the 'mutationTasterPred' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mutationTasterPred' field has been set */
     public boolean hasMutationTasterPred() {
       return fieldSetFlags()[18];
     }
-
-
-    /**
-      * Clears the value of the 'mutationTasterPred' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mutationTasterPred' field */
     public org.bdgenomics.formats.avro.DatabaseVariantAnnotation.Builder clearMutationTasterPred() {
       mutationTasterPred = null;
       fieldSetFlags()[18] = false;
@@ -1409,11 +1086,7 @@ public class DatabaseVariantAnnotation extends org.apache.avro.specific.Specific
     public DatabaseVariantAnnotation build() {
       try {
         DatabaseVariantAnnotation record = new DatabaseVariantAnnotation();
-        if (variantBuilder != null) {
-          record.variant = this.variantBuilder.build();
-        } else {
-          record.variant = fieldSetFlags()[0] ? this.variant : (org.bdgenomics.formats.avro.Variant) defaultValue(fields()[0]);
-        }
+        record.variant = fieldSetFlags()[0] ? this.variant : (org.bdgenomics.formats.avro.Variant) defaultValue(fields()[0]);
         record.dbSnpId = fieldSetFlags()[1] ? this.dbSnpId : (java.lang.Integer) defaultValue(fields()[1]);
         record.geneSymbol = fieldSetFlags()[2] ? this.geneSymbol : (java.lang.CharSequence) defaultValue(fields()[2]);
         record.omimId = fieldSetFlags()[3] ? this.omimId : (java.lang.CharSequence) defaultValue(fields()[3]);
@@ -1438,21 +1111,4 @@ public class DatabaseVariantAnnotation extends org.apache.avro.specific.Specific
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

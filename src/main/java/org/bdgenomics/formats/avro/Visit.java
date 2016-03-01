@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Visit extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -6710693006658553369L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Visit\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"visitId\",\"type\":[\"null\",\"string\"],\"doc\":\"Unique ID of the visit. Often useful to backtrack the visit on \\n   an external database.\",\"default\":null},{\"name\":\"visitDateEpoch\",\"type\":[\"null\",\"long\"],\"doc\":\"Date of the visit.\\n\\n   Stored as a number of milliseconds since the UNIX Epoch \\n   (Jan. 1st 1970 at 00:00:00 in UTC timezone).\",\"default\":null},{\"name\":\"studyId\",\"type\":[\"null\",\"string\"],\"doc\":\"ID of the consent form that the user signed at the visit.\",\"default\":null},{\"name\":\"isFasting\",\"type\":[\"null\",\"boolean\"],\"doc\":\"Indicates if the patient was fasting or not during the visit\\n   (null if unknown).\",\"default\":null},{\"name\":\"description\",\"type\":[\"null\",\"string\"],\"doc\":\"Description of the visit.\",\"default\":null},{\"name\":\"phenotypes\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Phenotype\",\"fields\":[{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"doc\":\"Name of the phenotype (e.g. 'left lower extremity amputation').\",\"default\":null},{\"name\":\"phenotypeGroup\",\"type\":[\"null\",\"string\"],\"doc\":\"Group of the phenotype (e.g. 'eye color').\",\"default\":null},{\"name\":\"phenotypeType\",\"type\":[\"null\",\"string\"],\"doc\":\"Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').\",\"default\":null},{\"name\":\"measure\",\"type\":[\"null\",\"string\"],\"doc\":\"Qualitative (\\\"0\\\", or \\\"1\\\") or quantitative measure or observation on the \\n   individual.\",\"default\":null},{\"name\":\"measureDataType\",\"type\":{\"type\":\"enum\",\"name\":\"MeasureDataType\",\"symbols\":[\"Unknown\",\"Boolean\",\"Integer\",\"Decimal\"]},\"doc\":\"Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').\",\"default\":\"Unknown\"},{\"name\":\"measureUnits\",\"type\":[\"null\",\"string\"],\"doc\":\"Units of the measure (e.g. 'umol/L', 'beats/minute').\",\"default\":null},{\"name\":\"description\",\"type\":[\"null\",\"string\"],\"doc\":\"Long description of the phenotype.\",\"default\":null},{\"name\":\"diagnosisDateEpoch\",\"type\":[\"null\",\"long\"],\"doc\":\"Date of the diagnosis (if any).\\n\\n   Stored as a number of milliseconds since the UNIX Epoch \\n   (Jan. 1st 1970 at 00:00:00 in UTC timezone).\",\"default\":null}]}},\"doc\":\"An array containing all the phenotypes collected during the visit.\",\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** Unique ID of the visit. Often useful to backtrack the visit on 
@@ -37,17 +36,6 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * All-args constructor.
-   * @param visitId Unique ID of the visit. Often useful to backtrack the visit on 
-   an external database.
-   * @param visitDateEpoch Date of the visit.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   * @param studyId ID of the consent form that the user signed at the visit.
-   * @param isFasting Indicates if the patient was fasting or not during the visit
-   (null if unknown).
-   * @param description Description of the visit.
-   * @param phenotypes An array containing all the phenotypes collected during the visit.
    */
   public Visit(java.lang.CharSequence visitId, java.lang.Long visitDateEpoch, java.lang.CharSequence studyId, java.lang.Boolean isFasting, java.lang.CharSequence description, java.util.List<org.bdgenomics.formats.avro.Phenotype> phenotypes) {
     this.visitId = visitId;
@@ -87,9 +75,8 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'visitId' field.
-   * @return Unique ID of the visit. Often useful to backtrack the visit on 
-   an external database.
-   */
+   * Unique ID of the visit. Often useful to backtrack the visit on 
+   an external database.   */
   public java.lang.CharSequence getVisitId() {
     return visitId;
   }
@@ -97,8 +84,7 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
   /**
    * Sets the value of the 'visitId' field.
    * Unique ID of the visit. Often useful to backtrack the visit on 
-   an external database.
-   * @param value the value to set.
+   an external database.   * @param value the value to set.
    */
   public void setVisitId(java.lang.CharSequence value) {
     this.visitId = value;
@@ -106,11 +92,10 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'visitDateEpoch' field.
-   * @return Date of the visit.
+   * Date of the visit.
 
    Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   */
+   (Jan. 1st 1970 at 00:00:00 in UTC timezone).   */
   public java.lang.Long getVisitDateEpoch() {
     return visitDateEpoch;
   }
@@ -120,8 +105,7 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
    * Date of the visit.
 
    Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   * @param value the value to set.
+   (Jan. 1st 1970 at 00:00:00 in UTC timezone).   * @param value the value to set.
    */
   public void setVisitDateEpoch(java.lang.Long value) {
     this.visitDateEpoch = value;
@@ -129,16 +113,14 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'studyId' field.
-   * @return ID of the consent form that the user signed at the visit.
-   */
+   * ID of the consent form that the user signed at the visit.   */
   public java.lang.CharSequence getStudyId() {
     return studyId;
   }
 
   /**
    * Sets the value of the 'studyId' field.
-   * ID of the consent form that the user signed at the visit.
-   * @param value the value to set.
+   * ID of the consent form that the user signed at the visit.   * @param value the value to set.
    */
   public void setStudyId(java.lang.CharSequence value) {
     this.studyId = value;
@@ -146,9 +128,8 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'isFasting' field.
-   * @return Indicates if the patient was fasting or not during the visit
-   (null if unknown).
-   */
+   * Indicates if the patient was fasting or not during the visit
+   (null if unknown).   */
   public java.lang.Boolean getIsFasting() {
     return isFasting;
   }
@@ -156,8 +137,7 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
   /**
    * Sets the value of the 'isFasting' field.
    * Indicates if the patient was fasting or not during the visit
-   (null if unknown).
-   * @param value the value to set.
+   (null if unknown).   * @param value the value to set.
    */
   public void setIsFasting(java.lang.Boolean value) {
     this.isFasting = value;
@@ -165,16 +145,14 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'description' field.
-   * @return Description of the visit.
-   */
+   * Description of the visit.   */
   public java.lang.CharSequence getDescription() {
     return description;
   }
 
   /**
    * Sets the value of the 'description' field.
-   * Description of the visit.
-   * @param value the value to set.
+   * Description of the visit.   * @param value the value to set.
    */
   public void setDescription(java.lang.CharSequence value) {
     this.description = value;
@@ -182,43 +160,30 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * Gets the value of the 'phenotypes' field.
-   * @return An array containing all the phenotypes collected during the visit.
-   */
+   * An array containing all the phenotypes collected during the visit.   */
   public java.util.List<org.bdgenomics.formats.avro.Phenotype> getPhenotypes() {
     return phenotypes;
   }
 
   /**
    * Sets the value of the 'phenotypes' field.
-   * An array containing all the phenotypes collected during the visit.
-   * @param value the value to set.
+   * An array containing all the phenotypes collected during the visit.   * @param value the value to set.
    */
   public void setPhenotypes(java.util.List<org.bdgenomics.formats.avro.Phenotype> value) {
     this.phenotypes = value;
   }
 
-  /**
-   * Creates a new Visit RecordBuilder.
-   * @return A new Visit RecordBuilder
-   */
+  /** Creates a new Visit RecordBuilder */
   public static org.bdgenomics.formats.avro.Visit.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Visit.Builder();
   }
   
-  /**
-   * Creates a new Visit RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new Visit RecordBuilder
-   */
+  /** Creates a new Visit RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.Visit.Builder newBuilder(org.bdgenomics.formats.avro.Visit.Builder other) {
     return new org.bdgenomics.formats.avro.Visit.Builder(other);
   }
   
-  /**
-   * Creates a new Visit RecordBuilder by copying an existing Visit instance.
-   * @param other The existing instance to copy.
-   * @return A new Visit RecordBuilder
-   */
+  /** Creates a new Visit RecordBuilder by copying an existing Visit instance */
   public static org.bdgenomics.formats.avro.Visit.Builder newBuilder(org.bdgenomics.formats.avro.Visit other) {
     return new org.bdgenomics.formats.avro.Visit.Builder(other);
   }
@@ -229,22 +194,11 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Visit>
     implements org.apache.avro.data.RecordBuilder<Visit> {
 
-    /** Unique ID of the visit. Often useful to backtrack the visit on 
-   an external database. */
     private java.lang.CharSequence visitId;
-    /** Date of the visit.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone). */
     private java.lang.Long visitDateEpoch;
-    /** ID of the consent form that the user signed at the visit. */
     private java.lang.CharSequence studyId;
-    /** Indicates if the patient was fasting or not during the visit
-   (null if unknown). */
     private java.lang.Boolean isFasting;
-    /** Description of the visit. */
     private java.lang.CharSequence description;
-    /** An array containing all the phenotypes collected during the visit. */
     private java.util.List<org.bdgenomics.formats.avro.Phenotype> phenotypes;
 
     /** Creates a new Builder */
@@ -252,10 +206,7 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
       super(org.bdgenomics.formats.avro.Visit.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.Visit.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.visitId)) {
@@ -284,10 +235,7 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing Visit instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing Visit instance */
     private Builder(org.bdgenomics.formats.avro.Visit other) {
             super(org.bdgenomics.formats.avro.Visit.SCHEMA$);
       if (isValidValue(fields()[0], other.visitId)) {
@@ -316,278 +264,150 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
       }
     }
 
-    /**
-      * Gets the value of the 'visitId' field.
-      * Unique ID of the visit. Often useful to backtrack the visit on 
-   an external database.
-      * @return The value.
-      */
+    /** Gets the value of the 'visitId' field */
     public java.lang.CharSequence getVisitId() {
       return visitId;
     }
-
-    /**
-      * Sets the value of the 'visitId' field.
-      * Unique ID of the visit. Often useful to backtrack the visit on 
-   an external database.
-      * @param value The value of 'visitId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'visitId' field */
     public org.bdgenomics.formats.avro.Visit.Builder setVisitId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.visitId = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'visitId' field has been set.
-      * Unique ID of the visit. Often useful to backtrack the visit on 
-   an external database.
-      * @return True if the 'visitId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'visitId' field has been set */
     public boolean hasVisitId() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'visitId' field.
-      * Unique ID of the visit. Often useful to backtrack the visit on 
-   an external database.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'visitId' field */
     public org.bdgenomics.formats.avro.Visit.Builder clearVisitId() {
       visitId = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'visitDateEpoch' field.
-      * Date of the visit.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return The value.
-      */
+    /** Gets the value of the 'visitDateEpoch' field */
     public java.lang.Long getVisitDateEpoch() {
       return visitDateEpoch;
     }
-
-    /**
-      * Sets the value of the 'visitDateEpoch' field.
-      * Date of the visit.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @param value The value of 'visitDateEpoch'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'visitDateEpoch' field */
     public org.bdgenomics.formats.avro.Visit.Builder setVisitDateEpoch(java.lang.Long value) {
       validate(fields()[1], value);
       this.visitDateEpoch = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'visitDateEpoch' field has been set.
-      * Date of the visit.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return True if the 'visitDateEpoch' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'visitDateEpoch' field has been set */
     public boolean hasVisitDateEpoch() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'visitDateEpoch' field.
-      * Date of the visit.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'visitDateEpoch' field */
     public org.bdgenomics.formats.avro.Visit.Builder clearVisitDateEpoch() {
       visitDateEpoch = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'studyId' field.
-      * ID of the consent form that the user signed at the visit.
-      * @return The value.
-      */
+    /** Gets the value of the 'studyId' field */
     public java.lang.CharSequence getStudyId() {
       return studyId;
     }
-
-    /**
-      * Sets the value of the 'studyId' field.
-      * ID of the consent form that the user signed at the visit.
-      * @param value The value of 'studyId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'studyId' field */
     public org.bdgenomics.formats.avro.Visit.Builder setStudyId(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.studyId = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'studyId' field has been set.
-      * ID of the consent form that the user signed at the visit.
-      * @return True if the 'studyId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'studyId' field has been set */
     public boolean hasStudyId() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'studyId' field.
-      * ID of the consent form that the user signed at the visit.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'studyId' field */
     public org.bdgenomics.formats.avro.Visit.Builder clearStudyId() {
       studyId = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'isFasting' field.
-      * Indicates if the patient was fasting or not during the visit
-   (null if unknown).
-      * @return The value.
-      */
+    /** Gets the value of the 'isFasting' field */
     public java.lang.Boolean getIsFasting() {
       return isFasting;
     }
-
-    /**
-      * Sets the value of the 'isFasting' field.
-      * Indicates if the patient was fasting or not during the visit
-   (null if unknown).
-      * @param value The value of 'isFasting'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'isFasting' field */
     public org.bdgenomics.formats.avro.Visit.Builder setIsFasting(java.lang.Boolean value) {
       validate(fields()[3], value);
       this.isFasting = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'isFasting' field has been set.
-      * Indicates if the patient was fasting or not during the visit
-   (null if unknown).
-      * @return True if the 'isFasting' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'isFasting' field has been set */
     public boolean hasIsFasting() {
       return fieldSetFlags()[3];
     }
-
-
-    /**
-      * Clears the value of the 'isFasting' field.
-      * Indicates if the patient was fasting or not during the visit
-   (null if unknown).
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'isFasting' field */
     public org.bdgenomics.formats.avro.Visit.Builder clearIsFasting() {
       isFasting = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'description' field.
-      * Description of the visit.
-      * @return The value.
-      */
+    /** Gets the value of the 'description' field */
     public java.lang.CharSequence getDescription() {
       return description;
     }
-
-    /**
-      * Sets the value of the 'description' field.
-      * Description of the visit.
-      * @param value The value of 'description'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'description' field */
     public org.bdgenomics.formats.avro.Visit.Builder setDescription(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.description = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'description' field has been set.
-      * Description of the visit.
-      * @return True if the 'description' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'description' field has been set */
     public boolean hasDescription() {
       return fieldSetFlags()[4];
     }
-
-
-    /**
-      * Clears the value of the 'description' field.
-      * Description of the visit.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'description' field */
     public org.bdgenomics.formats.avro.Visit.Builder clearDescription() {
       description = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'phenotypes' field.
-      * An array containing all the phenotypes collected during the visit.
-      * @return The value.
-      */
+    /** Gets the value of the 'phenotypes' field */
     public java.util.List<org.bdgenomics.formats.avro.Phenotype> getPhenotypes() {
       return phenotypes;
     }
-
-    /**
-      * Sets the value of the 'phenotypes' field.
-      * An array containing all the phenotypes collected during the visit.
-      * @param value The value of 'phenotypes'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'phenotypes' field */
     public org.bdgenomics.formats.avro.Visit.Builder setPhenotypes(java.util.List<org.bdgenomics.formats.avro.Phenotype> value) {
       validate(fields()[5], value);
       this.phenotypes = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'phenotypes' field has been set.
-      * An array containing all the phenotypes collected during the visit.
-      * @return True if the 'phenotypes' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'phenotypes' field has been set */
     public boolean hasPhenotypes() {
       return fieldSetFlags()[5];
     }
-
-
-    /**
-      * Clears the value of the 'phenotypes' field.
-      * An array containing all the phenotypes collected during the visit.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'phenotypes' field */
     public org.bdgenomics.formats.avro.Visit.Builder clearPhenotypes() {
       phenotypes = null;
       fieldSetFlags()[5] = false;
@@ -610,21 +430,4 @@ public class Visit extends org.apache.avro.specific.SpecificRecordBase implement
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class VariantCallingAnnotations extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 7365413160829367109L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"VariantCallingAnnotations\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"variantIsPassing\",\"type\":[\"null\",\"boolean\"],\"default\":null},{\"name\":\"variantFilters\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[]},{\"name\":\"downsampled\",\"type\":[\"null\",\"boolean\"],\"doc\":\"True if the reads covering this site were randomly downsampled to reduce coverage.\",\"default\":null},{\"name\":\"baseQRankSum\",\"type\":[\"null\",\"float\"],\"doc\":\"The Wilcoxon rank-sum test statistic of the base quality scores. The base quality\\n   scores are separated by whether or not the base supports the reference or the\\n   alternate allele.\",\"default\":null},{\"name\":\"fisherStrandBiasPValue\",\"type\":[\"null\",\"float\"],\"doc\":\"The Fisher's exact test score for the strand bias of the reference and alternate\\n   alleles. Stored as a phred scaled probability. Thus, if:\\n\\n   * a = The number of positive strand reads covering the reference allele\\n   * b = The number of positive strand reads covering the alternate allele\\n   * c = The number of negative strand reads covering the reference allele\\n   * d = The number of negative strand reads covering the alternate allele\\n\\n   This value takes the score:\\n   \\n   -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)\\n\\n   Where n = a + b + c + d.\",\"default\":null},{\"name\":\"rmsMapQ\",\"type\":[\"null\",\"float\"],\"doc\":\"The root mean square of the mapping qualities of reads covering this site.\",\"default\":null},{\"name\":\"mapq0Reads\",\"type\":[\"null\",\"int\"],\"doc\":\"The number of reads at this site with mapping quality equal to 0.\",\"default\":null},{\"name\":\"mqRankSum\",\"type\":[\"null\",\"float\"],\"doc\":\"The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping\\n   quality scores are separated by whether or not the read supported the reference or the\\n   alternate allele.\",\"default\":null},{\"name\":\"readPositionRankSum\",\"type\":[\"null\",\"float\"],\"doc\":\"The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.\\n   The positions are separated by whether or not the base supports the reference or the\\n   alternate allele.\",\"default\":null},{\"name\":\"genotypePriors\",\"type\":{\"type\":\"array\",\"items\":\"float\"},\"doc\":\"The log scale prior probabilities of the various genotype states at this site.\\n   The number of elements in this array should be equal to the ploidy at this\\n   site, plus 1.\",\"default\":[]},{\"name\":\"genotypePosteriors\",\"type\":{\"type\":\"array\",\"items\":\"float\"},\"doc\":\"The log scaled posterior probabilities of the various genotype states at this site,\\n   in this sample. The number of elements in this array should be equal to the ploidy at\\n   this site, plus 1.\",\"default\":[]},{\"name\":\"vqslod\",\"type\":[\"null\",\"float\"],\"doc\":\"The log-odds ratio of being a true vs. false variant under a trained statistical model.\\n    This model can be a multivariate Gaussian mixture, support vector machine, etc.\",\"default\":null},{\"name\":\"culprit\",\"type\":[\"null\",\"string\"],\"doc\":\"If known, the feature that contributed the most to this variant being classified as\\n   a false variant.\",\"default\":null},{\"name\":\"attributes\",\"type\":{\"type\":\"map\",\"values\":\"string\"},\"doc\":\"Additional feature info that doesn't fit into the standard fields above.\\n\\n   They are all encoded as (string, string) key-value pairs.\",\"default\":{}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   @Deprecated public java.lang.Boolean variantIsPassing;
@@ -72,44 +71,6 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * All-args constructor.
-   * @param downsampled True if the reads covering this site were randomly downsampled to reduce coverage.
-   * @param baseQRankSum The Wilcoxon rank-sum test statistic of the base quality scores. The base quality
-   scores are separated by whether or not the base supports the reference or the
-   alternate allele.
-   * @param fisherStrandBiasPValue The Fisher's exact test score for the strand bias of the reference and alternate
-   alleles. Stored as a phred scaled probability. Thus, if:
-
-   * a = The number of positive strand reads covering the reference allele
-   * b = The number of positive strand reads covering the alternate allele
-   * c = The number of negative strand reads covering the reference allele
-   * d = The number of negative strand reads covering the alternate allele
-
-   This value takes the score:
-   
-   -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)
-
-   Where n = a + b + c + d.
-   * @param rmsMapQ The root mean square of the mapping qualities of reads covering this site.
-   * @param mapq0Reads The number of reads at this site with mapping quality equal to 0.
-   * @param mqRankSum The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping
-   quality scores are separated by whether or not the read supported the reference or the
-   alternate allele.
-   * @param readPositionRankSum The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.
-   The positions are separated by whether or not the base supports the reference or the
-   alternate allele.
-   * @param genotypePriors The log scale prior probabilities of the various genotype states at this site.
-   The number of elements in this array should be equal to the ploidy at this
-   site, plus 1.
-   * @param genotypePosteriors The log scaled posterior probabilities of the various genotype states at this site,
-   in this sample. The number of elements in this array should be equal to the ploidy at
-   this site, plus 1.
-   * @param vqslod The log-odds ratio of being a true vs. false variant under a trained statistical model.
-    This model can be a multivariate Gaussian mixture, support vector machine, etc.
-   * @param culprit If known, the feature that contributed the most to this variant being classified as
-   a false variant.
-   * @param attributes Additional feature info that doesn't fit into the standard fields above.
-
-   They are all encoded as (string, string) key-value pairs.
    */
   public VariantCallingAnnotations(java.lang.Boolean variantIsPassing, java.util.List<java.lang.CharSequence> variantFilters, java.lang.Boolean downsampled, java.lang.Float baseQRankSum, java.lang.Float fisherStrandBiasPValue, java.lang.Float rmsMapQ, java.lang.Integer mapq0Reads, java.lang.Float mqRankSum, java.lang.Float readPositionRankSum, java.util.List<java.lang.Float> genotypePriors, java.util.List<java.lang.Float> genotypePosteriors, java.lang.Float vqslod, java.lang.CharSequence culprit, java.util.Map<java.lang.CharSequence,java.lang.CharSequence> attributes) {
     this.variantIsPassing = variantIsPassing;
@@ -203,16 +164,14 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'downsampled' field.
-   * @return True if the reads covering this site were randomly downsampled to reduce coverage.
-   */
+   * True if the reads covering this site were randomly downsampled to reduce coverage.   */
   public java.lang.Boolean getDownsampled() {
     return downsampled;
   }
 
   /**
    * Sets the value of the 'downsampled' field.
-   * True if the reads covering this site were randomly downsampled to reduce coverage.
-   * @param value the value to set.
+   * True if the reads covering this site were randomly downsampled to reduce coverage.   * @param value the value to set.
    */
   public void setDownsampled(java.lang.Boolean value) {
     this.downsampled = value;
@@ -220,10 +179,9 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'baseQRankSum' field.
-   * @return The Wilcoxon rank-sum test statistic of the base quality scores. The base quality
+   * The Wilcoxon rank-sum test statistic of the base quality scores. The base quality
    scores are separated by whether or not the base supports the reference or the
-   alternate allele.
-   */
+   alternate allele.   */
   public java.lang.Float getBaseQRankSum() {
     return baseQRankSum;
   }
@@ -232,8 +190,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
    * Sets the value of the 'baseQRankSum' field.
    * The Wilcoxon rank-sum test statistic of the base quality scores. The base quality
    scores are separated by whether or not the base supports the reference or the
-   alternate allele.
-   * @param value the value to set.
+   alternate allele.   * @param value the value to set.
    */
   public void setBaseQRankSum(java.lang.Float value) {
     this.baseQRankSum = value;
@@ -241,7 +198,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'fisherStrandBiasPValue' field.
-   * @return The Fisher's exact test score for the strand bias of the reference and alternate
+   * The Fisher's exact test score for the strand bias of the reference and alternate
    alleles. Stored as a phred scaled probability. Thus, if:
 
    * a = The number of positive strand reads covering the reference allele
@@ -253,8 +210,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
    
    -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)
 
-   Where n = a + b + c + d.
-   */
+   Where n = a + b + c + d.   */
   public java.lang.Float getFisherStrandBiasPValue() {
     return fisherStrandBiasPValue;
   }
@@ -273,8 +229,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
    
    -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)
 
-   Where n = a + b + c + d.
-   * @param value the value to set.
+   Where n = a + b + c + d.   * @param value the value to set.
    */
   public void setFisherStrandBiasPValue(java.lang.Float value) {
     this.fisherStrandBiasPValue = value;
@@ -282,16 +237,14 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'rmsMapQ' field.
-   * @return The root mean square of the mapping qualities of reads covering this site.
-   */
+   * The root mean square of the mapping qualities of reads covering this site.   */
   public java.lang.Float getRmsMapQ() {
     return rmsMapQ;
   }
 
   /**
    * Sets the value of the 'rmsMapQ' field.
-   * The root mean square of the mapping qualities of reads covering this site.
-   * @param value the value to set.
+   * The root mean square of the mapping qualities of reads covering this site.   * @param value the value to set.
    */
   public void setRmsMapQ(java.lang.Float value) {
     this.rmsMapQ = value;
@@ -299,16 +252,14 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'mapq0Reads' field.
-   * @return The number of reads at this site with mapping quality equal to 0.
-   */
+   * The number of reads at this site with mapping quality equal to 0.   */
   public java.lang.Integer getMapq0Reads() {
     return mapq0Reads;
   }
 
   /**
    * Sets the value of the 'mapq0Reads' field.
-   * The number of reads at this site with mapping quality equal to 0.
-   * @param value the value to set.
+   * The number of reads at this site with mapping quality equal to 0.   * @param value the value to set.
    */
   public void setMapq0Reads(java.lang.Integer value) {
     this.mapq0Reads = value;
@@ -316,10 +267,9 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'mqRankSum' field.
-   * @return The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping
+   * The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping
    quality scores are separated by whether or not the read supported the reference or the
-   alternate allele.
-   */
+   alternate allele.   */
   public java.lang.Float getMqRankSum() {
     return mqRankSum;
   }
@@ -328,8 +278,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
    * Sets the value of the 'mqRankSum' field.
    * The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping
    quality scores are separated by whether or not the read supported the reference or the
-   alternate allele.
-   * @param value the value to set.
+   alternate allele.   * @param value the value to set.
    */
   public void setMqRankSum(java.lang.Float value) {
     this.mqRankSum = value;
@@ -337,10 +286,9 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'readPositionRankSum' field.
-   * @return The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.
+   * The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.
    The positions are separated by whether or not the base supports the reference or the
-   alternate allele.
-   */
+   alternate allele.   */
   public java.lang.Float getReadPositionRankSum() {
     return readPositionRankSum;
   }
@@ -349,8 +297,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
    * Sets the value of the 'readPositionRankSum' field.
    * The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.
    The positions are separated by whether or not the base supports the reference or the
-   alternate allele.
-   * @param value the value to set.
+   alternate allele.   * @param value the value to set.
    */
   public void setReadPositionRankSum(java.lang.Float value) {
     this.readPositionRankSum = value;
@@ -358,10 +305,9 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'genotypePriors' field.
-   * @return The log scale prior probabilities of the various genotype states at this site.
+   * The log scale prior probabilities of the various genotype states at this site.
    The number of elements in this array should be equal to the ploidy at this
-   site, plus 1.
-   */
+   site, plus 1.   */
   public java.util.List<java.lang.Float> getGenotypePriors() {
     return genotypePriors;
   }
@@ -370,8 +316,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
    * Sets the value of the 'genotypePriors' field.
    * The log scale prior probabilities of the various genotype states at this site.
    The number of elements in this array should be equal to the ploidy at this
-   site, plus 1.
-   * @param value the value to set.
+   site, plus 1.   * @param value the value to set.
    */
   public void setGenotypePriors(java.util.List<java.lang.Float> value) {
     this.genotypePriors = value;
@@ -379,10 +324,9 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'genotypePosteriors' field.
-   * @return The log scaled posterior probabilities of the various genotype states at this site,
+   * The log scaled posterior probabilities of the various genotype states at this site,
    in this sample. The number of elements in this array should be equal to the ploidy at
-   this site, plus 1.
-   */
+   this site, plus 1.   */
   public java.util.List<java.lang.Float> getGenotypePosteriors() {
     return genotypePosteriors;
   }
@@ -391,8 +335,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
    * Sets the value of the 'genotypePosteriors' field.
    * The log scaled posterior probabilities of the various genotype states at this site,
    in this sample. The number of elements in this array should be equal to the ploidy at
-   this site, plus 1.
-   * @param value the value to set.
+   this site, plus 1.   * @param value the value to set.
    */
   public void setGenotypePosteriors(java.util.List<java.lang.Float> value) {
     this.genotypePosteriors = value;
@@ -400,9 +343,8 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'vqslod' field.
-   * @return The log-odds ratio of being a true vs. false variant under a trained statistical model.
-    This model can be a multivariate Gaussian mixture, support vector machine, etc.
-   */
+   * The log-odds ratio of being a true vs. false variant under a trained statistical model.
+    This model can be a multivariate Gaussian mixture, support vector machine, etc.   */
   public java.lang.Float getVqslod() {
     return vqslod;
   }
@@ -410,8 +352,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
   /**
    * Sets the value of the 'vqslod' field.
    * The log-odds ratio of being a true vs. false variant under a trained statistical model.
-    This model can be a multivariate Gaussian mixture, support vector machine, etc.
-   * @param value the value to set.
+    This model can be a multivariate Gaussian mixture, support vector machine, etc.   * @param value the value to set.
    */
   public void setVqslod(java.lang.Float value) {
     this.vqslod = value;
@@ -419,9 +360,8 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'culprit' field.
-   * @return If known, the feature that contributed the most to this variant being classified as
-   a false variant.
-   */
+   * If known, the feature that contributed the most to this variant being classified as
+   a false variant.   */
   public java.lang.CharSequence getCulprit() {
     return culprit;
   }
@@ -429,8 +369,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
   /**
    * Sets the value of the 'culprit' field.
    * If known, the feature that contributed the most to this variant being classified as
-   a false variant.
-   * @param value the value to set.
+   a false variant.   * @param value the value to set.
    */
   public void setCulprit(java.lang.CharSequence value) {
     this.culprit = value;
@@ -438,10 +377,9 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
   /**
    * Gets the value of the 'attributes' field.
-   * @return Additional feature info that doesn't fit into the standard fields above.
+   * Additional feature info that doesn't fit into the standard fields above.
 
-   They are all encoded as (string, string) key-value pairs.
-   */
+   They are all encoded as (string, string) key-value pairs.   */
   public java.util.Map<java.lang.CharSequence,java.lang.CharSequence> getAttributes() {
     return attributes;
   }
@@ -450,35 +388,23 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
    * Sets the value of the 'attributes' field.
    * Additional feature info that doesn't fit into the standard fields above.
 
-   They are all encoded as (string, string) key-value pairs.
-   * @param value the value to set.
+   They are all encoded as (string, string) key-value pairs.   * @param value the value to set.
    */
   public void setAttributes(java.util.Map<java.lang.CharSequence,java.lang.CharSequence> value) {
     this.attributes = value;
   }
 
-  /**
-   * Creates a new VariantCallingAnnotations RecordBuilder.
-   * @return A new VariantCallingAnnotations RecordBuilder
-   */
+  /** Creates a new VariantCallingAnnotations RecordBuilder */
   public static org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder();
   }
   
-  /**
-   * Creates a new VariantCallingAnnotations RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new VariantCallingAnnotations RecordBuilder
-   */
+  /** Creates a new VariantCallingAnnotations RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder newBuilder(org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder other) {
     return new org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder(other);
   }
   
-  /**
-   * Creates a new VariantCallingAnnotations RecordBuilder by copying an existing VariantCallingAnnotations instance.
-   * @param other The existing instance to copy.
-   * @return A new VariantCallingAnnotations RecordBuilder
-   */
+  /** Creates a new VariantCallingAnnotations RecordBuilder by copying an existing VariantCallingAnnotations instance */
   public static org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder newBuilder(org.bdgenomics.formats.avro.VariantCallingAnnotations other) {
     return new org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder(other);
   }
@@ -491,55 +417,17 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
 
     private java.lang.Boolean variantIsPassing;
     private java.util.List<java.lang.CharSequence> variantFilters;
-    /** True if the reads covering this site were randomly downsampled to reduce coverage. */
     private java.lang.Boolean downsampled;
-    /** The Wilcoxon rank-sum test statistic of the base quality scores. The base quality
-   scores are separated by whether or not the base supports the reference or the
-   alternate allele. */
     private java.lang.Float baseQRankSum;
-    /** The Fisher's exact test score for the strand bias of the reference and alternate
-   alleles. Stored as a phred scaled probability. Thus, if:
-
-   * a = The number of positive strand reads covering the reference allele
-   * b = The number of positive strand reads covering the alternate allele
-   * c = The number of negative strand reads covering the reference allele
-   * d = The number of negative strand reads covering the alternate allele
-
-   This value takes the score:
-   
-   -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)
-
-   Where n = a + b + c + d. */
     private java.lang.Float fisherStrandBiasPValue;
-    /** The root mean square of the mapping qualities of reads covering this site. */
     private java.lang.Float rmsMapQ;
-    /** The number of reads at this site with mapping quality equal to 0. */
     private java.lang.Integer mapq0Reads;
-    /** The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping
-   quality scores are separated by whether or not the read supported the reference or the
-   alternate allele. */
     private java.lang.Float mqRankSum;
-    /** The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.
-   The positions are separated by whether or not the base supports the reference or the
-   alternate allele. */
     private java.lang.Float readPositionRankSum;
-    /** The log scale prior probabilities of the various genotype states at this site.
-   The number of elements in this array should be equal to the ploidy at this
-   site, plus 1. */
     private java.util.List<java.lang.Float> genotypePriors;
-    /** The log scaled posterior probabilities of the various genotype states at this site,
-   in this sample. The number of elements in this array should be equal to the ploidy at
-   this site, plus 1. */
     private java.util.List<java.lang.Float> genotypePosteriors;
-    /** The log-odds ratio of being a true vs. false variant under a trained statistical model.
-    This model can be a multivariate Gaussian mixture, support vector machine, etc. */
     private java.lang.Float vqslod;
-    /** If known, the feature that contributed the most to this variant being classified as
-   a false variant. */
     private java.lang.CharSequence culprit;
-    /** Additional feature info that doesn't fit into the standard fields above.
-
-   They are all encoded as (string, string) key-value pairs. */
     private java.util.Map<java.lang.CharSequence,java.lang.CharSequence> attributes;
 
     /** Creates a new Builder */
@@ -547,10 +435,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
       super(org.bdgenomics.formats.avro.VariantCallingAnnotations.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.variantIsPassing)) {
@@ -611,10 +496,7 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing VariantCallingAnnotations instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing VariantCallingAnnotations instance */
     private Builder(org.bdgenomics.formats.avro.VariantCallingAnnotations other) {
             super(org.bdgenomics.formats.avro.VariantCallingAnnotations.SCHEMA$);
       if (isValidValue(fields()[0], other.variantIsPassing)) {
@@ -675,698 +557,350 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
       }
     }
 
-    /**
-      * Gets the value of the 'variantIsPassing' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'variantIsPassing' field */
     public java.lang.Boolean getVariantIsPassing() {
       return variantIsPassing;
     }
-
-    /**
-      * Sets the value of the 'variantIsPassing' field.
-      * @param value The value of 'variantIsPassing'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'variantIsPassing' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setVariantIsPassing(java.lang.Boolean value) {
       validate(fields()[0], value);
       this.variantIsPassing = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'variantIsPassing' field has been set.
-      * @return True if the 'variantIsPassing' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'variantIsPassing' field has been set */
     public boolean hasVariantIsPassing() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'variantIsPassing' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'variantIsPassing' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearVariantIsPassing() {
       variantIsPassing = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'variantFilters' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'variantFilters' field */
     public java.util.List<java.lang.CharSequence> getVariantFilters() {
       return variantFilters;
     }
-
-    /**
-      * Sets the value of the 'variantFilters' field.
-      * @param value The value of 'variantFilters'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'variantFilters' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setVariantFilters(java.util.List<java.lang.CharSequence> value) {
       validate(fields()[1], value);
       this.variantFilters = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'variantFilters' field has been set.
-      * @return True if the 'variantFilters' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'variantFilters' field has been set */
     public boolean hasVariantFilters() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'variantFilters' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'variantFilters' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearVariantFilters() {
       variantFilters = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'downsampled' field.
-      * True if the reads covering this site were randomly downsampled to reduce coverage.
-      * @return The value.
-      */
+    /** Gets the value of the 'downsampled' field */
     public java.lang.Boolean getDownsampled() {
       return downsampled;
     }
-
-    /**
-      * Sets the value of the 'downsampled' field.
-      * True if the reads covering this site were randomly downsampled to reduce coverage.
-      * @param value The value of 'downsampled'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'downsampled' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setDownsampled(java.lang.Boolean value) {
       validate(fields()[2], value);
       this.downsampled = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'downsampled' field has been set.
-      * True if the reads covering this site were randomly downsampled to reduce coverage.
-      * @return True if the 'downsampled' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'downsampled' field has been set */
     public boolean hasDownsampled() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'downsampled' field.
-      * True if the reads covering this site were randomly downsampled to reduce coverage.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'downsampled' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearDownsampled() {
       downsampled = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'baseQRankSum' field.
-      * The Wilcoxon rank-sum test statistic of the base quality scores. The base quality
-   scores are separated by whether or not the base supports the reference or the
-   alternate allele.
-      * @return The value.
-      */
+    /** Gets the value of the 'baseQRankSum' field */
     public java.lang.Float getBaseQRankSum() {
       return baseQRankSum;
     }
-
-    /**
-      * Sets the value of the 'baseQRankSum' field.
-      * The Wilcoxon rank-sum test statistic of the base quality scores. The base quality
-   scores are separated by whether or not the base supports the reference or the
-   alternate allele.
-      * @param value The value of 'baseQRankSum'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'baseQRankSum' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setBaseQRankSum(java.lang.Float value) {
       validate(fields()[3], value);
       this.baseQRankSum = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'baseQRankSum' field has been set.
-      * The Wilcoxon rank-sum test statistic of the base quality scores. The base quality
-   scores are separated by whether or not the base supports the reference or the
-   alternate allele.
-      * @return True if the 'baseQRankSum' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'baseQRankSum' field has been set */
     public boolean hasBaseQRankSum() {
       return fieldSetFlags()[3];
     }
-
-
-    /**
-      * Clears the value of the 'baseQRankSum' field.
-      * The Wilcoxon rank-sum test statistic of the base quality scores. The base quality
-   scores are separated by whether or not the base supports the reference or the
-   alternate allele.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'baseQRankSum' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearBaseQRankSum() {
       baseQRankSum = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'fisherStrandBiasPValue' field.
-      * The Fisher's exact test score for the strand bias of the reference and alternate
-   alleles. Stored as a phred scaled probability. Thus, if:
-
-   * a = The number of positive strand reads covering the reference allele
-   * b = The number of positive strand reads covering the alternate allele
-   * c = The number of negative strand reads covering the reference allele
-   * d = The number of negative strand reads covering the alternate allele
-
-   This value takes the score:
-   
-   -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)
-
-   Where n = a + b + c + d.
-      * @return The value.
-      */
+    /** Gets the value of the 'fisherStrandBiasPValue' field */
     public java.lang.Float getFisherStrandBiasPValue() {
       return fisherStrandBiasPValue;
     }
-
-    /**
-      * Sets the value of the 'fisherStrandBiasPValue' field.
-      * The Fisher's exact test score for the strand bias of the reference and alternate
-   alleles. Stored as a phred scaled probability. Thus, if:
-
-   * a = The number of positive strand reads covering the reference allele
-   * b = The number of positive strand reads covering the alternate allele
-   * c = The number of negative strand reads covering the reference allele
-   * d = The number of negative strand reads covering the alternate allele
-
-   This value takes the score:
-   
-   -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)
-
-   Where n = a + b + c + d.
-      * @param value The value of 'fisherStrandBiasPValue'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'fisherStrandBiasPValue' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setFisherStrandBiasPValue(java.lang.Float value) {
       validate(fields()[4], value);
       this.fisherStrandBiasPValue = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'fisherStrandBiasPValue' field has been set.
-      * The Fisher's exact test score for the strand bias of the reference and alternate
-   alleles. Stored as a phred scaled probability. Thus, if:
-
-   * a = The number of positive strand reads covering the reference allele
-   * b = The number of positive strand reads covering the alternate allele
-   * c = The number of negative strand reads covering the reference allele
-   * d = The number of negative strand reads covering the alternate allele
-
-   This value takes the score:
-   
-   -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)
-
-   Where n = a + b + c + d.
-      * @return True if the 'fisherStrandBiasPValue' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'fisherStrandBiasPValue' field has been set */
     public boolean hasFisherStrandBiasPValue() {
       return fieldSetFlags()[4];
     }
-
-
-    /**
-      * Clears the value of the 'fisherStrandBiasPValue' field.
-      * The Fisher's exact test score for the strand bias of the reference and alternate
-   alleles. Stored as a phred scaled probability. Thus, if:
-
-   * a = The number of positive strand reads covering the reference allele
-   * b = The number of positive strand reads covering the alternate allele
-   * c = The number of negative strand reads covering the reference allele
-   * d = The number of negative strand reads covering the alternate allele
-
-   This value takes the score:
-   
-   -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)
-
-   Where n = a + b + c + d.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'fisherStrandBiasPValue' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearFisherStrandBiasPValue() {
       fisherStrandBiasPValue = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'rmsMapQ' field.
-      * The root mean square of the mapping qualities of reads covering this site.
-      * @return The value.
-      */
+    /** Gets the value of the 'rmsMapQ' field */
     public java.lang.Float getRmsMapQ() {
       return rmsMapQ;
     }
-
-    /**
-      * Sets the value of the 'rmsMapQ' field.
-      * The root mean square of the mapping qualities of reads covering this site.
-      * @param value The value of 'rmsMapQ'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'rmsMapQ' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setRmsMapQ(java.lang.Float value) {
       validate(fields()[5], value);
       this.rmsMapQ = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'rmsMapQ' field has been set.
-      * The root mean square of the mapping qualities of reads covering this site.
-      * @return True if the 'rmsMapQ' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'rmsMapQ' field has been set */
     public boolean hasRmsMapQ() {
       return fieldSetFlags()[5];
     }
-
-
-    /**
-      * Clears the value of the 'rmsMapQ' field.
-      * The root mean square of the mapping qualities of reads covering this site.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'rmsMapQ' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearRmsMapQ() {
       rmsMapQ = null;
       fieldSetFlags()[5] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mapq0Reads' field.
-      * The number of reads at this site with mapping quality equal to 0.
-      * @return The value.
-      */
+    /** Gets the value of the 'mapq0Reads' field */
     public java.lang.Integer getMapq0Reads() {
       return mapq0Reads;
     }
-
-    /**
-      * Sets the value of the 'mapq0Reads' field.
-      * The number of reads at this site with mapping quality equal to 0.
-      * @param value The value of 'mapq0Reads'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mapq0Reads' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setMapq0Reads(java.lang.Integer value) {
       validate(fields()[6], value);
       this.mapq0Reads = value;
       fieldSetFlags()[6] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mapq0Reads' field has been set.
-      * The number of reads at this site with mapping quality equal to 0.
-      * @return True if the 'mapq0Reads' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mapq0Reads' field has been set */
     public boolean hasMapq0Reads() {
       return fieldSetFlags()[6];
     }
-
-
-    /**
-      * Clears the value of the 'mapq0Reads' field.
-      * The number of reads at this site with mapping quality equal to 0.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mapq0Reads' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearMapq0Reads() {
       mapq0Reads = null;
       fieldSetFlags()[6] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'mqRankSum' field.
-      * The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping
-   quality scores are separated by whether or not the read supported the reference or the
-   alternate allele.
-      * @return The value.
-      */
+    /** Gets the value of the 'mqRankSum' field */
     public java.lang.Float getMqRankSum() {
       return mqRankSum;
     }
-
-    /**
-      * Sets the value of the 'mqRankSum' field.
-      * The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping
-   quality scores are separated by whether or not the read supported the reference or the
-   alternate allele.
-      * @param value The value of 'mqRankSum'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'mqRankSum' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setMqRankSum(java.lang.Float value) {
       validate(fields()[7], value);
       this.mqRankSum = value;
       fieldSetFlags()[7] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'mqRankSum' field has been set.
-      * The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping
-   quality scores are separated by whether or not the read supported the reference or the
-   alternate allele.
-      * @return True if the 'mqRankSum' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'mqRankSum' field has been set */
     public boolean hasMqRankSum() {
       return fieldSetFlags()[7];
     }
-
-
-    /**
-      * Clears the value of the 'mqRankSum' field.
-      * The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping
-   quality scores are separated by whether or not the read supported the reference or the
-   alternate allele.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'mqRankSum' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearMqRankSum() {
       mqRankSum = null;
       fieldSetFlags()[7] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'readPositionRankSum' field.
-      * The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.
-   The positions are separated by whether or not the base supports the reference or the
-   alternate allele.
-      * @return The value.
-      */
+    /** Gets the value of the 'readPositionRankSum' field */
     public java.lang.Float getReadPositionRankSum() {
       return readPositionRankSum;
     }
-
-    /**
-      * Sets the value of the 'readPositionRankSum' field.
-      * The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.
-   The positions are separated by whether or not the base supports the reference or the
-   alternate allele.
-      * @param value The value of 'readPositionRankSum'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'readPositionRankSum' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setReadPositionRankSum(java.lang.Float value) {
       validate(fields()[8], value);
       this.readPositionRankSum = value;
       fieldSetFlags()[8] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'readPositionRankSum' field has been set.
-      * The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.
-   The positions are separated by whether or not the base supports the reference or the
-   alternate allele.
-      * @return True if the 'readPositionRankSum' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'readPositionRankSum' field has been set */
     public boolean hasReadPositionRankSum() {
       return fieldSetFlags()[8];
     }
-
-
-    /**
-      * Clears the value of the 'readPositionRankSum' field.
-      * The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.
-   The positions are separated by whether or not the base supports the reference or the
-   alternate allele.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'readPositionRankSum' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearReadPositionRankSum() {
       readPositionRankSum = null;
       fieldSetFlags()[8] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'genotypePriors' field.
-      * The log scale prior probabilities of the various genotype states at this site.
-   The number of elements in this array should be equal to the ploidy at this
-   site, plus 1.
-      * @return The value.
-      */
+    /** Gets the value of the 'genotypePriors' field */
     public java.util.List<java.lang.Float> getGenotypePriors() {
       return genotypePriors;
     }
-
-    /**
-      * Sets the value of the 'genotypePriors' field.
-      * The log scale prior probabilities of the various genotype states at this site.
-   The number of elements in this array should be equal to the ploidy at this
-   site, plus 1.
-      * @param value The value of 'genotypePriors'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'genotypePriors' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setGenotypePriors(java.util.List<java.lang.Float> value) {
       validate(fields()[9], value);
       this.genotypePriors = value;
       fieldSetFlags()[9] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'genotypePriors' field has been set.
-      * The log scale prior probabilities of the various genotype states at this site.
-   The number of elements in this array should be equal to the ploidy at this
-   site, plus 1.
-      * @return True if the 'genotypePriors' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'genotypePriors' field has been set */
     public boolean hasGenotypePriors() {
       return fieldSetFlags()[9];
     }
-
-
-    /**
-      * Clears the value of the 'genotypePriors' field.
-      * The log scale prior probabilities of the various genotype states at this site.
-   The number of elements in this array should be equal to the ploidy at this
-   site, plus 1.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'genotypePriors' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearGenotypePriors() {
       genotypePriors = null;
       fieldSetFlags()[9] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'genotypePosteriors' field.
-      * The log scaled posterior probabilities of the various genotype states at this site,
-   in this sample. The number of elements in this array should be equal to the ploidy at
-   this site, plus 1.
-      * @return The value.
-      */
+    /** Gets the value of the 'genotypePosteriors' field */
     public java.util.List<java.lang.Float> getGenotypePosteriors() {
       return genotypePosteriors;
     }
-
-    /**
-      * Sets the value of the 'genotypePosteriors' field.
-      * The log scaled posterior probabilities of the various genotype states at this site,
-   in this sample. The number of elements in this array should be equal to the ploidy at
-   this site, plus 1.
-      * @param value The value of 'genotypePosteriors'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'genotypePosteriors' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setGenotypePosteriors(java.util.List<java.lang.Float> value) {
       validate(fields()[10], value);
       this.genotypePosteriors = value;
       fieldSetFlags()[10] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'genotypePosteriors' field has been set.
-      * The log scaled posterior probabilities of the various genotype states at this site,
-   in this sample. The number of elements in this array should be equal to the ploidy at
-   this site, plus 1.
-      * @return True if the 'genotypePosteriors' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'genotypePosteriors' field has been set */
     public boolean hasGenotypePosteriors() {
       return fieldSetFlags()[10];
     }
-
-
-    /**
-      * Clears the value of the 'genotypePosteriors' field.
-      * The log scaled posterior probabilities of the various genotype states at this site,
-   in this sample. The number of elements in this array should be equal to the ploidy at
-   this site, plus 1.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'genotypePosteriors' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearGenotypePosteriors() {
       genotypePosteriors = null;
       fieldSetFlags()[10] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'vqslod' field.
-      * The log-odds ratio of being a true vs. false variant under a trained statistical model.
-    This model can be a multivariate Gaussian mixture, support vector machine, etc.
-      * @return The value.
-      */
+    /** Gets the value of the 'vqslod' field */
     public java.lang.Float getVqslod() {
       return vqslod;
     }
-
-    /**
-      * Sets the value of the 'vqslod' field.
-      * The log-odds ratio of being a true vs. false variant under a trained statistical model.
-    This model can be a multivariate Gaussian mixture, support vector machine, etc.
-      * @param value The value of 'vqslod'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'vqslod' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setVqslod(java.lang.Float value) {
       validate(fields()[11], value);
       this.vqslod = value;
       fieldSetFlags()[11] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'vqslod' field has been set.
-      * The log-odds ratio of being a true vs. false variant under a trained statistical model.
-    This model can be a multivariate Gaussian mixture, support vector machine, etc.
-      * @return True if the 'vqslod' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'vqslod' field has been set */
     public boolean hasVqslod() {
       return fieldSetFlags()[11];
     }
-
-
-    /**
-      * Clears the value of the 'vqslod' field.
-      * The log-odds ratio of being a true vs. false variant under a trained statistical model.
-    This model can be a multivariate Gaussian mixture, support vector machine, etc.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'vqslod' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearVqslod() {
       vqslod = null;
       fieldSetFlags()[11] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'culprit' field.
-      * If known, the feature that contributed the most to this variant being classified as
-   a false variant.
-      * @return The value.
-      */
+    /** Gets the value of the 'culprit' field */
     public java.lang.CharSequence getCulprit() {
       return culprit;
     }
-
-    /**
-      * Sets the value of the 'culprit' field.
-      * If known, the feature that contributed the most to this variant being classified as
-   a false variant.
-      * @param value The value of 'culprit'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'culprit' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setCulprit(java.lang.CharSequence value) {
       validate(fields()[12], value);
       this.culprit = value;
       fieldSetFlags()[12] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'culprit' field has been set.
-      * If known, the feature that contributed the most to this variant being classified as
-   a false variant.
-      * @return True if the 'culprit' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'culprit' field has been set */
     public boolean hasCulprit() {
       return fieldSetFlags()[12];
     }
-
-
-    /**
-      * Clears the value of the 'culprit' field.
-      * If known, the feature that contributed the most to this variant being classified as
-   a false variant.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'culprit' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearCulprit() {
       culprit = null;
       fieldSetFlags()[12] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'attributes' field.
-      * Additional feature info that doesn't fit into the standard fields above.
-
-   They are all encoded as (string, string) key-value pairs.
-      * @return The value.
-      */
+    /** Gets the value of the 'attributes' field */
     public java.util.Map<java.lang.CharSequence,java.lang.CharSequence> getAttributes() {
       return attributes;
     }
-
-    /**
-      * Sets the value of the 'attributes' field.
-      * Additional feature info that doesn't fit into the standard fields above.
-
-   They are all encoded as (string, string) key-value pairs.
-      * @param value The value of 'attributes'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'attributes' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder setAttributes(java.util.Map<java.lang.CharSequence,java.lang.CharSequence> value) {
       validate(fields()[13], value);
       this.attributes = value;
       fieldSetFlags()[13] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'attributes' field has been set.
-      * Additional feature info that doesn't fit into the standard fields above.
-
-   They are all encoded as (string, string) key-value pairs.
-      * @return True if the 'attributes' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'attributes' field has been set */
     public boolean hasAttributes() {
       return fieldSetFlags()[13];
     }
-
-
-    /**
-      * Clears the value of the 'attributes' field.
-      * Additional feature info that doesn't fit into the standard fields above.
-
-   They are all encoded as (string, string) key-value pairs.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'attributes' field */
     public org.bdgenomics.formats.avro.VariantCallingAnnotations.Builder clearAttributes() {
       attributes = null;
       fieldSetFlags()[13] = false;
@@ -1397,21 +931,4 @@ public class VariantCallingAnnotations extends org.apache.avro.specific.Specific
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 7178513377494265376L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"StructuralVariant\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"type\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"StructuralVariantType\",\"doc\":\"Descriptors for the type of a structural variant. The most specific descriptor\\n should be used, if possible. E.g., duplication should be used instead of\\n insertion if the inserted sequence is not novel. Tandem duplication should\\n be used instead of duplication if the duplication is known to follow the\\n duplicated sequence.\",\"symbols\":[\"DELETION\",\"INSERTION\",\"INVERSION\",\"MOBILE_INSERTION\",\"MOBILE_DELETION\",\"DUPLICATION\",\"TANDEM_DUPLICATION\"]}],\"doc\":\"The type of this structural variant.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL of the FASTA/NucleotideContig assembly for this structural variant,\\n   if one is available.\",\"default\":null},{\"name\":\"precise\",\"type\":[\"boolean\",\"null\"],\"doc\":\"Whether this structural variant call has precise breakpoints or not. Default\\n   value is true. If the call is imprecise, confidence intervals should be provided.\",\"default\":true},{\"name\":\"startWindow\",\"type\":[\"null\",\"int\"],\"doc\":\"The size of the confidence window around the start of the structural variant.\",\"default\":null},{\"name\":\"endWindow\",\"type\":[\"null\",\"int\"],\"doc\":\"The size of the confidence window around the end of the structural variant.\",\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** The type of this structural variant. */
@@ -32,13 +31,6 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
 
   /**
    * All-args constructor.
-   * @param type The type of this structural variant.
-   * @param assembly The URL of the FASTA/NucleotideContig assembly for this structural variant,
-   if one is available.
-   * @param precise Whether this structural variant call has precise breakpoints or not. Default
-   value is true. If the call is imprecise, confidence intervals should be provided.
-   * @param startWindow The size of the confidence window around the start of the structural variant.
-   * @param endWindow The size of the confidence window around the end of the structural variant.
    */
   public StructuralVariant(org.bdgenomics.formats.avro.StructuralVariantType type, java.lang.CharSequence assembly, java.lang.Boolean precise, java.lang.Integer startWindow, java.lang.Integer endWindow) {
     this.type = type;
@@ -75,16 +67,14 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
 
   /**
    * Gets the value of the 'type' field.
-   * @return The type of this structural variant.
-   */
+   * The type of this structural variant.   */
   public org.bdgenomics.formats.avro.StructuralVariantType getType() {
     return type;
   }
 
   /**
    * Sets the value of the 'type' field.
-   * The type of this structural variant.
-   * @param value the value to set.
+   * The type of this structural variant.   * @param value the value to set.
    */
   public void setType(org.bdgenomics.formats.avro.StructuralVariantType value) {
     this.type = value;
@@ -92,9 +82,8 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
 
   /**
    * Gets the value of the 'assembly' field.
-   * @return The URL of the FASTA/NucleotideContig assembly for this structural variant,
-   if one is available.
-   */
+   * The URL of the FASTA/NucleotideContig assembly for this structural variant,
+   if one is available.   */
   public java.lang.CharSequence getAssembly() {
     return assembly;
   }
@@ -102,8 +91,7 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
   /**
    * Sets the value of the 'assembly' field.
    * The URL of the FASTA/NucleotideContig assembly for this structural variant,
-   if one is available.
-   * @param value the value to set.
+   if one is available.   * @param value the value to set.
    */
   public void setAssembly(java.lang.CharSequence value) {
     this.assembly = value;
@@ -111,9 +99,8 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
 
   /**
    * Gets the value of the 'precise' field.
-   * @return Whether this structural variant call has precise breakpoints or not. Default
-   value is true. If the call is imprecise, confidence intervals should be provided.
-   */
+   * Whether this structural variant call has precise breakpoints or not. Default
+   value is true. If the call is imprecise, confidence intervals should be provided.   */
   public java.lang.Boolean getPrecise() {
     return precise;
   }
@@ -121,8 +108,7 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
   /**
    * Sets the value of the 'precise' field.
    * Whether this structural variant call has precise breakpoints or not. Default
-   value is true. If the call is imprecise, confidence intervals should be provided.
-   * @param value the value to set.
+   value is true. If the call is imprecise, confidence intervals should be provided.   * @param value the value to set.
    */
   public void setPrecise(java.lang.Boolean value) {
     this.precise = value;
@@ -130,16 +116,14 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
 
   /**
    * Gets the value of the 'startWindow' field.
-   * @return The size of the confidence window around the start of the structural variant.
-   */
+   * The size of the confidence window around the start of the structural variant.   */
   public java.lang.Integer getStartWindow() {
     return startWindow;
   }
 
   /**
    * Sets the value of the 'startWindow' field.
-   * The size of the confidence window around the start of the structural variant.
-   * @param value the value to set.
+   * The size of the confidence window around the start of the structural variant.   * @param value the value to set.
    */
   public void setStartWindow(java.lang.Integer value) {
     this.startWindow = value;
@@ -147,43 +131,30 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
 
   /**
    * Gets the value of the 'endWindow' field.
-   * @return The size of the confidence window around the end of the structural variant.
-   */
+   * The size of the confidence window around the end of the structural variant.   */
   public java.lang.Integer getEndWindow() {
     return endWindow;
   }
 
   /**
    * Sets the value of the 'endWindow' field.
-   * The size of the confidence window around the end of the structural variant.
-   * @param value the value to set.
+   * The size of the confidence window around the end of the structural variant.   * @param value the value to set.
    */
   public void setEndWindow(java.lang.Integer value) {
     this.endWindow = value;
   }
 
-  /**
-   * Creates a new StructuralVariant RecordBuilder.
-   * @return A new StructuralVariant RecordBuilder
-   */
+  /** Creates a new StructuralVariant RecordBuilder */
   public static org.bdgenomics.formats.avro.StructuralVariant.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.StructuralVariant.Builder();
   }
   
-  /**
-   * Creates a new StructuralVariant RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new StructuralVariant RecordBuilder
-   */
+  /** Creates a new StructuralVariant RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.StructuralVariant.Builder newBuilder(org.bdgenomics.formats.avro.StructuralVariant.Builder other) {
     return new org.bdgenomics.formats.avro.StructuralVariant.Builder(other);
   }
   
-  /**
-   * Creates a new StructuralVariant RecordBuilder by copying an existing StructuralVariant instance.
-   * @param other The existing instance to copy.
-   * @return A new StructuralVariant RecordBuilder
-   */
+  /** Creates a new StructuralVariant RecordBuilder by copying an existing StructuralVariant instance */
   public static org.bdgenomics.formats.avro.StructuralVariant.Builder newBuilder(org.bdgenomics.formats.avro.StructuralVariant other) {
     return new org.bdgenomics.formats.avro.StructuralVariant.Builder(other);
   }
@@ -194,17 +165,10 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<StructuralVariant>
     implements org.apache.avro.data.RecordBuilder<StructuralVariant> {
 
-    /** The type of this structural variant. */
     private org.bdgenomics.formats.avro.StructuralVariantType type;
-    /** The URL of the FASTA/NucleotideContig assembly for this structural variant,
-   if one is available. */
     private java.lang.CharSequence assembly;
-    /** Whether this structural variant call has precise breakpoints or not. Default
-   value is true. If the call is imprecise, confidence intervals should be provided. */
     private java.lang.Boolean precise;
-    /** The size of the confidence window around the start of the structural variant. */
     private java.lang.Integer startWindow;
-    /** The size of the confidence window around the end of the structural variant. */
     private java.lang.Integer endWindow;
 
     /** Creates a new Builder */
@@ -212,10 +176,7 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
       super(org.bdgenomics.formats.avro.StructuralVariant.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.StructuralVariant.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.type)) {
@@ -240,10 +201,7 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing StructuralVariant instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing StructuralVariant instance */
     private Builder(org.bdgenomics.formats.avro.StructuralVariant other) {
             super(org.bdgenomics.formats.avro.StructuralVariant.SCHEMA$);
       if (isValidValue(fields()[0], other.type)) {
@@ -268,223 +226,125 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
       }
     }
 
-    /**
-      * Gets the value of the 'type' field.
-      * The type of this structural variant.
-      * @return The value.
-      */
+    /** Gets the value of the 'type' field */
     public org.bdgenomics.formats.avro.StructuralVariantType getType() {
       return type;
     }
-
-    /**
-      * Sets the value of the 'type' field.
-      * The type of this structural variant.
-      * @param value The value of 'type'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'type' field */
     public org.bdgenomics.formats.avro.StructuralVariant.Builder setType(org.bdgenomics.formats.avro.StructuralVariantType value) {
       validate(fields()[0], value);
       this.type = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'type' field has been set.
-      * The type of this structural variant.
-      * @return True if the 'type' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'type' field has been set */
     public boolean hasType() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'type' field.
-      * The type of this structural variant.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'type' field */
     public org.bdgenomics.formats.avro.StructuralVariant.Builder clearType() {
       type = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'assembly' field.
-      * The URL of the FASTA/NucleotideContig assembly for this structural variant,
-   if one is available.
-      * @return The value.
-      */
+    /** Gets the value of the 'assembly' field */
     public java.lang.CharSequence getAssembly() {
       return assembly;
     }
-
-    /**
-      * Sets the value of the 'assembly' field.
-      * The URL of the FASTA/NucleotideContig assembly for this structural variant,
-   if one is available.
-      * @param value The value of 'assembly'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'assembly' field */
     public org.bdgenomics.formats.avro.StructuralVariant.Builder setAssembly(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.assembly = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'assembly' field has been set.
-      * The URL of the FASTA/NucleotideContig assembly for this structural variant,
-   if one is available.
-      * @return True if the 'assembly' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'assembly' field has been set */
     public boolean hasAssembly() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'assembly' field.
-      * The URL of the FASTA/NucleotideContig assembly for this structural variant,
-   if one is available.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'assembly' field */
     public org.bdgenomics.formats.avro.StructuralVariant.Builder clearAssembly() {
       assembly = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'precise' field.
-      * Whether this structural variant call has precise breakpoints or not. Default
-   value is true. If the call is imprecise, confidence intervals should be provided.
-      * @return The value.
-      */
+    /** Gets the value of the 'precise' field */
     public java.lang.Boolean getPrecise() {
       return precise;
     }
-
-    /**
-      * Sets the value of the 'precise' field.
-      * Whether this structural variant call has precise breakpoints or not. Default
-   value is true. If the call is imprecise, confidence intervals should be provided.
-      * @param value The value of 'precise'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'precise' field */
     public org.bdgenomics.formats.avro.StructuralVariant.Builder setPrecise(java.lang.Boolean value) {
       validate(fields()[2], value);
       this.precise = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'precise' field has been set.
-      * Whether this structural variant call has precise breakpoints or not. Default
-   value is true. If the call is imprecise, confidence intervals should be provided.
-      * @return True if the 'precise' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'precise' field has been set */
     public boolean hasPrecise() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'precise' field.
-      * Whether this structural variant call has precise breakpoints or not. Default
-   value is true. If the call is imprecise, confidence intervals should be provided.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'precise' field */
     public org.bdgenomics.formats.avro.StructuralVariant.Builder clearPrecise() {
       precise = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'startWindow' field.
-      * The size of the confidence window around the start of the structural variant.
-      * @return The value.
-      */
+    /** Gets the value of the 'startWindow' field */
     public java.lang.Integer getStartWindow() {
       return startWindow;
     }
-
-    /**
-      * Sets the value of the 'startWindow' field.
-      * The size of the confidence window around the start of the structural variant.
-      * @param value The value of 'startWindow'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'startWindow' field */
     public org.bdgenomics.formats.avro.StructuralVariant.Builder setStartWindow(java.lang.Integer value) {
       validate(fields()[3], value);
       this.startWindow = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'startWindow' field has been set.
-      * The size of the confidence window around the start of the structural variant.
-      * @return True if the 'startWindow' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'startWindow' field has been set */
     public boolean hasStartWindow() {
       return fieldSetFlags()[3];
     }
-
-
-    /**
-      * Clears the value of the 'startWindow' field.
-      * The size of the confidence window around the start of the structural variant.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'startWindow' field */
     public org.bdgenomics.formats.avro.StructuralVariant.Builder clearStartWindow() {
       startWindow = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'endWindow' field.
-      * The size of the confidence window around the end of the structural variant.
-      * @return The value.
-      */
+    /** Gets the value of the 'endWindow' field */
     public java.lang.Integer getEndWindow() {
       return endWindow;
     }
-
-    /**
-      * Sets the value of the 'endWindow' field.
-      * The size of the confidence window around the end of the structural variant.
-      * @param value The value of 'endWindow'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'endWindow' field */
     public org.bdgenomics.formats.avro.StructuralVariant.Builder setEndWindow(java.lang.Integer value) {
       validate(fields()[4], value);
       this.endWindow = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'endWindow' field has been set.
-      * The size of the confidence window around the end of the structural variant.
-      * @return True if the 'endWindow' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'endWindow' field has been set */
     public boolean hasEndWindow() {
       return fieldSetFlags()[4];
     }
-
-
-    /**
-      * Clears the value of the 'endWindow' field.
-      * The size of the confidence window around the end of the structural variant.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'endWindow' field */
     public org.bdgenomics.formats.avro.StructuralVariant.Builder clearEndWindow() {
       endWindow = null;
       fieldSetFlags()[4] = false;
@@ -506,21 +366,4 @@ public class StructuralVariant extends org.apache.avro.specific.SpecificRecordBa
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

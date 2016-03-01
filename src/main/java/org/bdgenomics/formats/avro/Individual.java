@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Individual extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 1708032636491194387L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Individual\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"genotypes\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Genotype\",\"fields\":[{\"name\":\"variant\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Variant\",\"fields\":[{\"name\":\"variantErrorProbability\",\"type\":[\"null\",\"int\"],\"doc\":\"The Phred scaled error probability of a variant, given the probabilities of\\n   the variant in a population.\",\"default\":null},{\"name\":\"contig\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Contig\",\"doc\":\"Record for describing a reference assembly. Not used for storing the contents\\n of said assembly.\\n\\n @see NucleotideContigFragment\",\"fields\":[{\"name\":\"contigName\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this contig in the assembly (e.g., \\\"chr1\\\").\",\"default\":null},{\"name\":\"contigLength\",\"type\":[\"null\",\"long\"],\"doc\":\"The length of this contig.\",\"default\":null},{\"name\":\"contigMD5\",\"type\":[\"null\",\"string\"],\"doc\":\"The MD5 checksum of the assembly for this contig.\",\"default\":null},{\"name\":\"referenceURL\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL at which this reference assembly can be found.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The name of this assembly (e.g., \\\"hg19\\\").\",\"default\":null},{\"name\":\"species\",\"type\":[\"null\",\"string\"],\"doc\":\"The species that this assembly is for.\",\"default\":null},{\"name\":\"referenceIndex\",\"type\":[\"null\",\"int\"],\"doc\":\"Optional 0-based index of this contig in a SAM file header that it was read\\n   from; helps output SAMs/BAMs with headers in the same order as they started\\n   with, before a conversion to ADAM.\",\"default\":null}]}],\"doc\":\"The reference contig that this variant exists on.\",\"default\":null},{\"name\":\"start\",\"type\":[\"null\",\"long\"],\"doc\":\"The 0-based start position of this variant on the reference contig.\",\"default\":null},{\"name\":\"end\",\"type\":[\"null\",\"long\"],\"doc\":\"The 0-based, exclusive end position of this variant on the reference contig.\",\"default\":null},{\"name\":\"referenceAllele\",\"type\":[\"null\",\"string\"],\"doc\":\"A string describing the reference allele at this site.\",\"default\":null},{\"name\":\"alternateAllele\",\"type\":[\"null\",\"string\"],\"doc\":\"A string describing the variant allele at this site. Should be left null if\\n   the site is a structural variant.\",\"default\":null},{\"name\":\"svAllele\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"StructuralVariant\",\"fields\":[{\"name\":\"type\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"StructuralVariantType\",\"doc\":\"Descriptors for the type of a structural variant. The most specific descriptor\\n should be used, if possible. E.g., duplication should be used instead of\\n insertion if the inserted sequence is not novel. Tandem duplication should\\n be used instead of duplication if the duplication is known to follow the\\n duplicated sequence.\",\"symbols\":[\"DELETION\",\"INSERTION\",\"INVERSION\",\"MOBILE_INSERTION\",\"MOBILE_DELETION\",\"DUPLICATION\",\"TANDEM_DUPLICATION\"]}],\"doc\":\"The type of this structural variant.\",\"default\":null},{\"name\":\"assembly\",\"type\":[\"null\",\"string\"],\"doc\":\"The URL of the FASTA/NucleotideContig assembly for this structural variant,\\n   if one is available.\",\"default\":null},{\"name\":\"precise\",\"type\":[\"boolean\",\"null\"],\"doc\":\"Whether this structural variant call has precise breakpoints or not. Default\\n   value is true. If the call is imprecise, confidence intervals should be provided.\",\"default\":true},{\"name\":\"startWindow\",\"type\":[\"null\",\"int\"],\"doc\":\"The size of the confidence window around the start of the structural variant.\",\"default\":null},{\"name\":\"endWindow\",\"type\":[\"null\",\"int\"],\"doc\":\"The size of the confidence window around the end of the structural variant.\",\"default\":null}]}],\"doc\":\"The structural variant at this site, if the alternate allele is a structural\\n   variant. If the site is not a structural variant, this field should be left\\n   null.\",\"default\":null},{\"name\":\"isSomatic\",\"type\":[\"boolean\",\"null\"],\"doc\":\"A boolean describing whether this variant call is somatic; in this case, the\\n   `referenceAllele` will have been observed in another sample.\",\"default\":false}]}],\"doc\":\"The variant called at this site.\",\"default\":null},{\"name\":\"variantCallingAnnotations\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"VariantCallingAnnotations\",\"fields\":[{\"name\":\"variantIsPassing\",\"type\":[\"null\",\"boolean\"],\"default\":null},{\"name\":\"variantFilters\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[]},{\"name\":\"downsampled\",\"type\":[\"null\",\"boolean\"],\"doc\":\"True if the reads covering this site were randomly downsampled to reduce coverage.\",\"default\":null},{\"name\":\"baseQRankSum\",\"type\":[\"null\",\"float\"],\"doc\":\"The Wilcoxon rank-sum test statistic of the base quality scores. The base quality\\n   scores are separated by whether or not the base supports the reference or the\\n   alternate allele.\",\"default\":null},{\"name\":\"fisherStrandBiasPValue\",\"type\":[\"null\",\"float\"],\"doc\":\"The Fisher's exact test score for the strand bias of the reference and alternate\\n   alleles. Stored as a phred scaled probability. Thus, if:\\n\\n   * a = The number of positive strand reads covering the reference allele\\n   * b = The number of positive strand reads covering the alternate allele\\n   * c = The number of negative strand reads covering the reference allele\\n   * d = The number of negative strand reads covering the alternate allele\\n\\n   This value takes the score:\\n   \\n   -10 log((a + b)! * (c + d)! * (a + c)! * (b + d)! / (a! b! c! d! n!)\\n\\n   Where n = a + b + c + d.\",\"default\":null},{\"name\":\"rmsMapQ\",\"type\":[\"null\",\"float\"],\"doc\":\"The root mean square of the mapping qualities of reads covering this site.\",\"default\":null},{\"name\":\"mapq0Reads\",\"type\":[\"null\",\"int\"],\"doc\":\"The number of reads at this site with mapping quality equal to 0.\",\"default\":null},{\"name\":\"mqRankSum\",\"type\":[\"null\",\"float\"],\"doc\":\"The Wilcoxon rank-sum test statistic of the mapping quality scores. The mapping\\n   quality scores are separated by whether or not the read supported the reference or the\\n   alternate allele.\",\"default\":null},{\"name\":\"readPositionRankSum\",\"type\":[\"null\",\"float\"],\"doc\":\"The Wilcoxon rank-sum test statistic of the position of the base in the read at this site.\\n   The positions are separated by whether or not the base supports the reference or the\\n   alternate allele.\",\"default\":null},{\"name\":\"genotypePriors\",\"type\":{\"type\":\"array\",\"items\":\"float\"},\"doc\":\"The log scale prior probabilities of the various genotype states at this site.\\n   The number of elements in this array should be equal to the ploidy at this\\n   site, plus 1.\",\"default\":[]},{\"name\":\"genotypePosteriors\",\"type\":{\"type\":\"array\",\"items\":\"float\"},\"doc\":\"The log scaled posterior probabilities of the various genotype states at this site,\\n   in this sample. The number of elements in this array should be equal to the ploidy at\\n   this site, plus 1.\",\"default\":[]},{\"name\":\"vqslod\",\"type\":[\"null\",\"float\"],\"doc\":\"The log-odds ratio of being a true vs. false variant under a trained statistical model.\\n    This model can be a multivariate Gaussian mixture, support vector machine, etc.\",\"default\":null},{\"name\":\"culprit\",\"type\":[\"null\",\"string\"],\"doc\":\"If known, the feature that contributed the most to this variant being classified as\\n   a false variant.\",\"default\":null},{\"name\":\"attributes\",\"type\":{\"type\":\"map\",\"values\":\"string\"},\"doc\":\"Additional feature info that doesn't fit into the standard fields above.\\n\\n   They are all encoded as (string, string) key-value pairs.\",\"default\":{}}]}],\"doc\":\"Statistics collected at this site, if available.\",\"default\":null},{\"name\":\"sampleId\",\"type\":[\"null\",\"string\"],\"doc\":\"The unique identifier for this sample.\",\"default\":null},{\"name\":\"sampleDescription\",\"type\":[\"null\",\"string\"],\"doc\":\"A description of this sample.\",\"default\":null},{\"name\":\"processingDescription\",\"type\":[\"null\",\"string\"],\"doc\":\"A string describing the provenance of this sample and the processing applied\\n   in genotyping this sample.\",\"default\":null},{\"name\":\"alleles\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"enum\",\"name\":\"GenotypeAllele\",\"doc\":\"An enumeration that describes the allele that corresponds to a genotype. Can take\\n the following values:\\n\\n * Ref: The genotype is the reference allel","e\\n * Alt: The genotype is the alternate allele\\n * OtherAlt: The genotype is an unspecified other alternate allele. This occurs\\n   in our schema when we have split a multi-allelic genotype into two genotype\\n   records.\\n * NoCall: The genotype could not be called.\",\"symbols\":[\"Ref\",\"Alt\",\"OtherAlt\",\"NoCall\"]}},\"doc\":\"An array describing the genotype called at this site. The length of this\\n   array is equal to the ploidy of the sample at this site. This array may\\n   reference OtherAlt alleles if this site is multi-allelic in this sample.\",\"default\":[]},{\"name\":\"expectedAlleleDosage\",\"type\":[\"null\",\"float\"],\"doc\":\"The expected dosage of the alternate allele in this sample.\",\"default\":null},{\"name\":\"referenceReadDepth\",\"type\":[\"null\",\"int\"],\"doc\":\"The number of reads that show evidence for the reference at this site.\\n\\n   @see alternateReadDepth\\n   @see readDepth\",\"default\":null},{\"name\":\"alternateReadDepth\",\"type\":[\"null\",\"int\"],\"doc\":\"The number of reads that show evidence for this alternate allele at this site.\\n\\n   @see referenceReadDepth\\n   @see readDepth\",\"default\":null},{\"name\":\"readDepth\",\"type\":[\"null\",\"int\"],\"doc\":\"The total number of reads at this site. May not equal (alternateReadDepth +\\n   referenceReadDepth) if this site shows evidence of multiple alternate alleles.\\n\\n   @see referenceReadDepth\\n   @see alternateReadDepth\\n\\n   @note Analogous to VCF's DP.\",\"default\":null},{\"name\":\"minReadDepth\",\"type\":[\"null\",\"int\"],\"doc\":\"The minimum number of reads seen at this site across samples when joint\\n   calling variants.\\n\\n   @note Analogous to VCF's MIN_DP.\",\"default\":null},{\"name\":\"genotypeQuality\",\"type\":[\"null\",\"int\"],\"doc\":\"The phred-scaled probability that we're correct for this genotype call.\\n\\n   @note Analogous to VCF's GQ.\",\"default\":null},{\"name\":\"genotypeLikelihoods\",\"type\":{\"type\":\"array\",\"items\":\"float\"},\"doc\":\"Log scaled likelihoods that we have n copies of this alternate allele.\\n   The number of elements in this array should be equal to the ploidy at this\\n   site, plus 1.\\n\\n   @note Analogous to VCF's PL.\",\"default\":[]},{\"name\":\"nonReferenceLikelihoods\",\"type\":{\"type\":\"array\",\"items\":\"float\"},\"doc\":\"Log scaled likelihoods that we have n non-reference alleles at this site.\\n   The number of elements in this array should be equal to the ploidy at this\\n   site, plus 1.\",\"default\":[]},{\"name\":\"strandBiasComponents\",\"type\":{\"type\":\"array\",\"items\":\"int\"},\"doc\":\"Component statistics which comprise the Fisher's Exact Test to detect strand bias.\\n   If populated, this element should have length 4.\",\"default\":[]},{\"name\":\"splitFromMultiAllelic\",\"type\":[\"boolean\",\"null\"],\"doc\":\"We split multi-allelic VCF lines into multiple\\n   single-alternate records.  This bit is set if that happened for this\\n   record.\",\"default\":false},{\"name\":\"isPhased\",\"type\":[\"boolean\",\"null\"],\"doc\":\"True if this genotype is phased.\\n\\n   @see phaseSetId\\n   @see phaseQuality\",\"default\":false},{\"name\":\"phaseSetId\",\"type\":[\"null\",\"int\"],\"doc\":\"The ID of this phase set, if this genotype is phased. Should only be populated\\n   if isPhased == true; else should be null.\\n\\n   @see isPhased\",\"default\":null},{\"name\":\"phaseQuality\",\"type\":[\"null\",\"int\"],\"doc\":\"Phred scaled quality score for the phasing of this genotype, if this genotype\\n   is phased. Should only be populated if isPhased == true; else should be null.\\n\\n   @see isPhased\",\"default\":null}]}},\"doc\":\"An array containing all the individual's genotypes.\",\"default\":[]},{\"name\":\"gender\",\"type\":{\"type\":\"enum\",\"name\":\"Gender\",\"doc\":\"Enumeration of the possible genders.\",\"symbols\":[\"Male\",\"Female\",\"Unknown\"]},\"doc\":\"The genetic gender of the individual.\",\"default\":\"Unknown\"},{\"name\":\"individualId\",\"type\":[\"null\",\"string\"],\"doc\":\"Unique ID of the individual. Often useful to backtrack the individual on \\n   an external database.\",\"default\":null},{\"name\":\"familyId\",\"type\":[\"null\",\"string\"],\"doc\":\"Unique ID of the family of the individual.\",\"default\":null},{\"name\":\"fatherId\",\"type\":[\"null\",\"string\"],\"doc\":\"Unique ID of the father of the individual.\",\"default\":null},{\"name\":\"motherId\",\"type\":[\"null\",\"string\"],\"doc\":\"Unique ID of the mother of the individual.\",\"default\":null},{\"name\":\"birthDateEpoch\",\"type\":[\"null\",\"long\"],\"doc\":\"Birth date of this individual.\\n\\n   Stored as a number of milliseconds since the UNIX Epoch \\n   (Jan. 1st 1970 at 00:00:00 in UTC timezone).\",\"default\":null},{\"name\":\"ethnicCode\",\"type\":[\"null\",\"string\"],\"doc\":\"TODO: To be defined.\",\"default\":null},{\"name\":\"centreName\",\"type\":[\"null\",\"string\"],\"doc\":\"TODO: To be defined. Clinic or Genotyping centre ?\",\"default\":null},{\"name\":\"region\",\"type\":[\"null\",\"string\"],\"doc\":\"Region where the individual originates from.\",\"default\":null},{\"name\":\"country\",\"type\":[\"null\",\"string\"],\"doc\":\"Country where the individual was born in.\",\"default\":null},{\"name\":\"notes\",\"type\":[\"null\",\"string\"],\"doc\":\"Notes about the individual (e.g. sequencing/genotyping error, etc).\",\"default\":null},{\"name\":\"visits\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Visit\",\"fields\":[{\"name\":\"visitId\",\"type\":[\"null\",\"string\"],\"doc\":\"Unique ID of the visit. Often useful to backtrack the visit on \\n   an external database.\",\"default\":null},{\"name\":\"visitDateEpoch\",\"type\":[\"null\",\"long\"],\"doc\":\"Date of the visit.\\n\\n   Stored as a number of milliseconds since the UNIX Epoch \\n   (Jan. 1st 1970 at 00:00:00 in UTC timezone).\",\"default\":null},{\"name\":\"studyId\",\"type\":[\"null\",\"string\"],\"doc\":\"ID of the consent form that the user signed at the visit.\",\"default\":null},{\"name\":\"isFasting\",\"type\":[\"null\",\"boolean\"],\"doc\":\"Indicates if the patient was fasting or not during the visit\\n   (null if unknown).\",\"default\":null},{\"name\":\"description\",\"type\":[\"null\",\"string\"],\"doc\":\"Description of the visit.\",\"default\":null},{\"name\":\"phenotypes\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Phenotype\",\"fields\":[{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"doc\":\"Name of the phenotype (e.g. 'left lower extremity amputation').\",\"default\":null},{\"name\":\"phenotypeGroup\",\"type\":[\"null\",\"string\"],\"doc\":\"Group of the phenotype (e.g. 'eye color').\",\"default\":null},{\"name\":\"phenotypeType\",\"type\":[\"null\",\"string\"],\"doc\":\"Type of the phenotype (e.g. 'measure', 'diagnosis', 'prescription').\",\"default\":null},{\"name\":\"measure\",\"type\":[\"null\",\"string\"],\"doc\":\"Qualitative (\\\"0\\\", or \\\"1\\\") or quantitative measure or observation on the \\n   individual.\",\"default\":null},{\"name\":\"measureDataType\",\"type\":{\"type\":\"enum\",\"name\":\"MeasureDataType\",\"symbols\":[\"Unknown\",\"Boolean\",\"Integer\",\"Decimal\"]},\"doc\":\"Native data type of the measure (e.g. 'boolean', 'integer', 'decimal').\",\"default\":\"Unknown\"},{\"name\":\"measureUnits\",\"type\":[\"null\",\"string\"],\"doc\":\"Units of the measure (e.g. 'umol/L', 'beats/minute').\",\"default\":null},{\"name\":\"description\",\"type\":[\"null\",\"string\"],\"doc\":\"Long description of the phenotype.\",\"default\":null},{\"name\":\"diagnosisDateEpoch\",\"type\":[\"null\",\"long\"],\"doc\":\"Date of the diagnosis (if any).\\n\\n   Stored as a number of milliseconds since the UNIX Epoch \\n   (Jan. 1st 1970 at 00:00:00 in UTC timezone).\",\"default\":null}]}},\"doc\":\"An array containing all the phenotypes collected during the visit.\",\"default\":[]}]}},\"doc\":\"An array containing all the individual's visits in clinics.\",\"default\":[]},{\"name\":\"batches\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Batch\",\"fields\":[{\"name\":\"batchDateEpoch\",\"type\":[\"null\",\"long\"],\"doc\":\"Creation date of this batch.\\n\\n   Stored as a number of milliseconds since the UNIX Epoch \\n   (Jan. 1st 1970 at 00:00:00 in UTC timezone).\",\"default\":null},{\"name\":\"batchType\",\"type\":[\"null\",\"string\"],\"doc\":\"Type of the batch (e.g. sample batch, genotyping batch, etc).\",\"default\":null},{\"name\":\"description\",\"type\":[\"null\",\"string\"],\"doc\":\"Textual description of this batch.\",\"default\":null}]}},\"doc\":\"An array containing all the batches that the Individual belongs to.\",\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   /** An array containing all the individual's genotypes. */
@@ -52,24 +51,6 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * All-args constructor.
-   * @param genotypes An array containing all the individual's genotypes.
-   * @param gender The genetic gender of the individual.
-   * @param individualId Unique ID of the individual. Often useful to backtrack the individual on 
-   an external database.
-   * @param familyId Unique ID of the family of the individual.
-   * @param fatherId Unique ID of the father of the individual.
-   * @param motherId Unique ID of the mother of the individual.
-   * @param birthDateEpoch Birth date of this individual.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   * @param ethnicCode TODO: To be defined.
-   * @param centreName TODO: To be defined. Clinic or Genotyping centre ?
-   * @param region Region where the individual originates from.
-   * @param country Country where the individual was born in.
-   * @param notes Notes about the individual (e.g. sequencing/genotyping error, etc).
-   * @param visits An array containing all the individual's visits in clinics.
-   * @param batches An array containing all the batches that the Individual belongs to.
    */
   public Individual(java.util.List<org.bdgenomics.formats.avro.Genotype> genotypes, org.bdgenomics.formats.avro.Gender gender, java.lang.CharSequence individualId, java.lang.CharSequence familyId, java.lang.CharSequence fatherId, java.lang.CharSequence motherId, java.lang.Long birthDateEpoch, java.lang.CharSequence ethnicCode, java.lang.CharSequence centreName, java.lang.CharSequence region, java.lang.CharSequence country, java.lang.CharSequence notes, java.util.List<org.bdgenomics.formats.avro.Visit> visits, java.util.List<org.bdgenomics.formats.avro.Batch> batches) {
     this.genotypes = genotypes;
@@ -133,16 +114,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'genotypes' field.
-   * @return An array containing all the individual's genotypes.
-   */
+   * An array containing all the individual's genotypes.   */
   public java.util.List<org.bdgenomics.formats.avro.Genotype> getGenotypes() {
     return genotypes;
   }
 
   /**
    * Sets the value of the 'genotypes' field.
-   * An array containing all the individual's genotypes.
-   * @param value the value to set.
+   * An array containing all the individual's genotypes.   * @param value the value to set.
    */
   public void setGenotypes(java.util.List<org.bdgenomics.formats.avro.Genotype> value) {
     this.genotypes = value;
@@ -150,16 +129,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'gender' field.
-   * @return The genetic gender of the individual.
-   */
+   * The genetic gender of the individual.   */
   public org.bdgenomics.formats.avro.Gender getGender() {
     return gender;
   }
 
   /**
    * Sets the value of the 'gender' field.
-   * The genetic gender of the individual.
-   * @param value the value to set.
+   * The genetic gender of the individual.   * @param value the value to set.
    */
   public void setGender(org.bdgenomics.formats.avro.Gender value) {
     this.gender = value;
@@ -167,9 +144,8 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'individualId' field.
-   * @return Unique ID of the individual. Often useful to backtrack the individual on 
-   an external database.
-   */
+   * Unique ID of the individual. Often useful to backtrack the individual on 
+   an external database.   */
   public java.lang.CharSequence getIndividualId() {
     return individualId;
   }
@@ -177,8 +153,7 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
   /**
    * Sets the value of the 'individualId' field.
    * Unique ID of the individual. Often useful to backtrack the individual on 
-   an external database.
-   * @param value the value to set.
+   an external database.   * @param value the value to set.
    */
   public void setIndividualId(java.lang.CharSequence value) {
     this.individualId = value;
@@ -186,16 +161,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'familyId' field.
-   * @return Unique ID of the family of the individual.
-   */
+   * Unique ID of the family of the individual.   */
   public java.lang.CharSequence getFamilyId() {
     return familyId;
   }
 
   /**
    * Sets the value of the 'familyId' field.
-   * Unique ID of the family of the individual.
-   * @param value the value to set.
+   * Unique ID of the family of the individual.   * @param value the value to set.
    */
   public void setFamilyId(java.lang.CharSequence value) {
     this.familyId = value;
@@ -203,16 +176,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'fatherId' field.
-   * @return Unique ID of the father of the individual.
-   */
+   * Unique ID of the father of the individual.   */
   public java.lang.CharSequence getFatherId() {
     return fatherId;
   }
 
   /**
    * Sets the value of the 'fatherId' field.
-   * Unique ID of the father of the individual.
-   * @param value the value to set.
+   * Unique ID of the father of the individual.   * @param value the value to set.
    */
   public void setFatherId(java.lang.CharSequence value) {
     this.fatherId = value;
@@ -220,16 +191,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'motherId' field.
-   * @return Unique ID of the mother of the individual.
-   */
+   * Unique ID of the mother of the individual.   */
   public java.lang.CharSequence getMotherId() {
     return motherId;
   }
 
   /**
    * Sets the value of the 'motherId' field.
-   * Unique ID of the mother of the individual.
-   * @param value the value to set.
+   * Unique ID of the mother of the individual.   * @param value the value to set.
    */
   public void setMotherId(java.lang.CharSequence value) {
     this.motherId = value;
@@ -237,11 +206,10 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'birthDateEpoch' field.
-   * @return Birth date of this individual.
+   * Birth date of this individual.
 
    Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   */
+   (Jan. 1st 1970 at 00:00:00 in UTC timezone).   */
   public java.lang.Long getBirthDateEpoch() {
     return birthDateEpoch;
   }
@@ -251,8 +219,7 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
    * Birth date of this individual.
 
    Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-   * @param value the value to set.
+   (Jan. 1st 1970 at 00:00:00 in UTC timezone).   * @param value the value to set.
    */
   public void setBirthDateEpoch(java.lang.Long value) {
     this.birthDateEpoch = value;
@@ -260,16 +227,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'ethnicCode' field.
-   * @return TODO: To be defined.
-   */
+   * TODO: To be defined.   */
   public java.lang.CharSequence getEthnicCode() {
     return ethnicCode;
   }
 
   /**
    * Sets the value of the 'ethnicCode' field.
-   * TODO: To be defined.
-   * @param value the value to set.
+   * TODO: To be defined.   * @param value the value to set.
    */
   public void setEthnicCode(java.lang.CharSequence value) {
     this.ethnicCode = value;
@@ -277,16 +242,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'centreName' field.
-   * @return TODO: To be defined. Clinic or Genotyping centre ?
-   */
+   * TODO: To be defined. Clinic or Genotyping centre ?   */
   public java.lang.CharSequence getCentreName() {
     return centreName;
   }
 
   /**
    * Sets the value of the 'centreName' field.
-   * TODO: To be defined. Clinic or Genotyping centre ?
-   * @param value the value to set.
+   * TODO: To be defined. Clinic or Genotyping centre ?   * @param value the value to set.
    */
   public void setCentreName(java.lang.CharSequence value) {
     this.centreName = value;
@@ -294,16 +257,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'region' field.
-   * @return Region where the individual originates from.
-   */
+   * Region where the individual originates from.   */
   public java.lang.CharSequence getRegion() {
     return region;
   }
 
   /**
    * Sets the value of the 'region' field.
-   * Region where the individual originates from.
-   * @param value the value to set.
+   * Region where the individual originates from.   * @param value the value to set.
    */
   public void setRegion(java.lang.CharSequence value) {
     this.region = value;
@@ -311,16 +272,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'country' field.
-   * @return Country where the individual was born in.
-   */
+   * Country where the individual was born in.   */
   public java.lang.CharSequence getCountry() {
     return country;
   }
 
   /**
    * Sets the value of the 'country' field.
-   * Country where the individual was born in.
-   * @param value the value to set.
+   * Country where the individual was born in.   * @param value the value to set.
    */
   public void setCountry(java.lang.CharSequence value) {
     this.country = value;
@@ -328,16 +287,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'notes' field.
-   * @return Notes about the individual (e.g. sequencing/genotyping error, etc).
-   */
+   * Notes about the individual (e.g. sequencing/genotyping error, etc).   */
   public java.lang.CharSequence getNotes() {
     return notes;
   }
 
   /**
    * Sets the value of the 'notes' field.
-   * Notes about the individual (e.g. sequencing/genotyping error, etc).
-   * @param value the value to set.
+   * Notes about the individual (e.g. sequencing/genotyping error, etc).   * @param value the value to set.
    */
   public void setNotes(java.lang.CharSequence value) {
     this.notes = value;
@@ -345,16 +302,14 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'visits' field.
-   * @return An array containing all the individual's visits in clinics.
-   */
+   * An array containing all the individual's visits in clinics.   */
   public java.util.List<org.bdgenomics.formats.avro.Visit> getVisits() {
     return visits;
   }
 
   /**
    * Sets the value of the 'visits' field.
-   * An array containing all the individual's visits in clinics.
-   * @param value the value to set.
+   * An array containing all the individual's visits in clinics.   * @param value the value to set.
    */
   public void setVisits(java.util.List<org.bdgenomics.formats.avro.Visit> value) {
     this.visits = value;
@@ -362,43 +317,30 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
 
   /**
    * Gets the value of the 'batches' field.
-   * @return An array containing all the batches that the Individual belongs to.
-   */
+   * An array containing all the batches that the Individual belongs to.   */
   public java.util.List<org.bdgenomics.formats.avro.Batch> getBatches() {
     return batches;
   }
 
   /**
    * Sets the value of the 'batches' field.
-   * An array containing all the batches that the Individual belongs to.
-   * @param value the value to set.
+   * An array containing all the batches that the Individual belongs to.   * @param value the value to set.
    */
   public void setBatches(java.util.List<org.bdgenomics.formats.avro.Batch> value) {
     this.batches = value;
   }
 
-  /**
-   * Creates a new Individual RecordBuilder.
-   * @return A new Individual RecordBuilder
-   */
+  /** Creates a new Individual RecordBuilder */
   public static org.bdgenomics.formats.avro.Individual.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Individual.Builder();
   }
   
-  /**
-   * Creates a new Individual RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new Individual RecordBuilder
-   */
+  /** Creates a new Individual RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.Individual.Builder newBuilder(org.bdgenomics.formats.avro.Individual.Builder other) {
     return new org.bdgenomics.formats.avro.Individual.Builder(other);
   }
   
-  /**
-   * Creates a new Individual RecordBuilder by copying an existing Individual instance.
-   * @param other The existing instance to copy.
-   * @return A new Individual RecordBuilder
-   */
+  /** Creates a new Individual RecordBuilder by copying an existing Individual instance */
   public static org.bdgenomics.formats.avro.Individual.Builder newBuilder(org.bdgenomics.formats.avro.Individual other) {
     return new org.bdgenomics.formats.avro.Individual.Builder(other);
   }
@@ -409,37 +351,19 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Individual>
     implements org.apache.avro.data.RecordBuilder<Individual> {
 
-    /** An array containing all the individual's genotypes. */
     private java.util.List<org.bdgenomics.formats.avro.Genotype> genotypes;
-    /** The genetic gender of the individual. */
     private org.bdgenomics.formats.avro.Gender gender;
-    /** Unique ID of the individual. Often useful to backtrack the individual on 
-   an external database. */
     private java.lang.CharSequence individualId;
-    /** Unique ID of the family of the individual. */
     private java.lang.CharSequence familyId;
-    /** Unique ID of the father of the individual. */
     private java.lang.CharSequence fatherId;
-    /** Unique ID of the mother of the individual. */
     private java.lang.CharSequence motherId;
-    /** Birth date of this individual.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone). */
     private java.lang.Long birthDateEpoch;
-    /** TODO: To be defined. */
     private java.lang.CharSequence ethnicCode;
-    /** TODO: To be defined. Clinic or Genotyping centre ? */
     private java.lang.CharSequence centreName;
-    /** Region where the individual originates from. */
     private java.lang.CharSequence region;
-    /** Country where the individual was born in. */
     private java.lang.CharSequence country;
-    /** Notes about the individual (e.g. sequencing/genotyping error, etc). */
     private java.lang.CharSequence notes;
-    /** An array containing all the individual's visits in clinics. */
     private java.util.List<org.bdgenomics.formats.avro.Visit> visits;
-    /** An array containing all the batches that the Individual belongs to. */
     private java.util.List<org.bdgenomics.formats.avro.Batch> batches;
 
     /** Creates a new Builder */
@@ -447,10 +371,7 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
       super(org.bdgenomics.formats.avro.Individual.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.Individual.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.genotypes)) {
@@ -511,10 +432,7 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing Individual instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing Individual instance */
     private Builder(org.bdgenomics.formats.avro.Individual other) {
             super(org.bdgenomics.formats.avro.Individual.SCHEMA$);
       if (isValidValue(fields()[0], other.genotypes)) {
@@ -575,618 +493,350 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
       }
     }
 
-    /**
-      * Gets the value of the 'genotypes' field.
-      * An array containing all the individual's genotypes.
-      * @return The value.
-      */
+    /** Gets the value of the 'genotypes' field */
     public java.util.List<org.bdgenomics.formats.avro.Genotype> getGenotypes() {
       return genotypes;
     }
-
-    /**
-      * Sets the value of the 'genotypes' field.
-      * An array containing all the individual's genotypes.
-      * @param value The value of 'genotypes'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'genotypes' field */
     public org.bdgenomics.formats.avro.Individual.Builder setGenotypes(java.util.List<org.bdgenomics.formats.avro.Genotype> value) {
       validate(fields()[0], value);
       this.genotypes = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'genotypes' field has been set.
-      * An array containing all the individual's genotypes.
-      * @return True if the 'genotypes' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'genotypes' field has been set */
     public boolean hasGenotypes() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'genotypes' field.
-      * An array containing all the individual's genotypes.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'genotypes' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearGenotypes() {
       genotypes = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'gender' field.
-      * The genetic gender of the individual.
-      * @return The value.
-      */
+    /** Gets the value of the 'gender' field */
     public org.bdgenomics.formats.avro.Gender getGender() {
       return gender;
     }
-
-    /**
-      * Sets the value of the 'gender' field.
-      * The genetic gender of the individual.
-      * @param value The value of 'gender'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'gender' field */
     public org.bdgenomics.formats.avro.Individual.Builder setGender(org.bdgenomics.formats.avro.Gender value) {
       validate(fields()[1], value);
       this.gender = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'gender' field has been set.
-      * The genetic gender of the individual.
-      * @return True if the 'gender' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'gender' field has been set */
     public boolean hasGender() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'gender' field.
-      * The genetic gender of the individual.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'gender' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearGender() {
       gender = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'individualId' field.
-      * Unique ID of the individual. Often useful to backtrack the individual on 
-   an external database.
-      * @return The value.
-      */
+    /** Gets the value of the 'individualId' field */
     public java.lang.CharSequence getIndividualId() {
       return individualId;
     }
-
-    /**
-      * Sets the value of the 'individualId' field.
-      * Unique ID of the individual. Often useful to backtrack the individual on 
-   an external database.
-      * @param value The value of 'individualId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'individualId' field */
     public org.bdgenomics.formats.avro.Individual.Builder setIndividualId(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.individualId = value;
       fieldSetFlags()[2] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'individualId' field has been set.
-      * Unique ID of the individual. Often useful to backtrack the individual on 
-   an external database.
-      * @return True if the 'individualId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'individualId' field has been set */
     public boolean hasIndividualId() {
       return fieldSetFlags()[2];
     }
-
-
-    /**
-      * Clears the value of the 'individualId' field.
-      * Unique ID of the individual. Often useful to backtrack the individual on 
-   an external database.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'individualId' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearIndividualId() {
       individualId = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'familyId' field.
-      * Unique ID of the family of the individual.
-      * @return The value.
-      */
+    /** Gets the value of the 'familyId' field */
     public java.lang.CharSequence getFamilyId() {
       return familyId;
     }
-
-    /**
-      * Sets the value of the 'familyId' field.
-      * Unique ID of the family of the individual.
-      * @param value The value of 'familyId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'familyId' field */
     public org.bdgenomics.formats.avro.Individual.Builder setFamilyId(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.familyId = value;
       fieldSetFlags()[3] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'familyId' field has been set.
-      * Unique ID of the family of the individual.
-      * @return True if the 'familyId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'familyId' field has been set */
     public boolean hasFamilyId() {
       return fieldSetFlags()[3];
     }
-
-
-    /**
-      * Clears the value of the 'familyId' field.
-      * Unique ID of the family of the individual.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'familyId' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearFamilyId() {
       familyId = null;
       fieldSetFlags()[3] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'fatherId' field.
-      * Unique ID of the father of the individual.
-      * @return The value.
-      */
+    /** Gets the value of the 'fatherId' field */
     public java.lang.CharSequence getFatherId() {
       return fatherId;
     }
-
-    /**
-      * Sets the value of the 'fatherId' field.
-      * Unique ID of the father of the individual.
-      * @param value The value of 'fatherId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'fatherId' field */
     public org.bdgenomics.formats.avro.Individual.Builder setFatherId(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.fatherId = value;
       fieldSetFlags()[4] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'fatherId' field has been set.
-      * Unique ID of the father of the individual.
-      * @return True if the 'fatherId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'fatherId' field has been set */
     public boolean hasFatherId() {
       return fieldSetFlags()[4];
     }
-
-
-    /**
-      * Clears the value of the 'fatherId' field.
-      * Unique ID of the father of the individual.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'fatherId' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearFatherId() {
       fatherId = null;
       fieldSetFlags()[4] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'motherId' field.
-      * Unique ID of the mother of the individual.
-      * @return The value.
-      */
+    /** Gets the value of the 'motherId' field */
     public java.lang.CharSequence getMotherId() {
       return motherId;
     }
-
-    /**
-      * Sets the value of the 'motherId' field.
-      * Unique ID of the mother of the individual.
-      * @param value The value of 'motherId'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'motherId' field */
     public org.bdgenomics.formats.avro.Individual.Builder setMotherId(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.motherId = value;
       fieldSetFlags()[5] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'motherId' field has been set.
-      * Unique ID of the mother of the individual.
-      * @return True if the 'motherId' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'motherId' field has been set */
     public boolean hasMotherId() {
       return fieldSetFlags()[5];
     }
-
-
-    /**
-      * Clears the value of the 'motherId' field.
-      * Unique ID of the mother of the individual.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'motherId' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearMotherId() {
       motherId = null;
       fieldSetFlags()[5] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'birthDateEpoch' field.
-      * Birth date of this individual.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return The value.
-      */
+    /** Gets the value of the 'birthDateEpoch' field */
     public java.lang.Long getBirthDateEpoch() {
       return birthDateEpoch;
     }
-
-    /**
-      * Sets the value of the 'birthDateEpoch' field.
-      * Birth date of this individual.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @param value The value of 'birthDateEpoch'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'birthDateEpoch' field */
     public org.bdgenomics.formats.avro.Individual.Builder setBirthDateEpoch(java.lang.Long value) {
       validate(fields()[6], value);
       this.birthDateEpoch = value;
       fieldSetFlags()[6] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'birthDateEpoch' field has been set.
-      * Birth date of this individual.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return True if the 'birthDateEpoch' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'birthDateEpoch' field has been set */
     public boolean hasBirthDateEpoch() {
       return fieldSetFlags()[6];
     }
-
-
-    /**
-      * Clears the value of the 'birthDateEpoch' field.
-      * Birth date of this individual.
-
-   Stored as a number of milliseconds since the UNIX Epoch 
-   (Jan. 1st 1970 at 00:00:00 in UTC timezone).
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'birthDateEpoch' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearBirthDateEpoch() {
       birthDateEpoch = null;
       fieldSetFlags()[6] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'ethnicCode' field.
-      * TODO: To be defined.
-      * @return The value.
-      */
+    /** Gets the value of the 'ethnicCode' field */
     public java.lang.CharSequence getEthnicCode() {
       return ethnicCode;
     }
-
-    /**
-      * Sets the value of the 'ethnicCode' field.
-      * TODO: To be defined.
-      * @param value The value of 'ethnicCode'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'ethnicCode' field */
     public org.bdgenomics.formats.avro.Individual.Builder setEthnicCode(java.lang.CharSequence value) {
       validate(fields()[7], value);
       this.ethnicCode = value;
       fieldSetFlags()[7] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'ethnicCode' field has been set.
-      * TODO: To be defined.
-      * @return True if the 'ethnicCode' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'ethnicCode' field has been set */
     public boolean hasEthnicCode() {
       return fieldSetFlags()[7];
     }
-
-
-    /**
-      * Clears the value of the 'ethnicCode' field.
-      * TODO: To be defined.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'ethnicCode' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearEthnicCode() {
       ethnicCode = null;
       fieldSetFlags()[7] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'centreName' field.
-      * TODO: To be defined. Clinic or Genotyping centre ?
-      * @return The value.
-      */
+    /** Gets the value of the 'centreName' field */
     public java.lang.CharSequence getCentreName() {
       return centreName;
     }
-
-    /**
-      * Sets the value of the 'centreName' field.
-      * TODO: To be defined. Clinic or Genotyping centre ?
-      * @param value The value of 'centreName'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'centreName' field */
     public org.bdgenomics.formats.avro.Individual.Builder setCentreName(java.lang.CharSequence value) {
       validate(fields()[8], value);
       this.centreName = value;
       fieldSetFlags()[8] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'centreName' field has been set.
-      * TODO: To be defined. Clinic or Genotyping centre ?
-      * @return True if the 'centreName' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'centreName' field has been set */
     public boolean hasCentreName() {
       return fieldSetFlags()[8];
     }
-
-
-    /**
-      * Clears the value of the 'centreName' field.
-      * TODO: To be defined. Clinic or Genotyping centre ?
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'centreName' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearCentreName() {
       centreName = null;
       fieldSetFlags()[8] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'region' field.
-      * Region where the individual originates from.
-      * @return The value.
-      */
+    /** Gets the value of the 'region' field */
     public java.lang.CharSequence getRegion() {
       return region;
     }
-
-    /**
-      * Sets the value of the 'region' field.
-      * Region where the individual originates from.
-      * @param value The value of 'region'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'region' field */
     public org.bdgenomics.formats.avro.Individual.Builder setRegion(java.lang.CharSequence value) {
       validate(fields()[9], value);
       this.region = value;
       fieldSetFlags()[9] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'region' field has been set.
-      * Region where the individual originates from.
-      * @return True if the 'region' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'region' field has been set */
     public boolean hasRegion() {
       return fieldSetFlags()[9];
     }
-
-
-    /**
-      * Clears the value of the 'region' field.
-      * Region where the individual originates from.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'region' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearRegion() {
       region = null;
       fieldSetFlags()[9] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'country' field.
-      * Country where the individual was born in.
-      * @return The value.
-      */
+    /** Gets the value of the 'country' field */
     public java.lang.CharSequence getCountry() {
       return country;
     }
-
-    /**
-      * Sets the value of the 'country' field.
-      * Country where the individual was born in.
-      * @param value The value of 'country'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'country' field */
     public org.bdgenomics.formats.avro.Individual.Builder setCountry(java.lang.CharSequence value) {
       validate(fields()[10], value);
       this.country = value;
       fieldSetFlags()[10] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'country' field has been set.
-      * Country where the individual was born in.
-      * @return True if the 'country' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'country' field has been set */
     public boolean hasCountry() {
       return fieldSetFlags()[10];
     }
-
-
-    /**
-      * Clears the value of the 'country' field.
-      * Country where the individual was born in.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'country' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearCountry() {
       country = null;
       fieldSetFlags()[10] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'notes' field.
-      * Notes about the individual (e.g. sequencing/genotyping error, etc).
-      * @return The value.
-      */
+    /** Gets the value of the 'notes' field */
     public java.lang.CharSequence getNotes() {
       return notes;
     }
-
-    /**
-      * Sets the value of the 'notes' field.
-      * Notes about the individual (e.g. sequencing/genotyping error, etc).
-      * @param value The value of 'notes'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'notes' field */
     public org.bdgenomics.formats.avro.Individual.Builder setNotes(java.lang.CharSequence value) {
       validate(fields()[11], value);
       this.notes = value;
       fieldSetFlags()[11] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'notes' field has been set.
-      * Notes about the individual (e.g. sequencing/genotyping error, etc).
-      * @return True if the 'notes' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'notes' field has been set */
     public boolean hasNotes() {
       return fieldSetFlags()[11];
     }
-
-
-    /**
-      * Clears the value of the 'notes' field.
-      * Notes about the individual (e.g. sequencing/genotyping error, etc).
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'notes' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearNotes() {
       notes = null;
       fieldSetFlags()[11] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'visits' field.
-      * An array containing all the individual's visits in clinics.
-      * @return The value.
-      */
+    /** Gets the value of the 'visits' field */
     public java.util.List<org.bdgenomics.formats.avro.Visit> getVisits() {
       return visits;
     }
-
-    /**
-      * Sets the value of the 'visits' field.
-      * An array containing all the individual's visits in clinics.
-      * @param value The value of 'visits'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'visits' field */
     public org.bdgenomics.formats.avro.Individual.Builder setVisits(java.util.List<org.bdgenomics.formats.avro.Visit> value) {
       validate(fields()[12], value);
       this.visits = value;
       fieldSetFlags()[12] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'visits' field has been set.
-      * An array containing all the individual's visits in clinics.
-      * @return True if the 'visits' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'visits' field has been set */
     public boolean hasVisits() {
       return fieldSetFlags()[12];
     }
-
-
-    /**
-      * Clears the value of the 'visits' field.
-      * An array containing all the individual's visits in clinics.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'visits' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearVisits() {
       visits = null;
       fieldSetFlags()[12] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'batches' field.
-      * An array containing all the batches that the Individual belongs to.
-      * @return The value.
-      */
+    /** Gets the value of the 'batches' field */
     public java.util.List<org.bdgenomics.formats.avro.Batch> getBatches() {
       return batches;
     }
-
-    /**
-      * Sets the value of the 'batches' field.
-      * An array containing all the batches that the Individual belongs to.
-      * @param value The value of 'batches'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'batches' field */
     public org.bdgenomics.formats.avro.Individual.Builder setBatches(java.util.List<org.bdgenomics.formats.avro.Batch> value) {
       validate(fields()[13], value);
       this.batches = value;
       fieldSetFlags()[13] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'batches' field has been set.
-      * An array containing all the batches that the Individual belongs to.
-      * @return True if the 'batches' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'batches' field has been set */
     public boolean hasBatches() {
       return fieldSetFlags()[13];
     }
-
-
-    /**
-      * Clears the value of the 'batches' field.
-      * An array containing all the batches that the Individual belongs to.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'batches' field */
     public org.bdgenomics.formats.avro.Individual.Builder clearBatches() {
       batches = null;
       fieldSetFlags()[13] = false;
@@ -1217,21 +867,4 @@ public class Individual extends org.apache.avro.specific.SpecificRecordBase impl
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }

@@ -7,7 +7,6 @@ package org.bdgenomics.formats.avro;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Dbxref extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8241163567898314257L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Dbxref\",\"namespace\":\"org.bdgenomics.formats.avro\",\"fields\":[{\"name\":\"accession\",\"type\":\"string\"},{\"name\":\"db\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   @Deprecated public java.lang.CharSequence accession;
@@ -77,28 +76,17 @@ public class Dbxref extends org.apache.avro.specific.SpecificRecordBase implemen
     this.db = value;
   }
 
-  /**
-   * Creates a new Dbxref RecordBuilder.
-   * @return A new Dbxref RecordBuilder
-   */
+  /** Creates a new Dbxref RecordBuilder */
   public static org.bdgenomics.formats.avro.Dbxref.Builder newBuilder() {
     return new org.bdgenomics.formats.avro.Dbxref.Builder();
   }
   
-  /**
-   * Creates a new Dbxref RecordBuilder by copying an existing Builder.
-   * @param other The existing builder to copy.
-   * @return A new Dbxref RecordBuilder
-   */
+  /** Creates a new Dbxref RecordBuilder by copying an existing Builder */
   public static org.bdgenomics.formats.avro.Dbxref.Builder newBuilder(org.bdgenomics.formats.avro.Dbxref.Builder other) {
     return new org.bdgenomics.formats.avro.Dbxref.Builder(other);
   }
   
-  /**
-   * Creates a new Dbxref RecordBuilder by copying an existing Dbxref instance.
-   * @param other The existing instance to copy.
-   * @return A new Dbxref RecordBuilder
-   */
+  /** Creates a new Dbxref RecordBuilder by copying an existing Dbxref instance */
   public static org.bdgenomics.formats.avro.Dbxref.Builder newBuilder(org.bdgenomics.formats.avro.Dbxref other) {
     return new org.bdgenomics.formats.avro.Dbxref.Builder(other);
   }
@@ -117,10 +105,7 @@ public class Dbxref extends org.apache.avro.specific.SpecificRecordBase implemen
       super(org.bdgenomics.formats.avro.Dbxref.SCHEMA$);
     }
     
-    /**
-     * Creates a Builder by copying an existing Builder.
-     * @param other The existing Builder to copy.
-     */
+    /** Creates a Builder by copying an existing Builder */
     private Builder(org.bdgenomics.formats.avro.Dbxref.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.accession)) {
@@ -133,10 +118,7 @@ public class Dbxref extends org.apache.avro.specific.SpecificRecordBase implemen
       }
     }
     
-    /**
-     * Creates a Builder by copying an existing Dbxref instance
-     * @param other The existing instance to copy.
-     */
+    /** Creates a Builder by copying an existing Dbxref instance */
     private Builder(org.bdgenomics.formats.avro.Dbxref other) {
             super(org.bdgenomics.formats.avro.Dbxref.SCHEMA$);
       if (isValidValue(fields()[0], other.accession)) {
@@ -149,78 +131,50 @@ public class Dbxref extends org.apache.avro.specific.SpecificRecordBase implemen
       }
     }
 
-    /**
-      * Gets the value of the 'accession' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'accession' field */
     public java.lang.CharSequence getAccession() {
       return accession;
     }
-
-    /**
-      * Sets the value of the 'accession' field.
-      * @param value The value of 'accession'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'accession' field */
     public org.bdgenomics.formats.avro.Dbxref.Builder setAccession(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.accession = value;
       fieldSetFlags()[0] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'accession' field has been set.
-      * @return True if the 'accession' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'accession' field has been set */
     public boolean hasAccession() {
       return fieldSetFlags()[0];
     }
-
-
-    /**
-      * Clears the value of the 'accession' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'accession' field */
     public org.bdgenomics.formats.avro.Dbxref.Builder clearAccession() {
       accession = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
-    /**
-      * Gets the value of the 'db' field.
-      * @return The value.
-      */
+    /** Gets the value of the 'db' field */
     public java.lang.CharSequence getDb() {
       return db;
     }
-
-    /**
-      * Sets the value of the 'db' field.
-      * @param value The value of 'db'.
-      * @return This builder.
-      */
+    
+    /** Sets the value of the 'db' field */
     public org.bdgenomics.formats.avro.Dbxref.Builder setDb(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.db = value;
       fieldSetFlags()[1] = true;
       return this; 
     }
-
-    /**
-      * Checks whether the 'db' field has been set.
-      * @return True if the 'db' field has been set, false otherwise.
-      */
+    
+    /** Checks whether the 'db' field has been set */
     public boolean hasDb() {
       return fieldSetFlags()[1];
     }
-
-
-    /**
-      * Clears the value of the 'db' field.
-      * @return This builder.
-      */
+    
+    /** Clears the value of the 'db' field */
     public org.bdgenomics.formats.avro.Dbxref.Builder clearDb() {
       db = null;
       fieldSetFlags()[1] = false;
@@ -239,21 +193,4 @@ public class Dbxref extends org.apache.avro.specific.SpecificRecordBase implemen
       }
     }
   }
-
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);  
-
-  @Override public void writeExternal(java.io.ObjectOutput out)
-    throws java.io.IOException {
-    WRITER$.write(this, org.apache.avro.specific.SpecificData.getEncoder(out));
-  }
-
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);  
-
-  @Override public void readExternal(java.io.ObjectInput in)
-    throws java.io.IOException {
-    READER$.read(this, org.apache.avro.specific.SpecificData.getDecoder(in));
-  }
-
 }
