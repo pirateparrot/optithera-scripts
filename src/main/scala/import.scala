@@ -5,17 +5,22 @@ import scala.collection.JavaConversions._
 import org.bdgenomics.formats.avro._
 
 class IndividualRecord {
-  var individual: Option[collection.mutable.Buffer[Individual]] = _
-  var visits:  Option[collection.mutable.Buffer[Visit]] = _
-  var phenotypes:  Option[collection.mutable.Buffer[Phenotype]] = _
+  var individual: Option[Individual] = _
+  var visits: List[Visit] = _
+  var phenotypes: List[Phenotype] = _
+  var genotypes: collection.mutable.HashMap[String,Genotype] = _
+  def isReady(nbGenotypes : Int) =
+    !(this.individual.isEmpty || this.visits.length == 0 ||
+    this.phenotypes.length == 0 || this.genotypes.size < nbGenotypes)
 }
 
 object IndividualRecord {
   def apply (): IndividualRecord = {
     var ind = new IndividualRecord
     ind.individual = None
-    ind.visits = None
-    ind.phenotypes = None
+    ind.visits = List()
+    ind.phenotypes = List()
+    ind.genotypes = new collection.mutable.HashMap[String,Genotype]
     ind
   }
 }
@@ -36,10 +41,11 @@ object Importer {
     val prefix = "./output/"
     val filePattern = """^Individuals_([0-9]+)(_(.*))?\.tsv$""".r
     val genotypePattern = """^Individuals_([0-9]+)_(v[0-9]+)_Genotypes\.tsv$""".r
+    var nbGenotypeBatches : Option[Int] = None
 
     val list = new java.io.File(prefix).listFiles.map(file => file.getName).sorted
     list.foreach(fileName =>
-      filePattern.findAllIn(fileName).matchData foreach {m =>
+      filePattern.findAllIn(fileName).matchData foreach { m =>
 
         val current = individualsById.get(m.group(1)).getOrElse(IndividualRecord())
         val reader = new CSVReader(new FileReader(prefix + fileName))
@@ -47,7 +53,7 @@ object Importer {
 
         (m.group(1), m.group(3)) match {
           case (id, "Visits") =>
-            current.visits = Some(reader.readAll.map { row =>
+            reader.readAll.foreach { row =>
               val visit = Visit.newBuilder()
               visit.setVisitId(row(0))
               ignore(() => visit.setVisitDateEpoch(dateFormat.parse(row(1)).getTime))
@@ -55,10 +61,10 @@ object Importer {
               visit.setIsFasting(Try(java.lang.Boolean.valueOf(row(3))).getOrElse(false))
               visit.setDescription(row(4))
               // visit.setPhenotypes(phenotypes) // TODO
-              visit.build()
-            })
+              current.visits = visit.build() :: current.visits
+            }
           case (id, "Phenotypes") =>
-            current.phenotypes = Some(reader.readAll.map { row =>
+            reader.readAll.foreach { row =>
               val phenotype = Phenotype.newBuilder()
               phenotype.setPhenotypeType(row(1))
               phenotype.setPhenotypeGroup(row(2))
@@ -68,10 +74,15 @@ object Importer {
               phenotype.setMeasureUnits(row(6))
               phenotype.setDescription(row(7))
               ignore(() => phenotype.setDiagnosisDateEpoch(dateFormat.parse(row(8)).getTime))
-              phenotype.build()
-            })
+              current.phenotypes = phenotype.build() :: current.phenotypes
+            }
           case (id, null) =>
-            current.individual = Some(reader.readAll.map { row =>
+            reader.readAll.foreach { row =>
+
+              // Set the nb of genotypes the first time
+              if (nbGenotypeBatches.isEmpty)
+                nbGenotypeBatches = Some(row.length - 11) // There are 11 normal columns
+
               val gender = if (row(5).charAt(0) == 'm') Gender.Male else if (row(5).charAt(0) == 'f') Gender.Female else Gender.Unknown
               val individual = Individual.newBuilder()
               // individual.setGenotypes(genotypes) // TODO
@@ -88,28 +99,25 @@ object Importer {
               individual.setNotes(row(10))
               // individual.setVisits(visits) // TODO
               // individual.setBatches(batches) // TODO
-              individual.build()
-            })
+              current.individual = Some(individual.build())
+            }
           case (id, _) =>
-            genotypePattern.findAllIn(fileName).matchData foreach {n =>
-              // println(n.group(1)) // id
-              // println(n.group(2)) // version
+            genotypePattern.findAllIn(fileName).matchData foreach { n =>
+              val version = n.group(2)
+              val genotype = Genotype.newBuilder()
+              current.genotypes += version -> genotype.build()
             }
           case _ => throw new Exception("Invalid file name: " + fileName)
         }
 
-        // println(current.visits.getOrElse("EMPTY"))
-        // current.visits = Some(m.group(3))
-        individualsById += m.group(1) -> current
+        if (current.isReady(nbGenotypeBatches.getOrElse(999)))
+          println("Ready!")
 
+        individualsById += m.group(1) -> current
       }
     )
 
 
-  //     val dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd")
-
-  //     val reader = new CSVReader(new FileReader("output/test"))
-  // //    reader.readNext() // Skip headers
 
   //     val batches = reader.readAll.map { row =>
   //       Batch.newBuilder()
@@ -119,10 +127,5 @@ object Importer {
   //         .build()
   //     }
 
-
-  //     val genotypes = reader.readAll.map { row =>
-  //       Genotype.newBuilder()
-  //         .build()
-  //     }
 
 }
