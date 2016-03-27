@@ -2,7 +2,7 @@ name := "optithera-importer"
 
 version := "0.1"
 
-scalaVersion := "2.11.4"
+scalaVersion := "2.10.5"
 
 libraryDependencies ++= Seq(
   "net.sf.opencsv" % "opencsv" % "2.3",

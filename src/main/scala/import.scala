@@ -46,7 +46,7 @@ object Importer {
     }
 
     // It blows my mind that this isn't part of the standard library
-    def optionListToList[T](list: List[Option[T]]) : List[T] = {
+    def flattenOptionList[T](list: List[Option[T]]) : List[T] = {
       list.filter(x => !x.isEmpty).map(x => x.get)
     }
 
@@ -128,7 +128,7 @@ object Importer {
               val listBatches = row.toList.drop(NB_INDIVIDUAL_COLUMNS).map({batchId =>
                 if (batchId == "None") None else batchData.get(batchId)
               })
-              individual.setBatches(optionListToList(listBatches))
+              individual.setBatches(flattenOptionList(listBatches))
               current.individual = Some(individual)
             }
           case (id, _) =>
@@ -143,7 +143,7 @@ object Importer {
 
         if (current.isReady(nbGenotypeBatches.getOrElse(999))) {
           println("Ready!")
-          writeToParquet.append(current.toWritable())
+          // writeToParquet.append(current.toWritable())
         }
 
         individualsById += m.group(1) -> current
@@ -151,7 +151,7 @@ object Importer {
     })
 
     // Persist
-    parquetWriter.persistData
+    // parquetWriter.persistData
 
   }
 }
