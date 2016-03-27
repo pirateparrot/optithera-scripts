@@ -61,21 +61,23 @@ object Importer {
     var nbGenotypeBatches : Option[Int] = None
     val batchData = new collection.mutable.HashMap[String,Batch]()
     var writeToParquet = scala.collection.mutable.Buffer[Individual]()
-    val parquetWriter = new ParquetWriter[Individual](writeToParquet, "./individuals", Individual.getClassSchema)
+    // val parquetWriter = new ParquetWriter[Individual](writeToParquet, "./individuals", Individual.getClassSchema)
 
+    // Load the batches first
+    val reader = new CSVReader(new FileReader(prefix + "Batches.tsv"))
+    reader.readNext() // Skip headers
+    reader.readAll.foreach { row =>
+      val batch = Batch.newBuilder()
+      batch.setBatchDateEpoch(dateFormat.parse(row(1)).getTime)
+      batch.setBatchType(row(2))
+      batch.setDescription(row(3))
+      batchData += row(0) -> batch.build()
+    }
+
+    // Then everything else
     val list = new java.io.File(prefix).listFiles.map(file => file.getName).sorted
     list.foreach({ fileName =>
-      if (fileName == "Batches.tsv") {
-        val reader = new CSVReader(new FileReader(prefix + fileName))
-        reader.readNext() // Skip headers
-        reader.readAll.foreach { row =>
-          val batch = Batch.newBuilder()
-          batch.setBatchDateEpoch(dateFormat.parse(row(1)).getTime)
-          batch.setBatchType(row(2))
-          batch.setDescription(row(3))
-          batchData += row(0) -> batch.build()
-        }
-      } else filePattern.findAllIn(fileName).matchData foreach { m =>
+      filePattern.findAllIn(fileName).matchData foreach { m =>
 
         val current = individualsById.get(m.group(1)).getOrElse(IndividualRecord())
         val reader = new CSVReader(new FileReader(prefix + fileName))
@@ -135,7 +137,43 @@ object Importer {
             genotypePattern.findAllIn(fileName).matchData foreach { n =>
               // This might be useful in the future:
               // val version = n.group(2)
+
+              val contig = Contig.newBuilder()
+              // contig.setContigName() // str
+              // contig.setContigLength() // long
+              // contig.setAssembly() // str
+              // contig.setSpecies() // str
+
+              val svAllele = StructuralVariant.newBuilder()
+              // svAllele.setType() // StructuralVariantType ENUM
+              // svAllele.setAssembly() // str
+              // svAllele.setPrecise() // bool
+              // svAllele.setStartWindow() // int
+              // svAllele.setEndWindow() // int
+
+              val variant = Variant.newBuilder()
+              variant.setContig(contig.build())
+              // variant.setStart() // long
+              // variant.setEnd() // long
+              // variant.setReferenceAllele() // str
+              // variant.setAlternateAllele() // str
+              variant.setSvAllele(svAllele.build())
+              // variant.setIsSomatic() // bool
+
+              val alleles: List[GenotypeAllele] = List() // List of GenotypeAllele ENUM
+
               val genotype = Genotype.newBuilder()
+              genotype.setVariant(variant.build())
+              // genotype.setSampleId() // str
+              // genotype.setSampleDescription() // str
+              // genotype.setProcessingDescription() // str
+              genotype.setAlleles(alleles)
+              // genotype.setExpectedAlleleDosage() // float
+              // genotype.setGenotypeQuality() // int
+              // genotype.setGenotypeLikelihoods() // List of float
+              // genotype.setIsPhased() // bool
+              // genotype.setPhaseSetId() // int
+              // genotype.setPhaseQuality() // int
               current.genotypes = genotype :: current.genotypes
             }
           case _ => throw new Exception("Invalid file name: " + fileName)
