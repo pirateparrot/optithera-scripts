@@ -61,7 +61,7 @@ object Importer {
     var nbGenotypeBatches : Option[Int] = None
     val batchData = new collection.mutable.HashMap[String,Batch]()
     var writeToParquet = scala.collection.mutable.Buffer[Individual]()
-    val parquetWriter = new ParquetWriter[Individual](writeToParquet, "./individuals", Individual.getClassSchema)
+    val parquetWriter = new ParquetWriter[Individual](writeToParquet, "./parquet/individuals", Individual.getClassSchema)
 
     // Load the batches first
     val reader = new CSVReader(new FileReader(prefix + "Batches.tsv"))
@@ -181,7 +181,7 @@ object Importer {
 
         if (current.isReady(nbGenotypeBatches.getOrElse(999))) {
           println("Ready!")
-          // writeToParquet.append(current.toWritable())
+          writeToParquet.append(current.toWritable())
         }
 
         individualsById += m.group(1) -> current
@@ -189,7 +189,7 @@ object Importer {
     })
 
     // Persist
-    // parquetWriter.persistData
+    parquetWriter.persistData
 
   }
 }
