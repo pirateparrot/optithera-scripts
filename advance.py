@@ -133,6 +133,7 @@ mapping = {
 
 cursor1 = conn.cursor()
 cursor2 = conn.cursor()
+# The first query loads data from the "snp_genotype" table, joined with the "person" table
 print "Executing SQL query 1/2..."
 cursor1.execute("""
 	SELECT G.person_id, G.genotype_version, G.genotype
@@ -140,9 +141,10 @@ cursor1.execute("""
 	ORDER BY person_id ASC, genotype_version ASC LIMIT 3;
 """)
 
+# The second query loads data from the "snp_annotation" table, joined with the "vcf" table
 print "Executing SQL query 2/2..."
 cursor2.execute("""
-	SELECT A.genotype_index, A.annotation_version, A.rs, A.marshfield
+	SELECT A.genotype_index, A.annotation_version, A.rs, A.chromosome, A.marshfield
 	FROM "public"."snp_annotation" A
 	ORDER BY A.annotation_version ASC, A.genotype_index ASC;
 """)
