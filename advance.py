@@ -137,8 +137,9 @@ cursor2 = conn.cursor()
 print "Executing SQL query 1/2..."
 cursor1.execute("""
 	SELECT G.person_id, G.genotype_version, G.genotype
-	FROM "public"."snp_genotype" AS G
-	ORDER BY person_id ASC, genotype_version ASC LIMIT 3;
+	FROM "public"."snp_genotype" G
+	INNER JOIN "public"."person" P on G.person_id = P.id
+	ORDER BY G.person_id ASC, G.genotype_version ASC LIMIT 1;
 """)
 
 # The second query loads data from the "snp_annotation" table, joined with the "vcf" table
