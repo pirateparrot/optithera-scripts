@@ -38,7 +38,7 @@ def size_of_subarray(cursor, pos):
 
 def break_subarray(li, pos, size):
 	sub = li[pos].split(SUBARRAY_SEPARATOR)
-	padding = [None for i in xrange(0, size - len(sub))]
+	padding = ["" for i in xrange(0, size - len(sub))]
 	return li[:pos] + sub + li[pos+1:] + padding
 
 def make_headers(name, pos, nb):
