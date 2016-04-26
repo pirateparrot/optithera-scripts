@@ -6,7 +6,7 @@ class IndividualRecord {
   var visits: List[Visit.Builder] = _
   var phenotypes: List[Phenotype.Builder] = _
   var genotypes: List[Genotype.Builder] = _
-  def isReady(nbGenotypes : Int) = {
+  def isReady() = {
     !(this.individual.isEmpty || this.visits.length == 0 ||
     this.phenotypes.length == 0 || this.genotypes.size == 0)
   }

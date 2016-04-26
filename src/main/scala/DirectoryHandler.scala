@@ -30,7 +30,6 @@ class DirectoryHandler(prefix: String, genotypeVersion: String,
 
         m.group(3) match {
           case ("Visits") =>
-            // println("Visits")
             reader.foreach { row =>
               val visit = Visit.newBuilder()
               visit.setVisitId(row(0))
@@ -41,7 +40,6 @@ class DirectoryHandler(prefix: String, genotypeVersion: String,
               record.visits = visit :: record.visits
             }
           case ("Phenotypes") =>
-            // println("Phenotypes")
             reader.foreach { row =>
               val phenotype = Phenotype.newBuilder()
               phenotype.setPhenotypeType(row(1))
@@ -55,7 +53,6 @@ class DirectoryHandler(prefix: String, genotypeVersion: String,
               record.phenotypes = phenotype :: record.phenotypes
             }
           case (null) =>
-            // println("Individual")
             reader.foreach { row =>
 
               val gender = if (Character.toLowerCase(row(5).charAt(0)) == 'm') Gender.Male
@@ -80,7 +77,6 @@ class DirectoryHandler(prefix: String, genotypeVersion: String,
               record.individual = Some(individual)
             }
           case (_) =>
-            // println("Genotypes")
             genotypePattern.findAllIn(fileName).matchData foreach { n =>
               if (n.group(2) == genotypeVersion) reader.foreach { row =>
                 val contig = Contig.newBuilder()
@@ -109,12 +105,9 @@ class DirectoryHandler(prefix: String, genotypeVersion: String,
       }
     })
 
-    // println(record.genotypes.size)
-    if (record.isReady(2)) { // 2 versions of genotypes
-      // println("READY!")
+    if (record.isReady) {
       Some(record.toWritable())
     } else {
-      // println("NOT Ready")
       None
     }
 

@@ -19,8 +19,11 @@ object Importer {
     val dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd")
     val prefix = "./output/"
     val batchData = new collection.mutable.HashMap[String,Batch]()
-    var writeToParquet = scala.collection.mutable.Buffer[Individual]()
-    //val parquetWriter = new ParquetWriter[Individual](writeToParquet, "./parquet/individuals", Individual.getClassSchema)
+    // var writeToParquet = scala.collection.mutable.Buffer[Individual]()
+    // val parquetWriter = new ParquetWriter[Individual](writeToParquet, "./parquet/individuals", Individual.getClassSchema)
+
+    // Warm up Spark
+    val sc = AppContext.sc
 
     // Load the batches first
     val reader = new CSVIterator(new CSVReader(new FileReader(prefix + "Batches.tsv")))
@@ -38,18 +41,24 @@ object Importer {
     val list = new java.io.File(prefix).listFiles.sortWith(_.getName < _.getName).toList
     val parallelList = list.filter(f => f.isDirectory).par
     parallelList.tasksupport = new ForkJoinTaskSupport(new scala.concurrent.forkjoin.ForkJoinPool(nbThreads))
-    val buffers = parallelList.map({ file =>
+    val nbWritten = parallelList.map({ file =>
       val id = file.getName
-      // handler.processIndividual("11064")
-      handler.processIndividual(id)
-
-      // sys.exit(0)
+      handler.processIndividual(id) match {
+        case (Some(writable)) => {
+          val buffer = scala.collection.mutable.Buffer[Individual](writable)
+          val parquetFile = "./parquet/individual_" + genotypeVersion + "_" + id
+          val parquetWriter = new ParquetWriter[Individual](buffer, parquetFile, Individual.getClassSchema)
+          parquetWriter.persistData
+          Some()
+        }
+        case (None) => None
+      }
     }).flatten
 
-    println(buffers.size + " individuals loaded")
+    // Disconnect
+    sc.stop
 
-    // Persist
-    //parquetWriter.persistData
+    println(nbWritten.size + " individuals loaded")
 
   }
 }

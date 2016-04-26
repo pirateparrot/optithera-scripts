@@ -12,8 +12,8 @@ import parquet.avro.AvroParquetWriter
 object AppContext {
   val conf = new SparkConf().setAppName("Adam-IBS").setMaster("local")
   val sc = new SparkContext(conf)
-  val sqc = new SQLContext(sc)
-  sqc.sql("SET spark.sql.parquet.binaryAsString=true")
+  // val sqc = new SQLContext(sc)
+  // sqc.sql("SET spark.sql.parquet.binaryAsString=true")
   var logger = LoggerFactory.getLogger(this.getClass)
   logger.info("Load AppContext")
 }
@@ -28,11 +28,10 @@ class ParquetWriter[T](data:scala.collection.mutable.Buffer[T], filename:String,
   private val avroSchema = avroSchemaInput
   private val conf = AppContext.conf
   private val sc = AppContext.sc
-  private val sqc = new SQLContext(sc)
+  // private val sqc = new SQLContext(sc)
   private val dataToPersist = data
 
   def persistData() {
-    logger.info("Persist Data")
     val parquetFilePath = initialiseParqurFile()
     writeToFile(parquetFilePath)
   }
@@ -57,7 +56,6 @@ class ParquetWriter[T](data:scala.collection.mutable.Buffer[T], filename:String,
   def deleteIfExist(fileName:String) {
     var fileTemp = new File(DATA_PATH+fileName);
     if (fileTemp.exists()) {
-      logger.info("Same name output file exist and will be remplaced")
       fileTemp.delete();
     }
   }

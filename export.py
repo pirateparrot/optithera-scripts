@@ -142,7 +142,7 @@ cursor1.execute("""
 	SELECT G.person_id, G.genotype_version, P.sample, G.genotype
 	FROM "public"."snp_genotype" G
 	INNER JOIN "public"."person" P on G.person_id = P.id
-	ORDER BY G.person_id ASC, G.genotype_version ASC LIMIT 2
+	ORDER BY G.person_id ASC, G.genotype_version ASC LIMIT 10
 """)
 
 # The second query loads data from the "snp_annotation" table, joined with the "vcf" table

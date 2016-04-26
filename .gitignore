@@ -2,3 +2,8 @@
 *.tsv
 target
 .idea
+*.vcf
+*.vcf.csv
+sheets
+output
+parquet
