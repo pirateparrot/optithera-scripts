@@ -7,7 +7,6 @@ import utils
 # Constants
 # utils.NEWLINE_REPLACEMENT = " " # Can be uncommented and edited
 # utils.SUBARRAY_SEPARATOR = ";" # Can be uncommented and edited
-NB_VERSIONS = 2
 
 if len(sys.argv) != 6:
 	print "Passed arguments were: " + str(sys.argv)
@@ -22,7 +21,6 @@ print "Connecting to " + connection_string
 conn = psycopg2.connect(connection_string)
 cursor = conn.cursor()
 print "Connected\n"
-print "Number of genotype versions: " + str(NB_VERSIONS)
 sleep(2)
 
 
@@ -30,6 +28,8 @@ sleep(2)
 ### Individuals_##### ###
 #########################
 print "Exporting Individuals"
+
+# array_agg + array_to_string = Like SUM(), but for text fields. Concatenates strings.
 cursor.execute("""
 	SELECT
 		I.id, I.dob, I.sex, I.ethnic_code, I.centre_name, I.region_name,
@@ -44,6 +44,8 @@ cursor.execute("""
 	ORDER BY I.id ASC
 """.format(utils.SUBARRAY_SEPARATOR))
 print "Writing " + str(cursor.rowcount) + " files\n"
+# This section will need to create the headers and the rows dynamically because
+# the number of columns is not known ahead of time! See utils.py for more info.
 # 8 is where the batches subarray is located
 subarrayPos = 8
 nbBatches = utils.size_of_subarray(cursor, subarrayPos)
@@ -74,9 +76,9 @@ print "Writing " + str(cursor.rowcount) + " files\n"
 f = cursor.fetchone()
 current_id = -1
 while f:
-	if f[0] != current_id:
-		try:
-			file.close() # Ugly, but Python doesn't let me create ad hoc mocks like JS
+	if f[0] != current_id: # We only close the file when we switch to a new Person
+		try: # Ugly, but Python doesn't let me create ad hoc mocks like JS
+			file.close()
 		except:
 			pass
 		current_id = f[0]
@@ -105,9 +107,9 @@ print "Writing " + str(cursor.rowcount) + " files\n"
 f = cursor.fetchone()
 current_id = -1
 while f:
-	if f[0] != current_id:
-		try:
-			file.close() # Ugly, but Python doesn't let me create ad hoc mocks like JS
+	if f[0] != current_id: # We only close the file when we switch to a new Person
+		try: # Ugly, but Python doesn't let me create ad hoc mocks like JS
+			file.close()
 		except:
 			pass
 		current_id = f[0]
@@ -128,11 +130,14 @@ mapping = {
 	"2": "BB",
 	"3": "AB",
 	"4": "00",
-	"5": "A0",
-	"6": "B0",
+	"5": "A0", # Doesn't happen in practice
+	"6": "B0", # Doesn't happen in practice
 	"X": "00",
 	"x": "00" # Saves a call to lower()
 }
+
+# See Simon_Grondin_PFE.pdf for more information about why there's 2 cursors and how they work together
+# It's too much information to write it all here.
 
 cursor1 = conn.cursor()
 cursor2 = conn.cursor()
@@ -142,7 +147,7 @@ cursor1.execute("""
 	SELECT G.person_id, G.genotype_version, P.sample, G.genotype
 	FROM "public"."snp_genotype" G
 	INNER JOIN "public"."person" P on G.person_id = P.id
-	ORDER BY G.person_id ASC, G.genotype_version ASC LIMIT 10
+	ORDER BY G.person_id ASC, G.genotype_version ASC LIMIT 4
 """)
 
 # The second query loads data from the "snp_annotation" table, joined with the "vcf" table
@@ -202,7 +207,7 @@ with open(output_dir + "Batches.tsv", "w") as file:
 	f = cursor.fetchone()
 	while f:
 		li = utils.to_prepared_list(f)
-		file.write("""{0},{1},ADVANCE-ON,{2},Enrollment Batch\n""".format(*li))
+		file.write("""S{0},{1},ADVANCE-ON,{2},Enrollment Batch\n""".format(*li)) # Note the "S" before the Sample ID
 		f = cursor.fetchone()
 
 print "Done"

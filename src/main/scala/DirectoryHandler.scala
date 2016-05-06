@@ -4,13 +4,17 @@ import scala.util.Try
 import scala.collection.JavaConversions._
 import org.bdgenomics.formats.avro._
 
-class DirectoryHandler(prefix: String, genotypeVersion: String,
+class DirectoryHandler(prefix: String, genotypeVersion: String, assemblyName: String,
   batchData: collection.mutable.HashMap[String,Batch], dateFormat: java.text.SimpleDateFormat) {
 
+  // Number of columns in the Individual.csv file. Everything past that number is a batch ID
   val NB_INDIVIDUAL_COLUMNS = 11
+  // Extract the type of file
   val filePattern = """^Individuals_([0-9]+)(_(.*))?\.tsv$""".r
+  // Extract the Genotype version number
   val genotypePattern = """^Individuals_([0-9]+)_(v[0-9]+)_Genotypes\.tsv$""".r
 
+  // Run a function without having to care if it succeeds or fails
   def ignore(possibleFailure: () => Unit) =
     try {
       possibleFailure()
@@ -18,17 +22,22 @@ class DirectoryHandler(prefix: String, genotypeVersion: String,
       case _ : Throwable =>
     }
 
+  // This is the main function in this file
   def processIndividual(id: String) : Option[Individual] = {
+    // List of files in the sub-folder
     val ls = new java.io.File(prefix + id).listFiles.map(file => file.getName).sorted
+    // Structure to hold incomplete data
     val record = IndividualRecord()
 
     ls.foreach({ fileName =>
       filePattern.findAllIn(fileName).matchData foreach { m =>
 
+        // Needs an interator or it'll run out of RAM
         val reader = new CSVIterator(new CSVReader(new FileReader(prefix + id + "/" + fileName)))
         reader.next() // Skip headers
 
         m.group(3) match {
+          // The current file is for the Visits
           case ("Visits") =>
             reader.foreach { row =>
               val visit = Visit.newBuilder()
@@ -37,8 +46,9 @@ class DirectoryHandler(prefix: String, genotypeVersion: String,
               visit.setStudyId(row(2))
               visit.setIsFasting(Try(java.lang.Boolean.valueOf(row(3))).getOrElse(false))
               visit.setDescription(row(4))
-              record.visits = visit :: record.visits
+              record.visits = visit :: record.visits // Each row in the csv adds a visit to the list
             }
+          // The current file is for the Phenotypes
           case ("Phenotypes") =>
             reader.foreach { row =>
               val phenotype = Phenotype.newBuilder()
@@ -50,8 +60,9 @@ class DirectoryHandler(prefix: String, genotypeVersion: String,
               phenotype.setMeasureUnits(row(6))
               phenotype.setDescription(row(7))
               ignore(() => phenotype.setDiagnosisDateEpoch(dateFormat.parse(row(8)).getTime))
-              record.phenotypes = phenotype :: record.phenotypes
+              record.phenotypes = phenotype :: record.phenotypes // Each row in the csv adds a phenotype to the list
             }
+          // The current file is for the Individual
           case (null) =>
             reader.foreach { row =>
 
@@ -70,18 +81,25 @@ class DirectoryHandler(prefix: String, genotypeVersion: String,
               individual.setRegion(row(8))
               individual.setCountry(row(9))
               individual.setNotes(row(10))
+              // Ignore the first NB_INDIVIDUAL_COLUMNS
+              // Map the remaining columns (batch IDs) with the HashMap of batch data by ID
+              // Flatten: List[Option[T]] -> List[T]
+              // Flatten handles both when fields are null and when the batch ID can't be mapped
               val listBatches = row.toList.drop(NB_INDIVIDUAL_COLUMNS).map({batchId =>
                 if (batchId == "") None else batchData.get(batchId)
               }).flatten
               individual.setBatches(listBatches)
               record.individual = Some(individual)
             }
+          // The current file is for the Genotypes
           case (_) =>
+            // Extract the genotype version number
             genotypePattern.findAllIn(fileName).matchData foreach { n =>
+              // We only want to continue when it's the right version
               if (n.group(2) == genotypeVersion) reader.foreach { row =>
                 val contig = Contig.newBuilder()
                 contig.setContigName(row(5)) // chromosome
-                contig.setAssembly("NCBI36") // Verify this
+                contig.setAssembly(assemblyName)
                 contig.setSpecies("human")
 
                 // DBSNP data
@@ -98,15 +116,16 @@ class DirectoryHandler(prefix: String, genotypeVersion: String,
                 genotype.setVariant(variant.build())
                 genotype.setSampleId(row(2))
                 genotype.setAlleles(alleles)
-                record.genotypes = genotype :: record.genotypes
+                record.genotypes = genotype :: record.genotypes // Each row in the csv adds a genotype to the list
               }
             }
         }
       }
     })
 
+    // Only generate an ADAM object when all the data is there
     if (record.isReady) {
-      Some(record.toWritable())
+      Some(record.toWritable)
     } else {
       None
     }

@@ -19,6 +19,8 @@ sleep(3)
 def nullify(row):
   return "" if row == "." else row
 
+# We only write to the file BATCH_SIZE rows at a time
+# Calling file.write() too often is really slow
 batch = []
 i = 0
 totalSize = 0
@@ -39,7 +41,7 @@ with open("./{0}".format(CSV_OUTPUT), 'w') as output:
         row[5] = nullify(row[5]) # quality
         row[6] = nullify(row[6]) # filter
         # row[7] = nullify(row[7]) # info
-        row[7] = "" # Saving space
+        row[7] = "" # Saving space. This column is really big and we don't need it for ADAM
         formatted = "{0}${1}${2}${3}${4}${5}${6}${7}${8}\n".format(counter, *row)
         totalSize += len(formatted)
         batch.append(formatted)
